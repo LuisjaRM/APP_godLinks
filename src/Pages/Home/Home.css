@@ -1,0 +1,14 @@
+.filter {
+  height: 5vh;
+}
+
+.body {
+  padding: 1rem;
+}
+
+.body .offers-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
