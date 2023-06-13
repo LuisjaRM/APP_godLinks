@@ -1,4 +1,3 @@
-
 import { Filter } from "../../components/Filter/Filter";
 
 import { OfferCard } from "../../components/OfferCard/OfferCard";
@@ -16,11 +15,7 @@ export const Home = () => {
 
   return (
     <>
-
-      <Filter/>
-
-      <section className="filter">Filter</section>
-
+      <Filter />
       <section className="body">
         <ul className="offers-list">
           {offersWithVotes?.map((offer) => (
@@ -28,7 +23,6 @@ export const Home = () => {
               <OfferCard offer={offer} />
             </li>
           ))}
-
 
           {offerWithoutVotes?.map((offer) => (
             <li key={offer.id}>
