@@ -6,13 +6,13 @@ export function LoginOrSignup() {
   const [isLogin, setIsLogin] = useState(true);
 
   return (
-    <div>
+    <section>
       {isLogin ? <Login /> : <Signup />}
       <a onClick={() => setIsLogin(!isLogin)}>
         {isLogin
           ? "Aún no tienes cuenta? Regístrate"
           : "Ya tienes cuenta? Inicia sesión"}
       </a>
-    </div>
+    </section>
   );
 }
