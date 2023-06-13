@@ -7,10 +7,26 @@ header {
   height: 7.5vh;
 }
 
-main {
-  height: 85vh;
-}
-
 footer {
   height: 7.5vh;
+}
+
+form fieldset {
+  border: none;
+  margin-bottom: 1rem;
+}
+
+form label {
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+
+form input {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+form p {
+  margin-top: 1rem;
+  color: var(--error);
 }
