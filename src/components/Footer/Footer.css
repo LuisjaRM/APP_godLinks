@@ -1,0 +1,15 @@
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 1rem;
+  background-color: rgb(56, 56, 56);
+  color: white;
+  border-top: 2px solid black;
+}
+
+footer .title {
+  font-size: 100%;
+  text-align: center;
+}

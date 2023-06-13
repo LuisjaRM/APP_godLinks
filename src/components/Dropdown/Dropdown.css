@@ -1,0 +1,7 @@
+.dropdown .dropdown-body {
+  display: none;
+}
+
+.dropdown.show .dropdown-body {
+  display: block;
+}

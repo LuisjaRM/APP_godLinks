@@ -1,0 +1,16 @@
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  height: 7.5vh;
+}
+
+main {
+  height: 85vh;
+}
+
+footer {
+  height: 7.5vh;
+}
