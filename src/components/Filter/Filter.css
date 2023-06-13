@@ -1,0 +1,38 @@
+.filterOffers nav a {
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.filterOffers nav a:hover {
+  background-color: #e6e6e6;
+}
+
+.filterOffers {
+  background-color: rgb(2, 2, 2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.filterOffers nav {
+  display: flex;
+  justify-content: center;
+  justify-content: space-between;
+  height: 5vh;
+}
+
+.filterOffers nav a {
+  background-color: #505050;
+  border-radius: 8px;
+  padding: 10px;
+  margin-right: 120px;
+  text-decoration: none;
+  color: #1b224b;
+}
