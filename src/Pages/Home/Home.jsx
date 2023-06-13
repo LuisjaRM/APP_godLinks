@@ -1,9 +1,10 @@
+import { Filter } from "../../components/Filter/Filter";
 import "./Home.css";
 
 export const Home = () => {
   return (
     <>
-      <section className="filter"></section>
+      <Filter/>
 
       <section className="body"></section>
     </>
