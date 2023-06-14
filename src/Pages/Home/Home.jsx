@@ -1,5 +1,4 @@
 import { Filter } from "../../components/Filter/Filter";
-
 import { OfferCard } from "../../components/OfferCard/OfferCard";
 import { useGetOffers } from "../../hooks/useGetOffers";
 
@@ -16,6 +15,7 @@ export const Home = () => {
   return (
     <>
       <Filter />
+
       <section className="body">
         <ul className="offers-list">
           {offersWithVotes?.map((offer) => (

@@ -1,32 +1,7 @@
-#root {
-  display: flex;
-  flex-direction: column;
+main {
+  min-height: calc(100vh - 7.5vh - 7.5vh);
 }
 
-header {
-  height: 7.5vh;
-}
-
-footer {
-  height: 7.5vh;
-}
-
-form fieldset {
-  border: none;
-  margin-bottom: 1rem;
-}
-
-form label {
-  display: flex;
-  margin-bottom: 0.5rem;
-}
-
-form input {
-  width: 100%;
-  padding: 0.5rem;
-}
-
-form p {
-  margin-top: 1rem;
-  color: var(--error);
+main .filter-exists {
+  min-height: calc(100vh - 7.5vh - 7.5vh - 6vh);
 }

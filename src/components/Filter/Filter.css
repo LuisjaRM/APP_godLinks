@@ -1,4 +1,23 @@
-.filterOffers nav a {
+.filterOffers .filter-list {
+  height: 6vh;
+  padding: 0.25rem 1rem;
+  display: flex;
+  gap: 1rem;
+  background-color: rgb(65, 65, 65);
+  border-bottom: 1px solid black;
+}
+
+.filterOffers .filter-list .link {
+  border: 1px solid black;
+  padding: 0.1rem;
+  text-align: center;
+  text-decoration: none;
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+}
+
+/* .filterOffers nav a {
   background-color: #f2f2f2;
   border-radius: 8px;
   padding: 10px;
@@ -7,7 +26,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 
 .filterOffers nav a:hover {
@@ -35,4 +53,4 @@
   margin-right: 120px;
   text-decoration: none;
   color: #1b224b;
-}
+} */
