@@ -12,9 +12,11 @@ export const Header = () => {
         </nav>
       </Dropdown>
 
-      <h1 className="title">GODLINKS</h1>
+      <Link to="/">
+        <h1 className="title">GODLINKS</h1>
+      </Link>
 
-      <button className="button">Search</button>
+      <button className="button">👓</button>
     </header>
   );
 };

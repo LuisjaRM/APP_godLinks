@@ -1,6 +1,7 @@
 import { useState } from "react";
-import Login from "../../components/LoginOrSignup/Login.jsx";
-import Signup from "../../components/LoginOrSignup/Signup.jsx";
+import { Login } from "../../components/Login/Login";
+import { Signup } from "../../components/Signup/Signup";
+import "./LoginOrSignup.css";
 
 export function LoginOrSignup() {
   const [isLogin, setIsLogin] = useState(true);
@@ -8,7 +9,8 @@ export function LoginOrSignup() {
   return (
     <section>
       {isLogin ? <Login /> : <Signup />}
-      <a onClick={() => setIsLogin(!isLogin)}>
+
+      <a className="change-button" onClick={() => setIsLogin(!isLogin)}>
         {isLogin
           ? "Aún no tienes cuenta? Regístrate"
           : "Ya tienes cuenta? Inicia sesión"}

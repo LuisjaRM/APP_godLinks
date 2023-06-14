@@ -6,7 +6,9 @@ export const Dropdown = ({ icon, children }) => {
 
   return (
     <section className={`dropdown ${show ? "show" : "hide"}`}>
-      <button onClick={() => setShow(!show)}>{icon}</button>
+      <button className="button" onClick={() => setShow(!show)}>
+        {icon}
+      </button>
       <div className="dropdown-body">{children}</div>
     </section>
   );

@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { registerUserService } from "../../services/api";
 import { useNavigate } from "react-router-dom";
+import "./Signup.css";
 
-const Singup = () => {
+export const Signup = () => {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -21,12 +22,15 @@ const Singup = () => {
     }
   };
   return (
-    <section>
-      <h1>Register</h1>
-      <form onSubmit={handleForm}>
-        <fieldset>
-          <label htmlFor="email">Email:</label>
+    <section className="signup">
+      <h1 className="title">Registrate</h1>
+      <form className="signup-form" onSubmit={handleForm}>
+        <fieldset className="fieldset">
+          <label className="label" htmlFor="email">
+            Correo Electrónico:
+          </label>
           <input
+            className="input"
             type="email"
             id="email"
             name="email"
@@ -35,9 +39,13 @@ const Singup = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
         </fieldset>
-        <fieldset>
-          <label htmlFor="pass1">Contraseña:</label>
+
+        <fieldset className="fieldset">
+          <label className="label" htmlFor="pass1">
+            Contraseña:
+          </label>
           <input
+            className="input"
             type="password"
             id="pass1"
             name="pass1"
@@ -46,9 +54,13 @@ const Singup = () => {
             onChange={(e) => setPass1(e.target.value)}
           />
         </fieldset>
-        <fieldset>
-          <label htmlFor="user">Nombre de Usuario:</label>
+
+        <fieldset className="fieldset">
+          <label className="label" htmlFor="user">
+            Nombre de Usuario:
+          </label>
           <input
+            className="input"
             type="text"
             id="user"
             name="user"
@@ -57,11 +69,10 @@ const Singup = () => {
             onChange={(e) => setUser(e.target.value)}
           />
         </fieldset>
-        <button>Register</button>
-        {error ? <p>{error}</p> : null}
+
+        <button className="button">Continuar</button>
+        {error ? <p className="error">{error}</p> : null}
       </form>
     </section>
   );
 };
-
-export default Singup;

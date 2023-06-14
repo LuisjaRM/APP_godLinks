@@ -1,0 +1,35 @@
+.signup {
+  padding: 1rem;
+}
+
+.signup .title {
+  margin-bottom: 1rem;
+}
+
+.signup .signup-form {
+  gap: 1rem;
+}
+
+.signup .fieldset {
+  border: none;
+  margin-bottom: 1rem;
+}
+
+.signup .label {
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+
+.signup .input {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.signup .button {
+  padding: 0.25rem 1rem;
+}
+
+.signup .error {
+  margin-top: 1rem;
+  color: var(--error);
+}
