@@ -18,6 +18,7 @@ export const Filter = () => {
           <Link className="link" to="/offersByVotes">Ofertas mas votadas</Link>) : null}
           {currentPath !== '/favorites' ? (
           <Link className="link" to="/favorites">Ofertas favoritas</Link>) : null}
+
         </nav>
       </section>
     </>

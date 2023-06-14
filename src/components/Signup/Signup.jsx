@@ -8,11 +8,16 @@ export const Signup = () => {
 
   const [email, setEmail] = useState("");
   const [pass1, setPass1] = useState("");
+  const [pass2, setPass2] = useState("");
   const [user, setUser] = useState("");
   const [error, setError] = useState("");
 
   const handleForm = async (e) => {
     e.preventDefault();
+    if (pass1 !== pass2) {
+      setError("Passwords do not match");
+      return;
+    }
 
     try {
       await registerUserService({ email, password: pass1, user });
@@ -27,7 +32,7 @@ export const Signup = () => {
       <form className="signup-form" onSubmit={handleForm}>
         <fieldset className="fieldset">
           <label className="label" htmlFor="email">
-            Correo Electrónico:
+            Correo electrónico:
           </label>
           <input
             className="input"
@@ -54,10 +59,24 @@ export const Signup = () => {
             onChange={(e) => setPass1(e.target.value)}
           />
         </fieldset>
+        <fieldset className="fieldset">
+          <label className="label" htmlFor="pass2">
+            Repetir contraseña:
+          </label>
+          <input
+            className="input"
+            type="password"
+            id="pass2"
+            name="pass2"
+            value={pass2}
+            required
+            onChange={(e) => setPass2(e.target.value)}
+          />
+        </fieldset>
 
         <fieldset className="fieldset">
           <label className="label" htmlFor="user">
-            Nombre de Usuario:
+            Nombre de usuario:
           </label>
           <input
             className="input"
