@@ -8,7 +8,21 @@
 .offer-card .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 0.5rem;
+}
+
+.offer-card .header .user-info {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.offer-card .header .user-info .user-image {
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .offer-card .main {
@@ -21,6 +35,7 @@
   width: 144px;
   height: 144px;
   object-fit: cover;
+  border-radius: 10px;
 }
 
 .offer-card .main .offer-info {
@@ -34,6 +49,19 @@
 .offer-card .main .offer-info .offer-price {
   display: flex;
   gap: 1rem;
+  padding-bottom: 0.25rem;
+}
+
+.offer-card .main .offer-info .offer-price .price {
+  font-weight: bold;
+}
+
+.offer-card .main .offer-info .offer-price .price-dcto {
+  text-decoration: line-through;
+  color: red;
+}
+
+.offer-card .main .offer-info .offer-cad {
   padding-bottom: 0.5rem;
 }
 
@@ -49,6 +77,11 @@
   border: none;
   border-radius: 5px;
   box-shadow: 1px 1px 10px black;
+}
+
+.offer-card .footer .button .link {
+  text-decoration: none;
+  color: black;
 }
 
 .offer-card .footer .offer-buttons {

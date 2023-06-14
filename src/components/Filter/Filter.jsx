@@ -1,23 +1,24 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./Filter.css";
 
 export const Filter = () => {
+  const location = useLocation();
+  const currentPath = location.pathname;
+    
+
   return (
     <>
       <section className="filterOffers">
         <nav className="filter-list">
-          <Link className="link" to="/allOffer">
-            Todas las ofertas
-          </Link>
-          <Link className="link" to="/">
-            Ofertas del dia
-          </Link>
-          <Link className="link" to="/offersByVotes">
-            Ofertas más votadas
-          </Link>
-          <Link className="link" to="/favorites">
-            Ofertas favoritas
-          </Link>
+          {currentPath !== '/alloffer' ? (
+          <Link className="link" to="/alloffer">Todas las ofertas</Link>) : null}
+          {currentPath !== '/' ? (
+          <Link className="link" to="/">Ofertas del dia</Link>) : null}
+          {currentPath !== '/offersByVotes' ? (
+          <Link className="link" to="/offersByVotes">Ofertas mas votadas</Link>) : null}
+          {currentPath !== '/favorites' ? (
+          <Link className="link" to="/favorites">Ofertas favoritas</Link>) : null}
+
         </nav>
       </section>
     </>
