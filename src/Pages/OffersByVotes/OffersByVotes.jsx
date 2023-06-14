@@ -1,9 +1,11 @@
+import { Filter } from "../../components/Filter/Filter";
 import "./OffersByVotes.css";
 
 export const OffersByVotes = () => {
   return (
-    <>
-      <h1>Buenas mañanas</h1>
-    </>
+    <section>
+      <Filter />
+      <h1>Ofertas mas votadas</h1>
+    </section>
   );
 };
