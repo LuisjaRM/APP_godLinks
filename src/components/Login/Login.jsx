@@ -32,6 +32,7 @@ export const Login = () => {
             Correo Electrónico:
           </label>
           <input
+            placeholder="example@mail.com"
             className="input"
             type="email"
             name="email"
@@ -47,6 +48,7 @@ export const Login = () => {
             Contraseña:
           </label>
           <input
+            placeholder="Introduce tu contraseña"
             className="input"
             type="password"
             name="pass"

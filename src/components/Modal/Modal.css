@@ -12,6 +12,8 @@
 }
 
 .modal-fg {
-  background-color: white;
+  background-color: rgb(177, 142, 214);
   border: 1px solid black;
+  border-radius: 10px;
+  padding: 0.5rem;
 }
