@@ -1,20 +1,73 @@
 import "./OfferCard.css";
 
 export const OfferCard = ({ offer }) => {
-  const date = new Date(offer.offer_expiry).toDateString();
+  // Date Logic
+  const timeNow = Date.now();
+  const nowDate = new Date(timeNow);
+
+  const created_at = new Date(offer.created_at);
+  const timeCreated_at = created_at.getTime() - 1000 * 60 * 60 * 2;
+  const dateCreated = new Date(timeCreated_at);
+
+  const dif = nowDate.getTime() - dateCreated.getTime();
+
+  const seconds = Math.floor(dif / 1000);
+  const minutes = Math.floor(dif / 1000 / 60);
+  const hours = Math.floor(dif / 1000 / 60 / 60);
+  const day = Math.floor(dif / 1000 / 60 / 60 / 24);
+
+  let timeSinceCreated_at;
+  let text;
+
+  if (minutes < 1) {
+    timeSinceCreated_at = seconds;
+    text = "s";
+  }
+  if (minutes < 60) {
+    timeSinceCreated_at = minutes;
+    text = "m";
+  }
+  if (minutes > 60) {
+    timeSinceCreated_at = hours;
+    text = "h";
+  }
+  if (hours > 24) {
+    timeSinceCreated_at = day;
+    text = "d";
+  }
+
+  const offer_expiry = new Date(offer.created_at);
+  const dateOffer_expiry = offer_expiry.toLocaleDateString("en-GB");
 
   return (
     <section className="offer-card">
       <section className="header">
-        <p>{offer.user}</p>
+        <section className="user-info">
+          <img
+            className="user-image"
+            src={
+              offer.avatar
+                ? `${import.meta.env.VITE_BACKEND}uploads/${offer.avatar}`
+                : "/android-icon-36x36.png"
+            }
+            alt={offer.title}
+          />
+          <p>{offer.user}</p>
+        </section>
 
-        <p>{date}</p>
+        <p>
+          hace {timeSinceCreated_at} {text}
+        </p>
       </section>
 
       <section className="main">
         <img
           className="image"
-          src="/android-icon-36x36.png"
+          src={
+            offer.photo
+              ? `${import.meta.env.VITE_BACKEND}uploads/${offer.photo}`
+              : "/android-icon-36x36.png"
+          }
           alt={offer.title}
         />
 
@@ -23,18 +76,21 @@ export const OfferCard = ({ offer }) => {
             <h2>{offer.title}</h2>
           </li>
           <li className="offer-price">
-            <p>{offer.offer_price}</p>
-            <p>{offer.price}</p>
+            <p className="price">{offer.offer_price} €</p>
+            <p className="price-dcto">{offer.price} €</p>
           </li>
+          <li className="offer-cad">Cad: {dateOffer_expiry}</li>
           <li>{offer.descrip}</li>
         </ul>
       </section>
 
       <section className="footer">
-        <p>👍 : {offer.avgVotes}</p>
+        <p>👍 : {offer.avgVotes ? Number(offer.avgVotes).toFixed(1) : 0}</p>
 
         <button className="button">
-          <a href={offer.url}>Link oferta</a>
+          <a className="link" href={offer.url}>
+            Link oferta
+          </a>
         </button>
 
         <section className="offer-buttons">

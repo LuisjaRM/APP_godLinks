@@ -3,8 +3,6 @@ export const getDailyOffers = async () => {
     `${import.meta.env.VITE_BACKEND}offers?filter=daily`
   );
 
-  console.log(response);
-
   const json = await response.json();
 
   if (!response.ok) {
