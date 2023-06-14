@@ -15,7 +15,7 @@ export const Signup = () => {
   const handleForm = async (e) => {
     e.preventDefault();
     if (pass1 !== pass2) {
-      setError("Passwords do not match");
+      setError("Las contraseñas no coinciden");
       return;
     }
 
@@ -28,13 +28,14 @@ export const Signup = () => {
   };
   return (
     <section className="signup">
-      <h1 className="title">Registrate</h1>
+      <h1 className="title">Regístrate</h1>
       <form className="signup-form" onSubmit={handleForm}>
         <fieldset className="fieldset">
           <label className="label" htmlFor="email">
             Correo electrónico:
           </label>
           <input
+            placeholder="example@mail.com"
             className="input"
             type="email"
             id="email"
@@ -50,6 +51,7 @@ export const Signup = () => {
             Contraseña:
           </label>
           <input
+            placeholder="Introduce tu contraseña"
             className="input"
             type="password"
             id="pass1"
@@ -64,6 +66,7 @@ export const Signup = () => {
             Repetir contraseña:
           </label>
           <input
+            placeholder="Repite tu contraseña"
             className="input"
             type="password"
             id="pass2"
@@ -79,6 +82,7 @@ export const Signup = () => {
             Nombre de usuario:
           </label>
           <input
+            placeholder="Introduce nombre de usuario"
             className="input"
             type="text"
             id="user"
