@@ -3,7 +3,7 @@ import { getMyDataService } from "../services/api";
 
 export const AuthContext = createContext(null);
 
-export const AuthContextProviderComponent = ({ children }) => {
+export const AuthContextProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState(null);
 

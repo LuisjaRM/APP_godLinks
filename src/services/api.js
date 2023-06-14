@@ -3,8 +3,6 @@ export const getDailyOffers = async () => {
     `${import.meta.env.VITE_BACKEND}offers?filter=daily`
   );
 
-  console.log(response);
-
   const json = await response.json();
 
   if (!response.ok) {
@@ -50,16 +48,13 @@ export const registerUserService = async ({ email, password, user }) => {
 };
 
 export const logInUserService = async ({ email, password }) => {
-  const response = await fetch(
-    `${import.meta.env.VITE_BACKEND}users/new-user`,
-    {
-      method: "POST",
-      body: JSON.stringify({ email, password }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}users/login`, {
+    method: "POST",
+    body: JSON.stringify({ email, password }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
   const json = await response.json();
 

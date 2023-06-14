@@ -2,6 +2,7 @@
   display: none;
 }
 
-.dropdown.show .dropdown-body {
+.dropdown.open .dropdown-body {
   display: block;
+  padding: 0.2rem;
 }

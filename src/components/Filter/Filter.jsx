@@ -9,7 +9,7 @@ export const Filter = () => {
           <Link className="link" to="/allOffer">
             Todas las ofertas
           </Link>
-          <Link className="link" to="/daylioffer">
+          <Link className="link" to="/">
             Ofertas del dia
           </Link>
           <Link className="link" to="/offersByVotes">
