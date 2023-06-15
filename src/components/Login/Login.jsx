@@ -24,7 +24,7 @@ export const Login = () => {
     }
   };
   return (
-    <section className="login">
+    <section onClick={(e) => e.stopPropagation()} className="login">
       <h1 className="title">Inicia Sesión</h1>
       <form className="login-form" onSubmit={handleForm}>
         <fieldset className="fieldset">

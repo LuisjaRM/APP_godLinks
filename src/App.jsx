@@ -9,7 +9,6 @@ import {
 
 import { Root } from "./Root";
 import { Home } from "./Pages/Home/Home";
-import { LoginOrSignup } from "./Pages/LoginOrSignup/LoginOrSignup";
 import { AllOffers } from "./Pages/AllOffers/AllOffers";
 import { OffersByVotes } from "./Pages/OffersByVotes/OffersByVotes";
 import { Favorite } from "./Pages/Favorite/Favorite";
@@ -18,7 +17,6 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />} errorElement={<h1>Error Router</h1>}>
       <Route index element={<Home />} />
-      <Route path="login" element={<LoginOrSignup />} />
       <Route path="allOffer" element={<AllOffers />} />
       <Route path="offersByVotes" element={<OffersByVotes />} />
       <Route path="favorites" element={<Favorite />} />
