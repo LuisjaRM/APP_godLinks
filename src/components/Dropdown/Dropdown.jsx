@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useShow } from "../../context/ShowContext";
+import { useShow } from "../../contexts/ShowContext";
 import "./Dropdown.css";
 
 export const Dropdown = ({ icon, children }) => {

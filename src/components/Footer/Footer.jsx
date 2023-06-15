@@ -1,5 +1,4 @@
-import { useNightMode } from "../../context/NightModeContext";
-
+import { useNightMode } from "../../contexts/NightModeContext";
 import "./Footer.css";
 
 export const Footer = () => {
