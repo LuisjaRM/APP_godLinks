@@ -1,27 +1,36 @@
 import { useEffect, useState } from "react";
-import { getDailyOffers } from "../services/api";
 
-export const useGetOffers = () => {
+const loadOffers = async (url, setOffers, setLoading, setError) => {
+  try {
+    setLoading(true);
+
+    const response = await fetch(url);
+
+    const json = await response.json();
+
+    if (!response.ok) {
+      throw new Error(json.message);
+    }
+
+    const data = json.data;
+    setOffers(data);
+  } catch (error) {
+    setError(error.message);
+  } finally {
+    setLoading(false);
+  }
+};
+
+export const useGetOffers = (url) => {
   const [offers, setOffers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const loadOffers = async () => {
-      try {
-        setLoading(true);
+    loadOffers(url, setOffers, setLoading, setError);
+  }, [url]);
 
-        const data = await getDailyOffers();
-        setOffers(data);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const refresh = () => loadOffers(url, setOffers, setLoading, setError);
 
-    loadOffers();
-  }, []);
-
-  return { offers, loading, error };
+  return { offers, loading, error, refresh };
 };
