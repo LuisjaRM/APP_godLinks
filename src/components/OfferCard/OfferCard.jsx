@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./OfferCard.css";
 
 export const OfferCard = ({ offer }) => {
@@ -39,6 +40,10 @@ export const OfferCard = ({ offer }) => {
   const offer_expiry = new Date(offer.created_at);
   const dateOffer_expiry = offer_expiry.toLocaleDateString("en-GB");
 
+  // Favorite Logic
+
+  const [favorite, setFavorite] = useState(false);
+
   return (
     <section className="offer-card">
       <section className="header">
@@ -52,7 +57,7 @@ export const OfferCard = ({ offer }) => {
             }
             alt={offer.title}
           />
-          <p>{offer.user}</p>
+          <p className="user-name">{offer.user}</p>
         </section>
 
         <p>
@@ -61,15 +66,23 @@ export const OfferCard = ({ offer }) => {
       </section>
 
       <section className="main">
-        <img
-          className="image"
-          src={
-            offer.photo
-              ? `${import.meta.env.VITE_BACKEND}uploads/${offer.photo}`
-              : "/android-icon-36x36.png"
-          }
-          alt={offer.title}
-        />
+        <section className="image-box">
+          <img
+            className="image"
+            src={
+              offer.photo
+                ? `${import.meta.env.VITE_BACKEND}uploads/${offer.photo}`
+                : "/android-icon-36x36.png"
+            }
+            alt={offer.title}
+          />
+          <button
+            className="favorite-button"
+            onClick={() => setFavorite(!favorite)}
+          >
+            {favorite ? "❤️" : "🤍"}
+          </button>
+        </section>
 
         <ul className="offer-info">
           <li className="offer-title">
@@ -87,16 +100,13 @@ export const OfferCard = ({ offer }) => {
       <section className="footer">
         <p>👍 : {offer.avgVotes ? Number(offer.avgVotes).toFixed(1) : 0}</p>
 
-        <button className="button">
+        <button className="link-button">
           <a className="link" href={offer.url}>
-            Link oferta
+            Ir a la oferta 🔗
           </a>
         </button>
 
-        <section className="offer-buttons">
-          <button className="button">fav</button>
-          <button className="button">comnt</button>
-        </section>
+        <button className="comments-button">🗨️</button>
       </section>
     </section>
   );
