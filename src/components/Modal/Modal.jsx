@@ -1,4 +1,4 @@
-import { useShow } from "../../context/ShowContext";
+import { useShow } from "../../contexts/ShowContext";
 import "./Modal.css";
 
 export function Modal({ children }) {
