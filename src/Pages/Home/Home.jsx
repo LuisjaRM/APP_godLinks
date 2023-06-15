@@ -1,7 +1,5 @@
-import { Filter } from "../../components/Filter/Filter";
 import { OfferCard } from "../../components/OfferCard/OfferCard";
 import { useGetDailyOffers } from "../../services/api";
-
 import "./Home.css";
 
 export const Home = () => {
@@ -14,8 +12,6 @@ export const Home = () => {
 
   return (
     <>
-      <Filter />
-
       <section className="body">
         <ul className="offers-list">
           {offersWithVotes?.map((offer) => (

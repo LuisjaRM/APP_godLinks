@@ -1,4 +1,3 @@
-import { Filter } from "../../components/Filter/Filter";
 import { OfferCard } from "../../components/OfferCard/OfferCard";
 import { useGetOffersByVotes } from "../../services/api";
 import "./OffersByVotes.css";
@@ -12,7 +11,7 @@ export const OffersByVotes = () => {
   if (error) return <p>{error}</p>;
   return (
     <>
-      <Filter />
+      
 
       <section className="body">
         <ul className="offers-list">
