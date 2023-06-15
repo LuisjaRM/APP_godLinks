@@ -3,6 +3,7 @@
   flex-direction: column;
   padding: 0.25rem 0.5rem;
   border: 2px dashed steelblue;
+  border-radius: 10px;
 }
 
 .offer-card .header {
@@ -23,6 +24,11 @@
   height: 24px;
   object-fit: cover;
   border-radius: 50%;
+  box-shadow: 1px 1px 10px black;
+}
+
+.offer-card .header .user-info .user-name {
+  font-weight: bold;
 }
 
 .offer-card .main {
@@ -31,11 +37,28 @@
   gap: 2rem;
 }
 
-.offer-card .main .image {
+.offer-card .main .image-box {
+  position: relative;
+}
+
+.offer-card .main .image-box .image {
   width: 144px;
   height: 144px;
   object-fit: cover;
   border-radius: 10px;
+  border: 1px solid black;
+  box-shadow: 1px 1px 5px black;
+}
+
+.offer-card .main .image-box .favorite-button {
+  background: none;
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  border-radius: 5px;
+  border: none;
+  width: 24px;
+  height: 24px;
 }
 
 .offer-card .main .offer-info {
@@ -71,7 +94,7 @@
   justify-content: space-between;
 }
 
-.offer-card .footer .button {
+.offer-card .footer .link-button {
   padding: 0.1rem 0.5rem;
   background-color: khaki;
   border: none;
@@ -79,12 +102,14 @@
   box-shadow: 1px 1px 10px black;
 }
 
-.offer-card .footer .button .link {
+.offer-card .footer .link-button .link {
   text-decoration: none;
   color: black;
 }
 
-.offer-card .footer .offer-buttons {
-  display: flex;
-  gap: 1rem;
+.offer-card .footer .comments-button {
+  padding: 0.1rem 0.5rem;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px black;
 }
