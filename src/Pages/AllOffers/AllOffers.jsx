@@ -1,8 +1,6 @@
-import { Filter } from "../../components/Filter/Filter";
 import { OfferCard } from "../../components/OfferCard/OfferCard";
 import { useGetAllOffers } from "../../services/api";
 import "./AllOffers.css";
-
 export const AllOffers = () => {
   const { offers, loading, error } = useGetAllOffers();
   const offersWithVotes = offers.offersWithVotes;
@@ -12,8 +10,6 @@ export const AllOffers = () => {
   if (error) return <p>{error}</p>;
   return (
     <>
-      <Filter />
-
       <section className="body">
         <ul className="offers-list">
           {offersWithVotes?.map((offer) => (

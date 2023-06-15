@@ -20,7 +20,7 @@ export const Filter = () => {
             </Link>
           ) : null}
           {currentPath !== "/offersByVotes" ? (
-            <Link className="link" to="/offersByVotes">
+            <Link className="link" to="/offersByVotes"> 
               Ofertas más votadas
             </Link>
           ) : null}
