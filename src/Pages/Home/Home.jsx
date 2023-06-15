@@ -1,11 +1,11 @@
 import { Filter } from "../../components/Filter/Filter";
 import { OfferCard } from "../../components/OfferCard/OfferCard";
-import { useGetOffers } from "../../hooks/useGetOffers";
+import { useGetDailyOffers } from "../../services/api";
 
 import "./Home.css";
 
 export const Home = () => {
-  const { offers, loading, error } = useGetOffers();
+  const { offers, loading, error } = useGetDailyOffers();
   const offersWithVotes = offers.offersWithVotes;
   const offerWithoutVotes = offers.offers;
 

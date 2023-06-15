@@ -1,16 +1,13 @@
-export const getDailyOffers = async () => {
-  const response = await fetch(
-    `${import.meta.env.VITE_BACKEND}offers?filter=daily`
-  );
+import { useGetOffers } from "../hooks/useGetOffers";
 
-  const json = await response.json();
+export const useGetDailyOffers = () =>
+  useGetOffers(`${import.meta.env.VITE_BACKEND}offers?filter=daily`);
 
-  if (!response.ok) {
-    throw new Error(json.message);
-  }
+export const useGetAllOffers = () =>
+  useGetOffers(`${import.meta.env.VITE_BACKEND}offers?filter=all`);
 
-  return json.data;
-};
+export const useGetOffersByVotes = () =>
+  useGetOffers(`${import.meta.env.VITE_BACKEND}offers?filter=by-votes`);
 
 export const getMyDataService = async (token) => {
   const response = await fetch(`${import.meta.env.VITE_BACKEND}user`, {
