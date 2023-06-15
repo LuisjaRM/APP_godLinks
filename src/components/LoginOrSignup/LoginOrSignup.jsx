@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Modal } from "../../components/Modal/Modal";
-import { Login } from "../../components/Login/Login";
-import { Signup } from "../../components/Signup/Signup";
+import { Modal } from "../Modal/Modal";
+import { Login } from "../Login/Login";
+import { Signup } from "../Signup/Signup";
 import "./LoginOrSignup.css";
 
 export function LoginOrSignup() {
@@ -11,7 +11,13 @@ export function LoginOrSignup() {
     <Modal>
       {isLogin ? <Login /> : <Signup />}
 
-      <a className="change-button" onClick={() => setIsLogin(!isLogin)}>
+      <a
+        className="change-button"
+        onClick={(e) => {
+          setIsLogin(!isLogin);
+          e.stopPropagation();
+        }}
+      >
         {isLogin
           ? "Aún no tienes cuenta? Regístrate"
           : "Ya tienes cuenta? Inicia sesión"}

@@ -27,7 +27,7 @@ export const Signup = () => {
     }
   };
   return (
-    <section className="signup">
+    <section onClick={(e) => e.stopPropagation()} className="signup">
       <h1 className="title">Regístrate</h1>
       <form className="signup-form" onSubmit={handleForm}>
         <fieldset className="fieldset">

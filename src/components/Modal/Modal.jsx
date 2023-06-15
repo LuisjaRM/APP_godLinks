@@ -2,13 +2,13 @@ import { useShow } from "../../contexts/ShowContext";
 import "./Modal.css";
 
 export function Modal({ children }) {
-  const [show] = useShow();
+  const [show, setShow] = useShow();
 
   return (
     show && (
-      <div className="modal-bg">
-        <div className="modal-fg">{children}</div>
-      </div>
+      <section onClick={() => setShow(!show)} className="modal-bg">
+        <section className="modal-fg">{children}</section>
+      </section>
     )
   );
 }
