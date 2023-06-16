@@ -1,7 +1,6 @@
 import { OfferCard } from "../../components/OfferCard/OfferCard";
 import { useGetAllOffers } from "../../services/api";
 import "./AllOffers.css";
-
 export const AllOffers = () => {
   const { offers, loading, error } = useGetAllOffers();
 

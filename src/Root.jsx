@@ -1,17 +1,21 @@
 import { Outlet } from "react-router-dom";
 import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
-import { useGetOffers } from "./hooks/useGetOffers";
+import { LoginOrSignup } from "./Pages/LoginOrSignup/LoginOrSignup";
+import { Filter } from "./components/Filter/Filter";
 import { LoginOrSignup } from "./components/LoginOrSignup/LoginOrSignup";
 
-export const Root = () => {
-  const { offers } = useGetOffers();
 
+export const Root = () => {
   return (
     <>
       <Header />
 
-      <main className={offers ? "filter-exists" : ""}>
+      <aside>
+        <Filter />
+      </aside>
+
+      <main>
         <Outlet />
         <LoginOrSignup />
       </main>

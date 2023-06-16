@@ -1,6 +1,5 @@
 import { OfferCard } from "../../components/OfferCard/OfferCard";
 import { useGetDailyOffers } from "../../services/api";
-
 import "./Home.css";
 
 export const Home = () => {
