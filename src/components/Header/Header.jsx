@@ -1,5 +1,5 @@
-import { Link, Navigate } from "react-router-dom";
-import { Dropdown } from "../Dropdown/Dropdown";
+import { Link } from "react-router-dom";
+import { LoginButton } from "../LoginButton/LoginButton";
 import { useNightMode } from "../../contexts/NightModeContext";
 import "./Header.css";
 
@@ -8,9 +8,7 @@ export const Header = () => {
 
   return (
     <header>
-      <Dropdown icon="🙇‍♀️">
-        <Navigate to="/profile" />
-      </Dropdown>
+      <LoginButton />
 
       <Link to="/">
         <h1 className="title">GODLINKS</h1>

@@ -1,16 +1,14 @@
-import { useContext } from "react";
+// import { useContext } from "react";
+// import { AuthContext } from "../../contexts/AuthContext";
 import "./UserProfile.css";
-import { AuthContext } from "../../contexts/AuthContext";
 
 export const UserProfile = () => {
-  const { user } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
 
   return (
-    <>
-      <section>
-        <h1>Tu perfil</h1>
-        <p>{user.user}</p>
-      </section>
-    </>
+    <section>
+      <h1>Tu perfil</h1>
+      {/* <p>{user.user}</p> */}
+    </section>
   );
 };

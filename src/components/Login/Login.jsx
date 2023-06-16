@@ -6,7 +6,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import "./Login.css";
 
 export const Login = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [show, setShow] = useShow();
   const { login } = useAuth();
@@ -23,7 +23,7 @@ export const Login = () => {
       login(token.token);
       setShow(!show);
 
-      // navigate("/");
+      navigate("/");
     } catch (error) {
       setError(error.message);
     }
