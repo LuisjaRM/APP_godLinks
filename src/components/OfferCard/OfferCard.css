@@ -1,9 +1,15 @@
+.link {
+  text-decoration: none;
+  color: black;
+}
+
 .offer-card {
   display: flex;
   flex-direction: column;
   padding: 0.25rem 0.5rem;
   border: 2px dashed steelblue;
   border-radius: 10px;
+  text-decoration: none;
 }
 
 .offer-card .header {
@@ -102,7 +108,7 @@
   box-shadow: 1px 1px 10px black;
 }
 
-.offer-card .footer .link-button .link {
+.offer-card .footer .link-button .offer-link {
   text-decoration: none;
   color: black;
 }

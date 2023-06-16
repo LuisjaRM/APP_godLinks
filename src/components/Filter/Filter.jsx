@@ -10,7 +10,7 @@ export const Filter = () => {
       <section className="filterOffers">
         <nav className="filter-list">
           {currentPath !== "/alloffer" ? (
-            <Link className="link" to="/alloffer">
+            <Link className="link" to="/alloffers">
               Todas las ofertas
             </Link>
           ) : null}

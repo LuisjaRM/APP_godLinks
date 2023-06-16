@@ -1,0 +1,14 @@
+.comments-body {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border: 2px dashed steelblue;
+  border-radius: 10px;
+}
+
+.comments-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
