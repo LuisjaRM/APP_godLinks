@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./OfferCard.css";
 
 export const OfferCard = ({ offer }) => {
@@ -45,69 +46,83 @@ export const OfferCard = ({ offer }) => {
   const [favorite, setFavorite] = useState(false);
 
   return (
-    <section className="offer-card">
-      <section className="header">
-        <section className="user-info">
-          <img
-            className="user-image"
-            src={
-              offer.avatar
-                ? `${import.meta.env.VITE_BACKEND}uploads/${offer.avatar}`
-                : "/android-icon-36x36.png"
-            }
-            alt={offer.title}
-          />
-          <p className="user-name">{offer.user}</p>
+    <Link className="link" to={`/offerById/${offer.id}`}>
+      <section className="offer-card">
+        <section className="header">
+          <Link className="link" to="/user-info">
+            <section className="user-info">
+              <img
+                className="user-image"
+                src={
+                  offer.avatar
+                    ? `${import.meta.env.VITE_BACKEND}uploads/${offer.avatar}`
+                    : "/android-icon-36x36.png"
+                }
+                alt={offer.title}
+              />
+
+              <p className="user-name">{offer.user}</p>
+            </section>
+          </Link>
+
+          <p>
+            hace {timeSinceCreated_at} {text}
+          </p>
         </section>
 
-        <p>
-          hace {timeSinceCreated_at} {text}
-        </p>
-      </section>
+        <section className="main">
+          <section className="image-box">
+            <img
+              className="image"
+              src={
+                offer.photo
+                  ? `${import.meta.env.VITE_BACKEND}uploads/${offer.photo}`
+                  : "/android-icon-36x36.png"
+              }
+              alt={offer.title}
+            />
 
-      <section className="main">
-        <section className="image-box">
-          <img
-            className="image"
-            src={
-              offer.photo
-                ? `${import.meta.env.VITE_BACKEND}uploads/${offer.photo}`
-                : "/android-icon-36x36.png"
-            }
-            alt={offer.title}
-          />
-          <button
-            className="favorite-button"
-            onClick={() => setFavorite(!favorite)}
-          >
-            {favorite ? "❤️" : "🤍"}
+            <button
+              className="favorite-button"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setFavorite(!favorite);
+              }}
+            >
+              {favorite ? "❤️" : "🤍"}
+            </button>
+          </section>
+
+          <ul className="offer-info">
+            <li className="offer-title">
+              <h2>{offer.title}</h2>
+            </li>
+            <li className="offer-price">
+              <p className="price">{offer.offer_price} €</p>
+              <p className="price-dcto">{offer.price} €</p>
+            </li>
+            <li className="offer-cad">Cad: {dateOffer_expiry}</li>
+            <li>{offer.descrip}</li>
+          </ul>
+        </section>
+
+        <section className="footer">
+          <p>👍 : {offer.avgVotes ? Number(offer.avgVotes).toFixed(1) : 0}</p>
+
+          <button className="link-button">
+            <a
+              className="offer-link"
+              onClick={(e) => e.stopPropagation()}
+              href={offer.url}
+            >
+              Ir a la oferta 🔗
+            </a>
           </button>
+
+          <button className="comments-button">🗨️</button>
         </section>
-
-        <ul className="offer-info">
-          <li className="offer-title">
-            <h2>{offer.title}</h2>
-          </li>
-          <li className="offer-price">
-            <p className="price">{offer.offer_price} €</p>
-            <p className="price-dcto">{offer.price} €</p>
-          </li>
-          <li className="offer-cad">Cad: {dateOffer_expiry}</li>
-          <li>{offer.descrip}</li>
-        </ul>
       </section>
-
-      <section className="footer">
-        <p>👍 : {offer.avgVotes ? Number(offer.avgVotes).toFixed(1) : 0}</p>
-
-        <button className="link-button">
-          <a className="link" href={offer.url}>
-            Ir a la oferta 🔗
-          </a>
-        </button>
-
-        <button className="comments-button">🗨️</button>
-      </section>
-    </section>
+    </Link>
   );
 };
