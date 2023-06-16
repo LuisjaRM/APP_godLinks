@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 import "./OfferCard.css";
+import { useShow } from "../../contexts/ShowContext";
 
 export const OfferCard = ({ offer }) => {
   // Date Logic
@@ -41,44 +43,58 @@ export const OfferCard = ({ offer }) => {
   const offer_expiry = new Date(offer.created_at);
   const dateOffer_expiry = offer_expiry.toLocaleDateString("en-GB");
 
+  // UserContext
+
+  const { user } = useAuth();
+  const [show, setShow] = useShow();
+
   // Favorite Logic
 
   const [isLiked, setIsLiked] = useState(false);
 
   const handleLike = (e) => {
     e.preventDefault();
-     e.stopPropagation();
+    e.stopPropagation();
     setIsLiked(!isLiked);
+  };
+
+  // HandleClicks
+
+  const navigate = useNavigate();
+
+  const handleClickOfferCard = () => {
+    user === null ? setShow(!show) : navigate(`/offerById/${offer.id}`);
+  };
+
+  const handleClickUserInfo = (e) => {
+    e.stopPropagation();
+    user === null ? setShow(!show) : navigate("/user-info");
   };
 
   // CSS States
   const [expand, setExpand] = useState(false);
 
   return (
-    <Link className="link" to={`/offerById/${offer.id}`}>
-      <section className="offer-card">
-        <section className="header">
-          <Link className="link" to="/user-info">
-            <section className="user-info">
-              <img
-                className="user-image"
-                src={
-                  offer.avatar
-                    ? `${import.meta.env.VITE_BACKEND}uploads/${offer.avatar}`
-                    : "/android-icon-36x36.png"
-                }
-                alt={offer.title}
-              />
+    <section className="offer-card" onClick={handleClickOfferCard}>
+      <section className="header">
+        <section className="user-info" onClick={handleClickUserInfo}>
+          <img
+            className="user-image"
+            src={
+              offer.avatar
+                ? `${import.meta.env.VITE_BACKEND}uploads/${offer.avatar}`
+                : "/android-icon-36x36.png"
+            }
+            alt={offer.title}
+          />
 
-              <p className="user-name">{offer.user}</p>
-            </section>
-          </Link>
-
-          <p>
-            hace {timeSinceCreated_at} {text}
-          </p>
+          <p className="user-name">{offer.user}</p>
         </section>
-        
+
+        <p>
+          hace {timeSinceCreated_at} {text}
+        </p>
+      </section>
 
       <section className="main">
         <section className="image-box">
@@ -92,7 +108,12 @@ export const OfferCard = ({ offer }) => {
             alt={offer.title}
           />
           <button className="favorite-button" onClick={handleLike}>
-          <svg className={isLiked ? 'like' : ''} viewBox="0 0 512 512" width="15px" height="28px">
+            <svg
+              className={isLiked ? "like" : ""}
+              viewBox="0 0 512 512"
+              width="15px"
+              height="28px"
+            >
               <path
                 d="M474.655,74.503C449.169,45.72,413.943,29.87,375.467,29.87c-30.225,0-58.5,12.299-81.767,35.566
           c-15.522,15.523-28.33,35.26-37.699,57.931c-9.371-22.671-22.177-42.407-37.699-57.931c-23.267-23.267-51.542-35.566-81.767-35.566
@@ -103,55 +124,53 @@ export const OfferCard = ({ offer }) => {
               />
             </svg>
           </button>
-          </section>
-
-          <ul className="offer-info">
-            <li className="offer-title">
-              <h2>{offer.title}</h2>
-            </li>
-            <li className="offer-price">
-              <p className="price">{offer.offer_price} €</p>
-              <p className="price-dcto">{offer.price} €</p>
-            </li>
-            <li className="offer-cad">Cad: {dateOffer_expiry}</li>
-            <li className={`offer-descrip ${expand ? "expand" : ""}`}>
-              {offer.descrip}
-
-              {offer.descrip.length > 93 ? (
-                <button
-                  className={`expand-button ${expand ? "expand" : ""}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    setExpand(!expand);
-                  }}
-                >
-                  {expand ? "⬆️" : "..."}
-                </button>
-              ) : (
-                ""
-              )}
-            </li>
-          </ul>
-
         </section>
 
-        <section className="footer">
-          <p>👍 : {offer.avgVotes ? Number(offer.avgVotes).toFixed(1) : 0}</p>
+        <ul className="offer-info">
+          <li className="offer-title">
+            <h2>{offer.title}</h2>
+          </li>
+          <li className="offer-price">
+            <p className="price">{offer.offer_price} €</p>
+            <p className="price-dcto">{offer.price} €</p>
+          </li>
+          <li className="offer-cad">Cad: {dateOffer_expiry}</li>
+          <li className={`offer-descrip ${expand ? "expand" : ""}`}>
+            {offer.descrip}
 
-          <button className="link-button">
-            <a
-              className="offer-link"
-              onClick={(e) => e.stopPropagation()}
-              href={offer.url}
-            >
-              Ir a la oferta 🔗
-            </a>
-          </button>
-
-          <button className="comments-button">🗨️</button>
-        </section>
+            {offer.descrip.length > 93 ? (
+              <button
+                className={`expand-button ${expand ? "expand" : ""}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setExpand(!expand);
+                }}
+              >
+                {expand ? "⬆️" : "..."}
+              </button>
+            ) : (
+              ""
+            )}
+          </li>
+        </ul>
       </section>
-    </Link>
+
+      <section className="footer">
+        <p>👍 : {offer.avgVotes ? Number(offer.avgVotes).toFixed(1) : 0}</p>
+
+        <button className="link-button">
+          <a
+            className="offer-link"
+            onClick={(e) => e.stopPropagation()}
+            href={offer.url}
+          >
+            Ir a la oferta 🔗
+          </a>
+        </button>
+
+        <button className="comments-button">🗨️</button>
+      </section>
+    </section>
   );
 };
