@@ -1,0 +1,45 @@
+.comment-card {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid gray;
+}
+
+.comment-card .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.comment-card .header .user-info {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.comment-card .header .user-info .user-image {
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 1px 1px 10px black;
+}
+
+.comment-card .header .user-info .user-name {
+  font-weight: bold;
+}
+
+.comment-card .main {
+  padding: 0.5rem;
+}
+
+.comment-card .footer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.comment-card .footer .like-button {
+  border: none;
+}

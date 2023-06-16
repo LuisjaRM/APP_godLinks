@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./OfferCard.css";
 
 export const OfferCard = ({ offer }) => {
@@ -46,25 +47,37 @@ export const OfferCard = ({ offer }) => {
 
   const handleLike = (e) => {
     e.preventDefault();
+     e.stopPropagation();
     setIsLiked(!isLiked);
   };
 
-  return (
-    <section className="offer-card">
-      <section className="header">
-        <section className="user-info">
-          <img
-            className="user-image"
-            src={
-              offer.avatar
-                ? `${import.meta.env.VITE_BACKEND}uploads/${offer.avatar}`
-                : "/android-icon-36x36.png"
-            }
-            alt={offer.title}
-          />
-          <p className="user-name">{offer.user}</p>
-        </section>
+  // CSS States
+  const [expand, setExpand] = useState(false);
 
+  return (
+    <Link className="link" to={`/offerById/${offer.id}`}>
+      <section className="offer-card">
+        <section className="header">
+          <Link className="link" to="/user-info">
+            <section className="user-info">
+              <img
+                className="user-image"
+                src={
+                  offer.avatar
+                    ? `${import.meta.env.VITE_BACKEND}uploads/${offer.avatar}`
+                    : "/android-icon-36x36.png"
+                }
+                alt={offer.title}
+              />
+
+              <p className="user-name">{offer.user}</p>
+            </section>
+          </Link>
+
+          <p>
+            hace {timeSinceCreated_at} {text}
+          </p>
+        </section>
         <p>
           hace {timeSinceCreated_at} {text}
         </p>
@@ -93,32 +106,54 @@ export const OfferCard = ({ offer }) => {
               />
             </svg>
           </button>
+
+          <ul className="offer-info">
+            <li className="offer-title">
+              <h2>{offer.title}</h2>
+            </li>
+            <li className="offer-price">
+              <p className="price">{offer.offer_price} €</p>
+              <p className="price-dcto">{offer.price} €</p>
+            </li>
+            <li className="offer-cad">Cad: {dateOffer_expiry}</li>
+            <li className={`offer-descrip ${expand ? "expand" : ""}`}>
+              {offer.descrip}
+
+              {offer.descrip.length > 93 ? (
+                <button
+                  className={`expand-button ${expand ? "expand" : ""}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setExpand(!expand);
+                  }}
+                >
+                  {expand ? "⬆️" : "..."}
+                </button>
+              ) : (
+                ""
+              )}
+            </li>
+          </ul>
+
         </section>
 
-        <ul className="offer-info">
-          <li className="offer-title">
-            <h2>{offer.title}</h2>
-          </li>
-          <li className="offer-price">
-            <p className="price">{offer.offer_price} €</p>
-            <p className="price-dcto">{offer.price} €</p>
-          </li>
-          <li className="offer-cad">Cad: {dateOffer_expiry}</li>
-          <li>{offer.descrip}</li>
-        </ul>
+        <section className="footer">
+          <p>👍 : {offer.avgVotes ? Number(offer.avgVotes).toFixed(1) : 0}</p>
+
+          <button className="link-button">
+            <a
+              className="offer-link"
+              onClick={(e) => e.stopPropagation()}
+              href={offer.url}
+            >
+              Ir a la oferta 🔗
+            </a>
+          </button>
+
+          <button className="comments-button">🗨️</button>
+        </section>
       </section>
-
-      <section className="footer">
-        <p>👍 : {offer.avgVotes ? Number(offer.avgVotes).toFixed(1) : 0}</p>
-
-        <button className="link-button">
-          <a className="link" href={offer.url}>
-            Ir a la oferta 🔗
-          </a>
-        </button>
-
-        <button className="comments-button">🗨️</button>
-      </section>
-    </section>
+    </Link>
   );
 };

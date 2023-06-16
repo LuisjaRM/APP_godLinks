@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { registerUserService } from "../../services/api";
-import { useNavigate } from "react-router-dom";
+import { useShow } from "../../contexts/ShowContext";
 import "./Signup.css";
 
-export const Signup = () => {
-  const navigate = useNavigate();
+export const Signup = ({ open, setOpen }) => {
+  const [show, setShow] = useShow();
 
   const [email, setEmail] = useState("");
   const [pass1, setPass1] = useState("");
@@ -14,6 +14,7 @@ export const Signup = () => {
 
   const handleForm = async (e) => {
     e.preventDefault();
+    e.stopPropagation();
     if (pass1 !== pass2) {
       setError("Las contraseñas no coinciden");
       return;
@@ -21,7 +22,8 @@ export const Signup = () => {
 
     try {
       await registerUserService({ email, password: pass1, user });
-      navigate("/login");
+      setOpen(!open);
+      setShow(!show);
     } catch (error) {
       setError(error.message);
     }
