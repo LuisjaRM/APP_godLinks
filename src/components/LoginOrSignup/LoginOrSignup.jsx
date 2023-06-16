@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Modal } from "../Modal/Modal";
 import { Login } from "../Login/Login";
 import { Signup } from "../Signup/Signup";
-import "./LoginOrSignup.css";
 import { ModalVerify } from "../ModalVerify/ModalVerify";
 import { useShow } from "../../contexts/ShowContext";
+import "./LoginOrSignup.css";
 
 export function LoginOrSignup() {
   const [show, setShow] = useShow();

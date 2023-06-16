@@ -7,6 +7,7 @@ import "./Login.css";
 
 export const Login = () => {
   // const navigate = useNavigate();
+
   const [show, setShow] = useShow();
   const { login } = useAuth();
   const [email, setEmail] = useState("");
@@ -21,6 +22,7 @@ export const Login = () => {
 
       login(token.token);
       setShow(!show);
+
       // navigate("/");
     } catch (error) {
       setError(error.message);
