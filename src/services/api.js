@@ -24,7 +24,7 @@ export const getOfferByIdService = async (id) => {
 };
 
 export const getMyDataService = async (token) => {
-  const response = await fetch(`${import.meta.env.VITE_BACKEND}user`, {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}users`, {
     headers: {
       Authorization: token,
     },
