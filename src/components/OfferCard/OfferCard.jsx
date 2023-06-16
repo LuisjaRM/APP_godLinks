@@ -45,6 +45,9 @@ export const OfferCard = ({ offer }) => {
 
   const [favorite, setFavorite] = useState(false);
 
+  // CSS States
+  const [expand, setExpand] = useState(false);
+
   return (
     <Link className="link" to={`/offerById/${offer.id}`}>
       <section className="offer-card">
@@ -103,7 +106,24 @@ export const OfferCard = ({ offer }) => {
               <p className="price-dcto">{offer.price} €</p>
             </li>
             <li className="offer-cad">Cad: {dateOffer_expiry}</li>
-            <li>{offer.descrip}</li>
+            <li className={`offer-descrip ${expand ? "expand" : ""}`}>
+              {offer.descrip}
+
+              {offer.descrip.length > 93 ? (
+                <button
+                  className={`expand-button ${expand ? "expand" : ""}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setExpand(!expand);
+                  }}
+                >
+                  {expand ? "⬆️" : "..."}
+                </button>
+              ) : (
+                ""
+              )}
+            </li>
           </ul>
         </section>
 
