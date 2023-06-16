@@ -78,10 +78,7 @@ export const OfferCard = ({ offer }) => {
             hace {timeSinceCreated_at} {text}
           </p>
         </section>
-        <p>
-          hace {timeSinceCreated_at} {text}
-        </p>
-      </section>
+        
 
       <section className="main">
         <section className="image-box">
@@ -106,6 +103,7 @@ export const OfferCard = ({ offer }) => {
               />
             </svg>
           </button>
+          </section>
 
           <ul className="offer-info">
             <li className="offer-title">
