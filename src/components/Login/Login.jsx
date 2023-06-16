@@ -1,12 +1,11 @@
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { logInUserService } from "../../services/api";
 import { AuthContext } from "../../contexts/AuthContext";
 import "./Login.css";
 import { useShow } from "../../contexts/ShowContext";
+import { Navigate } from "react-router";
 
 export const Login = () => {
-  const navigate = useNavigate();
   const [show, setShow] = useShow();
   const { login } = useContext(AuthContext);
   const [email, setEmail] = useState("");
@@ -21,7 +20,7 @@ export const Login = () => {
 
       login(token);
       setShow(!show);
-      navigate("/");
+      <Navigate to="/" />;
     } catch (error) {
       setError(error.message);
     }

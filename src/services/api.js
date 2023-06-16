@@ -9,8 +9,8 @@ export const useGetAllOffers = () =>
 export const useGetOffersByVotes = () =>
   useGetOffers(`${import.meta.env.VITE_BACKEND}offers?filter=by-votes`);
 
-export const getMyDataService = async (token) => {
-  const response = await fetch(`${import.meta.env.VITE_BACKEND}user`, {
+export const getMyDataService = async (token, id) => {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}user${id}`, {
     headers: {
       Authorization: token,
     },

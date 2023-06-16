@@ -12,6 +12,7 @@ import { Home } from "./Pages/Home/Home";
 import { AllOffers } from "./Pages/AllOffers/AllOffers";
 import { OffersByVotes } from "./Pages/OffersByVotes/OffersByVotes";
 import { Favorite } from "./Pages/Favorite/Favorite";
+import { UserProfile } from "./Pages/UserProfile/UserProfile";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,6 +21,7 @@ const router = createBrowserRouter(
       <Route path="allOffer" element={<AllOffers />} />
       <Route path="offersByVotes" element={<OffersByVotes />} />
       <Route path="favorites" element={<Favorite />} />
+      <Route path="profile" element={<UserProfile />} />
     </Route>
   )
 );
