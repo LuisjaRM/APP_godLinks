@@ -10,14 +10,13 @@
 .filterOffers .filter-list .link {
   background-color: #f2f2f2;
   border-radius: 8px;
-  padding: 10px;
+  padding: 0.25 1rem;
   text-decoration: none;
   color: #333;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  flex: 1;  
+  flex: 1;
+  font-size: 80%;
 }
-
-

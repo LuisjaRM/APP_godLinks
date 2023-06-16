@@ -4,13 +4,14 @@ import "./Filter.css";
 export const Filter = () => {
   const location = useLocation();
   const currentPath = location.pathname;
+  
 
   return (
     <>
       <section className="filterOffers">
         <nav className="filter-list">
-          {currentPath !== "/alloffer" ? (
-            <Link className="link" to="/alloffer">
+          {currentPath !== "/allOffers" ? (
+            <Link className="link" to="/allOffers">
               Todas las ofertas
             </Link>
           ) : null}
