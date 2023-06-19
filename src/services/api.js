@@ -9,11 +9,8 @@ export const useGetAllOffers = () =>
 export const useGetOffersByVotes = () =>
   useGetOffers(`${import.meta.env.VITE_BACKEND}offers?filter=by-votes`);
 
-
 export const getOfferByIdService = async (id) => {
-  const response = await fetch(
-    `${import.meta.env.VITE_BACKEND}offers/get-by-id/${id}`
-  );
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}offers/${id}`);
 
   const json = await response.json();
 
@@ -25,8 +22,8 @@ export const getOfferByIdService = async (id) => {
 };
 
 export const getMyDataService = async (token) => {
-  const response = await fetch(`${import.meta.env.VITE_BACKEND}users`, {
-   headers: {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}user`, {
+    headers: {
       Authorization: token,
     },
   });
@@ -41,16 +38,13 @@ export const getMyDataService = async (token) => {
 };
 
 export const registerUserService = async ({ email, password, user }) => {
-  const response = await fetch(
-    `${import.meta.env.VITE_BACKEND}users/new-user`,
-    {
-      method: "POST",
-      body: JSON.stringify({ email, password, user }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}user`, {
+    method: "POST",
+    body: JSON.stringify({ email, password, user }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
   const json = await response.json();
 
@@ -60,7 +54,7 @@ export const registerUserService = async ({ email, password, user }) => {
 };
 
 export const logInUserService = async ({ email, password }) => {
-  const response = await fetch(`${import.meta.env.VITE_BACKEND}users/login`, {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}login`, {
     method: "POST",
     body: JSON.stringify({ email, password }),
     headers: {

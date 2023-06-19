@@ -1,33 +1,29 @@
-import { useContext, useState } from "react";
 import { useShow } from "../../contexts/ShowContext";
-import { AuthContext } from "../../contexts/AuthContext";
+import { useAuth } from "../../contexts/AuthContext";
 import "./Dropdown.css";
 
 export const Dropdown = ({ icon, children }) => {
-  const [open, setOpen] = useState(false);
   const [show, setShow] = useShow();
-  const { user } = useContext(AuthContext);
+  const { user } = useAuth();
 
   return (
-    <section className={`dropdown ${open ? "open" : "close"}`}>
-      {!user ? (
-        <button
-          className="button"
-          onClick={() => {
-            setShow(!show);
-          }}
-        >
-          {!user ? icon : user.avatar}
-        </button>
-      ) : (
-        <button
-          onClick={() => {
-            setOpen(!open);
-          }}
-        >
-          {children}
-        </button>
-      )}
+    <section className="dropdown">
+      <button className="dropdown-button" onClick={() => setShow(!show)}>
+        {user ? (
+          <img
+            className="user-image"
+            src={
+              user.avatar
+                ? `${import.meta.env.VITE_BACKEND}uploads/${user.avatar}`
+                : "/android-icon-36x36.png"
+            }
+            alt={user.user}
+          />
+        ) : (
+          icon
+        )}
+      </button>
+      {show && <section className="dropdown-body">{children}</section>}
     </section>
   );
 };

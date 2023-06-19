@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import "./OfferCard.css";
 import { useShow } from "../../contexts/ShowContext";
+import { useNavigateTo } from "../../contexts/NavigateTo";
 
 export const OfferCard = ({ offer }) => {
   // Date Logic
@@ -47,6 +48,7 @@ export const OfferCard = ({ offer }) => {
 
   const { user } = useAuth();
   const [show, setShow] = useShow();
+  const [, setNavigateTo] = useNavigateTo();
 
   // Favorite Logic
 
@@ -63,11 +65,13 @@ export const OfferCard = ({ offer }) => {
   const navigate = useNavigate();
 
   const handleClickOfferCard = () => {
+    setNavigateTo(`/offerById/${offer.id}`);
     user === null ? setShow(!show) : navigate(`/offerById/${offer.id}`);
   };
 
   const handleClickUserInfo = (e) => {
     e.stopPropagation();
+    setNavigateTo("/user-info");
     user === null ? setShow(!show) : navigate("/user-info");
   };
 

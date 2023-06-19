@@ -6,6 +6,7 @@ header {
   padding: 0 1rem;
   background-color: steelblue;
   border-bottom: 2px solid black;
+  position: relative;
 }
 
 header .button {

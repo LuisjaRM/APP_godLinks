@@ -3,13 +3,16 @@ import { useNavigate } from "react-router-dom";
 import { logInUserService } from "../../services/api";
 import { useShow } from "../../contexts/ShowContext";
 import { useAuth } from "../../contexts/AuthContext";
+import { useNavigateTo } from "../../contexts/NavigateTo";
 import "./Login.css";
 
 export const Login = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [show, setShow] = useShow();
   const { login } = useAuth();
+  const [navigateTo, setNavigateTo] = useNavigateTo();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -18,12 +21,13 @@ export const Login = () => {
     e.preventDefault();
 
     try {
-      const token = await logInUserService({ email, password });
+      const data = await logInUserService({ email, password });
 
-      login(token.token);
+      login(data.token);
       setShow(!show);
 
-      // navigate("/");
+      navigate(navigateTo);
+      setNavigateTo("");
     } catch (error) {
       setError(error.message);
     }
