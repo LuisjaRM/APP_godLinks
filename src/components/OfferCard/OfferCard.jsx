@@ -71,8 +71,8 @@ export const OfferCard = ({ offer }) => {
 
   const handleClickUserInfo = (e) => {
     e.stopPropagation();
-    setNavigateTo("/user-info");
-    user === null ? setShow(!show) : navigate("/user-info");
+    setNavigateTo(`/userInfo/${offer.user_id}`);
+    user === null ? setShow(!show) : navigate(`/userInfo/${offer.user_id}`);
   };
 
   // CSS States

@@ -37,6 +37,22 @@ export const getMyDataService = async (token) => {
   return json.data;
 };
 
+export const getUserInfoService = async (token, id) => {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}user/${id}`, {
+    headers: {
+      Authorization: token,
+    },
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+};
+
 export const registerUserService = async ({ email, password, user }) => {
   const response = await fetch(`${import.meta.env.VITE_BACKEND}user`, {
     method: "POST",
