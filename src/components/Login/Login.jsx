@@ -26,12 +26,8 @@ export const Login = () => {
       login(data.token);
       setShow(!show);
 
-<<<<<<< HEAD
       navigate(navigateTo);
       setNavigateTo("");
-=======
-      navigate("/");
->>>>>>> main
     } catch (error) {
       setError(error.message);
     }
