@@ -1,10 +1,23 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Filter.css";
+import { useAuth } from "../../contexts/AuthContext";
+import { useShow } from "../../contexts/ShowContext";
+import { useNavigateTo } from "../../contexts/NavigateTo";
 
 export const Filter = () => {
   const location = useLocation();
   const currentPath = location.pathname;
-  
+
+  const { user } = useAuth();
+  const [show, setShow] = useShow();
+  const [, setNavigateTo] = useNavigateTo();
+
+  const navigate = useNavigate();
+
+  const handleClickFavorites = () => {
+    setNavigateTo("/favorites");
+    user ? navigate("/favorites") : setShow(!show);
+  };
 
   return (
     <>
@@ -21,14 +34,14 @@ export const Filter = () => {
             </Link>
           ) : null}
           {currentPath !== "/offersByVotes" ? (
-            <Link className="link" to="/offersByVotes"> 
+            <Link className="link" to="/offersByVotes">
               Ofertas más votadas
             </Link>
           ) : null}
           {currentPath !== "/favorites" ? (
-            <Link className="link" to="/favorites">
+            <p onClick={handleClickFavorites} className="link">
               Ofertas favoritas
-            </Link>
+            </p>
           ) : null}
         </nav>
       </section>
