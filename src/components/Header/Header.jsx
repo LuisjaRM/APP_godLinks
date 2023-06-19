@@ -17,7 +17,7 @@ export const Header = () => {
         <h1 className="title">GODLINKS</h1>
       </Link>
 
-      <button onClick={() => toggleNightMode()}>
+      <button className="button" onClick={() => toggleNightMode()}>
         {nightMode ? "🌌" : "🌞"}
       </button>
 

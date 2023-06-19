@@ -3,7 +3,7 @@ import { useGetOffersByVotes } from "../../services/api";
 import "./OffersByVotes.css";
 
 export const OffersByVotes = () => {
-  const { offers, loading, error } = useGetOffersByVotes();
+  const { offers, loading, error, refresh } = useGetOffersByVotes();
 
   if (loading) return <p>cargando ofertas...</p>;
   if (error) return <p>{error}</p>;
@@ -13,7 +13,7 @@ export const OffersByVotes = () => {
       <ul className="offers-list">
         {offers.offers?.map((offer) => (
           <li key={offer.id}>
-            <OfferCard offer={offer} />
+            <OfferCard refresh={refresh} offer={offer} />
           </li>
         ))}
       </ul>

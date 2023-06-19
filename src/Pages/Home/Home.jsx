@@ -3,7 +3,7 @@ import { useGetDailyOffers } from "../../services/api";
 import "./Home.css";
 
 export const Home = () => {
-  const { offers, loading, error } = useGetDailyOffers();
+  const { offers, loading, error, refresh } = useGetDailyOffers();
 
   if (loading) return <p>cargando ofertas...</p>;
   if (error) return <p>{error}</p>;
@@ -13,7 +13,7 @@ export const Home = () => {
       <ul className="offers-list">
         {offers.offers?.map((offer) => (
           <li key={offer.id}>
-            <OfferCard offer={offer} />
+            <OfferCard refresh={refresh} offer={offer} />
           </li>
         ))}
       </ul>
