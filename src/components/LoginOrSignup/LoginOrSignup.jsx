@@ -13,7 +13,7 @@ export function LoginOrSignup() {
 
   return (
     <>
-      <Modal>
+      <Modal setIsLogin={setIsLogin}>
         {isLogin ? <Login /> : <Signup open={open} setOpen={setOpen} />}
 
         <a

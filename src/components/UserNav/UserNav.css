@@ -1,6 +1,13 @@
 .user-nav {
-  list-style: none;
   padding: 0.25rem;
-  padding-top: 1.75rem;
+  /* padding-top: 1.75rem; */
   font-size: 90%;
+}
+
+.link {
+  padding-left: 0.3rem;
+  display: block;
+  text-decoration: none;
+  color: black;
+  border-bottom: solid black 1px;
 }
