@@ -14,6 +14,7 @@ import { OffersByVotes } from "./Pages/OffersByVotes/OffersByVotes";
 import { Favorite } from "./Pages/Favorite/Favorite";
 import { UserProfile } from "./Pages/UserProfile/UserProfile";
 import { OfferById } from "./Pages/OfferById/OfferById";
+import { NotFound } from "./Pages/NotFound/NotFound";
 
 
 const router = createBrowserRouter(
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
       <Route path="favorites" element={<Favorite />} />
       <Route path="profile" element={<UserProfile />} />
       <Route path="offerById/:id" element={<OfferById />} />
+      <Route path="*" element={<NotFound/>} />
   </Route>
   )
 );
