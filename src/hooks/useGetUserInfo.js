@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { getOfferByIdService } from "../services/api";
+import { getUserInfoService } from "../services/api";
 
-export const useGetOffer = (id, token) => {
-  const [offer, setOffer] = useState([]);
+export const useGetUserInfo = (token, id) => {
+  const [dataUser, setdataUser] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -10,9 +10,9 @@ export const useGetOffer = (id, token) => {
     const loadTweet = async () => {
       try {
         setLoading(true);
-        const data = await getOfferByIdService(id, token);
+        const data = await getUserInfoService(token, id);
 
-        setOffer(data);
+        setdataUser(data);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -21,7 +21,7 @@ export const useGetOffer = (id, token) => {
     };
 
     loadTweet();
-  }, [id, token]);
+  }, [id]);
 
-  return { offer, error, loading };
+  return { dataUser, error, loading };
 };

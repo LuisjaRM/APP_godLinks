@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
-import "./OfferCard.css";
 import { useShow } from "../../contexts/ShowContext";
 import { useNavigateTo } from "../../contexts/NavigateTo";
+import { addFavoriteService } from "../../services/api";
+import "./OfferCard.css";
+import { useGetCheckIsFavorite } from "../../hooks/useGetCheckIsFavorite";
 
-export const OfferCard = ({ offer }) => {
+export const OfferCard = ({ refresh, offer }) => {
   // Date Logic
   const timeNow = Date.now();
   const nowDate = new Date(timeNow);
@@ -46,18 +48,24 @@ export const OfferCard = ({ offer }) => {
 
   // UserContext
 
-  const { user } = useAuth();
+  const { user, token } = useAuth();
   const [show, setShow] = useShow();
   const [, setNavigateTo] = useNavigateTo();
 
   // Favorite Logic
 
+  const { isFavorite } = useGetCheckIsFavorite(token, offer.id);
+
+  const defaultLike = isFavorite.isFavorite == 1 ? true : false;
+
   const [isLiked, setIsLiked] = useState(false);
 
-  const handleLike = (e) => {
+  const handleLike = async (e) => {
     e.preventDefault();
     e.stopPropagation();
-    setIsLiked(!isLiked);
+    user ? setIsLiked(!isLiked) : "";
+    user ? await addFavoriteService(token, offer.id) : setShow(!show);
+    refresh();
   };
 
   // HandleClicks
@@ -66,13 +74,13 @@ export const OfferCard = ({ offer }) => {
 
   const handleClickOfferCard = () => {
     setNavigateTo(`/offerById/${offer.id}`);
-    user === null ? setShow(!show) : navigate(`/offerById/${offer.id}`);
+    user ? navigate(`/offerById/${offer.id}`) : setShow(!show);
   };
 
   const handleClickUserInfo = (e) => {
     e.stopPropagation();
-    setNavigateTo("/user-info");
-    user === null ? setShow(!show) : navigate("/user-info");
+    setNavigateTo(`/userInfo/${offer.user_id}`);
+    user ? navigate(`/userInfo/${offer.user_id}`) : setShow(!show);
   };
 
   // CSS States
@@ -113,7 +121,7 @@ export const OfferCard = ({ offer }) => {
           />
           <button className="favorite-button" onClick={handleLike}>
             <svg
-              className={isLiked ? "like" : ""}
+              className={isLiked || (defaultLike && user) ? "like" : ""}
               viewBox="0 0 512 512"
               width="15px"
               height="28px"

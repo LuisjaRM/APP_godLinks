@@ -1,3 +1,4 @@
+import { useGetFavoritesOffers } from "../hooks/useGetFavoritesOffers";
 import { useGetOffers } from "../hooks/useGetOffers";
 
 export const useGetDailyOffers = () =>
@@ -9,8 +10,50 @@ export const useGetAllOffers = () =>
 export const useGetOffersByVotes = () =>
   useGetOffers(`${import.meta.env.VITE_BACKEND}offers?filter=by-votes`);
 
-export const getOfferByIdService = async (id) => {
-  const response = await fetch(`${import.meta.env.VITE_BACKEND}offers/${id}`);
+export const useGetMyFavoriteOffersService = (token) =>
+  useGetFavoritesOffers(`${import.meta.env.VITE_BACKEND}favorites`, token);
+
+export const getOfferByIdService = async (id, token) => {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}offers/${id}`, {
+    headers: {
+      Authorization: token,
+    },
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+};
+
+// export const getMyFavoriteOffersService = async (token) => {
+//   const response = await fetch(`${import.meta.env.VITE_BACKEND}favorites`, {
+//     headers: {
+//       Authorization: token,
+//     },
+//   });
+
+//   const json = await response.json();
+
+//   if (!response.ok) {
+//     throw new Error(json.message);
+//   }
+
+//   return json.data;
+// };
+
+export const getCheckisFavoriteService = async (token, id) => {
+  const response = await fetch(
+    `${import.meta.env.VITE_BACKEND}isFavorite/${id}`,
+    {
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
 
   const json = await response.json();
 
@@ -23,6 +66,22 @@ export const getOfferByIdService = async (id) => {
 
 export const getMyDataService = async (token) => {
   const response = await fetch(`${import.meta.env.VITE_BACKEND}user`, {
+    headers: {
+      Authorization: token,
+    },
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+};
+
+export const getUserInfoService = async (token, id) => {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}user/${id}`, {
     headers: {
       Authorization: token,
     },
@@ -69,4 +128,22 @@ export const logInUserService = async ({ email, password }) => {
   }
 
   return json.data;
+};
+
+export const addFavoriteService = async (token, id) => {
+  const response = await fetch(
+    `${import.meta.env.VITE_BACKEND}favorite/${id}`,
+    {
+      method: "PATCH",
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
 };
