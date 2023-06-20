@@ -25,7 +25,7 @@ const loadOffers = async (url, token, setOffers, setLoading, setError) => {
   }
 };
 
-export const useGetFavoritesOffers = (url, token) => {
+export const useGetOffersWithToken = (url, token) => {
   const [offers, setOffers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -38,31 +38,3 @@ export const useGetFavoritesOffers = (url, token) => {
 
   return { offers, loading, error, refresh };
 };
-
-// import { useEffect, useState } from "react";
-// import { getMyFavoriteOffersService } from "../services/api";
-
-// export const useGetFavoritesOffers = (token) => {
-//   const [offers, setOffers] = useState([]);
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState("");
-
-//   useEffect(() => {
-//     const loadTweet = async () => {
-//       try {
-//         setLoading(true);
-//         const data = await getMyFavoriteOffersService(token);
-
-//         setOffers(data);
-//       } catch (error) {
-//         setError(error.message);
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
-
-//     loadTweet();
-//   }, [token]);
-
-//   return { offers, error, loading };
-// };
