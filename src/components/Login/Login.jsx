@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { logInUserService } from "../../services/api";
 import { useShow } from "../../contexts/ShowContext";
 import { useAuth } from "../../contexts/AuthContext";
@@ -34,7 +34,7 @@ export const Login = () => {
   };
   return (
     <section onClick={(e) => e.stopPropagation()} className="login">
-      <h1 className="title">Inicia Sesión</h1>
+      <h2 className="title">Inicia Sesión</h2>
       <form className="login-form" onSubmit={handleForm}>
         <fieldset className="fieldset">
           <label className="label" htmlFor="email">
@@ -70,6 +70,15 @@ export const Login = () => {
 
         <button className="button">Continuar</button>
         {error ? <p className="error">{error}</p> : null}
+        <Link
+          onClick={(e) => {
+            e.stopPropagation();
+            setShow(!show);
+          }}
+          to="/recoverPass"
+        >
+          ¿Has olvidado tu contraseña?
+        </Link>
       </form>
     </section>
   );
