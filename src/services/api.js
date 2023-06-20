@@ -23,6 +23,8 @@ export const useGetMyData = (token) =>
 export const useGetUserInfo = (token, id) =>
   useGetDataUser(`${import.meta.env.VITE_BACKEND}user/${id}`, token);
 
+// USERS
+
 export const registerUserService = async ({ email, password, user }) => {
   const response = await fetch(`${import.meta.env.VITE_BACKEND}user`, {
     method: "POST",
@@ -56,6 +58,48 @@ export const logInUserService = async ({ email, password }) => {
 
   return json.data;
 };
+
+export const RecoverPasswordService = async ({ email }) => {
+  const response = await fetch(
+    `${import.meta.env.VITE_BACKEND}password/recover`,
+    {
+      method: "POST",
+      body: JSON.stringify({ email }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+};
+
+export const ResetPasswordService = async ({ recoverCode, newPassword }) => {
+  const response = await fetch(
+    `${import.meta.env.VITE_BACKEND}password/recover`,
+    {
+      method: "POST",
+      body: JSON.stringify({ recoverCode, newPassword }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+};
+
+// OFFERS
 
 export const addFavoriteService = async (token, id) => {
   const response = await fetch(

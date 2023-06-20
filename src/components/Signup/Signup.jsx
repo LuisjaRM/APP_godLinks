@@ -35,7 +35,7 @@ export const Signup = ({ open, setOpen }) => {
       }}
       className="signup"
     >
-      <h1 className="title">Regístrate</h1>
+      <h2 className="title">Regístrate</h2>
       <form className="signup-form" onSubmit={handleForm}>
         <fieldset className="fieldset">
           <label className="label" htmlFor="email">
