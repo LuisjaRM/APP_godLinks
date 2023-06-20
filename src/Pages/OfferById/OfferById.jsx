@@ -6,7 +6,6 @@ import "./OfferById.css";
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 import { CommentsCard } from "../../components/CommentCard/CommentCard";
 
-
 export const OfferById = () => {
   const { id } = useParams();
   const { token } = useAuth();
