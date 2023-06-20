@@ -1,17 +1,21 @@
 .errorMessage {
   position: fixed;
-  top: 50%;
+  top: 53.1%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 5px;
-  padding: 20px;
+  padding: 200px;
   text-align: center;
   animation: slide-in 1s ease-out;
+  background-image: url("https://preview.redd.it/por-fin-xokas-se-puso-a-dieta-v0-izttxd1cui4a1.jpg?auto=webp&s=baa6b24f194ee3eee0f283585d1bd8e767e11e8f");
+  background-position: center;
+  height: 79.5vh;
+  width: 200vb;
 }
 
 .Error1 {
   font-size: 36px;
-  color: #721c24;
+  color: #f0f0f0;
   font-weight: bold;
   margin-bottom: 20px;
   animation: scale-in 1s ease-out;
@@ -20,6 +24,7 @@
 .Error2 {
   font-size: 18px;
   color: #721c24;
+  color: #fffcfc;
   margin-bottom: 10px;
   animation: slide-up 1s ease-out;
 }
@@ -27,7 +32,7 @@
 .errorMessage a {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #dc3545;
+  background-color: #f7b605;
   color: #fff;
   text-decoration: none;
   border-radius: 5px;
