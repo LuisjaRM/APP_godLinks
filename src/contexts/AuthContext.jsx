@@ -1,5 +1,4 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { getMyDataService } from "../services/api";
 
 export const AuthContext = createContext(null);
 
@@ -14,7 +13,19 @@ export const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     const getUserData = async () => {
       try {
-        const data = await getMyDataService(token);
+        const response = await fetch(`${import.meta.env.VITE_BACKEND}user`, {
+          headers: {
+            Authorization: token,
+          },
+        });
+
+        const json = await response.json();
+
+        if (!response.ok) {
+          throw new Error(json.message);
+        }
+
+        const data = json.data;
 
         setUser(data);
       } catch (error) {

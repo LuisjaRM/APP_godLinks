@@ -1,5 +1,6 @@
-import { useGetFavoritesOffers } from "../hooks/useGetFavoritesOffers";
 import { useGetOffers } from "../hooks/useGetOffers";
+import { useGetOffersWithToken } from "../hooks/useGetOffersWithToken";
+import { useGetDataUser } from "../hooks/useDataUser";
 
 export const useGetDailyOffers = () =>
   useGetOffers(`${import.meta.env.VITE_BACKEND}offers?filter=daily`);
@@ -10,91 +11,17 @@ export const useGetAllOffers = () =>
 export const useGetOffersByVotes = () =>
   useGetOffers(`${import.meta.env.VITE_BACKEND}offers?filter=by-votes`);
 
-export const useGetMyFavoriteOffersService = (token) =>
-  useGetFavoritesOffers(`${import.meta.env.VITE_BACKEND}favorites`, token);
+export const useGetMyFavoriteOffers = (token) =>
+  useGetOffersWithToken(`${import.meta.env.VITE_BACKEND}favorites`, token);
 
-export const getOfferByIdService = async (id, token) => {
-  const response = await fetch(`${import.meta.env.VITE_BACKEND}offers/${id}`, {
-    headers: {
-      Authorization: token,
-    },
-  });
+export const useGetOfferById = (id, token) =>
+  useGetOffersWithToken(`${import.meta.env.VITE_BACKEND}offer/${id}`, token);
 
-  const json = await response.json();
+export const useGetMyData = (token) =>
+  useGetDataUser(`${import.meta.env.VITE_BACKEND}user`, token);
 
-  if (!response.ok) {
-    throw new Error(json.message);
-  }
-
-  return json.data;
-};
-
-// export const getMyFavoriteOffersService = async (token) => {
-//   const response = await fetch(`${import.meta.env.VITE_BACKEND}favorites`, {
-//     headers: {
-//       Authorization: token,
-//     },
-//   });
-
-//   const json = await response.json();
-
-//   if (!response.ok) {
-//     throw new Error(json.message);
-//   }
-
-//   return json.data;
-// };
-
-export const getCheckisFavoriteService = async (token, id) => {
-  const response = await fetch(
-    `${import.meta.env.VITE_BACKEND}isFavorite/${id}`,
-    {
-      headers: {
-        Authorization: token,
-      },
-    }
-  );
-
-  const json = await response.json();
-
-  if (!response.ok) {
-    throw new Error(json.message);
-  }
-
-  return json.data;
-};
-
-export const getMyDataService = async (token) => {
-  const response = await fetch(`${import.meta.env.VITE_BACKEND}user`, {
-    headers: {
-      Authorization: token,
-    },
-  });
-
-  const json = await response.json();
-
-  if (!response.ok) {
-    throw new Error(json.message);
-  }
-
-  return json.data;
-};
-
-export const getUserInfoService = async (token, id) => {
-  const response = await fetch(`${import.meta.env.VITE_BACKEND}user/${id}`, {
-    headers: {
-      Authorization: token,
-    },
-  });
-
-  const json = await response.json();
-
-  if (!response.ok) {
-    throw new Error(json.message);
-  }
-
-  return json.data;
-};
+export const useGetUserInfo = (token, id) =>
+  useGetDataUser(`${import.meta.env.VITE_BACKEND}user/${id}`, token);
 
 export const registerUserService = async ({ email, password, user }) => {
   const response = await fetch(`${import.meta.env.VITE_BACKEND}user`, {

@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router";
-import "./UserNav.css";
 import { useAuth } from "../../contexts/AuthContext";
 import { useShow } from "../../contexts/ShowContext";
+import { ModalClose } from "../ModalCloseDropdown/ModalClose";
+import "./UserNav.css";
 
 export const UserNav = () => {
   const navigate = useNavigate();
@@ -9,25 +10,45 @@ export const UserNav = () => {
   const [show, setShow] = useShow();
 
   return (
-    <nav className="user-nav">
-      <li
+    <ModalClose>
+      <section
         onClick={() => {
-          navigate("/profile");
           setShow(!show);
         }}
       >
-        Tu perfil
-      </li>
-      <li>Tus ofertas</li>
-      <li
-        onClick={() => {
-          logout();
-          setShow(!show);
-          navigate("/");
-        }}
-      >
-        Cerrar sesión
-      </li>
-    </nav>
+        <nav className="user-nav">
+          <a
+            className="link"
+            onClick={() => {
+              navigate("/profile");
+              setShow(!show);
+            }}
+          >
+            Mi perfil
+          </a>
+
+          <a
+            className="link"
+            onClick={() => {
+              setShow(!show);
+              navigate("/userInfo/:id");
+            }}
+          >
+            Mis ofertas
+          </a>
+
+          <a
+            className="logout"
+            onClick={() => {
+              logout();
+              setShow(!show);
+              navigate("/");
+            }}
+          >
+            Cerrar sesión
+          </a>
+        </nav>
+      </section>
+    </ModalClose>
   );
 };

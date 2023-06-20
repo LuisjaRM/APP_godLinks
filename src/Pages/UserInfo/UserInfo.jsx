@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import { useAuth } from "../../contexts/AuthContext";
-import { useGetUserInfo } from "../../hooks/useGetUserInfo";
+import { useGetUserInfo } from "../../services/api";
 import { OfferCard } from "../../components/OfferCard/OfferCard";
 import "./UserInfo.css";
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";

@@ -5,7 +5,7 @@ import { useShow } from "../../contexts/ShowContext";
 import { useNavigateTo } from "../../contexts/NavigateTo";
 import { addFavoriteService } from "../../services/api";
 import "./OfferCard.css";
-import { useGetCheckIsFavorite } from "../../hooks/useGetCheckIsFavorite";
+import { useGetCheckisFavorite } from "../../hooks/useGetCheckisFavorite";
 
 export const OfferCard = ({ refresh, offer }) => {
   // Date Logic
@@ -54,7 +54,7 @@ export const OfferCard = ({ refresh, offer }) => {
 
   // Favorite Logic
 
-  const { isFavorite } = useGetCheckIsFavorite(token, offer.id);
+  const { isFavorite } = useGetCheckisFavorite(token, offer.id);
 
   const defaultLike = isFavorite.isFavorite == 1 ? true : false;
 
