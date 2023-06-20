@@ -1,6 +1,6 @@
 import { useGetOffers } from "../hooks/useGetOffers";
 import { useGetOffersWithToken } from "../hooks/useGetOffersWithToken";
-import { useGetDataUser } from "../hooks/useDataUser";
+import { useGetDataUser } from "../hooks/useGetDataUser";
 
 export const useGetDailyOffers = () =>
   useGetOffers(`${import.meta.env.VITE_BACKEND}offers?filter=daily`);
@@ -67,6 +67,43 @@ export const addFavoriteService = async (token, id) => {
       },
     }
   );
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+};
+
+export const postOfferService = async (
+  { url, title, descrip, price, offer_price, plataform, offer_expiry },
+  token
+) => {
+  console.log({
+    url,
+    title,
+    descrip,
+    price,
+    offer_price,
+    plataform,
+    offer_expiry,
+  });
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}offers`, {
+    method: "POST",
+    headers: {
+      Authorization: token,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      url,
+      title,
+      descrip,
+      price,
+      offer_price,
+      plataform,
+      offer_expiry,
+    }),
+  });
 
   const json = await response.json();
 

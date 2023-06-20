@@ -2,10 +2,9 @@ import { useParams } from "react-router";
 import { useGetOfferById } from "../../services/api";
 import { OfferCard } from "../../components/OfferCard/OfferCard";
 import { useAuth } from "../../contexts/AuthContext";
-import "./OfferById.css";
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 import { CommentsCard } from "../../components/CommentCard/CommentCard";
-
+import "./OfferById.css";
 
 export const OfferById = () => {
   const { id } = useParams();

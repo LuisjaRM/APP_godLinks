@@ -4,7 +4,7 @@ export const useGetCheckisFavorite = (token, id) => {
   const [isFavorite, setIsFavorite] = useState([]);
 
   useEffect(() => {
-    const loadTweet = async () => {
+    const loadData = async () => {
       const response = await fetch(
         `${import.meta.env.VITE_BACKEND}isFavorite/${id}`,
         {
@@ -25,7 +25,7 @@ export const useGetCheckisFavorite = (token, id) => {
       setIsFavorite(data);
     };
 
-    loadTweet();
+    loadData();
   }, [token, id]);
 
   return { isFavorite };

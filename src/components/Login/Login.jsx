@@ -26,7 +26,7 @@ export const Login = () => {
       login(data.token);
       setShow(!show);
 
-      navigate(navigateTo);
+      navigateTo ? navigate(navigateTo) : "";
       setNavigateTo("");
     } catch (error) {
       setError(error.message);
@@ -34,7 +34,7 @@ export const Login = () => {
   };
   return (
     <section onClick={(e) => e.stopPropagation()} className="login">
-      <h1 className="title">Inicia Sesión</h1>
+      <h2 className="title">Inicia Sesión</h2>
       <form className="login-form" onSubmit={handleForm}>
         <fieldset className="fieldset">
           <label className="label" htmlFor="email">
