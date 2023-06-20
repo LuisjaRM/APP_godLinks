@@ -80,7 +80,7 @@ export const RecoverPasswordService = async ({ email }) => {
 
 export const ResetPasswordService = async ({ recoverCode, newPassword }) => {
   const response = await fetch(
-    `${import.meta.env.VITE_BACKEND}password/recover`,
+    `${import.meta.env.VITE_BACKEND}password/reset`,
     {
       method: "POST",
       body: JSON.stringify({ recoverCode, newPassword }),
