@@ -4,6 +4,7 @@ import { useGetOffer } from "../../hooks/useGetOffer";
 import { Comments } from "../../components/Comments/Comments";
 import { useAuth } from "../../contexts/AuthContext";
 import "./OfferById.css";
+import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 
 export const OfferById = () => {
   const { id } = useParams();
@@ -11,7 +12,7 @@ export const OfferById = () => {
   const { offer, loading, error } = useGetOffer(id, token);
 
   if (loading) return <p>cargando ofertas...</p>;
-  if (error) return <p>{error}</p>;
+  if (error) return <ErrorMessage message={error} />;
 
   return (
     <section className="body">

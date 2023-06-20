@@ -1,3 +1,4 @@
+import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 import { OfferCard } from "../../components/OfferCard/OfferCard";
 import { useAuth } from "../../contexts/AuthContext";
 import { useGetMyFavoriteOffersService } from "../../services/api";
@@ -5,7 +6,11 @@ import "./Favorite.css";
 
 export const Favorite = () => {
   const { token } = useAuth();
-  const { offers, refresh } = useGetMyFavoriteOffersService(token);
+  const { offers, loading, error, refresh } =
+    useGetMyFavoriteOffersService(token);
+    
+  if (loading) return <p>cargando ofertas...</p>;
+  if (error) return <ErrorMessage message={error} />;
 
   return (
     <>

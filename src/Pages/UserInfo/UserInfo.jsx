@@ -3,6 +3,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { useGetUserInfo } from "../../hooks/useGetUserInfo";
 import { OfferCard } from "../../components/OfferCard/OfferCard";
 import "./UserInfo.css";
+import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 
 export const UserInfo = () => {
   const { token } = useAuth();
@@ -11,7 +12,7 @@ export const UserInfo = () => {
   const { dataUser, loading, error } = useGetUserInfo(token, id);
 
   if (loading) return <p>cargando ofertas...</p>;
-  if (error) return <p>{error}</p>;
+  if (error) return <ErrorMessage message={error} />;
 
   const created_at = new Date(dataUser.userInfo[0].created_at);
   const dateCreated = created_at.toLocaleDateString("es-ES", {
