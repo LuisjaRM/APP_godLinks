@@ -1,3 +1,4 @@
+import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 import { OfferCard } from "../../components/OfferCard/OfferCard";
 import { useGetOffersByVotes } from "../../services/api";
 import "./OffersByVotes.css";
@@ -6,7 +7,7 @@ export const OffersByVotes = () => {
   const { offers, loading, error, refresh } = useGetOffersByVotes();
 
   if (loading) return <p>cargando ofertas...</p>;
-  if (error) return <p>{error}</p>;
+  if (error) return <ErrorMessage message={error} />;
 
   return (
     <section className="body">
