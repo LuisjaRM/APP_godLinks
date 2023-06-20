@@ -4,6 +4,7 @@ import { useGetUserInfo } from "../../services/api";
 import { OfferCard } from "../../components/OfferCard/OfferCard";
 import "./UserInfo.css";
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
+import { UserInfoCard } from "../../components/UserInfoCard/UserInfoCard";
 
 export const UserInfo = () => {
   const { token } = useAuth();
@@ -14,34 +15,11 @@ export const UserInfo = () => {
   if (loading) return <p>cargando ofertas...</p>;
   if (error) return <ErrorMessage message={error} />;
 
-  const created_at = new Date(dataUser.userInfo[0].created_at);
-  const dateCreated = created_at.toLocaleDateString("es-ES", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
-
   return (
     <>
-      <section className="userInfo">
-        <section className="header">
-          <img
-            className="user-image"
-            src={
-              dataUser.userInfo[0].avatar
-                ? `${import.meta.env.VITE_BACKEND}uploads/${
-                    dataUser.userInfo[0].avatar
-                  }`
-                : "/android-icon-36x36.png"
-            }
-            alt={dataUser.userInfo[0].user}
-          />
-
-          <p className="user-name">{dataUser.userInfo[0].user}</p>
-        </section>
-
-        <p>Miembro desde {dateCreated}</p>
-      </section>
+      {dataUser.userInfo?.map((userInfo, index) => (
+        <UserInfoCard key={index} userInfo={userInfo} />
+      ))}
 
       <section className="body">
         <ul className="offers-list">

@@ -4,6 +4,7 @@ import { Footer } from "./components/Footer/Footer";
 import { Filter } from "./components/Filter/Filter";
 import { LoginOrSignup } from "./components/LoginOrSignup/LoginOrSignup";
 import { Search } from "./components/Search/Search";
+import { PostOffer } from "./components/PostOffer/PostOffer";
 
 
 export const Root = () => {
@@ -22,6 +23,10 @@ export const Root = () => {
         <Outlet />
         <LoginOrSignup />
       </main>
+
+      <aside>
+        <PostOffer />
+      </aside>
 
       <Footer />
     </>

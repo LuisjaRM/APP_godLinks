@@ -1,0 +1,24 @@
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 0;
+  background-color: khaki;
+  border-bottom: 1px solid black;
+}
+
+.userInfo .header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.userInfo .header .user-image {
+  width: 46px;
+  height: 46px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 1px 1px 10px black;
+}
