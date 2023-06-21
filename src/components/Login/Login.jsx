@@ -1,10 +1,19 @@
+import "./Login.css";
+
+// react-router-dom
+
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { logInUserService } from "../../services/api";
+
+// Contexts
+
 import { useShow } from "../../contexts/ShowContext";
 import { useAuth } from "../../contexts/AuthContext";
-import { useNavigateTo } from "../../contexts/NavigateTo";
-import "./Login.css";
+import { useNavigateTo } from "../../contexts/NavigateToContext";
+
+// Fetchs
+
+import { logInUserService } from "../../services/api";
 
 export const Login = () => {
   const navigate = useNavigate();

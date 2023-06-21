@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import "./CommentCard.css";
+import { Link } from "react-router-dom";
 
 export const CommentsCard = ({ comment }) => {
   // Date Logic

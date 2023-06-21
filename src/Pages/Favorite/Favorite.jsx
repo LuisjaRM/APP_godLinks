@@ -1,8 +1,17 @@
+import "./Favorite.css";
+
+// Components
+
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 import { OfferCard } from "../../components/OfferCard/OfferCard";
+
+// Contexts
+
 import { useAuth } from "../../contexts/AuthContext";
+
+// Fetchs
+
 import { useGetMyFavoriteOffers } from "../../services/api";
-import "./Favorite.css";
 
 export const Favorite = () => {
   const { token } = useAuth();

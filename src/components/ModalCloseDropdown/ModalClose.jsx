@@ -1,5 +1,5 @@
-import { useShow } from "../../contexts/ShowContext";
 import "./ModalClose.css";
+import { useShow } from "../../contexts/ShowContext";
 
 export function ModalClose({ children }) {
   const [show, setShow] = useShow();

@@ -1,10 +1,21 @@
-import { useParams } from "react-router";
-import { useAuth } from "../../contexts/AuthContext";
-import { useGetUserInfo } from "../../services/api";
-import { OfferCard } from "../../components/OfferCard/OfferCard";
 import "./UserInfo.css";
+
+// react-router-dom
+
+import { useParams } from "react-router";
+
+// Components
+
+import { OfferCard } from "../../components/OfferCard/OfferCard";
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 import { UserInfoCard } from "../../components/UserInfoCard/UserInfoCard";
+
+// Contexts
+
+import { useAuth } from "../../contexts/AuthContext";
+// Fetchs
+
+import { useGetUserInfo } from "../../services/api";
 
 export const UserInfo = () => {
   const { token } = useAuth();

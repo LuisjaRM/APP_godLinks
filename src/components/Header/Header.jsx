@@ -1,9 +1,18 @@
-import { Link } from "react-router-dom";
-import { Dropdown } from "../Dropdown/Dropdown";
-import { useNightMode } from "../../contexts/NightModeContext";
-import { UserNav } from "../UserNav/UserNav";
-import { useAuth } from "../../contexts/AuthContext";
 import "./Header.css";
+
+// react-router-dom
+
+import { Link } from "react-router-dom";
+
+// Components
+
+import { Dropdown } from "../Dropdown/Dropdown";
+import { UserNav } from "../UserNav/UserNav";
+
+// Contexts
+
+import { useNightMode } from "../../contexts/NightModeContext";
+import { useAuth } from "../../contexts/AuthContext";
 
 export const Header = () => {
   const [nightMode, toggleNightMode] = useNightMode();

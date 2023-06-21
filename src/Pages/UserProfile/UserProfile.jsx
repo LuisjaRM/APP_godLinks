@@ -1,7 +1,16 @@
-import { useAuth } from "../../contexts/AuthContext";
-import { useGetMyData } from "../../services/api";
-import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 import "./UserProfile.css";
+
+// Components
+
+import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
+
+// Contexts
+
+import { useAuth } from "../../contexts/AuthContext";
+
+// Fetchs
+
+import { useGetMyData } from "../../services/api";
 
 export const UserProfile = () => {
   const { token } = useAuth();

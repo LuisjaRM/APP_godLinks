@@ -1,7 +1,13 @@
+import "./Home.css";
+
+// Components
+
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 import { OfferCard } from "../../components/OfferCard/OfferCard";
+
+// Fetchs
+
 import { useGetDailyOffers } from "../../services/api";
-import "./Home.css";
 
 export const Home = () => {
   const { offers, loading, error, refresh } = useGetDailyOffers();
