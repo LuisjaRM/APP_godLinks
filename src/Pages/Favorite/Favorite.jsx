@@ -4,6 +4,7 @@ import "./Favorite.css";
 
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 import { OfferCard } from "../../components/OfferCard/OfferCard";
+import { PostOffer } from "../../components/PostOffer/PostOffer";
 
 // Contexts
 
@@ -31,6 +32,8 @@ export const Favorite = () => {
           ))}
         </ul>
       </section>
+
+      <PostOffer />
     </>
   );
 };

@@ -6,21 +6,18 @@ import { Link } from "react-router-dom";
 
 // Components
 
-import { Dropdown } from "../Dropdown/Dropdown";
-import { UserNav } from "../UserNav/UserNav";
+import { UserButton } from "../UserButton/UserButton";
 
 // Contexts
 
 import { useNightMode } from "../../contexts/NightModeContext";
-import { useAuth } from "../../contexts/AuthContext";
 
 export const Header = () => {
   const [nightMode, toggleNightMode] = useNightMode();
-  const { user } = useAuth();
 
   return (
     <header>
-      <Dropdown icon="🙇‍♀️">{user ? <UserNav /> : ""}</Dropdown>
+      <UserButton />
 
       <Link to="/">
         <h1 className="title">GODLINKS</h1>
@@ -29,8 +26,6 @@ export const Header = () => {
       <button className="button" onClick={() => toggleNightMode()}>
         {nightMode ? "🌌" : "🌞"}
       </button>
-
-      {/* <button className="button">👓</button> */}
     </header>
   );
 };
