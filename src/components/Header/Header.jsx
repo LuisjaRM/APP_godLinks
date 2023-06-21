@@ -1,12 +1,9 @@
 import "./Header.css";
 
-// react-router-dom
-
-import { Link } from "react-router-dom";
-
 // Components
 
 import { UserButton } from "../UserButton/UserButton";
+import { TitleAnimation } from "../TitleAnimation/TitleAnimation";
 
 // Contexts
 
@@ -19,9 +16,7 @@ export const Header = () => {
     <header>
       <UserButton />
 
-      <Link to="/">
-        <h1 className="title">GODLINKS</h1>
-      </Link>
+      <TitleAnimation />
 
       <button className="button" onClick={() => toggleNightMode()}>
         {nightMode ? "🌌" : "🌞"}
