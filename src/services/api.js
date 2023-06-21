@@ -168,3 +168,99 @@ export const ResetPasswordService = async ({ recoverCode, newPassword }) => {
 
   return json.data;
 };
+
+export const ModifyUserService = async ({ email, user, avatar }, token) => {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}user`, {
+    method: "PATCH",
+    headers: {
+      Authorization: token,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email,
+      user,
+      avatar,
+    }),
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+};
+
+export const ModifyPasswordService = async ({ password }, token) => {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}user`, {
+    method: "PATCH",
+    headers: {
+      Authorization: token,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      password,
+    }),
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+};
+// OFFERS
+
+export const addFavoriteService = async (token, id) => {
+  const response = await fetch(
+    `${import.meta.env.VITE_BACKEND}favorite/${id}`,
+    {
+      method: "PATCH",
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+};
+
+export const postOfferService = async (
+  { url, title, descrip, price, offer_price, plataform, offer_expiry },
+  token
+) => {
+  console.log({
+    url,
+    title,
+    descrip,
+    price,
+    offer_price,
+    plataform,
+    offer_expiry,
+  });
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}offers`, {
+    method: "POST",
+    headers: {
+      Authorization: token,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      url,
+      title,
+      descrip,
+      price,
+      offer_price,
+      plataform,
+      offer_expiry,
+    }),
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+};

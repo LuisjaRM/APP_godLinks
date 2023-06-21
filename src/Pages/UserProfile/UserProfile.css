@@ -1,20 +1,21 @@
-.userInfo {
+.user-profile {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
   padding: 1rem 0;
-  background-color: khaki;
+  background-color: rgba(150, 22, 0, 0.575);
 }
 
-.userInfo .header {
+.header-profile {
   display: flex;
+  flex-direction: column;
   gap: 1rem;
   align-items: center;
 }
 
-.userInfo .header .user-image {
+.user-image-profile {
   width: 46px;
   height: 46px;
   object-fit: cover;
