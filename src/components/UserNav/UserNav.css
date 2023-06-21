@@ -1,6 +1,25 @@
+.modal-user {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+.userNav-wrap {
+  position: fixed;
+  top: 1.5vh;
+  left: 4vw;
+  width: 6rem;
+  background-color: gainsboro;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
 .user-nav {
   padding: 0.25rem;
-  /* padding-top: 1.75rem; */
+  padding-top: 1.75rem;
   font-size: 90%;
 }
 

@@ -1,6 +1,18 @@
 import "./UserProfile.css";
 
+// React
+
+import { useState } from "react";
+
+// Components
+
+import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
+
+// Contexts
+
 import { useAuth } from "../../contexts/AuthContext";
+
+// Fetchs
 
 import {
   ModifyPasswordService,
@@ -8,9 +20,6 @@ import {
   useGetMyData,
 } from "../../services/api";
 
-import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
-
-import { useState } from "react";
 
 export const UserProfile = () => {
   const { token } = useAuth();

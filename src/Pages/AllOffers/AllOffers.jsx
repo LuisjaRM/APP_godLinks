@@ -1,7 +1,14 @@
+import "./AllOffers.css";
+
+// Components
+
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 import { OfferCard } from "../../components/OfferCard/OfferCard";
+import { PostOffer } from "../../components/PostOffer/PostOffer";
+
+// Fetchs
+
 import { useGetAllOffers } from "../../services/api";
-import "./AllOffers.css";
 
 export const AllOffers = () => {
   const { offers, loading, error, refresh } = useGetAllOffers();
@@ -10,14 +17,18 @@ export const AllOffers = () => {
   if (error) return <ErrorMessage message={error} />;
 
   return (
-    <section className="body">
-      <ul className="offers-list">
-        {offers.offers?.map((offer) => (
-          <li key={offer.id}>
-            <OfferCard refresh={refresh} offer={offer} />
-          </li>
-        ))}
-      </ul>
-    </section>
+    <>
+      <section className="body">
+        <ul className="offers-list">
+          {offers.offers?.map((offer) => (
+            <li key={offer.id}>
+              <OfferCard refresh={refresh} offer={offer} />
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <PostOffer />
+    </>
   );
 };

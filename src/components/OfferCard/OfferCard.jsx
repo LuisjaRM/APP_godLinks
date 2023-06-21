@@ -1,10 +1,19 @@
+import "./OfferCard.css";
+
+// react-router-dom
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+// Contexts
+
 import { useAuth } from "../../contexts/AuthContext";
 import { useShow } from "../../contexts/ShowContext";
-import { useNavigateTo } from "../../contexts/NavigateTo";
+import { useNavigateTo } from "../../contexts/NavigateToContext";
+
+// Fetchs
+
 import { addFavoriteService } from "../../services/api";
-import "./OfferCard.css";
 import { useGetCheckisFavorite } from "../../hooks/useGetCheckisFavorite";
 
 export const OfferCard = ({ refresh, offer }) => {
@@ -56,7 +65,7 @@ export const OfferCard = ({ refresh, offer }) => {
 
   const { isFavorite } = useGetCheckisFavorite(token, offer.id);
 
-  const defaultLike = isFavorite.isFavorite == 1 ? true : false;
+  const defaultLike = isFavorite.isFavorite === 1 ? true : false;
 
   const [isLiked, setIsLiked] = useState(false);
 

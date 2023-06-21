@@ -1,8 +1,18 @@
+import "./Favorite.css";
+
+// Components
+
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 import { OfferCard } from "../../components/OfferCard/OfferCard";
+import { PostOffer } from "../../components/PostOffer/PostOffer";
+
+// Contexts
+
 import { useAuth } from "../../contexts/AuthContext";
+
+// Fetchs
+
 import { useGetMyFavoriteOffers } from "../../services/api";
-import "./Favorite.css";
 
 export const Favorite = () => {
   const { token } = useAuth();
@@ -22,6 +32,8 @@ export const Favorite = () => {
           ))}
         </ul>
       </section>
+
+      <PostOffer />
     </>
   );
 };

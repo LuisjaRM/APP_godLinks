@@ -1,7 +1,13 @@
-import { useState } from "react";
-import { ResetPasswordService } from "../../services/api";
-import { useNavigate } from "react-router";
 import "./Recover&ResetPass.css";
+
+// react-router-dom
+
+import { useState } from "react";
+import { useNavigate } from "react-router";
+
+// Fetchs
+
+import { ResetPasswordService } from "../../services/api";
 
 export const ResetPassword = () => {
   const navigate = useNavigate();

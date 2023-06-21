@@ -1,8 +1,17 @@
+import "./PostOffer.css";
+
+// react
+
 import { useState } from "react";
+
+// Contexts
+
 import { useShow } from "../../contexts/ShowContext";
 import { useAuth } from "../../contexts/AuthContext";
+
+// Fetchs
+
 import { postOfferService } from "../../services/api";
-import "./PostOffer.css";
 
 export const PostOffer = () => {
   const [open, setOpen] = useState();

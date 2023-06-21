@@ -1,8 +1,14 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Filter.css";
+
+// react-router-dom
+
+import { Link, useLocation, useNavigate } from "react-router-dom";
+
+// Contexts
+
 import { useAuth } from "../../contexts/AuthContext";
 import { useShow } from "../../contexts/ShowContext";
-import { useNavigateTo } from "../../contexts/NavigateTo";
+import { useNavigateTo } from "../../contexts/NavigateToContext";
 
 export const Filter = () => {
   const location = useLocation();
