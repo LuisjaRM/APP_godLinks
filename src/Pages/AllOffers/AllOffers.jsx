@@ -1,7 +1,13 @@
+import "./AllOffers.css";
+
+// Components
+
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 import { OfferCard } from "../../components/OfferCard/OfferCard";
+
+// Fetchs
+
 import { useGetAllOffers } from "../../services/api";
-import "./AllOffers.css";
 
 export const AllOffers = () => {
   const { offers, loading, error, refresh } = useGetAllOffers();

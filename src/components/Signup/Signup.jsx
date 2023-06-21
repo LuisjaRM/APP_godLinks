@@ -1,7 +1,16 @@
-import { useState } from "react";
-import { registerUserService } from "../../services/api";
-import { useShow } from "../../contexts/ShowContext";
 import "./Signup.css";
+
+// react-router-dom
+
+import { useState } from "react";
+
+// Contexts
+
+import { useShow } from "../../contexts/ShowContext";
+
+// Fetchs
+
+import { registerUserService } from "../../services/api";
 
 export const Signup = ({ open, setOpen }) => {
   const [show, setShow] = useShow();

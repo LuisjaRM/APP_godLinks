@@ -1,10 +1,22 @@
+import "./OfferById.css";
+
+// react-router-dom
+
 import { useParams } from "react-router";
-import { useGetOfferById } from "../../services/api";
+
+// Components
+
 import { OfferCard } from "../../components/OfferCard/OfferCard";
-import { useAuth } from "../../contexts/AuthContext";
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 import { CommentsCard } from "../../components/CommentCard/CommentCard";
-import "./OfferById.css";
+
+// Contexts
+
+import { useAuth } from "../../contexts/AuthContext";
+
+// Fetchs
+
+import { useGetOfferById } from "../../services/api";
 
 export const OfferById = () => {
   const { id } = useParams();

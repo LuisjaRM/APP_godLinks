@@ -1,7 +1,13 @@
+import "./Recover&ResetPass.css";
+
+// react-router-dom
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+// Fetchs
+
 import { RecoverPasswordService } from "../../services/api";
-import "./Recover&ResetPass.css";
 
 export const RecoverPassword = () => {
   const navigate = useNavigate();

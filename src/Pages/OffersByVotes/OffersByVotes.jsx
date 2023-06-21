@@ -1,7 +1,13 @@
+import "./OffersByVotes.css";
+
+// Components
+
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 import { OfferCard } from "../../components/OfferCard/OfferCard";
+
+// Fetchs
+
 import { useGetOffersByVotes } from "../../services/api";
-import "./OffersByVotes.css";
 
 export const OffersByVotes = () => {
   const { offers, loading, error, refresh } = useGetOffersByVotes();

@@ -1,8 +1,17 @@
+import "./UserNav.css";
+
+// react-router-dom
+
 import { useNavigate } from "react-router";
+
+// Components
+
+import { ModalClose } from "../ModalCloseDropdown/ModalClose";
+
+// Contexts
+
 import { useAuth } from "../../contexts/AuthContext";
 import { useShow } from "../../contexts/ShowContext";
-import { ModalClose } from "../ModalCloseDropdown/ModalClose";
-import "./UserNav.css";
 
 export const UserNav = () => {
   const navigate = useNavigate();

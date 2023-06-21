@@ -1,6 +1,9 @@
+import "./Modal.css";
+
+// Contexts
+
 import { useAuth } from "../../contexts/AuthContext";
 import { useShow } from "../../contexts/ShowContext";
-import "./Modal.css";
 
 export function Modal({ setIsLogin, children }) {
   const [show, setShow] = useShow();

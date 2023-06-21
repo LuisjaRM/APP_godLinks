@@ -1,6 +1,9 @@
+import "./Dropdown.css";
+
+// Contexts
+
 import { useShow } from "../../contexts/ShowContext";
 import { useAuth } from "../../contexts/AuthContext";
-import "./Dropdown.css";
 
 export const Dropdown = ({ icon, children }) => {
   const [show, setShow] = useShow();

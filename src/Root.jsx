@@ -1,11 +1,15 @@
+// react-router-dom
+
 import { Outlet } from "react-router-dom";
+
+// Components
+
 import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
 import { Filter } from "./components/Filter/Filter";
 import { LoginOrSignup } from "./components/LoginOrSignup/LoginOrSignup";
 import { Search } from "./components/Search/Search";
 import { PostOffer } from "./components/PostOffer/PostOffer";
-
 
 export const Root = () => {
   return (
@@ -16,10 +20,8 @@ export const Root = () => {
         <Filter />
       </aside>
 
-      
-
       <main>
-        <Search/>
+        <Search />
         <Outlet />
         <LoginOrSignup />
       </main>
