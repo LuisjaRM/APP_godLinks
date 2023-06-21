@@ -17,6 +17,7 @@ import { useAuth } from "../../contexts/AuthContext";
 // Fetchs
 
 import { useGetOfferById } from "../../services/api";
+import { PostOffer } from "../../components/PostOffer/PostOffer";
 
 export const OfferById = () => {
   const { id } = useParams();
@@ -27,20 +28,24 @@ export const OfferById = () => {
   if (error) return <ErrorMessage message={error} />;
 
   return (
-    <section className="body">
-      {offers.offerInfo?.map((offerInfo, index) => (
-        <OfferCard key={index} offer={offerInfo} />
-      ))}
+    <>
+      <section className="body">
+        {offers.offerInfo?.map((offerInfo, index) => (
+          <OfferCard key={index} offer={offerInfo} />
+        ))}
 
-      <section className="comments-body">
-        <ul className="comments-list">
-          {offers.comments?.map((comment) => (
-            <li key={comment.id}>
-              <CommentsCard comment={comment} />
-            </li>
-          ))}
-        </ul>
+        <section className="comments-body">
+          <ul className="comments-list">
+            {offers.comments?.map((comment) => (
+              <li key={comment.id}>
+                <CommentsCard comment={comment} />
+              </li>
+            ))}
+          </ul>
+        </section>
       </section>
-    </section>
+
+      <PostOffer />
+    </>
   );
 };

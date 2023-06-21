@@ -1,0 +1,15 @@
+.user-button {
+  padding: 0.25rem;
+  background-color: rgb(93, 170, 233);
+  border: none;
+  border-radius: 50%;
+  box-shadow: 1px 1px 5px black;
+  z-index: 100;
+}
+
+.user-button .user-image {
+  width: 16px;
+  height: 12px;
+  object-fit: cover;
+  border-radius: 50%;
+}

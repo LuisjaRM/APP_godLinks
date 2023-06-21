@@ -12,6 +12,8 @@ import { AuthContextProvider } from "./contexts/AuthContext.jsx";
 import { NightModeProvider } from "./contexts/NightModeContext.jsx";
 import { ShowProvider } from "./contexts/ShowContext.jsx";
 import { NavigateToProvider } from "./contexts/NavigateToContext.jsx";
+import { OpenProvider } from "./contexts/OpenContext";
+import { IsLoginProvider } from "./contexts/IsLoginContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -19,7 +21,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <NightModeProvider>
         <ShowProvider>
           <NavigateToProvider>
-            <App />
+            <OpenProvider>
+              <IsLoginProvider>
+                <App />
+              </IsLoginProvider>
+            </OpenProvider>
           </NavigateToProvider>
         </ShowProvider>
       </NightModeProvider>
