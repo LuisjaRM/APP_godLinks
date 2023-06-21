@@ -1,14 +1,18 @@
+import "./UserButton.css";
+
+// Contexts
+
 import { useShow } from "../../contexts/ShowContext";
 import { useAuth } from "../../contexts/AuthContext";
-import "./Dropdown.css";
+import { UserNav } from "../UserNav/UserNav";
 
-export const Dropdown = ({ icon, children }) => {
+export const UserButton = () => {
   const [show, setShow] = useShow();
   const { user } = useAuth();
 
   return (
-    <section className="dropdown">
-      <button className="dropdown-button" onClick={() => setShow(!show)}>
+    <>
+      <button className="user-button" onClick={() => setShow(!show)}>
         {user ? (
           <img
             className="user-image"
@@ -20,10 +24,11 @@ export const Dropdown = ({ icon, children }) => {
             alt={user.user}
           />
         ) : (
-          icon
+          "👩‍🦲"
         )}
       </button>
-      {show && <section className="dropdown-body">{children}</section>}
-    </section>
+
+      <UserNav />
+    </>
   );
 };

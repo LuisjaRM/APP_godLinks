@@ -1,17 +1,20 @@
-import { Dropdown } from "../Dropdown/Dropdown";
-import { useNightMode } from "../../contexts/NightModeContext";
-import { UserNav } from "../UserNav/UserNav";
-import { useAuth } from "../../contexts/AuthContext";
 import "./Header.css";
+
+// Components
+
+import { UserButton } from "../UserButton/UserButton";
 import { TitleAnimation } from "../TitleAnimation/TitleAnimation";
+
+// Contexts
+
+import { useNightMode } from "../../contexts/NightModeContext";
 
 export const Header = () => {
   const [nightMode, toggleNightMode] = useNightMode();
-  const { user } = useAuth();
 
   return (
     <header>
-      <Dropdown icon="🙇‍♀️">{user ? <UserNav /> : ""}</Dropdown>
+      <UserButton />
 
       <TitleAnimation />
 

@@ -1,5 +1,5 @@
-import { useNightMode } from "../../contexts/NightModeContext";
 import "./Footer.css";
+import { useNightMode } from "../../contexts/NightModeContext";
 
 export const Footer = () => {
   const fecha = new Date().getFullYear();

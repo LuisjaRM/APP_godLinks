@@ -1,8 +1,17 @@
-import { useState } from "react";
-import { ResetPasswordService } from "../../services/api";
 import "./Recover&ResetPass.css";
 
+// react-router-dom
+
+import { useState } from "react";
+import { useNavigate } from "react-router";
+
+// Fetchs
+
+import { ResetPasswordService } from "../../services/api";
+
 export const ResetPassword = () => {
+  const navigate = useNavigate();
+
   const [recoverCode, setRecoverCode] = useState("");
   const [newPass1, setNewPass1] = useState("");
   const [newPass2, setNewPass2] = useState("");
@@ -32,7 +41,7 @@ export const ResetPassword = () => {
             Código:
           </label>
           <input
-            placeholder="Introduce código"
+            placeholder="Introduce tu código de recuperación"
             className="input"
             type="text"
             name="recoverCode"
@@ -58,7 +67,7 @@ export const ResetPassword = () => {
             onChange={(e) => setNewPass1(e.target.value)}
           />
           <label className="label" htmlFor="newPass2">
-            Nueva Contraseña:
+            Repetir nueva Contraseña:
           </label>
           <input
             placeholder="Introduce tu contraseña"
@@ -72,7 +81,14 @@ export const ResetPassword = () => {
           />
         </fieldset>
 
-        <button className="button">Continuar</button>
+        <button
+          onClick={() => {
+            navigate("/");
+          }}
+          className="button"
+        >
+          Continuar
+        </button>
         {error ? <p className="error">{error}</p> : null}
       </form>
     </section>

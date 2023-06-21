@@ -1,11 +1,15 @@
 import "./App.css";
 
+// react-router-dom
+
 import {
   createBrowserRouter,
   createRoutesFromElements,
   RouterProvider,
   Route,
 } from "react-router-dom";
+
+// Pages
 
 import { Root } from "./Root";
 import { Home } from "./Pages/Home/Home";

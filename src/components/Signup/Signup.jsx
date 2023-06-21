@@ -1,10 +1,21 @@
-import { useState } from "react";
-import { registerUserService } from "../../services/api";
-import { useShow } from "../../contexts/ShowContext";
 import "./Signup.css";
 
-export const Signup = ({ open, setOpen }) => {
+// react-router-dom
+
+import { useState } from "react";
+
+// Contexts
+
+import { useShow } from "../../contexts/ShowContext";
+import { useOpen } from "../../contexts/OpenContext";
+
+// Fetchs
+
+import { registerUserService } from "../../services/api";
+
+export const Signup = () => {
   const [show, setShow] = useShow();
+  const [open, setOpen] = useOpen();
 
   const [email, setEmail] = useState("");
   const [pass1, setPass1] = useState("");
