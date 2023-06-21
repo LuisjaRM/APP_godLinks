@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
 import { Dropdown } from "../Dropdown/Dropdown";
 import { useNightMode } from "../../contexts/NightModeContext";
 import { UserNav } from "../UserNav/UserNav";
 import { useAuth } from "../../contexts/AuthContext";
 import "./Header.css";
+import { TitleAnimation } from "../TitleAnimation/TitleAnimation";
 
 export const Header = () => {
   const [nightMode, toggleNightMode] = useNightMode();
@@ -13,15 +13,11 @@ export const Header = () => {
     <header>
       <Dropdown icon="🙇‍♀️">{user ? <UserNav /> : ""}</Dropdown>
 
-      <Link to="/">
-        <h1 className="title">GODLINKS</h1>
-      </Link>
+      <TitleAnimation />
 
       <button className="button" onClick={() => toggleNightMode()}>
         {nightMode ? "🌌" : "🌞"}
       </button>
-
-      {/* <button className="button">👓</button> */}
     </header>
   );
 };

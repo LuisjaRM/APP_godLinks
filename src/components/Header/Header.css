@@ -16,22 +16,3 @@ header .button {
   border-radius: 50%;
   box-shadow: 1px 1px 5px black;
 }
-
-header .title {
-  text-decoration: none;
-  color: khaki;
-  font-size: 100%;
-}
-
-header .accesible {
-  display: flex;
-  gap: 1rem;
-}
-
-header .accesible .button {
-  padding: 0.25rem 1rem;
-  background-color: khaki;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 2px 2px 10px black;
-}

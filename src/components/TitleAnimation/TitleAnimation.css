@@ -1,0 +1,32 @@
+.text-stroke {
+  font-size: 95px;
+  stroke: #000;
+  stroke-width: 2;
+  stroke-dasharray: 100%;
+  stroke-dashoffset: 100%;
+  animation: textStrokeAnim 4000ms linear both;
+  animation-iteration-count: 1;
+  width: 8rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes textStrokeAnim {
+  0% {
+    stroke-dasharray: 100%;
+    stroke-dashoffset: 100%;
+    fill: #dd16d300;
+  }
+  95% {
+    stroke-dasharray: 0%;
+    stroke-dashoffset: 90%;
+    fill: #e211e200;
+  }
+  100% {
+    stroke-dasharray: 0%;
+    stroke-dashoffset: 0%;
+    fill: #f7f307;
+  }
+}
