@@ -8,7 +8,6 @@ import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
 import { Filter } from "./components/Filter/Filter";
 import { LoginOrSignup } from "./components/LoginOrSignup/LoginOrSignup";
-import { Search } from "./components/Search/Search";
 import { VerifyUser } from "./components/VerifyUser/VerifyUser";
 
 export const Root = () => {
@@ -21,7 +20,6 @@ export const Root = () => {
       </aside>
 
       <main>
-        <Search />
         <Outlet />
         <LoginOrSignup />
         <VerifyUser />

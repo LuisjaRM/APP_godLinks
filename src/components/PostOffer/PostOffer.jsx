@@ -12,9 +12,12 @@ import { useAuth } from "../../contexts/AuthContext";
 // Fetchs
 
 import { postOfferService } from "../../services/api";
+import { PostOfferImage } from "../PostOfferImage/PostOfferImage";
 
 export const PostOffer = () => {
   const [open, setOpen] = useState();
+  const [openImage, setOpenImage] = useState();
+  const [offerId, setOfferId] = useState();
   const { user, token } = useAuth();
   const [show, setShow] = useShow();
 
@@ -31,10 +34,15 @@ export const PostOffer = () => {
     e.preventDefault();
 
     try {
-      await postOfferService(
+      const data = await postOfferService(
         { url, title, descrip, price, offer_price, plataform, offer_expiry },
         token
       );
+
+      setOfferId(data.id);
+
+      setOpen(false);
+      setOpenImage(!openImage);
     } catch (error) {
       setError(error.message);
     }
@@ -42,7 +50,7 @@ export const PostOffer = () => {
 
   return (
     <section
-      onClick={() => setOpen(!open)}
+      onClick={() => setOpen(false)}
       className={`postOffer-body ${open ? "show" : ""}`}
     >
       <section
@@ -87,7 +95,6 @@ export const PostOffer = () => {
               name="descrip"
               id="descrip"
               value={descrip}
-              required
               onChange={(e) => setDescrip(e.target.value)}
             />
           </fieldset>
@@ -100,7 +107,6 @@ export const PostOffer = () => {
               name="price"
               id="price"
               value={price}
-              required
               onChange={(e) => setPrice(e.target.value)}
             />
           </fieldset>
@@ -113,7 +119,6 @@ export const PostOffer = () => {
               name="offer_price"
               id="offer_price"
               value={offer_price}
-              required
               onChange={(e) => setOffer_price(e.target.value)}
             />
           </fieldset>
@@ -126,7 +131,6 @@ export const PostOffer = () => {
               name="plataform"
               id="plataform"
               value={plataform}
-              required
               onChange={(e) => setPlataform(e.target.value)}
             />
           </fieldset>
@@ -158,6 +162,12 @@ export const PostOffer = () => {
       >
         ➕
       </button>
+
+      <PostOfferImage
+        offerId={offerId}
+        openImage={openImage}
+        setOpenImage={setOpenImage}
+      />
     </section>
   );
 };
