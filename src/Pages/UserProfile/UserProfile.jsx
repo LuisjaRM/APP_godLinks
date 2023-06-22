@@ -20,17 +20,29 @@ import {
   useGetMyData,
 } from "../../services/api";
 
-
 export const UserProfile = () => {
   const { token } = useAuth();
 
+  // States of Forms
   const [avatar, setAvatar] = useState("");
   const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [oldPassword, setOldPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+
+  // State of error
   const [, setError] = useState("");
 
-  const { dataUser, loading, error } = useGetMyData(token);
+  // States to hide
+
+  const [hideFormAvatar, setHideFormAvatar] = useState(true);
+  const [hideFormUser, setHideFormUser] = useState(true);
+  const [hideFormEmail, setHideFormEmail] = useState(true);
+  const [hideFormPassword, setHideFormPassword] = useState(true);
+
+  // Destructuring of custom hook
+
+  const { dataUser, loading, error, refresh } = useGetMyData(token);
 
   if (loading) return <p>Cargando perfil de usuario </p>;
   if (error) return <ErrorMessage message={error} />;
@@ -42,31 +54,64 @@ export const UserProfile = () => {
     day: "numeric",
   });
 
-  const handleForm = async (e) => {
+  // handle edit avatar
+
+  const handleFormAvatar = async (e) => {
     e.preventDefault();
-
     try {
-      if (email || user || avatar) {
-        await ModifyUserService({ email, user, avatar });
-      }
-    } catch (error) {
-      setError(error.message);
-    }
-
-    try {
-      if (password) {
-        await ModifyPasswordService({ password });
-      }
+      await ModifyUserService({ avatar }, token);
+      setHideFormAvatar(!hideFormAvatar);
+      refresh();
     } catch (error) {
       setError(error.message);
     }
   };
 
+  // handle edit user
+
+  const handleFormUser = async (e) => {
+    e.preventDefault();
+    try {
+      await ModifyUserService({ user }, token);
+      setHideFormUser(!hideFormUser);
+      refresh();
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  // handle edit email
+
+  const handleFormEmail = async (e) => {
+    e.preventDefault();
+
+    try {
+      await ModifyUserService({ email }, token);
+      setHideFormEmail(!hideFormEmail);
+      refresh();
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  // handle edit password
+  const handleFormPassword = async (e) => {
+    e.preventDefault();
+    try {
+      await ModifyPasswordService({ oldPassword, newPassword });
+      setHideFormPassword(!hideFormPassword);
+      refresh();
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  // JSX
   return (
     <section className="user-profile">
       <section className="header-profile">
         <img
-          className="user-image-profile"
+          className={`user-image-profile ${hideFormAvatar ? "" : "hide"}`}
           src={
             dataUser.avatar
               ? `${import.meta.env.VITE_BACKEND}uploads/${dataUser.avatar}`
@@ -74,7 +119,10 @@ export const UserProfile = () => {
           }
           alt={dataUser.user}
         />
-        <form className="modify-image-form hide" onSubmit={handleForm}>
+        <form
+          className={`modify-image-form  ${hideFormAvatar ? "hide" : ""}`}
+          onSubmit={handleFormAvatar}
+        >
           <fieldset className="fieldset">
             <label className="label" htmlFor="image">
               Nuevo Avatar:
@@ -90,15 +138,25 @@ export const UserProfile = () => {
           </fieldset>
           <button>📷</button>
         </form>
+        <button
+          onClick={() => {
+            setHideFormAvatar(!hideFormAvatar);
+          }}
+        >
+          ✏️
+        </button>
 
         <p className="created-at">
           <strong>Miembro desde</strong>: {dateCreated}
         </p>
 
-        <p className="user-name-profile">
+        <p className={`user-name-profile ${hideFormUser ? "" : "hide"}`}>
           <strong>Nombre de usuario</strong>: {dataUser.user}
         </p>
-        <form className="modify-user-form" onSubmit={handleForm}>
+        <form
+          className={`modify-user-form ${hideFormUser ? "hide" : ""}`}
+          onSubmit={handleFormUser}
+        >
           <fieldset className="fieldset">
             <label className="label" htmlFor="user">
               Usuario:
@@ -116,11 +174,21 @@ export const UserProfile = () => {
           </fieldset>
           <button>Cambiar nombre de usuario</button>
         </form>
+        <button
+          onClick={() => {
+            setHideFormUser(!hideFormUser);
+          }}
+        >
+          ✏️
+        </button>
 
-        <p className="user-email-profile">
+        <p className={`user-email-profile ${hideFormEmail ? "" : "hide"}`}>
           <strong>Email</strong>: {dataUser.email}
         </p>
-        <form className="modify-email-form" onSubmit={handleForm}>
+        <form
+          className={`modify-email-form ${hideFormEmail ? "hide" : ""}`}
+          onSubmit={handleFormEmail}
+        >
           <fieldset className="fieldset">
             <label className="label" htmlFor="email">
               Correo Electrónico:
@@ -138,29 +206,65 @@ export const UserProfile = () => {
           </fieldset>
           <button>Cambiar email</button>
         </form>
+        <button
+          onClick={() => {
+            setHideFormEmail(!hideFormEmail);
+          }}
+        >
+          ✏️
+        </button>
 
         <p>
           <strong>Privacidad</strong>
         </p>
 
-        <form className="modify-password-form" onSubmit={handleForm}>
+        <p
+          className={`user-password-profile ${hideFormPassword ? "" : "hide"}`}
+        >
+          <strong>Modificar contraseña</strong>
+        </p>
+
+        <form
+          className={`modify-password-form ${hideFormPassword ? "hide" : ""}`}
+          onSubmit={handleFormPassword}
+        >
           <fieldset className="fieldset">
-            <label className="label" htmlFor="password">
-              Password:
+            <label className="label" htmlFor="oldPassword">
+              Contraseña actual:
             </label>
             <input
-              placeholder="example@mail.com"
+              placeholder="Intoduce contraseña actual"
               className="input"
               type="password"
               name="password"
               id="password"
-              value={password}
+              value={oldPassword}
               required
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => setOldPassword(e.target.value)}
+            />
+            <label className="label" htmlFor="newPassword">
+              Nueva contraseña:
+            </label>
+            <input
+              placeholder="Introduce nueva contraseña"
+              className="input"
+              type="password"
+              name="newPassword"
+              id="newPassword"
+              value={newPassword}
+              required
+              onChange={(e) => setNewPassword(e.target.value)}
             />
           </fieldset>
           <button>Cambiar contraseña</button>
         </form>
+        <button
+          onClick={() => {
+            setHideFormPassword(!hideFormPassword);
+          }}
+        >
+          ✏️
+        </button>
 
         <button>Eliminar cuenta</button>
       </section>
