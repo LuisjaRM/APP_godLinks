@@ -1,28 +1,34 @@
 // Hooks
 
 import { useGetOffers } from "../hooks/useGetOffers";
-import { useGetOffersWithToken } from "../hooks/useGetOffersWithToken";
 import { useGetDataUser } from "../hooks/useGetDataUser";
 
 // OFFERS
-// Get offers without token
+// Get offers
 
-export const useGetDailyOffers = () =>
-  useGetOffers(`${import.meta.env.VITE_BACKEND}offers?filter=daily`);
+export const useGetDailyOffers = (token) =>
+  useGetOffers({
+    url: `${import.meta.env.VITE_BACKEND}offers?filter=daily`,
+    token,
+  });
 
-export const useGetAllOffers = () =>
-  useGetOffers(`${import.meta.env.VITE_BACKEND}offers?filter=all`);
+export const useGetAllOffers = (token) =>
+  useGetOffers({
+    url: `${import.meta.env.VITE_BACKEND}offers?filter=all`,
+    token,
+  });
 
-export const useGetOffersByVotes = () =>
-  useGetOffers(`${import.meta.env.VITE_BACKEND}offers?filter=by-votes`);
-
-// Get offers with token
+export const useGetOffersByVotes = (token) =>
+  useGetOffers({
+    url: `${import.meta.env.VITE_BACKEND}offers?filter=by-votes`,
+    token,
+  });
 
 export const useGetMyFavoriteOffers = (token) =>
-  useGetOffersWithToken(`${import.meta.env.VITE_BACKEND}favorites`, token);
+  useGetOffers({ url: `${import.meta.env.VITE_BACKEND}favorites`, token });
 
 export const useGetOfferById = (id, token) =>
-  useGetOffersWithToken(`${import.meta.env.VITE_BACKEND}offer/${id}`, token);
+  useGetOffers({ url: `${import.meta.env.VITE_BACKEND}offer/${id}`, token });
 
 // Post offer
 
@@ -69,27 +75,6 @@ export const postOfferImageService = async (token, id, image) => {
     },
     body: body,
   });
-
-  const json = await response.json();
-
-  if (!response.ok) {
-    throw new Error(json.message);
-  }
-};
-
-// FAVORITES
-// Patch Favorite
-
-export const addFavoriteService = async (token, id) => {
-  const response = await fetch(
-    `${import.meta.env.VITE_BACKEND}favorite/${id}`,
-    {
-      method: "PATCH",
-      headers: {
-        Authorization: token,
-      },
-    }
-  );
 
   const json = await response.json();
 
@@ -222,7 +207,9 @@ export const ModifyPasswordService = async ({ password }, token) => {
     throw new Error(json.message);
   }
 };
-// OFFERS
+
+// FAVORITES
+// Patch Favorite
 
 export const addFavoriteService = async (token, id) => {
   const response = await fetch(
@@ -234,43 +221,6 @@ export const addFavoriteService = async (token, id) => {
       },
     }
   );
-
-  const json = await response.json();
-
-  if (!response.ok) {
-    throw new Error(json.message);
-  }
-};
-
-export const postOfferService = async (
-  { url, title, descrip, price, offer_price, plataform, offer_expiry },
-  token
-) => {
-  console.log({
-    url,
-    title,
-    descrip,
-    price,
-    offer_price,
-    plataform,
-    offer_expiry,
-  });
-  const response = await fetch(`${import.meta.env.VITE_BACKEND}offers`, {
-    method: "POST",
-    headers: {
-      Authorization: token,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      url,
-      title,
-      descrip,
-      price,
-      offer_price,
-      plataform,
-      offer_expiry,
-    }),
-  });
 
   const json = await response.json();
 

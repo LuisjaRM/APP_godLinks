@@ -6,12 +6,17 @@ import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 import { OfferCard } from "../../components/OfferCard/OfferCard";
 import { PostOffer } from "../../components/PostOffer/PostOffer";
 
+// Contexts
+
+import { useAuth } from "../../contexts/AuthContext";
+
 // Fetchs
 
 import { useGetDailyOffers } from "../../services/api";
 
 export const Home = () => {
-  const { offers, loading, error, refresh } = useGetDailyOffers();
+  const { token } = useAuth();
+  const { offers, loading, error, refresh } = useGetDailyOffers(token);
 
   if (loading) return <p>cargando ofertas...</p>;
   if (error) return <ErrorMessage message={error} />;
