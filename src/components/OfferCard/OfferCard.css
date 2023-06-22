@@ -82,11 +82,11 @@
   padding-bottom: 0.25rem;
 }
 
-.offer-card .main .offer-info .offer-price .price {
+.offer-card .main .offer-info .offer-price .price-dcto {
   font-weight: bold;
 }
 
-.offer-card .main .offer-info .offer-price .price-dcto {
+.offer-card .main .offer-info .offer-price .price {
   text-decoration: line-through;
   color: red;
 }
@@ -203,4 +203,19 @@ svg {
   100% {
     transform: scale(1);
   }
+}
+
+.offer-card .edit-wrap {
+  display: flex;
+  justify-content: end;
+}
+
+.offer-card .edit-wrap .edit {
+  border: none;
+  background-color: white;
+  font-size: 0;
+}
+
+.offer-card:hover .edit {
+  font-size: medium;
 }

@@ -26,7 +26,6 @@ export const OfferCard = ({ refresh, offer }) => {
 
   const dif = nowDate.getTime() - dateCreated.getTime();
 
-  const seconds = Math.floor(dif / 1000);
   const minutes = Math.floor(dif / 1000 / 60);
   const hours = Math.floor(dif / 1000 / 60 / 60);
   const day = Math.floor(dif / 1000 / 60 / 60 / 24);
@@ -34,10 +33,6 @@ export const OfferCard = ({ refresh, offer }) => {
   let timeSinceCreated_at;
   let text;
 
-  if (minutes < 1) {
-    timeSinceCreated_at = seconds;
-    text = "s";
-  }
   if (minutes < 60) {
     timeSinceCreated_at = minutes;
     text = "m";
@@ -62,11 +57,13 @@ export const OfferCard = ({ refresh, offer }) => {
 
   // Favorite Logic
 
+  const [isLiked, setIsLiked] = useState(offer.favorite);
+
   const handleLike = async (e) => {
     e.preventDefault();
     e.stopPropagation();
     user ? await addFavoriteService(token, offer.id) : setShow(!show);
-    refresh();
+    user ? setIsLiked(!isLiked) : "";
   };
 
   // HandleClicks
@@ -84,11 +81,31 @@ export const OfferCard = ({ refresh, offer }) => {
     user ? navigate(`/userInfo/${offer.user_id}`) : setShow(!show);
   };
 
+  // Get patch of window location
+
+  const windowLocation = window.location.href.slice(21, -2);
+
   // CSS States
   const [expand, setExpand] = useState(false);
 
   return (
     <section className="offer-card" onClick={handleClickOfferCard}>
+      {windowLocation === "/userInfo" && user.id === offer.user_id ? (
+        <section className="edit-wrap">
+          <button
+            className="edit"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              navigate(`/modifyOffer/${offer.id}`);
+            }}
+          >
+            ✏️
+          </button>
+        </section>
+      ) : (
+        ""
+      )}
       <section className="header">
         <section className="user-info" onClick={handleClickUserInfo}>
           <img
@@ -122,7 +139,7 @@ export const OfferCard = ({ refresh, offer }) => {
           />
           <button className="favorite-button" onClick={handleLike}>
             <svg
-              className={offer.favorite ? "like" : ""}
+              className={isLiked ? "like" : ""}
               viewBox="0 0 512 512"
               width="15px"
               height="28px"
@@ -144,8 +161,8 @@ export const OfferCard = ({ refresh, offer }) => {
             <h2>{offer.title}</h2>
           </li>
           <li className="offer-price">
-            <p className="price">{offer.offer_price} €</p>
             <p className="price-dcto">{offer.price} €</p>
+            <p className="price">{offer.offer_price} €</p>
           </li>
           <li className="offer-cad">Cad: {dateOffer_expiry}</li>
           <li className={`offer-descrip ${expand ? "expand" : ""}`}>
