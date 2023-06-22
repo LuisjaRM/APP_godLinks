@@ -90,7 +90,7 @@ export const useGetMyData = (token) =>
 export const useGetUserInfo = (token, id) =>
   useGetDataUser(`${import.meta.env.VITE_BACKEND}user/${id}`, token);
 
-// Posts user
+// Register user
 
 export const registerUserService = async ({ email, password, user }) => {
   const response = await fetch(`${import.meta.env.VITE_BACKEND}user`, {
@@ -108,6 +108,7 @@ export const registerUserService = async ({ email, password, user }) => {
   }
 };
 
+// Login user
 export const logInUserService = async ({ email, password }) => {
   const response = await fetch(`${import.meta.env.VITE_BACKEND}login`, {
     method: "POST",
@@ -126,6 +127,7 @@ export const logInUserService = async ({ email, password }) => {
   return json.data;
 };
 
+// Recover password
 export const RecoverPasswordService = async ({ email }) => {
   const response = await fetch(
     `${import.meta.env.VITE_BACKEND}password/recover`,
@@ -145,6 +147,7 @@ export const RecoverPasswordService = async ({ email }) => {
   }
 };
 
+// Reset password
 export const ResetPasswordService = async ({ recoverCode, newPassword }) => {
   const response = await fetch(
     `${import.meta.env.VITE_BACKEND}password/reset`,
@@ -166,6 +169,7 @@ export const ResetPasswordService = async ({ recoverCode, newPassword }) => {
   return json.data;
 };
 
+// Modify user info
 export const ModifyUserService = async ({ email, user, avatar }, token) => {
   const response = await fetch(`${import.meta.env.VITE_BACKEND}user`, {
     method: "PATCH",
@@ -187,7 +191,11 @@ export const ModifyUserService = async ({ email, user, avatar }, token) => {
   }
 };
 
-export const ModifyPasswordService = async ({ password }, token) => {
+// Modify password
+export const ModifyPasswordService = async (
+  { oldPassword, newPassword },
+  token
+) => {
   const response = await fetch(`${import.meta.env.VITE_BACKEND}user`, {
     method: "PATCH",
     headers: {
@@ -195,7 +203,8 @@ export const ModifyPasswordService = async ({ password }, token) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      password,
+      oldPassword,
+      newPassword,
     }),
   });
 

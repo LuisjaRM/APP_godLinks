@@ -16,9 +16,13 @@
 }
 
 .user-image-profile {
-  width: 46px;
-  height: 46px;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
   border-radius: 50%;
   box-shadow: 1px 1px 10px black;
+}
+
+.hide {
+  display: none;
 }
