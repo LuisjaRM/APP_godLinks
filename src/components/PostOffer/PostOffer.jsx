@@ -62,7 +62,7 @@ export const PostOffer = () => {
             <label className="label">Enlace:</label>
             <input
               placeholder="https://www.tupagina.com/"
-              className="url"
+              className="input"
               type="url"
               name="url"
               id="url"
@@ -73,10 +73,10 @@ export const PostOffer = () => {
           </fieldset>
 
           <fieldset className="fieldset">
-            <label className="label">Title:</label>
+            <label className="label">Título:</label>
             <input
-              placeholder="Title"
-              className="title"
+              placeholder="Título"
+              className="input"
               type="text"
               name="title"
               id="title"
@@ -90,7 +90,7 @@ export const PostOffer = () => {
             <label className="label">Descripción de la oferta:</label>
             <textarea
               placeholder="Escribe una breve descripción de la oferta..."
-              className="descrip"
+              className="input"
               type="text"
               name="descrip"
               id="descrip"
@@ -102,7 +102,8 @@ export const PostOffer = () => {
           <fieldset className="fieldset">
             <label className="label">Precio con descuento:</label>
             <input
-              className="price"
+              placeholder="00.00 €"
+              className="input"
               type="number"
               name="price"
               id="price"
@@ -114,7 +115,8 @@ export const PostOffer = () => {
           <fieldset className="fieldset">
             <label className="label">Precio sin descuento:</label>
             <input
-              className="price"
+              placeholder="00.00 €"
+              className="input"
               type="number"
               name="offer_price"
               id="offer_price"
@@ -126,7 +128,8 @@ export const PostOffer = () => {
           <fieldset className="fieldset">
             <label className="label">Plataforma:</label>
             <input
-              className="plataform"
+              placeholder="Plataforma"
+              className="input"
               type="text"
               name="plataform"
               id="plataform"
@@ -138,7 +141,7 @@ export const PostOffer = () => {
           <fieldset className="fieldset">
             <label className="label">Caducidad de la oferta:</label>
             <input
-              className="offer_expiry"
+              className="input"
               type="date"
               name="offer_expiry"
               id="offer_expiry"
@@ -148,7 +151,9 @@ export const PostOffer = () => {
             />
           </fieldset>
 
-          <button className="button">Continuar</button>
+          <section className="button-wrap">
+            <button className="button">Continuar</button>
+          </section>
           {error ? <p className="error">{error}</p> : null}
         </form>
       </section>

@@ -66,9 +66,7 @@ export const postOfferImageService = async (token, id, image) => {
   const body = new FormData();
   body.append("image", image);
 
-  console.log(`${import.meta.env.VITE_BACKEND}offer/${id}`);
-
-  const response = await fetch(`${import.meta.env.VITE_BACKEND}offer/${id}`, {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}image/${id}`, {
     method: "PATCH",
     headers: {
       Authorization: token,
