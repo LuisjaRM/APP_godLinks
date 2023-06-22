@@ -14,7 +14,6 @@ import { useNavigateTo } from "../../contexts/NavigateToContext";
 // Fetchs
 
 import { addFavoriteService } from "../../services/api";
-import { useGetCheckisFavorite } from "../../hooks/useGetCheckisFavorite";
 
 export const OfferCard = ({ refresh, offer }) => {
   // Date Logic
@@ -63,16 +62,9 @@ export const OfferCard = ({ refresh, offer }) => {
 
   // Favorite Logic
 
-  const { isFavorite } = useGetCheckisFavorite(token, offer.id);
-
-  const defaultLike = isFavorite.isFavorite === 1 ? true : false;
-
-  const [isLiked, setIsLiked] = useState(false);
-
   const handleLike = async (e) => {
     e.preventDefault();
     e.stopPropagation();
-    user ? setIsLiked(!isLiked) : "";
     user ? await addFavoriteService(token, offer.id) : setShow(!show);
     refresh();
   };
@@ -130,7 +122,7 @@ export const OfferCard = ({ refresh, offer }) => {
           />
           <button className="favorite-button" onClick={handleLike}>
             <svg
-              className={isLiked || (defaultLike && user) ? "like" : ""}
+              className={offer.favorite ? "like" : ""}
               viewBox="0 0 512 512"
               width="15px"
               height="28px"

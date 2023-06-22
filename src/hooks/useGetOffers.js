@@ -1,10 +1,17 @@
 import { useEffect, useState } from "react";
 
-const loadOffers = async (url, setOffers, setLoading, setError) => {
+const loadOffers = async ({ url, token, setOffers, setLoading, setError }) => {
   try {
     setLoading(true);
 
-    const response = await fetch(url);
+    let response;
+    token
+      ? (response = await fetch(url, {
+          headers: {
+            Authorization: token,
+          },
+        }))
+      : (response = await fetch(url));
 
     const json = await response.json();
 
@@ -21,16 +28,21 @@ const loadOffers = async (url, setOffers, setLoading, setError) => {
   }
 };
 
-export const useGetOffers = (url) => {
+export const useGetOffers = ({ url, token }) => {
   const [offers, setOffers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    loadOffers(url, setOffers, setLoading, setError);
-  }, [url]);
+  if (token === undefined || token === "") {
+    token = null;
+  }
 
-  const refresh = () => loadOffers(url, setOffers, setLoading, setError);
+  useEffect(() => {
+    loadOffers({ url, token, setOffers, setLoading, setError });
+  }, [url, token]);
+
+  const refresh = () =>
+    loadOffers({ url, token, setOffers, setLoading, setError });
 
   return { offers, loading, error, refresh };
 };
