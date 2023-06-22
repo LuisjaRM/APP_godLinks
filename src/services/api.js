@@ -30,15 +30,6 @@ export const postOfferService = async (
   { url, title, descrip, price, offer_price, plataform, offer_expiry },
   token
 ) => {
-  console.log({
-    url,
-    title,
-    descrip,
-    price,
-    offer_price,
-    plataform,
-    offer_expiry,
-  });
   const response = await fetch(`${import.meta.env.VITE_BACKEND}offers`, {
     method: "POST",
     headers: {
@@ -54,6 +45,29 @@ export const postOfferService = async (
       plataform,
       offer_expiry,
     }),
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+};
+
+export const postOfferImageService = async (token, id, image) => {
+  const body = new FormData();
+  body.append("image", image);
+
+  console.log(`${import.meta.env.VITE_BACKEND}offer/${id}`);
+
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}offer/${id}`, {
+    method: "PATCH",
+    headers: {
+      Authorization: token,
+    },
+    body: body,
   });
 
   const json = await response.json();
