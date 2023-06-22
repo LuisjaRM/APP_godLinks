@@ -51,7 +51,7 @@ export const OfferCard = ({ refresh, offer }) => {
     text = "d";
   }
 
-  const offer_expiry = new Date(offer.created_at);
+  const offer_expiry = new Date(offer.offer_expiry);
   const dateOffer_expiry = offer_expiry.toLocaleDateString("en-GB");
 
   // UserContext
