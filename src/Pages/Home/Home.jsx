@@ -16,7 +16,7 @@ import { useGetDailyOffers } from "../../services/api";
 
 export const Home = () => {
   const { token } = useAuth();
-  const { offers, loading, error, refresh } = useGetDailyOffers(token);
+  const { offers, loading, error } = useGetDailyOffers(token);
 
   if (loading) return <p>cargando ofertas...</p>;
   if (error) return <ErrorMessage message={error} />;
@@ -27,7 +27,7 @@ export const Home = () => {
         <ul className="offers-list">
           {offers.offers?.map((offer) => (
             <li key={offer.id}>
-              <OfferCard refresh={refresh} offer={offer} />
+              <OfferCard offer={offer} />
             </li>
           ))}
         </ul>

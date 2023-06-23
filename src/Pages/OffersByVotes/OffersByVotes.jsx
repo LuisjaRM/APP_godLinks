@@ -16,7 +16,7 @@ import { useGetOffersByVotes } from "../../services/api";
 
 export const OffersByVotes = () => {
   const { token } = useAuth();
-  const { offers, loading, error, refresh } = useGetOffersByVotes(token);
+  const { offers, loading, error } = useGetOffersByVotes(token);
 
   if (loading) return <p>cargando ofertas...</p>;
   if (error) return <ErrorMessage message={error} />;
@@ -27,7 +27,7 @@ export const OffersByVotes = () => {
         <ul className="offers-list">
           {offers.offers?.map((offer) => (
             <li key={offer.id}>
-              <OfferCard refresh={refresh} offer={offer} />
+              <OfferCard offer={offer} />
             </li>
           ))}
         </ul>

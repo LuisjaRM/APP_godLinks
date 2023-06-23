@@ -16,7 +16,7 @@ import { useGetAllOffers } from "../../services/api";
 
 export const AllOffers = () => {
   const { token } = useAuth();
-  const { offers, loading, error, refresh } = useGetAllOffers(token);
+  const { offers, loading, error } = useGetAllOffers(token);
 
   if (loading) return <p>cargando ofertas...</p>;
   if (error) return <ErrorMessage message={error} />;
@@ -27,7 +27,7 @@ export const AllOffers = () => {
         <ul className="offers-list">
           {offers.offers?.map((offer) => (
             <li key={offer.id}>
-              <OfferCard refresh={refresh} offer={offer} />
+              <OfferCard offer={offer} />
             </li>
           ))}
         </ul>

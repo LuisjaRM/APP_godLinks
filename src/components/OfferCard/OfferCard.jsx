@@ -15,7 +15,7 @@ import { useNavigateTo } from "../../contexts/NavigateToContext";
 
 import { addFavoriteService } from "../../services/api";
 
-export const OfferCard = ({ refresh, offer }) => {
+export const OfferCard = ({ offer }) => {
   // Date Logic
   const timeNow = Date.now();
   const nowDate = new Date(timeNow);
