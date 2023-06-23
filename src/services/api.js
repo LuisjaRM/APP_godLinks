@@ -81,6 +81,8 @@ export const postOfferImageService = async (token, id, image) => {
   }
 };
 
+// Patch Offer
+
 export const patchOfferService = async (
   token,
   id,
@@ -101,6 +103,23 @@ export const patchOfferService = async (
       plataform,
       offer_expiry,
     }),
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+};
+
+// Delete Offer
+
+export const deleteOfferService = async (token, id) => {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}offer/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: token,
+    },
   });
 
   const json = await response.json();

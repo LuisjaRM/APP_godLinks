@@ -3,6 +3,7 @@ import "./ModifyOfferCard.css";
 // React
 
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 // Contexts
 
@@ -10,7 +11,11 @@ import { useAuth } from "../../contexts/AuthContext";
 
 // Fetchs
 
-import { patchOfferService, postOfferImageService } from "../../services/api";
+import {
+  deleteOfferService,
+  patchOfferService,
+  postOfferImageService,
+} from "../../services/api";
 
 export const ModifyOfferCard = ({ refresh, offer }) => {
   // Date Logic
@@ -18,7 +23,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
   const offerExpiry = new Date(offer.offer_expiry);
   const dateOffer_expiry = offerExpiry.toLocaleDateString("en-GB");
 
-  const { token } = useAuth();
+  const { user, token } = useAuth();
 
   // States of Forms
 
@@ -128,6 +133,21 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
       await patchOfferService(token, offer.id, { offer_expiry });
       setHideFormOfferExpiry(!hideFormOfferExpiry);
       refresh();
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  // Delete Offer
+
+  const navigate = useNavigate();
+
+  const deleteOffer = async (e) => {
+    e.preventDefault();
+    try {
+      await deleteOfferService(token, offer.id);
+
+      navigate(`/userInfo/${user.id}`);
     } catch (error) {
       setError(error.message);
     }
@@ -442,7 +462,9 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
       </li>
 
       <li className="list-delete">
-        <button className="delete-button">Borrar oferta</button>
+        <button onClick={deleteOffer} className="delete-button">
+          Borrar oferta
+        </button>
       </li>
     </ul>
   );
