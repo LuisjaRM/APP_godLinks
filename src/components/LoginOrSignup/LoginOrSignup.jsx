@@ -13,7 +13,7 @@ import { useIsLogin } from "../../contexts/IsLoginContext";
 export const LoginOrSignup = () => {
   const { user } = useAuth();
   const [show, setShow] = useShow();
-  const [isLogin, setIsLogin] = useIsLogin();
+  const [isLogin, setIsLogin] = useIsLogin(true);
 
   return (
     !user &&

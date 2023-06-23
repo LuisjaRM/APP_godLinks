@@ -11,6 +11,7 @@ import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
+import { useOpen } from "../../contexts/OpenContext";
 
 // Navigate
 
@@ -26,7 +27,11 @@ import {
 } from "../../services/api";
 
 export const UserProfile = () => {
-  const { token } = useAuth();
+  const { token, logout } = useAuth();
+
+  // Context
+
+  const [open, setOpen] = useOpen();
 
   //State of navigate
   const navigate = useNavigate();
@@ -96,7 +101,9 @@ export const UserProfile = () => {
     try {
       await ModifyUserService({ email }, token);
       setHideFormEmail(!hideFormEmail);
-      refresh();
+      setOpen(!open);
+      navigate("/");
+      logout();
     } catch (error) {
       setError(error.message);
     }
@@ -108,7 +115,8 @@ export const UserProfile = () => {
     try {
       await ModifyPasswordService({ oldPassword, newPassword }, token);
       setHideFormPassword(!hideFormPassword);
-      refresh();
+      navigate("/");
+      logout();
     } catch (error) {
       setError(error.message);
     }
@@ -118,7 +126,8 @@ export const UserProfile = () => {
   const handleFormDelete = async (e) => {
     e.preventDefault();
     await DeleteUserService(token, dataUser.id);
-    navigate("/allOffers");
+    navigate("/");
+    logout();
   };
 
   // JSX
