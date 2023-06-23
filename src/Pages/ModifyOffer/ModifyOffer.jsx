@@ -18,6 +18,9 @@ import { useAuth } from "../../contexts/AuthContext";
 import { useGetOfferById } from "../../services/api";
 
 export const ModifyOffer = () => {
+  // Document Title
+  document.title = "Modifica tu oferta";
+
   const { id } = useParams();
   const { token } = useAuth();
   const { offers, loading, error, refresh } = useGetOfferById(id, token);

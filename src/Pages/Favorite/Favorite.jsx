@@ -15,6 +15,9 @@ import { useAuth } from "../../contexts/AuthContext";
 import { useGetMyFavoriteOffers } from "../../services/api";
 
 export const Favorite = () => {
+  // Document Title
+  document.title = "";
+
   const { token } = useAuth();
   const { offers, loading, error } = useGetMyFavoriteOffers(token);
 

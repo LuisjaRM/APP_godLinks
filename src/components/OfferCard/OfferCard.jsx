@@ -5,6 +5,10 @@ import "./OfferCard.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+// Components
+
+import { PostVote } from "../PostVote/PostVote";
+
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
@@ -187,7 +191,11 @@ export const OfferCard = ({ offer }) => {
       </section>
 
       <section className="footer">
-        <p>👍 : {offer.avgVotes ? Number(offer.avgVotes).toFixed(1) : 0}</p>
+        <PostVote
+          votes={offer.avgVotes}
+          offerId={offer.id}
+          userId={offer.user_id}
+        />
 
         <button className="link-button">
           <a

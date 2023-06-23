@@ -15,6 +15,9 @@ import { useAuth } from "../../contexts/AuthContext";
 import { useGetOffersByVotes } from "../../services/api";
 
 export const OffersByVotes = () => {
+  // Document Title
+  document.title = "Las ofertas más populares";
+
   const { token } = useAuth();
   const { offers, loading, error } = useGetOffersByVotes(token);
 

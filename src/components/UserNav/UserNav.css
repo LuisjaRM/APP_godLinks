@@ -9,24 +9,61 @@
 
 .userNav-wrap {
   position: fixed;
-  top: 1.5vh;
-  left: 4vw;
-  width: 6rem;
-  background-color: gainsboro;
+  top: 4.9vh;
+  left: 5vw;
+  width: 9rem;
+  background-color: rgb(220, 220, 220);
   border-radius: 10px;
   border: 1px solid black;
 }
 
 .user-nav {
-  padding: 0.25rem;
+  padding: 1.25rem;
   padding-top: 1.75rem;
   font-size: 90%;
+
 }
 
-.link {
+
+
+
+.link-perfile {
+  cursor: pointer;
   padding-left: 0.3rem;
+  margin-top: 0.7rem;
   display: block;
   text-decoration: none;
   color: black;
-  border-bottom: solid black 1px;
+  border: 1px solid black;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+
+
+.logout-perfile{
+  cursor: pointer;
+  padding-left: 0.3rem;
+  margin-top: 0.7rem; 
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  border: 4px solid black;
+}  
+
+
+
+.modal-user {
+  animation: fadeInOut 0.4s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

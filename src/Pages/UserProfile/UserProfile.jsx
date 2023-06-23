@@ -27,11 +27,15 @@ import {
 } from "../../services/api";
 
 export const UserProfile = () => {
+
   const { token, logout } = useAuth();
 
   // Context
 
   const [open, setOpen] = useOpen();
+
+  // Document Title
+  document.title = "Mi perfil";
 
   //State of navigate
   const navigate = useNavigate();

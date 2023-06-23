@@ -15,6 +15,9 @@ import { useAuth } from "../../contexts/AuthContext";
 import { useGetAllOffers } from "../../services/api";
 
 export const AllOffers = () => {
+  // Document Title
+  document.title = "Las mejores ofertas del mercado";
+
   const { token } = useAuth();
   const { offers, loading, error } = useGetAllOffers(token);
 
