@@ -299,3 +299,23 @@ export const addFavoriteService = async (token, id) => {
     throw new Error(json.message);
   }
 };
+
+// VOTES
+// Post Vote
+
+export const postVoteService = async (token, id, { vote }) => {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}vote/${id}`, {
+    method: "POST",
+    headers: {
+      Authorization: token,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ vote }),
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+};
