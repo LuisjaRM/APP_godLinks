@@ -106,7 +106,7 @@ export const PostOffer = () => {
               className="input"
               type="number"
               name="price"
-              id="price"
+              id="offer_price"
               value={offer_price}
               onChange={(e) => setOffer_price(e.target.value)}
             />
@@ -119,7 +119,7 @@ export const PostOffer = () => {
               className="input"
               type="number"
               name="offer_price"
-              id="offer_price"
+              id="price"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
             />

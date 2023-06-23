@@ -12,22 +12,11 @@
   gap: 0.5rem;
 }
 
-.modifyOffer .modifyOffer-list .list-image .image {
+.modifyOffer .modifyOffer-list .list-image .offer-image {
   width: 88px;
   height: 88px;
   border: 1px solid black;
   border-radius: 10px;
-}
-
-.modifyOffer .modifyOffer-list .list-image .image.hide {
-  display: none;
-}
-
-.modifyOffer .modifyOffer-list .list-image .modifyOffer-image {
-}
-
-.modifyOffer .modifyOffer-list .list-image .modifyOffer-image.hide {
-  display: none;
 }
 
 .modifyOffer .modifyOffer-list .list-image .edit-button {
@@ -76,4 +65,38 @@
   background-color: black;
   color: white;
   box-shadow: 1px 1px 10px black;
+}
+
+.modifyOffer-image.hide,
+.modifyOffer-url.hide,
+.modifyOffer-title.hide,
+.modifyOffer-descrip.hide,
+.modifyOffer-offerPrice.hide,
+.modifyOffer-price.hide,
+.modifyOffer-plataform.hide,
+.modifyOffer-offerExpiry.hide {
+  display: none;
+}
+
+.offer-image.hide,
+.offer-url.hide,
+.offer-title.hide,
+.offer-descrip.hide,
+.offer-offerPrice.hide,
+.offer-price.hide,
+.offer-plataform.hide,
+.offer-offerExpiry.hide {
+  display: none;
+}
+
+.modifyOffer .modifyOffer-list .list-element .fieldset {
+  border: none;
+}
+
+.modifyOffer .modifyOffer-list .list-element .input {
+  min-width: 250px;
+  border: 1px solid black;
+  background-color: white;
+  padding: 0.25rem;
+  font-size: 100%;
 }
