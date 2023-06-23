@@ -24,8 +24,8 @@ export const PostOffer = () => {
   const [url, setUrl] = useState("");
   const [title, setTitle] = useState("");
   const [descrip, setDescrip] = useState("");
-  const [price, setPrice] = useState("");
   const [offer_price, setOffer_price] = useState("");
+  const [price, setPrice] = useState("");
   const [plataform, setPlataform] = useState("");
   const [offer_expiry, setOffer_expiry] = useState("");
   const [error, setError] = useState("");
@@ -106,9 +106,9 @@ export const PostOffer = () => {
               className="input"
               type="number"
               name="price"
-              id="price"
-              value={price}
-              onChange={(e) => setPrice(e.target.value)}
+              id="offer_price"
+              value={offer_price}
+              onChange={(e) => setOffer_price(e.target.value)}
             />
           </fieldset>
 
@@ -119,9 +119,9 @@ export const PostOffer = () => {
               className="input"
               type="number"
               name="offer_price"
-              id="offer_price"
-              value={offer_price}
-              onChange={(e) => setOffer_price(e.target.value)}
+              id="price"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
             />
           </fieldset>
 

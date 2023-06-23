@@ -16,10 +16,12 @@ import { Home } from "./Pages/Home/Home";
 import { AllOffers } from "./Pages/AllOffers/AllOffers";
 import { OffersByVotes } from "./Pages/OffersByVotes/OffersByVotes";
 import { Favorite } from "./Pages/Favorite/Favorite";
-import { UserProfile } from "./Pages/UserProfile/UserProfile";
 import { OfferById } from "./Pages/OfferById/OfferById";
-import { NotFound } from "./Pages/NotFound/NotFound";
+import { ModifyOffer } from "./Pages/ModifyOffer/ModifyOffer";
 import { UserInfo } from "./Pages/UserInfo/UserInfo";
+import { UserProfile } from "./Pages/UserProfile/UserProfile";
+import { NotFound } from "./Pages/NotFound/NotFound";
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -29,6 +31,7 @@ const router = createBrowserRouter(
       <Route path="offersByVotes" element={<OffersByVotes />} />
       <Route path="favorites" element={<Favorite />} />
       <Route path="offerById/:id" element={<OfferById />} />
+      <Route path="modifyOffer/:id" element={<ModifyOffer />} />
       <Route path="userInfo/:id" element={<UserInfo />} />
       <Route path="profile" element={<UserProfile />} />
       <Route path="*" element={<NotFound />} />
