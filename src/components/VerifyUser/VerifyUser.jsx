@@ -9,7 +9,7 @@ import { useIsLogin } from "../../contexts/IsLoginContext";
 export const VerifyUser = () => {
   const [show, setShow] = useShow();
   const [open, setOpen] = useOpen();
-  const [isLogin, setIsLogin] = useIsLogin();
+  const [, setIsLogin] = useIsLogin();
 
   return (
     open && (
@@ -19,7 +19,7 @@ export const VerifyUser = () => {
           <button
             className="button-modalVerify"
             onClick={(e) => {
-              setIsLogin(!isLogin);
+              setIsLogin(true);
               setOpen(!open);
               setShow(!show);
               e.stopPropagation();
