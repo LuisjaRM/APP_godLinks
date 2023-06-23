@@ -4,7 +4,7 @@
   border: none;
   border-radius: 50%;
   box-shadow: 1px 1px 5px black;
-  z-index: 100;
+  z-index: 99;
 }
 
 .user-button .user-image {

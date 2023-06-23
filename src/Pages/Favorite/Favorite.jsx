@@ -15,8 +15,11 @@ import { useAuth } from "../../contexts/AuthContext";
 import { useGetMyFavoriteOffers } from "../../services/api";
 
 export const Favorite = () => {
+  // Document Title
+  document.title = "";
+
   const { token } = useAuth();
-  const { offers, loading, error, refresh } = useGetMyFavoriteOffers(token);
+  const { offers, loading, error } = useGetMyFavoriteOffers(token);
 
   if (loading) return <p>cargando ofertas...</p>;
   if (error) return <ErrorMessage message={error} />;
@@ -27,7 +30,7 @@ export const Favorite = () => {
         <ul className="offers-list">
           {offers.offers?.map((offer) => (
             <li key={offer.id}>
-              <OfferCard refresh={refresh} offer={offer} />
+              <OfferCard offer={offer} />
             </li>
           ))}
         </ul>

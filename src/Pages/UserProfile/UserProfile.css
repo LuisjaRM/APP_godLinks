@@ -1,23 +1,37 @@
-.userInfo {
+.user-profile {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
   padding: 1rem 0;
-  background-color: khaki;
+  min-height: calc(100vh - 7.5vh - 7.5vh - 6vh);
+  background-color: rgba(150, 22, 0, 0.575);
 }
 
-.userInfo .header {
+.header-profile {
   display: flex;
+  flex-direction: column;
   gap: 1rem;
   align-items: center;
 }
 
-.userInfo .header .user-image {
-  width: 46px;
-  height: 46px;
+.user-image-profile {
+  width: 100px;
+  height: 100px;
   object-fit: cover;
   border-radius: 50%;
   box-shadow: 1px 1px 10px black;
 }
+
+
+.user-image-profile.hide,
+.modify-image-form.hide,
+.user-name-profile.hide,
+.modify-user-form.hide,
+.user-email-profile.hide,
+.modify-email-form.hide,
+.user-password-profile.hide,
+.modify-password-form.hide {
+  display: none;
+} 

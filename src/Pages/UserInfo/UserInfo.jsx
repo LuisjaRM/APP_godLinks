@@ -18,10 +18,13 @@ import { useAuth } from "../../contexts/AuthContext";
 import { useGetUserInfo } from "../../services/api";
 
 export const UserInfo = () => {
+  // Document Title
+  document.title = "Mis ofertas";
+
   const { token } = useAuth();
   const { id } = useParams();
 
-  const { dataUser, loading, error } = useGetUserInfo(token, id);
+  const { dataUser, loading, error, refresh } = useGetUserInfo(token, id);
 
   if (loading) return <p>cargando ofertas...</p>;
   if (error) return <ErrorMessage message={error} />;
@@ -36,7 +39,7 @@ export const UserInfo = () => {
         <ul className="offers-list">
           {dataUser.offers?.map((offer) => (
             <li key={offer.id}>
-              <OfferCard offer={offer} />
+              <OfferCard refresh={refresh} offer={offer} />
             </li>
           ))}
         </ul>

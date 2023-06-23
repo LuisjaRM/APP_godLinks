@@ -6,12 +6,20 @@ import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 import { OfferCard } from "../../components/OfferCard/OfferCard";
 import { PostOffer } from "../../components/PostOffer/PostOffer";
 
+// Contexts
+
+import { useAuth } from "../../contexts/AuthContext";
+
 // Fetchs
 
 import { useGetDailyOffers } from "../../services/api";
 
 export const Home = () => {
-  const { offers, loading, error, refresh } = useGetDailyOffers();
+  // Document Title
+  document.title = "GodLinks";
+
+  const { token } = useAuth();
+  const { offers, loading, error } = useGetDailyOffers(token);
 
   if (loading) return <p>cargando ofertas...</p>;
   if (error) return <ErrorMessage message={error} />;
@@ -22,7 +30,7 @@ export const Home = () => {
         <ul className="offers-list">
           {offers.offers?.map((offer) => (
             <li key={offer.id}>
-              <OfferCard refresh={refresh} offer={offer} />
+              <OfferCard offer={offer} />
             </li>
           ))}
         </ul>

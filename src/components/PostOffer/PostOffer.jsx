@@ -12,17 +12,20 @@ import { useAuth } from "../../contexts/AuthContext";
 // Fetchs
 
 import { postOfferService } from "../../services/api";
+import { PostOfferImage } from "../PostOfferImage/PostOfferImage";
 
 export const PostOffer = () => {
   const [open, setOpen] = useState();
+  const [openImage, setOpenImage] = useState();
+  const [offerId, setOfferId] = useState();
   const { user, token } = useAuth();
   const [show, setShow] = useShow();
 
   const [url, setUrl] = useState("");
   const [title, setTitle] = useState("");
   const [descrip, setDescrip] = useState("");
-  const [price, setPrice] = useState("");
   const [offer_price, setOffer_price] = useState("");
+  const [price, setPrice] = useState("");
   const [plataform, setPlataform] = useState("");
   const [offer_expiry, setOffer_expiry] = useState("");
   const [error, setError] = useState("");
@@ -31,10 +34,15 @@ export const PostOffer = () => {
     e.preventDefault();
 
     try {
-      await postOfferService(
+      const data = await postOfferService(
         { url, title, descrip, price, offer_price, plataform, offer_expiry },
         token
       );
+
+      setOfferId(data.id);
+
+      setOpen(false);
+      setOpenImage(!openImage);
     } catch (error) {
       setError(error.message);
     }
@@ -42,7 +50,7 @@ export const PostOffer = () => {
 
   return (
     <section
-      onClick={() => setOpen(!open)}
+      onClick={() => setOpen(false)}
       className={`postOffer-body ${open ? "show" : ""}`}
     >
       <section
@@ -54,7 +62,7 @@ export const PostOffer = () => {
             <label className="label">Enlace:</label>
             <input
               placeholder="https://www.tupagina.com/"
-              className="url"
+              className="input"
               type="url"
               name="url"
               id="url"
@@ -65,10 +73,10 @@ export const PostOffer = () => {
           </fieldset>
 
           <fieldset className="fieldset">
-            <label className="label">Title:</label>
+            <label className="label">Título:</label>
             <input
-              placeholder="Title"
-              className="title"
+              placeholder="Título"
+              className="input"
               type="text"
               name="title"
               id="title"
@@ -82,12 +90,11 @@ export const PostOffer = () => {
             <label className="label">Descripción de la oferta:</label>
             <textarea
               placeholder="Escribe una breve descripción de la oferta..."
-              className="descrip"
+              className="input"
               type="text"
               name="descrip"
               id="descrip"
               value={descrip}
-              required
               onChange={(e) => setDescrip(e.target.value)}
             />
           </fieldset>
@@ -95,38 +102,38 @@ export const PostOffer = () => {
           <fieldset className="fieldset">
             <label className="label">Precio con descuento:</label>
             <input
-              className="price"
+              placeholder="00.00 €"
+              className="input"
               type="number"
               name="price"
-              id="price"
-              value={price}
-              required
-              onChange={(e) => setPrice(e.target.value)}
+              id="offer_price"
+              value={offer_price}
+              onChange={(e) => setOffer_price(e.target.value)}
             />
           </fieldset>
 
           <fieldset className="fieldset">
             <label className="label">Precio sin descuento:</label>
             <input
-              className="price"
+              placeholder="00.00 €"
+              className="input"
               type="number"
               name="offer_price"
-              id="offer_price"
-              value={offer_price}
-              required
-              onChange={(e) => setOffer_price(e.target.value)}
+              id="price"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
             />
           </fieldset>
 
           <fieldset className="fieldset">
             <label className="label">Plataforma:</label>
             <input
-              className="plataform"
+              placeholder="Plataforma"
+              className="input"
               type="text"
               name="plataform"
               id="plataform"
               value={plataform}
-              required
               onChange={(e) => setPlataform(e.target.value)}
             />
           </fieldset>
@@ -134,7 +141,7 @@ export const PostOffer = () => {
           <fieldset className="fieldset">
             <label className="label">Caducidad de la oferta:</label>
             <input
-              className="offer_expiry"
+              className="input"
               type="date"
               name="offer_expiry"
               id="offer_expiry"
@@ -144,7 +151,9 @@ export const PostOffer = () => {
             />
           </fieldset>
 
-          <button className="button">Continuar</button>
+          <section className="button-wrap">
+            <button className="button">Continuar</button>
+          </section>
           {error ? <p className="error">{error}</p> : null}
         </form>
       </section>
@@ -158,6 +167,12 @@ export const PostOffer = () => {
       >
         ➕
       </button>
+
+      <PostOfferImage
+        offerId={offerId}
+        openImage={openImage}
+        setOpenImage={setOpenImage}
+      />
     </section>
   );
 };
