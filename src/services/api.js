@@ -81,6 +81,35 @@ export const postOfferImageService = async (token, id, image) => {
   }
 };
 
+export const patchOfferService = async (
+  token,
+  id,
+  { url, title, descrip, offer_price, price, plataform, offer_expiry }
+) => {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}offer/${id}`, {
+    method: "PATCH",
+    headers: {
+      Authorization: token,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      url,
+      title,
+      descrip,
+      price,
+      offer_price,
+      plataform,
+      offer_expiry,
+    }),
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+};
+
 // USERS
 // Get user info
 
