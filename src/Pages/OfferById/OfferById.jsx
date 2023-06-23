@@ -20,6 +20,9 @@ import { useAuth } from "../../contexts/AuthContext";
 import { useGetOfferById } from "../../services/api";
 
 export const OfferById = () => {
+  // Document Title
+  document.title = "GodLinks: Oferta ";
+
   const { id } = useParams();
   const { token } = useAuth();
   const { offers, loading, error } = useGetOfferById(id, token);

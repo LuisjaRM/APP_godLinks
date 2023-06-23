@@ -18,6 +18,9 @@ import { useAuth } from "../../contexts/AuthContext";
 import { useGetUserInfo } from "../../services/api";
 
 export const UserInfo = () => {
+  // Document Title
+  document.title = "Mis ofertas";
+
   const { token } = useAuth();
   const { id } = useParams();
 

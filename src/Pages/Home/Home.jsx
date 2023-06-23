@@ -15,6 +15,9 @@ import { useAuth } from "../../contexts/AuthContext";
 import { useGetDailyOffers } from "../../services/api";
 
 export const Home = () => {
+  // Document Title
+  document.title = "GodLinks";
+
   const { token } = useAuth();
   const { offers, loading, error } = useGetDailyOffers(token);
 

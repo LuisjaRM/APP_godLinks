@@ -26,6 +26,9 @@ import {
 } from "../../services/api";
 
 export const UserProfile = () => {
+  // Document Title
+  document.title = "Mi perfil";
+
   const { token } = useAuth();
 
   //State of navigate
