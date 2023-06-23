@@ -20,8 +20,6 @@ import { UserProfile } from "./Pages/UserProfile/UserProfile";
 import { OfferById } from "./Pages/OfferById/OfferById";
 import { NotFound } from "./Pages/NotFound/NotFound";
 import { UserInfo } from "./Pages/UserInfo/UserInfo";
-import { ResetPassword } from "./Pages/Recover&ResetPassword/ResetPassword";
-import { RecoverPassword } from "./Pages/Recover&ResetPassword/RecoverPassword";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -33,8 +31,6 @@ const router = createBrowserRouter(
       <Route path="offerById/:id" element={<OfferById />} />
       <Route path="userInfo/:id" element={<UserInfo />} />
       <Route path="profile" element={<UserProfile />} />
-      <Route path="recoverPass" element={<RecoverPassword />} />
-      <Route path="resetPass" element={<ResetPassword />} />
       <Route path="*" element={<NotFound />} />
     </Route>
   )

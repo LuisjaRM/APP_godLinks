@@ -12,9 +12,14 @@ import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 
 import { useAuth } from "../../contexts/AuthContext";
 
+// Navigate
+
+import { useNavigate } from "react-router";
+
 // Fetchs
 
 import {
+  DeleteUserService,
   ModifyPasswordService,
   ModifyUserService,
   useGetMyData,
@@ -23,15 +28,18 @@ import {
 export const UserProfile = () => {
   const { token } = useAuth();
 
+  //State of navigate
+  const navigate = useNavigate();
+
+  // State of error
+  const [, setError] = useState("");
+
   // States of Forms
   const [avatar, setAvatar] = useState("");
   const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
-
-  // State of error
-  const [, setError] = useState("");
 
   // States to hide
 
@@ -67,7 +75,7 @@ export const UserProfile = () => {
     }
   };
 
-  // handle edit user
+  // Handle edit user
 
   const handleFormUser = async (e) => {
     e.preventDefault();
@@ -80,7 +88,7 @@ export const UserProfile = () => {
     }
   };
 
-  // handle edit email
+  // Handle edit email
 
   const handleFormEmail = async (e) => {
     e.preventDefault();
@@ -94,16 +102,23 @@ export const UserProfile = () => {
     }
   };
 
-  // handle edit password
+  // Handle edit password
   const handleFormPassword = async (e) => {
     e.preventDefault();
     try {
-      await ModifyPasswordService({ oldPassword, newPassword });
+      await ModifyPasswordService({ oldPassword, newPassword }, token);
       setHideFormPassword(!hideFormPassword);
       refresh();
     } catch (error) {
       setError(error.message);
     }
+  };
+
+  // Handle delete user
+  const handleFormDelete = async (e) => {
+    e.preventDefault();
+    await DeleteUserService(token, dataUser.id);
+    navigate("/allOffers");
   };
 
   // JSX
@@ -124,14 +139,14 @@ export const UserProfile = () => {
           onSubmit={handleFormAvatar}
         >
           <fieldset className="fieldset">
-            <label className="label" htmlFor="image">
+            <label className="label" htmlFor="avatar">
               Nuevo Avatar:
             </label>
             <input
               className="image-picker"
               type="file"
-              name="image"
-              id="image"
+              name="avatar"
+              id="avatar"
               required
               onChange={(e) => setAvatar(e.target.files[0])}
             />
@@ -237,7 +252,7 @@ export const UserProfile = () => {
               className="input"
               type="password"
               name="password"
-              id="password"
+              id="oldPassword"
               value={oldPassword}
               required
               onChange={(e) => setOldPassword(e.target.value)}
@@ -265,8 +280,9 @@ export const UserProfile = () => {
         >
           ✏️
         </button>
-
-        <button>Eliminar cuenta</button>
+        <form onSubmit={handleFormDelete}>
+          <button>Eliminar cuenta</button>
+        </form>
       </section>
     </section>
   );
