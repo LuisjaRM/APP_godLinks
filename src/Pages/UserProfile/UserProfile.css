@@ -5,6 +5,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 1rem 0;
+  min-height: calc(100vh - 7.5vh - 7.5vh - 6vh);
   background-color: rgba(150, 22, 0, 0.575);
 }
 
@@ -23,6 +24,14 @@
   box-shadow: 1px 1px 10px black;
 }
 
-/* .hide {
+
+.user-image-profile.hide,
+.modify-image-form.hide,
+.user-name-profile.hide,
+.modify-user-form.hide,
+.user-email-profile.hide,
+.modify-email-form.hide,
+.user-password-profile.hide,
+.modify-password-form.hide {
   display: none;
-} */
+} 

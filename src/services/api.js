@@ -244,7 +244,7 @@ export const ModifyPasswordService = async (
   { oldPassword, newPassword },
   token
 ) => {
-  const response = await fetch(`${import.meta.env.VITE_BACKEND}user`, {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}password`, {
     method: "PATCH",
     headers: {
       Authorization: token,
@@ -254,6 +254,22 @@ export const ModifyPasswordService = async (
       oldPassword,
       newPassword,
     }),
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+};
+
+// Delete user
+export const DeleteUserService = async (token, id) => {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}user/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: token,
+    },
   });
 
   const json = await response.json();
