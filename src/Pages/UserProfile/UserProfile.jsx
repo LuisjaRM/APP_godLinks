@@ -12,6 +12,7 @@ import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 
 import { useAuth } from "../../contexts/AuthContext";
 import { useOpen } from "../../contexts/OpenContext";
+import { useShow } from "../../contexts/ShowContext";
 
 // Navigate
 
@@ -32,6 +33,7 @@ export const UserProfile = () => {
   // Context
 
   const [open, setOpen] = useOpen();
+  const [show, setShow] = useShow();
 
   // Document Title
   document.title = "Mi perfil";
@@ -121,6 +123,7 @@ export const UserProfile = () => {
     try {
       await ModifyPasswordService({ oldPassword, newPassword }, token);
       setHideFormPassword(!hideFormPassword);
+      setShow(!show);
       navigate("/");
       logout();
     } catch (error) {
