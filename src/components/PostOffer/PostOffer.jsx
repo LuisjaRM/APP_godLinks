@@ -6,8 +6,8 @@ import { useState } from "react";
 
 // Contexts
 
-import { useShow } from "../../contexts/ShowContext";
 import { useAuth } from "../../contexts/AuthContext";
+import { useShowLogin } from "../../contexts/ShowLoginContext";
 
 // Fetchs
 
@@ -15,11 +15,12 @@ import { postOfferService } from "../../services/api";
 import { PostOfferImage } from "../PostOfferImage/PostOfferImage";
 
 export const PostOffer = () => {
-  const [open, setOpen] = useState();
-  const [openImage, setOpenImage] = useState();
-  const [offerId, setOfferId] = useState();
   const { user, token } = useAuth();
-  const [show, setShow] = useShow();
+  const [showLogin, setShowLogin] = useShowLogin();
+
+  const [openPostOffer, setOpenPostOffer] = useState();
+  const [openPostImage, setOpenPostImage] = useState();
+  const [offerId, setOfferId] = useState();
 
   const [url, setUrl] = useState("");
   const [title, setTitle] = useState("");
@@ -41,8 +42,8 @@ export const PostOffer = () => {
 
       setOfferId(data.id);
 
-      setOpen(false);
-      setOpenImage(!openImage);
+      setOpenPostOffer(false);
+      setOpenPostImage(!openPostImage);
     } catch (error) {
       setError(error.message);
     }
@@ -50,12 +51,12 @@ export const PostOffer = () => {
 
   return (
     <section
-      onClick={() => setOpen(false)}
-      className={`postOffer-body ${open ? "show" : ""}`}
+      onClick={() => setOpenPostOffer(false)}
+      className={`postOffer-body ${openPostOffer ? "show" : ""}`}
     >
       <section
         onClick={(e) => e.stopPropagation()}
-        className={`postOffer ${open ? "show" : ""}`}
+        className={`postOffer ${openPostOffer ? "show" : ""}`}
       >
         <form className="post-form" onSubmit={handleForm}>
           <fieldset className="fieldset">
@@ -161,17 +162,17 @@ export const PostOffer = () => {
       <button
         onClick={(e) => {
           e.stopPropagation();
-          user ? setOpen(!open) : setShow(!show);
+          user ? setOpenPostOffer(!openPostOffer) : setShowLogin(!showLogin);
         }}
-        className={`postOffer-button ${open ? "show" : ""}`}
+        className={`postOffer-button ${openPostOffer ? "show" : ""}`}
       >
         ➕
       </button>
 
       <PostOfferImage
         offerId={offerId}
-        openImage={openImage}
-        setOpenImage={setOpenImage}
+        openPostImage={openPostImage}
+        setOpenPostImage={setOpenPostImage}
       />
     </section>
   );

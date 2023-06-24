@@ -5,11 +5,11 @@ import { Outlet } from "react-router-dom";
 // Components
 
 import { Header } from "./components/Header/Header";
-import { Footer } from "./components/Footer/Footer";
 import { Filter } from "./components/Filter/Filter";
 import { LoginOrSignup } from "./components/LoginOrSignup/LoginOrSignup";
 import { VerifyUser } from "./components/VerifyUser/VerifyUser";
 import { RecoverPassword } from "./components/RecoverPassword.jsx/RecoverPassword";
+import { Footer } from "./components/Footer/Footer";
 
 export const Root = () => {
   return (

@@ -2,17 +2,21 @@ import "./UserButton.css";
 
 // Contexts
 
-import { useShow } from "../../contexts/ShowContext";
+import { useShowLogin } from "../../contexts/ShowLoginContext";
 import { useAuth } from "../../contexts/AuthContext";
-import { UserNav } from "../UserNav/UserNav";
 
 export const UserButton = () => {
-  const [show, setShow] = useShow();
+  const [showLogin, setShowLogin] = useShowLogin();
   const { user } = useAuth();
 
   return (
     <>
-      <button className="user-button" onClick={() => setShow(!show)}>
+      <button
+        className={`user-button ${user ? "login" : ""} ${
+          showLogin ? "openNav" : ""
+        }`}
+        onClick={() => setShowLogin(!showLogin)}
+      >
         {user ? (
           <img
             className="user-image"
@@ -27,8 +31,6 @@ export const UserButton = () => {
           "👩‍🦲"
         )}
       </button>
-
-      <UserNav />
     </>
   );
 };

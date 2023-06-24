@@ -6,16 +6,16 @@ import { useState } from "react";
 
 // Contexts
 
-import { useShow } from "../../contexts/ShowContext";
-import { useOpen } from "../../contexts/OpenContext";
+import { useShowLogin } from "../../contexts/ShowLoginContext";
+import { useShowVerify } from "../../contexts/ShowVerifyContext";
 
 // Fetchs
 
 import { registerUserService } from "../../services/api";
 
 export const Signup = () => {
-  const [show, setShow] = useShow();
-  const [open, setOpen] = useOpen();
+  const [showLogin, setShowLogin] = useShowLogin();
+  const [showVerify, setShowVerify] = useShowVerify();
 
   const [email, setEmail] = useState("");
   const [pass1, setPass1] = useState("");
@@ -33,8 +33,8 @@ export const Signup = () => {
 
     try {
       await registerUserService({ email, password: pass1, user });
-      setOpen(!open);
-      setShow(!show);
+      setShowVerify(!showVerify);
+      setShowLogin(!showLogin);
     } catch (error) {
       setError(error.message);
     }
@@ -112,7 +112,7 @@ export const Signup = () => {
         </fieldset>
 
         <button className="button">Continuar</button>
-        {error ? <p className="error">{error}</p> : null}
+        {error ? <p className="error">⚠️ {error}</p> : null}
       </form>
     </section>
   );

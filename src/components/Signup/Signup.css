@@ -1,35 +1,43 @@
 .signup {
-  padding: 1rem;
-}
-
-.signup .title {
-  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .signup .signup-form {
-  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .signup .fieldset {
-  border: none;
-  margin-bottom: 1rem;
-}
-
-.signup .label {
   display: flex;
-  margin-bottom: 0.5rem;
+  flex-direction: column;
+  gap: 0.25rem;
+  border: none;
 }
 
 .signup .input {
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.25rem;
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px black;
 }
 
 .signup .button {
+  cursor: pointer;
+  margin-top: 0.5rem;
+  width: fit-content;
   padding: 0.25rem 1rem;
+  background-color: khaki;
+  font-weight: bold;
+  border: none;
+  box-shadow: 1px 1px 10px black;
 }
 
 .signup .error {
-  margin-top: 1rem;
-  color: var(--error);
+  margin-top: 0.5rem;
+  color: red;
 }

@@ -4,7 +4,7 @@ import { useContext } from "react";
 const NightModeContext = React.createContext();
 
 export const NightModeProvider = ({ children }) => {
-  const [nightMode, setNightMode] = useState(false);
+  const [nightMode, setNightMode] = useState(true);
 
   const toggle = () => setNightMode(!nightMode);
 

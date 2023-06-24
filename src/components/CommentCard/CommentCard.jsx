@@ -1,4 +1,7 @@
 import "./CommentCard.css";
+
+// React
+
 import { Link } from "react-router-dom";
 
 export const CommentsCard = ({ comment }) => {

@@ -1,4 +1,5 @@
 .postOffer-body.show {
+  /* border: 1px solid red; */
   position: fixed;
   top: 0;
   bottom: 0;
@@ -8,8 +9,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
   transform: translateY(7%) translateX(-117%) rotateX(0deg);
   transition: transform 0.8s cubic-bezier(0.78, 0.95, 0.4, 1.6);
 }
@@ -67,6 +66,7 @@
 
 .postOffer-body .postOffer.show .post-form .fieldset .input {
   padding: 0.25rem;
+  border-radius: 5px;
 }
 
 #price {
@@ -91,8 +91,8 @@
   padding: 0.25rem 1rem;
   border: none;
   box-shadow: 1px 1px 10px black;
-  background-color: black;
-  color: white;
+  background-color: rgb(1, 1, 97);
+  color: yellow;
 }
 
 .postOffer-body .postOffer.show .post-form .error {
