@@ -219,17 +219,27 @@ export const ResetPasswordService = async ({ recoverCode, newPassword }) => {
 
 // Modify user info
 export const ModifyUserService = async ({ email, user, avatar }, token) => {
-  const response = await fetch(`${import.meta.env.VITE_BACKEND}user`, {
-    method: "PATCH",
-    headers: {
+  let headers;
+  let body;
+  if (avatar) {
+    headers = { Authorization: token };
+    body = new FormData();
+    body.append("avatar", avatar);
+  } else {
+    headers = {
       Authorization: token,
       "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
+    };
+    body = JSON.stringify({
       email,
       user,
-      avatar,
-    }),
+    });
+  }
+
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}user`, {
+    method: "PATCH",
+    headers: headers,
+    body: body,
   });
 
   const json = await response.json();

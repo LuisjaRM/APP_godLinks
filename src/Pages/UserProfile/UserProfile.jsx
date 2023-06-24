@@ -11,6 +11,7 @@ import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
+import { useOpen } from "../../contexts/OpenContext";
 
 // Navigate
 
@@ -26,10 +27,14 @@ import {
 } from "../../services/api";
 
 export const UserProfile = () => {
+  const { token, logout } = useAuth();
+
+  // Context
+
+  const [open, setOpen] = useOpen();
+
   // Document Title
   document.title = "Mi perfil";
-
-  const { token } = useAuth();
 
   //State of navigate
   const navigate = useNavigate();
@@ -71,6 +76,7 @@ export const UserProfile = () => {
     e.preventDefault();
     try {
       await ModifyUserService({ avatar }, token);
+      setAvatar("");
       setHideFormAvatar(!hideFormAvatar);
       refresh();
     } catch (error) {
@@ -84,6 +90,7 @@ export const UserProfile = () => {
     e.preventDefault();
     try {
       await ModifyUserService({ user }, token);
+      setUser("");
       setHideFormUser(!hideFormUser);
       refresh();
     } catch (error) {
@@ -98,8 +105,11 @@ export const UserProfile = () => {
 
     try {
       await ModifyUserService({ email }, token);
+      setEmail("");
       setHideFormEmail(!hideFormEmail);
-      refresh();
+      setOpen(!open);
+      navigate("/");
+      logout();
     } catch (error) {
       setError(error.message);
     }
@@ -111,7 +121,8 @@ export const UserProfile = () => {
     try {
       await ModifyPasswordService({ oldPassword, newPassword }, token);
       setHideFormPassword(!hideFormPassword);
-      refresh();
+      navigate("/");
+      logout();
     } catch (error) {
       setError(error.message);
     }
@@ -121,7 +132,8 @@ export const UserProfile = () => {
   const handleFormDelete = async (e) => {
     e.preventDefault();
     await DeleteUserService(token, dataUser.id);
-    navigate("/allOffers");
+    navigate("/");
+    logout();
   };
 
   // JSX
