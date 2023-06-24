@@ -7,21 +7,20 @@ import { useNavigate } from "react-router";
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
-import { useShow } from "../../contexts/ShowContext";
+import { useShowLogin } from "../../contexts/ShowLoginContext";
 
 export const UserNav = () => {
   const navigate = useNavigate();
-  const { logout } = useAuth();
-  const { user } = useAuth();
-  const [show, setShow] = useShow();
+  const { user, logout } = useAuth();
+  const [showLogin, setShowLogin] = useShowLogin();
 
   return (
-    show &&
+    showLogin &&
     user && (
       <section
         className="modal-user"
         onClick={() => {
-          setShow(!show);
+          setShowLogin(!showLogin);
         }}
       >
         <section className="userNav-wrap" onClick={(e) => e.stopPropagation()}>
@@ -30,7 +29,7 @@ export const UserNav = () => {
               className="link-perfile"
               onClick={() => {
                 navigate("/profile");
-                setShow(!show);
+                setShowLogin(!showLogin);
               }}
             >
               Mi perfil
@@ -39,7 +38,7 @@ export const UserNav = () => {
             <a
               className="link-perfile"
               onClick={() => {
-                setShow(!show);
+                setShowLogin(!showLogin);
                 navigate("/userInfo/:id");
               }}
             >
@@ -50,7 +49,7 @@ export const UserNav = () => {
               className="logout-perfile"
               onClick={() => {
                 logout();
-                setShow(!show);
+                setShowLogin(!showLogin);
                 navigate("/");
               }}
             >

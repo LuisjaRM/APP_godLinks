@@ -1,4 +1,7 @@
 import "./Footer.css";
+
+// Contexts
+
 import { useNightMode } from "../../contexts/NightModeContext";
 
 export const Footer = () => {

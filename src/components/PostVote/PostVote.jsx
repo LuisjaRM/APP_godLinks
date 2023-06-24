@@ -7,7 +7,7 @@ import { useState } from "react";
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
-import { useShow } from "../../contexts/ShowContext";
+import { useShowLogin } from "../../contexts/ShowLoginContext";
 
 // Fetchs
 
@@ -17,13 +17,15 @@ export const PostVote = ({ votes, offerId, userId }) => {
   const rating = votes ? Number(votes) : 0;
 
   const { user, token } = useAuth();
-  const [show, setShow] = useShow();
+  const [showLogin, setShowLogin] = useShowLogin();
   const [userVote, setUserVote] = useState(0);
   const [error, setError] = useState();
 
   const postVote = async (vote) => {
     try {
-      user ? await postVoteService(token, offerId, { vote }) : setShow(!show);
+      user
+        ? await postVoteService(token, offerId, { vote })
+        : setShowLogin(!showLogin);
     } catch (error) {
       setError(error.message);
       setTimeout(() => {

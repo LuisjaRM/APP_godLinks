@@ -7,23 +7,23 @@ import { Signup } from "../Signup/Signup";
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
-import { useShow } from "../../contexts/ShowContext";
+import { useShowLogin } from "../../contexts/ShowLoginContext";
 import { useIsLogin } from "../../contexts/IsLoginContext";
 
 export const LoginOrSignup = () => {
   const { user } = useAuth();
-  const [show, setShow] = useShow();
+  const [showLogin, setShowLogin] = useShowLogin();
   const [isLogin, setIsLogin] = useIsLogin(true);
 
   return (
     !user &&
-    show && (
+    showLogin && (
       <>
         <section
           className="modal"
           onClick={() => {
             setIsLogin(true);
-            setShow(!show);
+            setShowLogin(!showLogin);
           }}
         >
           <section className="modal-body">

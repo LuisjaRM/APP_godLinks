@@ -6,8 +6,8 @@ import { useState } from "react";
 
 // Context
 
-import { useShowRecover } from "../../contexts/ShowRecover";
-import { useShow } from "../../contexts/ShowContext";
+import { useShowLogin } from "../../contexts/ShowLoginContext";
+import { useShowRecover } from "../../contexts/ShowRecoverContext";
 
 // Fetchs
 
@@ -17,8 +17,7 @@ import {
 } from "../../services/api";
 
 export const RecoverPassword = () => {
-  // Recover
-  const [show, setShow] = useShow();
+  const [showLogin, setShowLogin] = useShowLogin();
   const [showRecover, setShowRecover] = useShowRecover();
 
   const [email, setEmail] = useState("");
@@ -60,6 +59,7 @@ export const RecoverPassword = () => {
     <>
       <section
         onClick={() => {
+          setEmail("");
           setShowRecover(!showRecover);
         }}
         className={`modal-recover-password ${showRecover ? "show" : ""}`}
@@ -68,21 +68,23 @@ export const RecoverPassword = () => {
           onClick={(e) => e.stopPropagation()}
           className={"recover-password"}
         >
-          <h3 className="title">¿Has olvidado tu contraseña?</h3>
+          <h3 className="title">Recupera tu contraseña</h3>
           <form className="recoverPassword-form" onSubmit={handleFormRecover}>
-            <label className="label" htmlFor="email">
-              Introduce tu correo para
-            </label>
-            <input
-              placeholder="Introduce tu correo electrónico"
-              className="input"
-              type="email"
-              name="email"
-              id="recoverEmail"
-              value={email}
-              required
-              onChange={(e) => setEmail(e.target.value)}
-            />
+            <fieldset className="fieldset">
+              <label className="label" htmlFor="email">
+                Introduce tu correo:
+              </label>
+              <input
+                placeholder="example@mail.com"
+                className="input"
+                type="email"
+                name="email"
+                id="recoverEmail"
+                value={email}
+                required
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </fieldset>
             <button
               onClick={() => {
                 setShowReset(!showReset);
@@ -156,7 +158,7 @@ export const RecoverPassword = () => {
 
             <button
               onClick={() => {
-                setShow(!show);
+                setShowLogin(!showLogin);
                 setShowReset(!showReset);
               }}
               className="button"

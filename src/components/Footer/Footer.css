@@ -5,8 +5,6 @@ footer {
   align-items: center;
   gap: 1rem;
   padding: 0 1rem;
-  background-color: rgb(56, 56, 56);
-  color: white;
   border-top: 2px solid black;
 }
 
@@ -16,8 +14,8 @@ footer .title {
 }
 
 .dark {
-  background-color: black;
-  color: rgb(255, 255, 255);
+  background-color: rgb(1, 1, 97);
+  color: khaki;
 }
 
 .light {

@@ -11,8 +11,8 @@ import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
-import { useOpen } from "../../contexts/OpenContext";
-import { useShow } from "../../contexts/ShowContext";
+import { useShowLogin } from "../../contexts/ShowLoginContext";
+import { useShowVerify } from "../../contexts/ShowVerifyContext";
 
 // Navigate
 
@@ -32,16 +32,18 @@ export const UserProfile = () => {
 
   // Context
 
-  const [open, setOpen] = useOpen();
-  const [show, setShow] = useShow();
+  const [showLogin, setShowLogin] = useShowLogin();
+  const [showVerify, setShowVerify] = useShowVerify();
 
   // Document Title
   document.title = "Mi perfil";
 
   //State of navigate
+
   const navigate = useNavigate();
 
   // State of error
+
   const [, setError] = useState("");
 
   // States of Forms
@@ -109,7 +111,7 @@ export const UserProfile = () => {
       await ModifyUserService({ email }, token);
       setEmail("");
       setHideFormEmail(!hideFormEmail);
-      setOpen(!open);
+      setShowVerify(!showVerify);
       navigate("/");
       logout();
     } catch (error) {
@@ -123,7 +125,7 @@ export const UserProfile = () => {
     try {
       await ModifyPasswordService({ oldPassword, newPassword }, token);
       setHideFormPassword(!hideFormPassword);
-      setShow(!show);
+      setShowLogin(!showLogin);
       navigate("/");
       logout();
     } catch (error) {
