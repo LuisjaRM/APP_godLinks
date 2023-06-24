@@ -27,7 +27,6 @@ import {
 } from "../../services/api";
 
 export const UserProfile = () => {
-
   const { token, logout } = useAuth();
 
   // Context
@@ -77,6 +76,7 @@ export const UserProfile = () => {
     e.preventDefault();
     try {
       await ModifyUserService({ avatar }, token);
+      setAvatar("");
       setHideFormAvatar(!hideFormAvatar);
       refresh();
     } catch (error) {
@@ -90,6 +90,7 @@ export const UserProfile = () => {
     e.preventDefault();
     try {
       await ModifyUserService({ user }, token);
+      setUser("");
       setHideFormUser(!hideFormUser);
       refresh();
     } catch (error) {
@@ -104,6 +105,7 @@ export const UserProfile = () => {
 
     try {
       await ModifyUserService({ email }, token);
+      setEmail("");
       setHideFormEmail(!hideFormEmail);
       setOpen(!open);
       navigate("/");
