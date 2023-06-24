@@ -27,7 +27,7 @@ export const UserNav = () => {
         <section className="userNav-wrap" onClick={(e) => e.stopPropagation()}>
           <nav className="user-nav">
             <a
-              className="link"
+              className="link-perfile"
               onClick={() => {
                 navigate("/profile");
                 setShow(!show);
@@ -37,7 +37,7 @@ export const UserNav = () => {
             </a>
 
             <a
-              className="link"
+              className="link-perfile"
               onClick={() => {
                 setShow(!show);
                 navigate("/userInfo/:id");
@@ -47,7 +47,7 @@ export const UserNav = () => {
             </a>
 
             <a
-              className="logout"
+              className="logout-perfile"
               onClick={() => {
                 logout();
                 setShow(!show);
