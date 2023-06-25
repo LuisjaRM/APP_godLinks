@@ -1,5 +1,16 @@
+.postOffer-body.show .closed-button {
+  cursor: pointer;
+  position: absolute;
+  top: 0.25rem;
+  right: 0.5rem;
+  padding: 0.1rem;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  font-weight: bold;
+  font-size: 110%;
+}
+
 .postOffer-body.show {
-  /* border: 1px solid red; */
   position: fixed;
   top: 0;
   bottom: 0;

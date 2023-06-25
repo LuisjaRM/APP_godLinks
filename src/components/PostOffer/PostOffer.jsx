@@ -50,14 +50,17 @@ export const PostOffer = () => {
   };
 
   return (
-    <section
-      onClick={() => setOpenPostOffer(false)}
-      className={`postOffer-body ${openPostOffer ? "show" : ""}`}
-    >
+    <section className={`postOffer-body ${openPostOffer ? "show" : ""}`}>
       <section
         onClick={(e) => e.stopPropagation()}
         className={`postOffer ${openPostOffer ? "show" : ""}`}
       >
+        <button
+          onClick={() => setOpenPostOffer(false)}
+          className="closed-button"
+        >
+          X
+        </button>
         <form className="post-form" onSubmit={handleForm}>
           <fieldset className="fieldset">
             <label className="label">Enlace:</label>
