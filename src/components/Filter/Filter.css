@@ -1,9 +1,9 @@
 .filterOffers {
-  height: 6vh;
+  height: 7.5vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(4, 4, 133);
+  background-color: rgb(1, 1, 48);
   border-bottom: 1px solid khaki;
 }
 
@@ -16,7 +16,8 @@
 .filterOffers .filter-list .link {
   cursor: pointer;
   font-size: 80%;
-  background-color: khaki;
+  font-weight: bold;
+  background-color: rgb(192, 183, 105);
   text-decoration: none;
   color: black;
   border-radius: 7.5px;

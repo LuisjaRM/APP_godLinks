@@ -26,7 +26,7 @@ export const Header = () => {
       */}
 
       <button className="button" onClick={() => toggleNightMode()}>
-        {nightMode ? "🌌" : "🌞"}
+        {nightMode ? "🌙" : "🌞"}
       </button>
     </header>
   );

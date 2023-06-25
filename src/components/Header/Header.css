@@ -4,8 +4,8 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 0 1rem;
-  background-color: rgb(1, 1, 97);
-  box-shadow: 2px 0px 10px khaki;
+  background-color: rgb(1, 1, 75);
+  border-bottom: 1px solid khaki;
   position: relative;
 }
 
@@ -14,7 +14,7 @@ header .button {
   width: 28px;
   height: 28px;
   padding: 0.25rem;
-  background-color: rgb(1, 1, 97);
+  background-color: rgb(1, 1, 75);
   border: 1px solid khaki;
   border-radius: 50%;
   box-shadow: 1px 1px 10px yellow;

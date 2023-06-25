@@ -2,9 +2,11 @@ import "./CommentCard.css";
 
 // React
 
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 export const CommentsCard = ({ comment }) => {
+  const navigate = useNavigate();
+
   // Date Logic
   const timeNow = Date.now();
   const nowDate = new Date(timeNow);
@@ -42,21 +44,25 @@ export const CommentsCard = ({ comment }) => {
   return (
     <section className="comment-card">
       <section className="header">
-        <Link className="link" to="/user-info">
-          <section className="user-info">
-            <img
-              className="user-image"
-              src={
-                comment.avatar
-                  ? `${import.meta.env.VITE_BACKEND}uploads/${comment.avatar}`
-                  : "/android-icon-36x36.png"
-              }
-              alt={comment.user}
-            />
+        <section
+          className="user-info"
+          onClick={(e) => {
+            e.stopPropagation();
+            navigate(`/userInfo/${comment.user_id}`);
+          }}
+        >
+          <img
+            className="user-image"
+            src={
+              comment.avatar
+                ? `${import.meta.env.VITE_BACKEND}uploads/${comment.avatar}`
+                : "/android-icon-36x36.png"
+            }
+            alt={comment.user}
+          />
 
-            <p className="user-name">{comment.user}</p>
-          </section>
-        </Link>
+          <p className="user-name">{comment.user}</p>
+        </section>
 
         <p>
           hace {timeSinceCreated_at} {text}
