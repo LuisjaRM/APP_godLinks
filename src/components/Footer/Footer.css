@@ -1,12 +1,11 @@
 footer {
   height: 7.5vh;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 1rem;
   padding: 0 1rem;
   border-top: 1px solid khaki;
-  box-shadow: 2px 0px 10px khaki;
 }
 
 footer .title {
@@ -15,8 +14,8 @@ footer .title {
 }
 
 .dark {
-  background-color: rgb(1, 1, 97);
-  color: khaki;
+  background-color: rgb(1, 1, 75);
+  color: rgb(136, 124, 14);
 }
 
 .light {

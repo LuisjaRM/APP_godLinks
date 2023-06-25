@@ -11,6 +11,7 @@
 }
 
 .comment-card .header .user-info {
+  cursor: pointer;
   display: flex;
   gap: 0.5rem;
   align-items: center;
@@ -26,6 +27,11 @@
 
 .comment-card .header .user-info .user-name {
   font-weight: bold;
+  color: khaki;
+}
+
+.comment-card .header .user-info .user-name:hover {
+  text-decoration: underline;
 }
 
 .comment-card .main {
@@ -41,5 +47,6 @@
 }
 
 .comment-card .footer .like-button {
+  cursor: pointer;
   border: none;
 }

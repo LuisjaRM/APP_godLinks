@@ -203,7 +203,7 @@ export const OfferCard = ({ offer }) => {
             onClick={(e) => e.stopPropagation()}
             href={offer.url}
           >
-            Ir a la oferta 🔗
+            Link 🔗
           </a>
         </button>
 

@@ -10,11 +10,7 @@ export const Footer = () => {
 
   return (
     <footer className={nightdayMode ? "dark" : "light"}>
-      <p>Somos los mejores</p>
-
-      <h2 className="title">GodLinks SA. {fecha}</h2>
-
-      <p>Y bueno y que?</p>
+      <h2 className="title">GodLinks S.A., {fecha}</h2>
     </footer>
   );
 };
