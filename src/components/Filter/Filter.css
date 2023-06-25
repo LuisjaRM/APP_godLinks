@@ -1,12 +1,13 @@
 .filterOffers {
   height: 6vh;
-  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: rgb(4, 4, 133);
-  border-bottom: 2px solid black;
+  border-bottom: 1px solid khaki;
 }
 
 .filterOffers .filter-list {
-  height: 100%;
   display: flex;
   justify-content: center;
   gap: 1rem;
@@ -14,14 +15,12 @@
 
 .filterOffers .filter-list .link {
   cursor: pointer;
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(240, 232, 160);
-  border-radius: 7.5px;
+  font-size: 80%;
+  background-color: khaki;
   text-decoration: none;
   color: black;
+  border-radius: 7.5px;
+  width: 4.5rem;
+  height: 4.5vh;
   text-align: center;
-  font-size: 75%;
 }

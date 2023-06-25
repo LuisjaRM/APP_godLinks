@@ -12,7 +12,7 @@ export const UserButton = () => {
   return (
     <>
       <button
-        className={`user-button ${user ? "login" : ""} ${
+        className={`user-button ${user ? "loged" : ""} ${
           showLogin ? "openNav" : ""
         }`}
         onClick={() => setShowLogin(!showLogin)}
