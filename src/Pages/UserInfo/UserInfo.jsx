@@ -27,7 +27,7 @@ export const UserInfo = () => {
   const { dataUser, loading, error, refresh } = useGetUserInfo(token, id);
 
   if (loading) return <p>cargando ofertas...</p>;
-  if (error) return <ErrorMessage message={error} />;
+  if (error) return <ErrorMessage/>;
 
   return (
     <>

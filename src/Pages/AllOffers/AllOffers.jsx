@@ -22,7 +22,7 @@ export const AllOffers = () => {
   const { offers, loading, error } = useGetAllOffers(token);
 
   if (loading) return <p>cargando ofertas...</p>;
-  if (error) return <ErrorMessage message={error} />;
+  if (error) return <ErrorMessage/>;
 
   return (
     <>
