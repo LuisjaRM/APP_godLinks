@@ -65,30 +65,32 @@ export const Signup = () => {
         </fieldset>
 
         <fieldset className="fieldset">
-          <label className="label" htmlFor="pass1">
+          <label className="label" htmlFor="new-password">
             Contraseña:
           </label>
           <input
             placeholder="Introduce tu contraseña"
             className="input"
             type="password"
-            id="pass1"
-            name="pass1"
+            autoComplete="new-password"
+            id="new-password"
+            name="new-password"
             value={pass1}
             required
             onChange={(e) => setPass1(e.target.value)}
           />
         </fieldset>
         <fieldset className="fieldset">
-          <label className="label" htmlFor="pass2">
+          <label className="label" htmlFor="repeat-password">
             Repetir contraseña:
           </label>
           <input
             placeholder="Repite tu contraseña"
             className="input"
             type="password"
-            id="pass2"
-            name="pass2"
+            autoComplete="repeat-password"
+            id="repeat-password"
+            name="repeat-password"
             value={pass2}
             required
             onChange={(e) => setPass2(e.target.value)}
