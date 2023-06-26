@@ -13,7 +13,6 @@ import { NightModeProvider } from "./contexts/NightModeContext.jsx";
 import { ShowLoginProvider } from "./contexts/ShowLoginContext";
 import { ShowVerifyProvider } from "./contexts/ShowVerifyContext";
 import { ShowRecoverProvider } from "./contexts/ShowRecoverContext";
-import { IsLoginProvider } from "./contexts/IsLoginContext";
 import { NavigateToProvider } from "./contexts/NavigateToContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -23,11 +22,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <ShowLoginProvider>
           <ShowVerifyProvider>
             <ShowRecoverProvider>
-              <IsLoginProvider>
-                <NavigateToProvider>
-                  <App />
-                </NavigateToProvider>
-              </IsLoginProvider>
+              <NavigateToProvider>
+                <App />
+              </NavigateToProvider>
             </ShowRecoverProvider>
           </ShowVerifyProvider>
         </ShowLoginProvider>

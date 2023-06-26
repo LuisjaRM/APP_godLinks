@@ -1,6 +1,7 @@
 // react-router-dom
 
 import { Outlet } from "react-router-dom";
+import { useState } from "react";
 
 // Components
 
@@ -12,6 +13,7 @@ import { RecoverPassword } from "./components/RecoverPassword.jsx/RecoverPasswor
 import { Footer } from "./components/Footer/Footer";
 
 export const Root = () => {
+  const [isLogin, setIsLogin] = useState(true);
   return (
     <>
       <Header />
@@ -22,8 +24,8 @@ export const Root = () => {
 
       <main>
         <Outlet />
-        <LoginOrSignup />
-        <VerifyUser />
+        <LoginOrSignup isLogin={isLogin} setIsLogin={setIsLogin} />
+        <VerifyUser setIsLogin={setIsLogin} />
         <RecoverPassword />
       </main>
 

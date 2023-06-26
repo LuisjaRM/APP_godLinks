@@ -348,3 +348,52 @@ export const postCommentService = async (token, id, { comment }) => {
     throw new Error(json.message);
   }
 };
+
+export const patchCommentService = async (token, id, { newComment }) => {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}comment/${id}`, {
+    method: "PATCH",
+    headers: {
+      Authorization: token,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ newComment }),
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+};
+
+export const deleteCommentService = async (token, id) => {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}comment/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: token,
+    },
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+};
+
+// LIKE
+
+export const postLikeService = async (token, id) => {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}like/${id}`, {
+    method: "POST",
+    headers: {
+      Authorization: token,
+    },
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+};

@@ -8,12 +8,10 @@ import { Signup } from "../Signup/Signup";
 
 import { useAuth } from "../../contexts/AuthContext";
 import { useShowLogin } from "../../contexts/ShowLoginContext";
-import { useIsLogin } from "../../contexts/IsLoginContext";
 
-export const LoginOrSignup = () => {
+export const LoginOrSignup = ({ isLogin, setIsLogin }) => {
   const { user } = useAuth();
   const [showLogin, setShowLogin] = useShowLogin();
-  const [isLogin, setIsLogin] = useIsLogin(true);
 
   return (
     !user &&
