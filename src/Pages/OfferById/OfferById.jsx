@@ -29,7 +29,7 @@ export const OfferById = () => {
   const { offers, loading, error, refresh } = useGetOfferById(id, token);
 
   if (loading) return <p>cargando ofertas...</p>;
-  if (error) return <ErrorMessage message={error} />;
+  if (error) return <ErrorMessage/>;
 
   return (
     <>

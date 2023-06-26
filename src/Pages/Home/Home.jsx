@@ -22,7 +22,7 @@ export const Home = () => {
   const { offers, loading, error } = useGetDailyOffers(token);
 
   if (loading) return <p>cargando ofertas...</p>;
-  if (error) return <ErrorMessage message={error} />;
+  if (error) return <ErrorMessage/>;
 
   return (
     <>
