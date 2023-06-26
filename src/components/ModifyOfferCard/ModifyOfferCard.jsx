@@ -115,6 +115,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
     setOffer_expiry("");
     setClickDelete(false);
   };
+
   // Patcs Functions
 
   const changeImage = async () => {
@@ -520,7 +521,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
                   onChange={(e) => setOffer_expiry(e.target.value)}
                 />
               </fieldset>
-              <button>✅</button>
+              <button>✅</button>handleClickCancel
             </form>
 
             <button

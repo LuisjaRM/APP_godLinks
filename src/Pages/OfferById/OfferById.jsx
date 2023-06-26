@@ -46,7 +46,7 @@ export const OfferById = () => {
           <ul className="comments-list">
             {offers.comments?.map((comment) => (
               <li key={comment.id}>
-                <CommentsCard comment={comment} />
+                <CommentsCard comment={comment} refresh={refresh} />
               </li>
             ))}
           </ul>
