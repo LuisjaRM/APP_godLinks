@@ -329,3 +329,22 @@ export const postVoteService = async (token, id, { vote }) => {
     throw new Error(json.message);
   }
 };
+
+// COMMENTS
+
+export const postCommentService = async (token, id, { comment }) => {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}comment/${id}`, {
+    method: "POST",
+    headers: {
+      Authorization: token,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ comment }),
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+};
