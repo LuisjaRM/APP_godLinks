@@ -19,7 +19,7 @@ export const UserProfile = () => {
   const { token } = useAuth();
   const { dataUser, loading, error, refresh } = useGetMyData(token);
 
-  if (loading) return <p>cargando ofertas...</p>;
+  if (loading) return <p>cargando perfil de usuario</p>;
   if (error) return <ErrorMessage message={error} />;
 
   return (
