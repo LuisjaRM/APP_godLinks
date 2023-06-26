@@ -73,6 +73,7 @@ export const Login = () => {
               className="input"
               type="password"
               name="pass"
+              autoComplete="current-password"
               id="current-password"
               value={password}
               required
