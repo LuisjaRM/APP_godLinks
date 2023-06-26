@@ -1,0 +1,35 @@
+.comment-form .fieldset {
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.comment-form .fieldset .label .comment-user-image {
+  margin-top: 0.25rem;
+  width: 28px;
+  height: 28px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 1px 1px 10px black;
+}
+
+.comment-form .fieldset .input {
+  min-height: 5vh;
+  width: 100%;
+  padding-left: 0.25rem;
+  border: 2px solid khaki;
+  border-radius: 5px;
+}
+
+.sendComment-button {
+  position: absolute;
+  right: 0;
+  height: 80%;
+  padding: 0 0.5rem;
+  background-color: khaki;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px black;
+}

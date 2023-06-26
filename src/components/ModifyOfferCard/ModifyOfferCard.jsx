@@ -542,7 +542,10 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
       {showConfirmModal ? (
         <section className="confirmModal" onClick={handleClickAway}>
           <section className="confirmModal-body">
-            <h2>¿Estás seguro de que quieres modificar esta oferta?</h2>
+            <h2>
+              ¿Estás seguro de que quieres
+              {clickDelete ? " borrar" : " modificar"} esta oferta?
+            </h2>
             <section className="buttons">
               <button className="confirm-button" onClick={handleClickConfirm}>
                 Sí
