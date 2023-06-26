@@ -61,7 +61,7 @@ export const CommentsCard = ({ comment, refresh }) => {
 
   const [showEditComment, setShowEditComment] = useState(false);
 
-  const [newComment, setNewComment] = useState("");
+  const [newComment, setNewComment] = useState(comment.comment);
   const [, setError] = useState("");
 
   const handleEditComment = async (e) => {
@@ -181,7 +181,6 @@ export const CommentsCard = ({ comment, refresh }) => {
           >
             <fieldset className="fieldset">
               <input
-                placeholder={comment.comment}
                 className="input"
                 type="text"
                 id={`edit-comment-${comment.id}`}
