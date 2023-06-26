@@ -202,6 +202,8 @@ export const OfferCard = ({ offer }) => {
             className="offer-link"
             onClick={(e) => e.stopPropagation()}
             href={offer.url}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Link 🔗
           </a>
