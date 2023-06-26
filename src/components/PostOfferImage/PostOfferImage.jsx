@@ -13,7 +13,11 @@ import { useAuth } from "../../contexts/AuthContext";
 
 import { postOfferImageService } from "../../services/api";
 
-export const PostOfferImage = ({ offerId, openImage, setOpenImage }) => {
+export const PostOfferImage = ({
+  offerId,
+  openPostImage,
+  setOpenPostImage,
+}) => {
   const { token } = useAuth();
 
   const navigate = useNavigate();
@@ -31,7 +35,7 @@ export const PostOfferImage = ({ offerId, openImage, setOpenImage }) => {
     try {
       await postOfferImageService(token, offerId, image);
 
-      setOpenImage(!openImage);
+      setOpenPostImage(!openPostImage);
 
       windowLocation === "/allOffers" ? navigate("/") : navigate("/allOffers");
     } catch (error) {
@@ -40,10 +44,10 @@ export const PostOfferImage = ({ offerId, openImage, setOpenImage }) => {
   };
 
   return (
-    <section className={`postOfferImage-body ${openImage ? "show" : ""}`}>
+    <section className={`postOfferImage-body ${openPostImage ? "show" : ""}`}>
       <section
         onClick={(e) => e.stopPropagation()}
-        className={`postOfferImage ${openImage ? "show" : ""}`}
+        className={`postOfferImage ${openPostImage ? "show" : ""}`}
       >
         <form className="post-form" onSubmit={handleForm}>
           <fieldset className="fieldset">
@@ -65,7 +69,7 @@ export const PostOfferImage = ({ offerId, openImage, setOpenImage }) => {
           <button
             className="button"
             onClick={() => {
-              setOpenImage(!openImage);
+              setOpenPostImage(!openPostImage);
               windowLocation === "/allOffers"
                 ? navigate("/")
                 : navigate("/allOffers");

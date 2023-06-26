@@ -7,7 +7,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
-import { useShow } from "../../contexts/ShowContext";
+import { useShowLogin } from "../../contexts/ShowLoginContext";
 import { useNavigateTo } from "../../contexts/NavigateToContext";
 
 export const Filter = () => {
@@ -15,14 +15,14 @@ export const Filter = () => {
   const currentPath = location.pathname;
 
   const { user } = useAuth();
-  const [show, setShow] = useShow();
+  const [showLogin, setShowLogin] = useShowLogin();
   const [, setNavigateTo] = useNavigateTo();
 
   const navigate = useNavigate();
 
   const handleClickFavorites = () => {
     setNavigateTo("/favorites");
-    user ? navigate("/favorites") : setShow(!show);
+    user ? navigate("/favorites") : setShowLogin(!showLogin);
   };
 
   return (

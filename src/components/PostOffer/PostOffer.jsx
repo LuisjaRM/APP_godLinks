@@ -6,8 +6,8 @@ import { useState } from "react";
 
 // Contexts
 
-import { useShow } from "../../contexts/ShowContext";
 import { useAuth } from "../../contexts/AuthContext";
+import { useShowLogin } from "../../contexts/ShowLoginContext";
 
 // Fetchs
 
@@ -15,11 +15,12 @@ import { postOfferService } from "../../services/api";
 import { PostOfferImage } from "../PostOfferImage/PostOfferImage";
 
 export const PostOffer = () => {
-  const [open, setOpen] = useState();
-  const [openImage, setOpenImage] = useState();
-  const [offerId, setOfferId] = useState();
   const { user, token } = useAuth();
-  const [show, setShow] = useShow();
+  const [showLogin, setShowLogin] = useShowLogin();
+
+  const [openPostOffer, setOpenPostOffer] = useState();
+  const [openPostImage, setOpenPostImage] = useState();
+  const [offerId, setOfferId] = useState();
 
   const [url, setUrl] = useState("");
   const [title, setTitle] = useState("");
@@ -41,22 +42,25 @@ export const PostOffer = () => {
 
       setOfferId(data.id);
 
-      setOpen(false);
-      setOpenImage(!openImage);
+      setOpenPostOffer(false);
+      setOpenPostImage(!openPostImage);
     } catch (error) {
       setError(error.message);
     }
   };
 
   return (
-    <section
-      onClick={() => setOpen(false)}
-      className={`postOffer-body ${open ? "show" : ""}`}
-    >
+    <section className={`postOffer-body ${openPostOffer ? "show" : ""}`}>
       <section
         onClick={(e) => e.stopPropagation()}
-        className={`postOffer ${open ? "show" : ""}`}
+        className={`postOffer ${openPostOffer ? "show" : ""}`}
       >
+        <button
+          onClick={() => setOpenPostOffer(false)}
+          className="closed-button"
+        >
+          X
+        </button>
         <form className="post-form" onSubmit={handleForm}>
           <fieldset className="fieldset">
             <label className="label">Enlace:</label>
@@ -151,27 +155,27 @@ export const PostOffer = () => {
             />
           </fieldset>
 
+          {error ? <p className="error">⚠️ {error}</p> : null}
           <section className="button-wrap">
             <button className="button">Continuar</button>
           </section>
-          {error ? <p className="error">{error}</p> : null}
         </form>
       </section>
 
       <button
         onClick={(e) => {
           e.stopPropagation();
-          user ? setOpen(!open) : setShow(!show);
+          user ? setOpenPostOffer(!openPostOffer) : setShowLogin(!showLogin);
         }}
-        className={`postOffer-button ${open ? "show" : ""}`}
+        className={`postOffer-button ${openPostOffer ? "show" : ""}`}
       >
         ➕
       </button>
 
       <PostOfferImage
         offerId={offerId}
-        openImage={openImage}
-        setOpenImage={setOpenImage}
+        openPostImage={openPostImage}
+        setOpenPostImage={setOpenPostImage}
       />
     </section>
   );

@@ -11,6 +11,7 @@
 }
 
 .comment-card .header .user-info {
+  cursor: pointer;
   display: flex;
   gap: 0.5rem;
   align-items: center;
@@ -26,6 +27,11 @@
 
 .comment-card .header .user-info .user-name {
   font-weight: bold;
+  color: khaki;
+}
+
+.comment-card .header .user-info .user-name:hover {
+  text-decoration: underline;
 }
 
 .comment-card .main {
@@ -41,5 +47,57 @@
 }
 
 .comment-card .footer .like-button {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+}
+
+.comments-buttons {
+  display: flex;
+  justify-content: end;
+  gap: 0.5rem;
+}
+
+.comment-card .edit-wrap .edit {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+}
+
+.set-comment-form {
+  display: none;
+}
+
+.set-comment-form.show {
+  display: block;
+}
+
+.comment-card .main .comment.hide {
+  display: none;
+}
+
+.set-comment-form.show .fieldset {
+  display: flex;
+  border: none;
+}
+
+.set-comment-form.show .fieldset .input {
+  padding: 0.5rem;
+  border: none;
+  background-color: rgb(66, 66, 94);
+  color: khaki;
+  width: 100%;
+}
+
+.set-comment-form.show .fieldset .edit-comment-button {
+  border: none;
+  border-radius: 5px;
+  background-color: khaki;
+  padding: 0 0.5rem;
+}
+
+.comment-card .delete-wrap .delete {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
   border: none;
 }

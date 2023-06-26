@@ -16,6 +16,7 @@
 }
 
 .rating .heart .postVote-button {
+  cursor: pointer;
   border: none;
   background-color: rgba(0, 0, 0, 0);
 }

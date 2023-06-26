@@ -7,10 +7,11 @@ import { useNavigate } from "react-router-dom";
 
 // Contexts
 
-import { useShow } from "../../contexts/ShowContext";
 import { useAuth } from "../../contexts/AuthContext";
+import { useShowLogin } from "../../contexts/ShowLoginContext";
+import { useShowRecover } from "../../contexts/ShowRecoverContext";
 import { useNavigateTo } from "../../contexts/NavigateToContext";
-import { useShowRecover } from "../../contexts/ShowRecover";
+
 // Fetchs
 
 import { logInUserService } from "../../services/api";
@@ -18,10 +19,10 @@ import { logInUserService } from "../../services/api";
 export const Login = () => {
   const navigate = useNavigate();
 
-  const [show, setShow] = useShow();
   const { login } = useAuth();
-  const [navigateTo, setNavigateTo] = useNavigateTo();
+  const [showLogin, setShowLogin] = useShowLogin();
   const [showRecover, setShowRecover] = useShowRecover();
+  const [navigateTo, setNavigateTo] = useNavigateTo();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -34,7 +35,7 @@ export const Login = () => {
       const data = await logInUserService({ email, password });
 
       login(data.token);
-      setShow(!show);
+      setShowLogin(!showLogin);
 
       navigateTo ? navigate(navigateTo) : "";
       setNavigateTo("");
@@ -72,6 +73,7 @@ export const Login = () => {
               className="input"
               type="password"
               name="pass"
+              autoComplete="current-password"
               id="current-password"
               value={password}
               required
@@ -80,13 +82,14 @@ export const Login = () => {
           </fieldset>
 
           <button className="button">Continuar</button>
-          {error ? <p className="error">{error}</p> : null}
+          {error ? <p className="error">⚠️ {error}</p> : null}
         </form>
         <p
+          className="link-reset-password"
           onClick={(e) => {
             e.stopPropagation();
             setShowRecover(!showRecover);
-            setShow(!show);
+            setShowLogin(!showLogin);
           }}
         >
           ¿Has olvidado tu contraseña?

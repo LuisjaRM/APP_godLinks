@@ -219,17 +219,27 @@ export const ResetPasswordService = async ({ recoverCode, newPassword }) => {
 
 // Modify user info
 export const ModifyUserService = async ({ email, user, avatar }, token) => {
-  const response = await fetch(`${import.meta.env.VITE_BACKEND}user`, {
-    method: "PATCH",
-    headers: {
+  let headers;
+  let body;
+  if (avatar) {
+    headers = { Authorization: token };
+    body = new FormData();
+    body.append("avatar", avatar);
+  } else {
+    headers = {
       Authorization: token,
       "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
+    };
+    body = JSON.stringify({
       email,
       user,
-      avatar,
-    }),
+    });
+  }
+
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}user`, {
+    method: "PATCH",
+    headers: headers,
+    body: body,
   });
 
   const json = await response.json();
@@ -311,6 +321,74 @@ export const postVoteService = async (token, id, { vote }) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ vote }),
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+};
+
+// COMMENTS
+
+export const postCommentService = async (token, id, { comment }) => {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}comment/${id}`, {
+    method: "POST",
+    headers: {
+      Authorization: token,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ comment }),
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+};
+
+export const patchCommentService = async (token, id, { newComment }) => {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}comment/${id}`, {
+    method: "PATCH",
+    headers: {
+      Authorization: token,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ newComment }),
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+};
+
+export const deleteCommentService = async (token, id) => {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}comment/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: token,
+    },
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+};
+
+// LIKE
+
+export const postLikeService = async (token, id) => {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}like/${id}`, {
+    method: "POST",
+    headers: {
+      Authorization: token,
+    },
   });
 
   const json = await response.json();

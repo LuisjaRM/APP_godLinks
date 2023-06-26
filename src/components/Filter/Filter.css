@@ -1,23 +1,27 @@
-.filterOffers .filter-list {
-  height: 6vh;
-  padding: 0.25rem 1rem;
-  display: flex;
-  gap: 1rem;
-  background-color: rgb(65, 65, 65);
-  border-bottom: 1px solid black;
-}
-
-.filterOffers .filter-list .link {
-  background-color: #f2f2f2;
-  border-radius: 8px;
-  padding: 0.25 1rem;
-  text-decoration: none;
-  color: #333;
+.filterOffers {
+  height: 7.5vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  flex: 1;
-  font-size: 80%;
+  background-color: rgb(1, 1, 48);
+  border-bottom: 1px solid khaki;
 }
 
+.filterOffers .filter-list {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.filterOffers .filter-list .link {
+  cursor: pointer;
+  font-size: 80%;
+  font-weight: bold;
+  background-color: rgb(192, 183, 105);
+  text-decoration: none;
+  color: black;
+  border-radius: 7.5px;
+  width: 4.5rem;
+  height: 4.5vh;
+  text-align: center;
+}

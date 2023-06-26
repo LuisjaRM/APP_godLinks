@@ -10,27 +10,24 @@ import ReactDOM from "react-dom/client";
 
 import { AuthContextProvider } from "./contexts/AuthContext.jsx";
 import { NightModeProvider } from "./contexts/NightModeContext.jsx";
-import { ShowProvider } from "./contexts/ShowContext.jsx";
+import { ShowLoginProvider } from "./contexts/ShowLoginContext";
+import { ShowVerifyProvider } from "./contexts/ShowVerifyContext";
+import { ShowRecoverProvider } from "./contexts/ShowRecoverContext";
 import { NavigateToProvider } from "./contexts/NavigateToContext.jsx";
-import { OpenProvider } from "./contexts/OpenContext";
-import { IsLoginProvider } from "./contexts/IsLoginContext";
-import { ShowRecoverProvider } from "./contexts/ShowRecover";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthContextProvider>
       <NightModeProvider>
-        <ShowProvider>
-          <NavigateToProvider>
-            <OpenProvider>
-              <IsLoginProvider>
-                <ShowRecoverProvider>
-                  <App />
-                </ShowRecoverProvider>
-              </IsLoginProvider>
-            </OpenProvider>
-          </NavigateToProvider>
-        </ShowProvider>
+        <ShowLoginProvider>
+          <ShowVerifyProvider>
+            <ShowRecoverProvider>
+              <NavigateToProvider>
+                <App />
+              </NavigateToProvider>
+            </ShowRecoverProvider>
+          </ShowVerifyProvider>
+        </ShowLoginProvider>
       </NightModeProvider>
     </AuthContextProvider>
   </React.StrictMode>

@@ -1,5 +1,7 @@
 import "./NotFound.css";
 
+// React
+
 import { Link } from "react-router-dom";
 
 export const NotFound = () => {
@@ -8,7 +10,7 @@ export const NotFound = () => {
 
   return (
     <section className="page_404">
-      <main className="container">
+      <section className="container">
         <section className="col-sm-10 col-sm-offset-1 text-center">
           <div className="four_zero_four_bg"></div>
 
@@ -21,7 +23,7 @@ export const NotFound = () => {
             </Link>
           </article>
         </section>
-      </main>
+      </section>
     </section>
   );
 };

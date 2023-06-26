@@ -37,9 +37,5 @@ export const useGetDataUser = (url, token) => {
   const refresh = () =>
     loadUserInfo(url, token, setDataUser, setLoading, setError);
 
-  // const refreshUser = () => {
-  //   loadUserInfo(dataUser.user);
-  // };
-
   return { dataUser, loading, error, refresh };
 };

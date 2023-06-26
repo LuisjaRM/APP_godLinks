@@ -2,26 +2,24 @@ import "./VerifyUser.css";
 
 // Contexts
 
-import { useShow } from "../../contexts/ShowContext";
-import { useOpen } from "../../contexts/OpenContext";
-import { useIsLogin } from "../../contexts/IsLoginContext";
+import { useShowLogin } from "../../contexts/ShowLoginContext";
+import { useShowVerify } from "../../contexts/ShowVerifyContext";
 
-export const VerifyUser = () => {
-  const [show, setShow] = useShow();
-  const [open, setOpen] = useOpen();
-  const [, setIsLogin] = useIsLogin();
+export const VerifyUser = ({ setIsLogin }) => {
+  const [showLogin, setShowLogin] = useShowLogin();
+  const [showVerify, setShowVerify] = useShowVerify();
 
   return (
-    open && (
+    showVerify && (
       <section className="modal">
-        <section className="modal-body">
+        <section className="verify-body">
           <p>Te hemos enviado un correo para que verifiques tu cuenta 😃</p>
           <button
-            className="button-modalVerify"
+            className="verify-button"
             onClick={(e) => {
               setIsLogin(true);
-              setOpen(!open);
-              setShow(!show);
+              setShowVerify(!showVerify);
+              setShowLogin(!showLogin);
               e.stopPropagation();
             }}
           >

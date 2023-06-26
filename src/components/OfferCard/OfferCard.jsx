@@ -12,7 +12,7 @@ import { PostVote } from "../PostVote/PostVote";
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
-import { useShow } from "../../contexts/ShowContext";
+import { useShowLogin } from "../../contexts/ShowLoginContext";
 import { useNavigateTo } from "../../contexts/NavigateToContext";
 
 // Fetchs
@@ -56,7 +56,7 @@ export const OfferCard = ({ offer }) => {
   // UserContext
 
   const { user, token } = useAuth();
-  const [show, setShow] = useShow();
+  const [showLogin, setShowLogin] = useShowLogin();
   const [, setNavigateTo] = useNavigateTo();
 
   // Favorite Logic
@@ -66,7 +66,7 @@ export const OfferCard = ({ offer }) => {
   const handleLike = async (e) => {
     e.preventDefault();
     e.stopPropagation();
-    user ? await addFavoriteService(token, offer.id) : setShow(!show);
+    user ? await addFavoriteService(token, offer.id) : setShowLogin(!showLogin);
     user ? setIsLiked(!isLiked) : "";
   };
 
@@ -76,13 +76,13 @@ export const OfferCard = ({ offer }) => {
 
   const handleClickOfferCard = () => {
     setNavigateTo(`/offerById/${offer.id}`);
-    user ? navigate(`/offerById/${offer.id}`) : setShow(!show);
+    user ? navigate(`/offerById/${offer.id}`) : setShowLogin(!showLogin);
   };
 
   const handleClickUserInfo = (e) => {
     e.stopPropagation();
     setNavigateTo(`/userInfo/${offer.user_id}`);
-    user ? navigate(`/userInfo/${offer.user_id}`) : setShow(!show);
+    user ? navigate(`/userInfo/${offer.user_id}`) : setShowLogin(!showLogin);
   };
 
   // Get patch of window location
@@ -202,8 +202,10 @@ export const OfferCard = ({ offer }) => {
             className="offer-link"
             onClick={(e) => e.stopPropagation()}
             href={offer.url}
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            Ir a la oferta 🔗
+            Link 🔗
           </a>
         </button>
 

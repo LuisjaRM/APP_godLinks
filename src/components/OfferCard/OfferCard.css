@@ -1,8 +1,9 @@
 .offer-card {
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   padding: 0.25rem 0.75rem;
-  border: 2px dashed steelblue;
+  border: 2px dashed khaki;
   border-radius: 10px;
   text-decoration: none;
 }
@@ -142,6 +143,7 @@
 }
 
 .offer-card .footer .link-button {
+  cursor: pointer;
   padding: 0.1rem 0.5rem;
   background-color: khaki;
   border: none;
@@ -159,18 +161,24 @@
 }
 
 .offer-card .footer .comments-button {
+  cursor: pointer;
   padding: 0.1rem 0.5rem;
+  background-color: khaki;
   border: none;
   border-radius: 5px;
   box-shadow: 1px 1px 10px black;
 }
 
+.offer-card .footer .comments-button:hover {
+  text-decoration: underline;
+}
+
 .favorite-button {
+  cursor: pointer;
   width: 1rem;
   height: 1rem;
   background: transparent;
   border: none;
-  cursor: pointer;
 }
 
 svg {
@@ -212,11 +220,26 @@ svg {
 }
 
 .offer-card .edit-wrap .edit {
+  cursor: pointer;
   border: none;
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0);
+  font-size: medium;
+}
+
+/* Para el responsive de ordenador */
+
+/* .offer-card .edit-wrap {
+  display: flex;
+  justify-content: end;
+}
+
+.offer-card .edit-wrap .edit {
+  cursor: pointer;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
   font-size: 0;
 }
 
 .offer-card:hover .edit {
   font-size: medium;
-}
+} */
