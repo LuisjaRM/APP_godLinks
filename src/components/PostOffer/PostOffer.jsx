@@ -155,10 +155,10 @@ export const PostOffer = () => {
             />
           </fieldset>
 
+          {error ? <p className="error">⚠️ {error}</p> : null}
           <section className="button-wrap">
             <button className="button">Continuar</button>
           </section>
-          {error ? <p className="error">{error}</p> : null}
         </form>
       </section>
 

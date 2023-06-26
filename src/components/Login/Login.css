@@ -35,14 +35,12 @@
   background-color: khaki;
   font-weight: bold;
   border: none;
+  border-radius: 5px;
   box-shadow: 1px 1px 10px black;
 }
 
 .login .error {
-  margin-top: 1rem;
+  width: 100%;
+  text-align: center;
   color: red;
-}
-
-.link-reset-password {
-  margin-top: 0.5rem;
 }

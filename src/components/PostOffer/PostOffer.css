@@ -64,7 +64,7 @@
 .postOffer-body .postOffer.show .post-form {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.25rem;
   height: 100%;
   position: relative;
 }
@@ -94,7 +94,7 @@
 }
 
 .postOffer-body .postOffer.show .post-form .button-wrap {
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
   text-align: center;
 }
 
@@ -109,7 +109,7 @@
 }
 
 .postOffer-body .postOffer.show .post-form .error {
-  position: absolute;
-  top: 0;
+  width: 100%;
+  text-align: center;
   color: red;
 }
