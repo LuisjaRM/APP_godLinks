@@ -223,9 +223,23 @@ svg {
   cursor: pointer;
   border: none;
   background-color: rgba(0, 0, 0, 0);
+  font-size: medium;
+}
+
+/* Para el responsive de ordenador */
+
+/* .offer-card .edit-wrap {
+  display: flex;
+  justify-content: end;
+}
+
+.offer-card .edit-wrap .edit {
+  cursor: pointer;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
   font-size: 0;
 }
 
 .offer-card:hover .edit {
   font-size: medium;
-}
+} */
