@@ -32,13 +32,13 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
   // States of Forms
 
   const [image, setImage] = useState("");
-  const [url, setUrl] = useState(offer.url);
-  const [title, setTitle] = useState(offer.title);
-  const [descrip, setDescrip] = useState(offer.descrip);
-  const [offer_price, setOffer_price] = useState(offer.offer_price);
-  const [price, setPrice] = useState(offer.price);
-  const [plataform, setPlataform] = useState(offer.plataform);
-  const [offer_expiry, setOffer_expiry] = useState(offerExpiryDefault);
+  const [url, setUrl] = useState("");
+  const [title, setTitle] = useState("");
+  const [descrip, setDescrip] = useState("");
+  const [offer_price, setOffer_price] = useState("");
+  const [price, setPrice] = useState("");
+  const [plataform, setPlataform] = useState("");
+  const [offer_expiry, setOffer_expiry] = useState("");
 
   // States to hide
 
@@ -62,7 +62,12 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
   const [showConfirmModal, setShowConfirmModal] = useState();
 
+  // Change Made Modal
+
+  const [showChangeMadeModal, setShowChangeMadeModal] = useState();
+
   const handleClickConfirm = (e) => {
+    e.preventDefault();
     e.stopPropagation();
     setShowConfirmModal(!showConfirmModal);
     image && changeImage();
@@ -119,111 +124,169 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
     setClickDelete(false);
   };
 
-  // Patcs Functions
+  // Patchs Functions
+
+  // Edit image
 
   const changeImage = async () => {
     try {
       await postOfferImageService(token, offer.id, image);
+      setImage(image);
       setHideFormImage(!hideFormImage);
-      refresh();
+
+      setShowChangeMadeModal(!showChangeMadeModal);
+      setTimeout(() => {
+        setShowChangeMadeModal(!showChangeMadeModal);
+        setImage("");
+        refresh();
+      }, 1500);
     } catch (error) {
       setError(error.message);
       setTimeout(() => {
         setError("");
       }, 5000);
     }
-    setImage("");
   };
+
+  // Edit url
 
   const changeUrl = async () => {
     try {
       await patchOfferService(token, offer.id, { url });
+      setUrl(url);
       setHideFormUrl(!hideFormUrl);
-      refresh();
+      setShowChangeMadeModal(!showChangeMadeModal);
+      setTimeout(() => {
+        setShowChangeMadeModal(!showChangeMadeModal);
+        setUrl("");
+        refresh();
+      }, 1500);
     } catch (error) {
       setError(error.message);
       setTimeout(() => {
         setError("");
       }, 5000);
     }
-    setUrl("");
   };
+
+  // Edit title
 
   const changeTitle = async () => {
     try {
       await patchOfferService(token, offer.id, { title });
+      setTitle(title);
       setHideFormTitle(!hideFormTitle);
-      refresh();
+      setShowChangeMadeModal(!showChangeMadeModal);
+      setTimeout(() => {
+        setShowChangeMadeModal(!showChangeMadeModal);
+        setTitle("");
+        refresh();
+      }, 1500);
     } catch (error) {
       setError(error.message);
       setTimeout(() => {
         setError("");
       }, 5000);
     }
-    setTitle("");
   };
+
+  // Edit description
 
   const changeDescrip = async () => {
     try {
       await patchOfferService(token, offer.id, { descrip });
+      setDescrip(descrip);
       setHideFormDescrip(!hideFormDescrip);
-      refresh();
+      setShowChangeMadeModal(!showChangeMadeModal);
+      setTimeout(() => {
+        setShowChangeMadeModal(!showChangeMadeModal);
+        setDescrip("");
+        refresh();
+      }, 1500);
     } catch (error) {
       setError(error.message);
       setTimeout(() => {
         setError("");
       }, 5000);
     }
-    setDescrip("");
   };
+
+  // Edit offer price
 
   const changeOfferPrice = async () => {
     try {
       await patchOfferService(token, offer.id, { offer_price });
+      setOffer_price(offer_price);
       setHideFormOfferPrice(!hideFormOfferPrice);
-      refresh();
+      setShowChangeMadeModal(!showChangeMadeModal);
+      setTimeout(() => {
+        setShowChangeMadeModal(!showChangeMadeModal);
+        setOffer_price("");
+        refresh();
+      }, 1500);
     } catch (error) {
       setError(error.message);
       setTimeout(() => {
         setError("");
       }, 5000);
     }
-    setOffer_price("");
   };
+
+  // Edit original price
 
   const changePrice = async () => {
     try {
       await patchOfferService(token, offer.id, { price });
+      setPrice(price);
       setHideFormPrice(!hideFormPrice);
-      refresh();
+      setShowChangeMadeModal(!showChangeMadeModal);
+      setTimeout(() => {
+        setShowChangeMadeModal(!showChangeMadeModal);
+        setPrice("");
+        refresh();
+      }, 1500);
     } catch (error) {
       setError(error.message);
       setTimeout(() => {
         setError("");
       }, 5000);
     }
-    setPrice("");
   };
+
+  // Edit plataform
 
   const changePlataform = async () => {
     try {
       await patchOfferService(token, offer.id, { plataform });
+      setPlataform(plataform);
       setHideFormPlataform(!hideFormPlataform);
-      refresh();
+      setShowChangeMadeModal(!showChangeMadeModal);
+      setTimeout(() => {
+        setShowChangeMadeModal(!showChangeMadeModal);
+        setPlataform("");
+        refresh();
+      }, 1500);
     } catch (error) {
       setError(error.message);
       setTimeout(() => {
         setError("");
       }, 5000);
     }
-    setPlataform("");
   };
+
+  // Edit offer expiry
 
   const changeOfferExpiry = async () => {
     try {
       await patchOfferService(token, offer.id, { offer_expiry });
+      setOffer_expiry(offer_expiry);
       setHideFormOfferExpiry(!hideFormOfferExpiry);
-      refresh();
+      setShowChangeMadeModal(!showChangeMadeModal);
+      setTimeout(() => {
+        setShowChangeMadeModal(!showChangeMadeModal);
+        setPlataform("");
+        refresh();
+      }, 1500);
     } catch (error) {
       setError(error.message);
       setTimeout(() => {
@@ -250,10 +313,16 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
   const deleteOffer = async () => {
     try {
       await deleteOfferService(token, offer.id);
-
-      navigate(`/userInfo/${user.id}`);
+      setShowChangeMadeModal(!showChangeMadeModal);
+      setTimeout(() => {
+        setShowChangeMadeModal(!showChangeMadeModal);
+        navigate(`/userInfo/${user.id}`);
+      }, 1500);
     } catch (error) {
       setError(error.message);
+      setTimeout(() => {
+        setError("");
+      }, 5000);
     }
   };
 
@@ -313,6 +382,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
             >
               <fieldset className="fieldset">
                 <input
+                  placeholder="Escribe el nuevo enlace"
                   className="input"
                   type="url"
                   name="url"
@@ -351,7 +421,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
             >
               <fieldset className="fieldset">
                 <input
-                  placeholder="Título"
+                  placeholder="Escribe el título"
                   className="input"
                   type="text"
                   name="title"
@@ -508,7 +578,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
             >
               <fieldset className="fieldset">
                 <input
-                  placeholder="Plataforma"
+                  placeholder="Indica la plataforma"
                   className="input"
                   type="text"
                   name="plataform"
@@ -591,6 +661,27 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
                 No
               </button>
             </section>
+          </section>
+        </section>
+      ) : (
+        ""
+      )}
+      {showChangeMadeModal ? (
+        <section className="changeMade-modal">
+          <section className="changeMade-modal-body">
+            {image && <h3>La imagen se ha modificado con éxito </h3>}
+            {url && <h3>El enlace se ha modificado con éxito</h3>}
+            {title && <h3>El título se ha modificado con éxito</h3>}
+            {descrip && <h3>La descripción se ha modificado con éxito</h3>}
+            {offer_price && (
+              <h3>El precio con descuento se ha modificado con éxito</h3>
+            )}
+            {price && <h3>El precio original se ha modificado con éxito</h3>}
+            {plataform && <h3>La plataforma se ha modificado con éxito</h3>}
+            {offer_expiry && (
+              <h3>La caducidad de la oferta se ha modificado con éxito</h3>
+            )}
+            {clickDelete && <h3>Tu usuario se ha eliminado con éxito</h3>}
           </section>
         </section>
       ) : (
