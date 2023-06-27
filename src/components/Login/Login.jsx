@@ -46,54 +46,52 @@ export const Login = () => {
   };
 
   return (
-    <>
-      <section onClick={(e) => e.stopPropagation()} className="login">
-        <h2 className="title">Inicia Sesión</h2>
+    <section className="login">
+      <h2 className="title">Inicia Sesión</h2>
 
-        <form className="form" onSubmit={handleForm}>
-          <fieldset>
-            <label htmlFor="login-email">Correo Electrónico:</label>
-            <input
-              placeholder="example@mail.com"
-              type="email"
-              name="login-email"
-              id="login-email"
-              value={email}
-              required
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </fieldset>
+      <form className="form" onSubmit={handleForm}>
+        <fieldset>
+          <label htmlFor="login-email">Correo Electrónico:</label>
+          <input
+            placeholder="example@mail.com"
+            type="email"
+            name="login-email"
+            id="login-email"
+            value={email}
+            required
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </fieldset>
 
-          <fieldset>
-            <label htmlFor="login-password">Contraseña:</label>
-            <input
-              placeholder="Introduce tu contraseña"
-              type="password"
-              name="login-password"
-              autoComplete="login-password"
-              id="login-password"
-              value={password}
-              required
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </fieldset>
+        <fieldset>
+          <label htmlFor="login-password">Contraseña:</label>
+          <input
+            placeholder="Introduce tu contraseña"
+            type="password"
+            name="login-password"
+            autoComplete="login-password"
+            id="login-password"
+            value={password}
+            required
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </fieldset>
 
-          <button className="button login-button">Continuar</button>
-        </form>
+        <button className="button login-button">Continuar</button>
+      </form>
 
-        {error ? <p className="error">⚠️ {error}</p> : null}
+      {error ? <p className="error">⚠️ {error}</p> : null}
 
-        <p
-          className="link-reset-password"
-          onClick={(e) => {
-            e.stopPropagation();
-            setShowRecover(!showRecover);
-            setShowLogin(!showLogin);
-          }}
-        >
-          ¿Has olvidado tu contraseña?
-        </p>
-      </section>
-    </>
+      <p
+        className="link-reset-password"
+        onClick={(e) => {
+          e.stopPropagation();
+          setShowRecover(!showRecover);
+          setShowLogin(!showLogin);
+        }}
+      >
+        ¿Has olvidado tu contraseña?
+      </p>
+    </section>
   );
 };

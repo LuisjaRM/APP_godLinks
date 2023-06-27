@@ -1,4 +1,4 @@
-.filter1 {
+.filter {
   height: 7.5vh;
   display: flex;
   justify-content: space-between;
@@ -9,7 +9,7 @@
   border-bottom: 1px solid khaki;
 }
 
-.filter1 .link {
+.filter .link {
   cursor: pointer;
   width: 8rem;
   height: 4.5vh;
@@ -25,7 +25,7 @@
   border-radius: 7.5px;
 }
 
-.filter1 .link:hover {
+.filter .link:hover {
   text-decoration: underline;
   box-shadow: 2px 2px 10px khaki;
 }

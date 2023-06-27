@@ -25,7 +25,7 @@ export const Filter = () => {
   };
 
   return (
-    <nav className="filter1">
+    <nav className="filter">
       {currentPath !== "/allOffers" ? (
         <Link className="link" to="/allOffers">
           Todas las ofertas
