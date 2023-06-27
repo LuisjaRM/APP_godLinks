@@ -211,13 +211,20 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
   };
 
   const deleteUser = async () => {
-    await DeleteUserService(token, userInfo.id);
-    setShowChangeMadeModal(!showChangeMadeModal);
-    setTimeout(() => {
+    try {
+      await DeleteUserService(token, userInfo.id);
       setShowChangeMadeModal(!showChangeMadeModal);
-      navigate("/");
-      logout();
-    }, 1500);
+      setTimeout(() => {
+        setShowChangeMadeModal(!showChangeMadeModal);
+        navigate("/");
+        logout();
+      }, 1500);
+    } catch (error) {
+      setError(error.message);
+      setTimeout(() => {
+        setError("");
+      }, 5000);
+    }
   };
 
   return (
@@ -291,7 +298,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
                 onChange={(e) => setUser(e.target.value)}
               />
             </fieldset>
-            <button>Cambiar nombre de usuario</button>
+            <button>✅</button>
           </form>
           <button
             className="edit-button"
@@ -326,7 +333,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </fieldset>
-            <button>Cambiar email</button>
+            <button>✅</button>
           </form>
           <button
             className="edit-button"
@@ -349,7 +356,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
               setHideFormPassword(!hideFormPassword);
             }}
           >
-            Modificar contraseña
+            Modificar contraseña:
           </button>
 
           <form
@@ -384,7 +391,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
                 onChange={(e) => setNewPassword(e.target.value)}
               />
             </fieldset>
-            <button>Cambiar contraseña</button>
+            <button>✅</button>
           </form>
 
           <form onSubmit={handleClickDelete}>
