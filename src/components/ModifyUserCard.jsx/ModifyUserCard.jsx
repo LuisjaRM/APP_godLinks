@@ -40,9 +40,9 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
   const navigate = useNavigate();
 
   // States of Forms
-  const [avatar, setAvatar] = useState(userInfo.avatar);
-  const [user, setUser] = useState(userInfo.user);
-  const [email, setEmail] = useState(userInfo.Email);
+  const [avatar, setAvatar] = useState("");
+  const [user, setUser] = useState("");
+  const [email, setEmail] = useState("");
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
 
@@ -74,17 +74,18 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
 
   const handleForm = async (e) => {
     e.preventDefault();
-    setShowConfirmModal(!showConfirmModal);
+    !error && setShowConfirmModal(!showConfirmModal);
   };
 
   // Confirm Modal
 
   const handleClickConfirm = (e) => {
+    e.preventDefault();
     e.stopPropagation();
-    setShowConfirmModal(!showConfirmModal);
-    setShowChangeMadeModal(!showChangeMadeModal);
+    !error && setShowConfirmModal(!showConfirmModal);
+    !error && setShowChangeMadeModal(!showChangeMadeModal);
     setTimeout(() => {
-      setShowChangeMadeModal(!showChangeMadeModal);
+      !error && setShowChangeMadeModal(!showChangeMadeModal);
     }, 1500);
     avatar && changeAvatar();
     user && changeUser();
@@ -100,23 +101,24 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
     setHideFormUser(true);
     setHideFormEmail(true);
     setHideFormPassword(true);
-    setAvatar(userInfo.avatar);
-    setUser(userInfo.user);
-    setEmail(userInfo.Email);
+    setAvatar("");
+    setUser("");
+    setEmail("");
     setOldPassword("");
     setNewPassword("");
     setClickDelete(false);
   };
 
-  const handleClickAway = () => {
+  const handleClickAway = (e) => {
+    e.stopPropagation();
     setShowConfirmModal(!showConfirmModal);
     setHideFormAvatar(true);
     setHideFormUser(true);
     setHideFormEmail(true);
     setHideFormPassword(true);
-    setAvatar(userInfo.avatar);
-    setUser(userInfo.user);
-    setEmail(userInfo.Email);
+    setAvatar("");
+    setUser("");
+    setEmail("");
     setOldPassword("");
     setNewPassword("");
     setClickDelete(false);
@@ -127,9 +129,12 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
   const changeAvatar = async () => {
     try {
       await ModifyUserService({ avatar }, token);
-      setAvatar("");
+      setAvatar(avatar);
       setHideFormAvatar(!hideFormAvatar);
-      refresh();
+      setTimeout(() => {
+        setAvatar("");
+        refresh();
+      }, 1500);
     } catch (error) {
       setError(error.message);
       setTimeout(() => {
@@ -143,9 +148,12 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
   const changeUser = async () => {
     try {
       await ModifyUserService({ user }, token);
-      setUser("");
+      setUser(user);
       setHideFormUser(!hideFormUser);
-      refresh();
+      setTimeout(() => {
+        setUser("");
+        refresh();
+      }, 1500);
     } catch (error) {
       setError(error.message);
       setTimeout(() => {
@@ -159,7 +167,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
   const changeEmail = async () => {
     try {
       await ModifyUserService({ email }, token);
-      setEmail("");
+      setEmail(email);
       setHideFormEmail(!hideFormEmail);
       setShowVerify(!showVerify);
       navigate("/");
@@ -200,8 +208,10 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
 
   const deleteUser = async () => {
     await DeleteUserService(token, userInfo.id);
-    navigate("/");
-    logout();
+    setTimeout(() => {
+      navigate("/");
+      logout();
+    }, 1500);
   };
 
   // JSX
@@ -223,7 +233,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
         >
           <fieldset className="fieldset">
             <label className="label" htmlFor="avatar">
-              Nuevo Avatar:
+              Avatar:
             </label>
             <input
               className="image-picker"
@@ -367,7 +377,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
         </button>
 
         <form onSubmit={handleClickDelete}>
-          <button>Eliminar cuenta</button>
+          <button className="delete-button">Eliminar cuenta</button>
         </form>
       </section>
 
@@ -393,13 +403,12 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
       )}
 
       {showChangeMadeModal ? (
-        <section className="change-made-modal" onClick={handleClickAway}>
-          <section className="change made-modal-body">
-            <h2>
-              {avatar && "Se ha modificado el avatar con éxito"}
-              {user && "El nombre de usuario de ha modificado con éxito"}
-              {newPassword && "La contraseña se ha modificado con éxito"}
-            </h2>
+        <section className="changeMade-modal">
+          <section className="changeMade-modal-body">
+            {avatar && <h3>Tu avatar se ha modificado con éxito </h3>}
+            {user && <h3>Tu nombre de usuario se ha modificado con éxito</h3>}
+
+            {clickDelete && <h3>Tu usuario se ha eliminado con éxito</h3>}
           </section>
         </section>
       ) : (

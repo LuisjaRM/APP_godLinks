@@ -1,11 +1,7 @@
 .user-profile {
+  min-height: calc(100vh - 7.5vh - 7.5vh - 6vh);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
-  /* padding: 1rem 0; */
-  min-height: calc(100vh - 7.5vh - 7.5vh - 6vh);
-  background-color: khaki;
-  color: black;
 }
