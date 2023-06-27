@@ -8,6 +8,7 @@ import { useNavigate } from "react-router";
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
+import { useError } from "../../contexts/ErrorContext";
 
 // Fetchs
 
@@ -18,9 +19,12 @@ import {
 } from "../../services/api";
 
 export const ModifyOfferCard = ({ refresh, offer }) => {
+  const [error, setError] = useError();
+
   // Date Logic
 
   const offerExpiry = new Date(offer.offer_expiry);
+  const offerExpiryDefault = offerExpiry.toISOString().slice(0, 10);
   const dateOffer_expiry = offerExpiry.toLocaleDateString("en-GB");
 
   const { user, token } = useAuth();
@@ -34,8 +38,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
   const [offer_price, setOffer_price] = useState(offer.offer_price);
   const [price, setPrice] = useState(offer.price);
   const [plataform, setPlataform] = useState(offer.plataform);
-  const [offer_expiry, setOffer_expiry] = useState(offer.offer_expiry);
-  const [, setError] = useState("");
+  const [offer_expiry, setOffer_expiry] = useState(offerExpiryDefault);
 
   // States to hide
 
@@ -62,15 +65,15 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
   const handleClickConfirm = (e) => {
     e.stopPropagation();
     setShowConfirmModal(!showConfirmModal);
-    image ? changeImage() : "";
-    url ? changeUrl() : "";
-    title ? changeTitle() : "";
-    descrip ? changeDescrip() : "";
-    offer_price ? changeOfferPrice() : "";
-    price ? changePrice() : "";
-    plataform ? changePlataform() : "";
-    offer_expiry ? changeOfferExpiry() : "";
-    clickDelete ? deleteOffer() : "";
+    image && changeImage();
+    url && changeUrl();
+    title && changeTitle();
+    descrip && changeDescrip();
+    offer_price && changeOfferPrice();
+    price && changePrice();
+    plataform && changePlataform();
+    offer_expiry && changeOfferExpiry();
+    clickDelete && deleteOffer();
   };
 
   const handleClickCancel = (e) => {
@@ -91,7 +94,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
     setOffer_price(offer.offer_price);
     setPrice(offer.price);
     setPlataform(offer.plataform);
-    setOffer_expiry(offer.offer_expiry);
+    setOffer_expiry(offerExpiryDefault);
     setClickDelete(false);
   };
 
@@ -112,7 +115,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
     setOffer_price(offer.offer_price);
     setPrice(offer.price);
     setPlataform(offer.plataform);
-    setOffer_expiry(offer.offer_expiry);
+    setOffer_expiry(offerExpiryDefault);
     setClickDelete(false);
   };
 
@@ -125,6 +128,9 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
       refresh();
     } catch (error) {
       setError(error.message);
+      setTimeout(() => {
+        setError("");
+      }, 5000);
     }
     setImage("");
   };
@@ -136,9 +142,13 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
       refresh();
     } catch (error) {
       setError(error.message);
+      setTimeout(() => {
+        setError("");
+      }, 5000);
     }
     setUrl("");
   };
+
   const changeTitle = async () => {
     try {
       await patchOfferService(token, offer.id, { title });
@@ -146,9 +156,13 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
       refresh();
     } catch (error) {
       setError(error.message);
+      setTimeout(() => {
+        setError("");
+      }, 5000);
     }
     setTitle("");
   };
+
   const changeDescrip = async () => {
     try {
       await patchOfferService(token, offer.id, { descrip });
@@ -156,9 +170,13 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
       refresh();
     } catch (error) {
       setError(error.message);
+      setTimeout(() => {
+        setError("");
+      }, 5000);
     }
     setDescrip("");
   };
+
   const changeOfferPrice = async () => {
     try {
       await patchOfferService(token, offer.id, { offer_price });
@@ -166,9 +184,13 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
       refresh();
     } catch (error) {
       setError(error.message);
+      setTimeout(() => {
+        setError("");
+      }, 5000);
     }
     setOffer_price("");
   };
+
   const changePrice = async () => {
     try {
       await patchOfferService(token, offer.id, { price });
@@ -176,9 +198,13 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
       refresh();
     } catch (error) {
       setError(error.message);
+      setTimeout(() => {
+        setError("");
+      }, 5000);
     }
     setPrice("");
   };
+
   const changePlataform = async () => {
     try {
       await patchOfferService(token, offer.id, { plataform });
@@ -186,9 +212,13 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
       refresh();
     } catch (error) {
       setError(error.message);
+      setTimeout(() => {
+        setError("");
+      }, 5000);
     }
     setPlataform("");
   };
+
   const changeOfferExpiry = async () => {
     try {
       await patchOfferService(token, offer.id, { offer_expiry });
@@ -196,6 +226,9 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
       refresh();
     } catch (error) {
       setError(error.message);
+      setTimeout(() => {
+        setError("");
+      }, 5000);
     }
     setOffer_expiry("");
   };
@@ -260,6 +293,8 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
             ✏️
           </button>
         </li>
+
+        <li>{error ? <p className="error">⚠️ {error}</p> : null}</li>
 
         <li className="list-element">
           <h2 className="element">Enlace:</h2>
@@ -520,7 +555,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
                   onChange={(e) => setOffer_expiry(e.target.value)}
                 />
               </fieldset>
-              <button>✅</button>handleClickCancel
+              <button>✅</button>
             </form>
 
             <button

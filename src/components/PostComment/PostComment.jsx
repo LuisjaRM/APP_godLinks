@@ -14,7 +14,7 @@ import { postCommentService } from "../../services/api";
 
 export const PostComment = ({ id, refresh, offer }) => {
   const [comment, setComment] = useState("");
-  const [, setError] = useState("");
+  const [error, setError] = useState("");
 
   const { token } = useAuth();
 
@@ -55,6 +55,8 @@ export const PostComment = ({ id, refresh, offer }) => {
           <button className="sendComment-button">Enviar</button>
         </fieldset>
       </form>
+
+      {error ? <p className="error">⚠️ {error}</p> : null}
     </section>
   );
 };
