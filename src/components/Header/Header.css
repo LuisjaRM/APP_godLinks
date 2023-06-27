@@ -13,9 +13,14 @@ header .button {
   cursor: pointer;
   width: 28px;
   height: 28px;
-  padding: 0.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: rgb(1, 1, 75);
-  border: 1px solid khaki;
+  border: 2px solid khaki;
   border-radius: 50%;
-  box-shadow: 1px 1px 10px yellow;
+}
+
+header .button:hover {
+  box-shadow: 2px 2px 10px khaki;
 }

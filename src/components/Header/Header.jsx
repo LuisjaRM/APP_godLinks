@@ -1,15 +1,14 @@
 import "./Header.css";
 
-// Components
-
-import { UserButton } from "../UserButton/UserButton";
-import { UserNav } from "../UserNav/UserNav";
-import { TitleAnimation } from "../TitleAnimation/TitleAnimation";
-//import { Search } from "../Search/Search";
-
 // Contexts
 
 import { useNightMode } from "../../contexts/NightModeContext";
+
+// Components
+
+import { UserButton } from "../UserButton/UserButton";
+import { TitleAnimation } from "../TitleAnimation/TitleAnimation";
+//import { Search } from "../Search/Search";
 
 export const Header = () => {
   const [nightMode, toggleNightMode] = useNightMode();
@@ -17,7 +16,6 @@ export const Header = () => {
   return (
     <header>
       <UserButton />
-      <UserNav />
 
       <TitleAnimation />
 
@@ -25,7 +23,10 @@ export const Header = () => {
         <Search/>
       */}
 
-      <button className="button" onClick={() => toggleNightMode()}>
+      <button
+        className="button toggle-button"
+        onClick={() => toggleNightMode()}
+      >
         {nightMode ? "🌙" : "🌞"}
       </button>
     </header>

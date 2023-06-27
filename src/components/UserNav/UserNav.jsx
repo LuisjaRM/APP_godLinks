@@ -1,6 +1,6 @@
 import "./UserNav.css";
 
-// react-router-dom
+// React
 
 import { useNavigate } from "react-router";
 
@@ -11,6 +11,7 @@ import { useShowLogin } from "../../contexts/ShowLoginContext";
 
 export const UserNav = () => {
   const navigate = useNavigate();
+
   const { user, logout } = useAuth();
   const [showLogin, setShowLogin] = useShowLogin();
 
@@ -18,45 +19,45 @@ export const UserNav = () => {
     showLogin &&
     user && (
       <section
-        className="modal-user"
+        className="modal-back"
         onClick={() => {
           setShowLogin(!showLogin);
         }}
       >
-        <section className="userNav-wrap" onClick={(e) => e.stopPropagation()}>
-          <nav className="user-nav">
-            <a
-              className="link-perfile"
-              onClick={() => {
-                navigate("/profile");
-                setShowLogin(!showLogin);
-              }}
-            >
-              Mi perfil
-            </a>
+        <nav className="user-nav" onClick={(e) => e.stopPropagation()}>
+          <li className="username">{user.user}</li>
 
-            <a
-              className="link-perfile"
-              onClick={() => {
-                setShowLogin(!showLogin);
-                navigate("/userInfo/:id");
-              }}
-            >
-              Mis ofertas
-            </a>
+          <li
+            className="link"
+            onClick={() => {
+              navigate("/profile");
+              setShowLogin(!showLogin);
+            }}
+          >
+            Mi perfil
+          </li>
 
-            <a
-              className="logout-perfile"
-              onClick={() => {
-                logout();
-                setShowLogin(!showLogin);
-                navigate("/");
-              }}
-            >
-              Cerrar sesión
-            </a>
-          </nav>
-        </section>
+          <li
+            className="link"
+            onClick={() => {
+              setShowLogin(!showLogin);
+              navigate("/userInfo/:id");
+            }}
+          >
+            Mis ofertas
+          </li>
+
+          <li
+            className="link logout"
+            onClick={() => {
+              logout();
+              setShowLogin(!showLogin);
+              navigate("/");
+            }}
+          >
+            Cerrar sesión
+          </li>
+        </nav>
       </section>
     )
   );

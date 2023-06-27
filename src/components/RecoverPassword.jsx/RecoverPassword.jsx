@@ -1,6 +1,6 @@
 import "./RecoverPassword.css";
 
-// react-router-dom
+// React
 
 import { useState } from "react";
 
@@ -17,17 +17,24 @@ import {
 } from "../../services/api";
 
 export const RecoverPassword = () => {
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+
   const [showLogin, setShowLogin] = useShowLogin();
   const [showRecover, setShowRecover] = useShowRecover();
 
-  const [email, setEmail] = useState("");
-  const [error, setError] = useState("");
+  // Handle Form
 
   const handleFormRecover = async (e) => {
     e.preventDefault();
 
+    // Fetch
+
     try {
       await RecoverPasswordService({ email });
+
+      setShowReset(!showReset);
+      setShowRecover(!showRecover);
     } catch (error) {
       setError(error.message);
     }
@@ -40,135 +47,132 @@ export const RecoverPassword = () => {
   const [newPass1, setNewPass1] = useState("");
   const [newPass2, setNewPass2] = useState("");
 
+  // Handle Form
+
   const handleFormReset = async (e) => {
     e.preventDefault();
+
+    if (!recoverCode) {
+      setError("Debes introducir elcódigo de recuperación");
+      return;
+    }
+
+    if (!newPass1 || !newPass2) {
+      setError("Debes introducir una contraseña");
+      return;
+    }
+
     if (newPass1 !== newPass2) {
       setError("Las contraseñas no coinciden");
       return;
     }
+
+    // Fetch
+
     try {
       await ResetPasswordService({
         recoverCode,
         newPassword: newPass1,
       });
+
+      setShowLogin(!showLogin);
+      setShowReset(!showReset);
+      setError("");
     } catch (error) {
       setError(error.message);
     }
   };
+
   return (
-    <>
+    <section
+      onClick={() => {
+        setEmail("");
+        setShowRecover(false);
+        setShowReset(false);
+      }}
+      className={`modal-recover ${
+        showRecover || showReset ? "modal-back dark" : ""
+      }
+       `}
+    >
       <section
-        onClick={() => {
-          setEmail("");
-          setShowRecover(!showRecover);
-        }}
-        className={`modal-recover-password ${showRecover ? "show" : ""}`}
+        onClick={(e) => e.stopPropagation()}
+        className={`modal-body recover ${!showRecover && "hide"}`}
       >
-        <section
-          onClick={(e) => e.stopPropagation()}
-          className={"recover-password"}
-        >
-          <h3 className="title">Recupera tu contraseña</h3>
-          <form className="recoverPassword-form" onSubmit={handleFormRecover}>
-            <fieldset className="fieldset">
-              <label className="label" htmlFor="email">
-                Introduce tu correo:
-              </label>
-              <input
-                placeholder="example@mail.com"
-                className="input"
-                type="email"
-                name="email"
-                id="recoverEmail"
-                value={email}
-                required
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </fieldset>
-            <button
-              onClick={() => {
-                setShowReset(!showReset);
-                setShowRecover(!showRecover);
-              }}
-              className="button"
-            >
-              Continuar
-            </button>
-            {error ? <p className="error">{error}</p> : null}
-          </form>
-        </section>
+        <h2 className="title">Recupera tu contraseña</h2>
+
+        <form className="form" onSubmit={handleFormRecover}>
+          <fieldset>
+            <label htmlFor="recover-email">Introduce tu correo:</label>
+            <input
+              placeholder="example@mail.com"
+              type="email"
+              name="recover-email"
+              id="recover-email"
+              value={email}
+              required
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </fieldset>
+
+          <button className="button recover-button">Continuar</button>
+        </form>
+
+        {error ? <p className="error">{error}</p> : null}
       </section>
 
       <section
-        onClick={() => {
-          setShowReset(!showReset);
-        }}
-        className={`modal-reset-password ${showReset ? "show" : ""}`}
+        onClick={(e) => e.stopPropagation()}
+        className={`modal-body recover ${!showReset && "hide"}`}
       >
-        <section
-          onClick={(e) => e.stopPropagation()}
-          className="reset-password"
-        >
-          <h1 className="title">Reestablece tu contraseña</h1>
-          <form className="resetPassword-form" onSubmit={handleFormReset}>
-            <fieldset className="fieldset">
-              <label className="label" htmlFor="email">
-                Código:
-              </label>
-              <input
-                placeholder="Introduce tu código de recuperación"
-                className="input"
-                type="text"
-                name="recoverCode"
-                id="recoverCode"
-                value={recoverCode}
-                required
-                onChange={(e) => setRecoverCode(e.target.value)}
-              />
-            </fieldset>
+        <h1 className="title">Reestablece tu contraseña</h1>
+        <form className="form" onSubmit={handleFormReset}>
+          <fieldset>
+            <label htmlFor="recoverCode">Código:</label>
+            <input
+              placeholder="Código de recuperación"
+              type="text"
+              name="recoverCode"
+              id="recoverCode"
+              value={recoverCode}
+              required
+              onChange={(e) => setRecoverCode(e.target.value)}
+            />
+          </fieldset>
 
-            <fieldset className="fieldset">
-              <label className="label" htmlFor="new-password">
-                Nueva Contraseña:
-              </label>
-              <input
-                placeholder="Introduce tu contraseña"
-                className="input"
-                type="password"
-                name="new-password"
-                id="new-password"
-                value={newPass1}
-                required
-                onChange={(e) => setNewPass1(e.target.value)}
-              />
-              <label className="label" htmlFor="repeat-password">
-                Repetir nueva Contraseña:
-              </label>
-              <input
-                placeholder="Introduce tu contraseña"
-                className="input"
-                type="password"
-                name="repeat-password"
-                id="repeat-password"
-                value={newPass2}
-                required
-                onChange={(e) => setNewPass2(e.target.value)}
-              />
-            </fieldset>
+          <fieldset>
+            <label htmlFor="reset-password">Nueva Contraseña:</label>
+            <input
+              placeholder="Introduce tu contraseña"
+              type="password"
+              name="reset-password"
+              id="reset-password"
+              value={newPass1}
+              required
+              onChange={(e) => setNewPass1(e.target.value)}
+            />
+          </fieldset>
 
-            <button
-              onClick={() => {
-                setShowLogin(!showLogin);
-                setShowReset(!showReset);
-              }}
-              className="button"
-            >
-              Continuar
-            </button>
-            {error ? <p className="error">{error}</p> : null}
-          </form>
-        </section>
+          <fieldset>
+            <label htmlFor="reset-confirm-password">
+              Repetir nueva Contraseña:
+            </label>
+            <input
+              placeholder="Introduce tu contraseña"
+              type="password"
+              name="reset-confirm-password"
+              id="reset-confirm-password"
+              value={newPass2}
+              required
+              onChange={(e) => setNewPass2(e.target.value)}
+            />
+          </fieldset>
+
+          <button className="button reset-button">Continuar</button>
+        </form>
+
+        {error ? <p className="error">⚠️ {error}</p> : null}
       </section>
-    </>
+    </section>
   );
 };

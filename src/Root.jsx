@@ -1,4 +1,4 @@
-// react-router-dom
+// React
 
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
