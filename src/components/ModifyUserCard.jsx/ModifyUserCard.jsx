@@ -74,7 +74,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
 
   const handleForm = async (e) => {
     e.preventDefault();
-    !error && setShowConfirmModal(!showConfirmModal);
+    setShowConfirmModal(!showConfirmModal);
   };
 
   // Confirm Modal
@@ -82,11 +82,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
   const handleClickConfirm = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    !error && setShowConfirmModal(!showConfirmModal);
-    !error && setShowChangeMadeModal(!showChangeMadeModal);
-    setTimeout(() => {
-      !error && setShowChangeMadeModal(!showChangeMadeModal);
-    }, 1500);
+    setShowConfirmModal(!showConfirmModal);
     avatar && changeAvatar();
     user && changeUser();
     email && changeEmail();
@@ -131,7 +127,10 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
       await ModifyUserService({ avatar }, token);
       setAvatar(avatar);
       setHideFormAvatar(!hideFormAvatar);
+
+      setShowChangeMadeModal(!showChangeMadeModal);
       setTimeout(() => {
+        setShowChangeMadeModal(!showChangeMadeModal);
         setAvatar("");
         refresh();
       }, 1500);
@@ -150,7 +149,10 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
       await ModifyUserService({ user }, token);
       setUser(user);
       setHideFormUser(!hideFormUser);
+
+      setShowChangeMadeModal(!showChangeMadeModal);
       setTimeout(() => {
+        setShowChangeMadeModal(!showChangeMadeModal);
         setUser("");
         refresh();
       }, 1500);
@@ -208,178 +210,186 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
 
   const deleteUser = async () => {
     await DeleteUserService(token, userInfo.id);
+    setShowChangeMadeModal(!showChangeMadeModal);
     setTimeout(() => {
+      setShowChangeMadeModal(!showChangeMadeModal);
       navigate("/");
       logout();
     }, 1500);
   };
 
-  // JSX
   return (
     <>
-      <section className="header-profile">
-        <img
-          className={`user-image-profile ${hideFormAvatar ? "" : "hide"}`}
-          src={
-            userInfo.avatar
-              ? `${import.meta.env.VITE_BACKEND}uploads/${userInfo.avatar}`
-              : "/android-icon-36x36.png"
-          }
-          alt={userInfo.user}
-        />
-        <form
-          className={`modify-image-form  ${hideFormAvatar ? "hide" : ""}`}
-          onSubmit={handleForm}
-        >
-          <fieldset className="fieldset">
-            <label className="label" htmlFor="avatar">
-              Avatar:
-            </label>
-            <input
-              className="image-picker"
-              type="file"
-              name="avatar"
-              id="avatar"
-              required
-              onChange={(e) => setAvatar(e.target.files[0])}
-            />
-          </fieldset>
-          <button>📷</button>
-        </form>
-        <button
-          onClick={() => {
-            setHideFormAvatar(!hideFormAvatar);
-          }}
-        >
-          ✏️
-        </button>
+      <ul className="header-profile">
+        <li className="list-image">
+          <img
+            className={`user-image-profile ${hideFormAvatar ? "" : "hide"}`}
+            src={
+              userInfo.avatar
+                ? `${import.meta.env.VITE_BACKEND}uploads/${userInfo.avatar}`
+                : "/android-icon-36x36.png"
+            }
+            alt={userInfo.user}
+          />
+          <form
+            className={`modify-image-form  ${hideFormAvatar ? "hide" : ""}`}
+            onSubmit={handleForm}
+          >
+            <fieldset className="fieldset">
+              <label className="label" htmlFor="avatar">
+                Avatar:
+              </label>
+              <input
+                className="image-picker"
+                type="file"
+                name="avatar"
+                id="avatar"
+                required
+                onChange={(e) => setAvatar(e.target.files[0])}
+              />
+            </fieldset>
+            <button>📷</button>
+          </form>
+          <button
+            className="edit-button"
+            onClick={() => {
+              setHideFormAvatar(!hideFormAvatar);
+            }}
+          >
+            ✏️
+          </button>
+        </li>
 
-        {error ? <p className="error">⚠️ {error}</p> : null}
+        <li> {error ? <p className="error">⚠️ {error}</p> : null}</li>
 
-        <p className="created-at">
+        <li className="created-at">
           <strong>Miembro desde</strong>: {dateCreated}
-        </p>
+        </li>
 
-        <p className={`user-name-profile ${hideFormUser ? "" : "hide"}`}>
-          <strong>Nombre de usuario</strong>: {userInfo.user}
-        </p>
-        <form
-          className={`modify-user-form ${hideFormUser ? "hide" : ""}`}
-          onSubmit={handleForm}
-        >
-          <fieldset className="fieldset">
-            <label className="label" htmlFor="user">
-              Usuario:
-            </label>
-            <input
-              placeholder={userInfo.user}
-              className="input"
-              type="user"
-              name="user"
-              id="user"
-              value={user}
-              required
-              onChange={(e) => setUser(e.target.value)}
-            />
-          </fieldset>
-          <button>Cambiar nombre de usuario</button>
-        </form>
-        <button
-          onClick={() => {
-            setHideFormUser(!hideFormUser);
-          }}
-        >
-          ✏️
-        </button>
+        <li className="list-element">
+          <p className={`user-name-profile ${hideFormUser ? "" : "hide"}`}>
+            <strong>Nombre de usuario</strong>: {userInfo.user}
+          </p>
+          <form
+            className={`modify-user-form ${hideFormUser ? "hide" : ""}`}
+            onSubmit={handleForm}
+          >
+            <fieldset className="fieldset">
+              <label className="label" htmlFor="user">
+                Usuario:
+              </label>
+              <input
+                placeholder={userInfo.user}
+                className="input"
+                type="user"
+                name="user"
+                id="user"
+                value={user}
+                required
+                onChange={(e) => setUser(e.target.value)}
+              />
+            </fieldset>
+            <button>Cambiar nombre de usuario</button>
+          </form>
+          <button
+            className="edit-button"
+            onClick={() => {
+              setHideFormUser(!hideFormUser);
+            }}
+          >
+            ✏️
+          </button>
+        </li>
 
-        <p className={`user-email-profile ${hideFormEmail ? "" : "hide"}`}>
-          <strong>Email</strong>: {userInfo.email}
-        </p>
-        <form
-          className={`modify-email-form ${hideFormEmail ? "hide" : ""}`}
-          onSubmit={handleForm}
-        >
-          <fieldset className="fieldset">
-            <label className="label" htmlFor="email">
-              Correo Electrónico:
-            </label>
-            <input
-              placeholder={userInfo.email}
-              className="input"
-              type="email"
-              name="email"
-              id="email"
-              value={email}
-              required
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </fieldset>
-          <button>Cambiar email</button>
-        </form>
-        <button
-          onClick={() => {
-            setHideFormEmail(!hideFormEmail);
-          }}
-        >
-          ✏️
-        </button>
+        <li className="list-element">
+          <p className={`user-email-profile ${hideFormEmail ? "" : "hide"}`}>
+            <strong>Email</strong>: {userInfo.email}
+          </p>
+          <form
+            className={`modify-email-form ${hideFormEmail ? "hide" : ""}`}
+            onSubmit={handleForm}
+          >
+            <fieldset className="fieldset">
+              <label className="label" htmlFor="email">
+                Correo Electrónico:
+              </label>
+              <input
+                placeholder={userInfo.email}
+                className="input"
+                type="email"
+                name="email"
+                id="email"
+                value={email}
+                required
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </fieldset>
+            <button>Cambiar email</button>
+          </form>
+          <button
+            className="edit-button"
+            onClick={() => {
+              setHideFormEmail(!hideFormEmail);
+            }}
+          >
+            ✏️
+          </button>
+        </li>
 
-        <p>
-          <strong>Privacidad</strong>
-        </p>
+        <li className="list-privacity">
+          <h2>Privacidad</h2>
 
-        <p
-          className={`user-password-profile ${hideFormPassword ? "" : "hide"}`}
-        >
-          <strong>Modificar contraseña</strong>
-        </p>
+          <button
+            className={`user-password-profile ${
+              hideFormPassword ? "" : "hide"
+            }`}
+            onClick={() => {
+              setHideFormPassword(!hideFormPassword);
+            }}
+          >
+            Modificar contraseña
+          </button>
 
-        <form
-          className={`modify-password-form ${hideFormPassword ? "hide" : ""}`}
-          onSubmit={handleForm}
-        >
-          <fieldset className="fieldset">
-            <label className="label" htmlFor="oldPassword">
-              Contraseña actual:
-            </label>
-            <input
-              placeholder="Intoduce contraseña actual"
-              className="input"
-              type="password"
-              name="password"
-              id="oldPassword"
-              value={oldPassword}
-              required
-              onChange={(e) => setOldPassword(e.target.value)}
-            />
-            <label className="label" htmlFor="newPassword">
-              Nueva contraseña:
-            </label>
-            <input
-              placeholder="Introduce nueva contraseña"
-              className="input"
-              type="password"
-              name="newPassword"
-              id="newPassword"
-              value={newPassword}
-              required
-              onChange={(e) => setNewPassword(e.target.value)}
-            />
-          </fieldset>
-          <button>Cambiar contraseña</button>
-        </form>
-        <button
-          onClick={() => {
-            setHideFormPassword(!hideFormPassword);
-          }}
-        >
-          ✏️
-        </button>
+          <form
+            className={`modify-password-form ${hideFormPassword ? "hide" : ""}`}
+            onSubmit={handleForm}
+          >
+            <fieldset className="fieldset">
+              <label className="label" htmlFor="oldPassword">
+                Contraseña actual:
+              </label>
+              <input
+                placeholder="Intoduce contraseña actual"
+                className="input"
+                type="password"
+                name="password"
+                id="oldPassword"
+                value={oldPassword}
+                required
+                onChange={(e) => setOldPassword(e.target.value)}
+              />
+              <label className="label" htmlFor="newPassword">
+                Nueva contraseña:
+              </label>
+              <input
+                placeholder="Introduce nueva contraseña"
+                className="input"
+                type="password"
+                name="newPassword"
+                id="newPassword"
+                value={newPassword}
+                required
+                onChange={(e) => setNewPassword(e.target.value)}
+              />
+            </fieldset>
+            <button>Cambiar contraseña</button>
+          </form>
 
-        <form onSubmit={handleClickDelete}>
-          <button className="delete-button">Eliminar cuenta</button>
-        </form>
-      </section>
+          <form onSubmit={handleClickDelete}>
+            <button className="delete-button">Eliminar cuenta</button>
+          </form>
+        </li>
+      </ul>
 
       {showConfirmModal ? (
         <section className="confirmModal" onClick={handleClickAway}>
