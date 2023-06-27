@@ -31,3 +31,7 @@
 .login .login-button {
   margin-top: 1rem;
 }
+
+.login .link-reset-password {
+  cursor: pointer;
+}

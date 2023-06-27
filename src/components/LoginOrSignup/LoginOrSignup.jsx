@@ -25,7 +25,7 @@ export const LoginOrSignup = ({ isLogin, setIsLogin }) => {
             setShowLogin(!showLogin);
           }}
         >
-          <section className="modal-body">
+          <section className="modal-body" onClick={(e) => e.stopPropagation()}>
             {isLogin ? <Login /> : <Signup />}
 
             <p

@@ -35,6 +35,7 @@
 
 .user-nav .link:hover {
   background-color: rgb(219, 209, 130);
+  text-decoration: underline;
 }
 
 .user-nav .link.logout {

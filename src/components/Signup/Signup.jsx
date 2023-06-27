@@ -14,10 +14,10 @@ import { useShowVerify } from "../../contexts/ShowVerifyContext";
 import { registerUserService } from "../../services/api";
 
 export const Signup = () => {
+  const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
   const [pass1, setPass1] = useState("");
   const [pass2, setPass2] = useState("");
-  const [user, setUser] = useState("");
   const [error, setError] = useState("");
 
   const [showLogin, setShowLogin] = useShowLogin();
@@ -46,15 +46,23 @@ export const Signup = () => {
   };
 
   return (
-    <section
-      onClick={(e) => {
-        e.stopPropagation();
-      }}
-      className="signup"
-    >
+    <section className="signup">
       <h2 className="title">Regístrate</h2>
 
       <form className="form" onSubmit={handleForm}>
+        <fieldset>
+          <label htmlFor="signup-user">Nombre de usuario:</label>
+          <input
+            placeholder="Introduce nombre de usuario"
+            type="text"
+            id="signup-user"
+            name="signup-user"
+            value={user}
+            required
+            onChange={(e) => setUser(e.target.value)}
+          />
+        </fieldset>
+
         <fieldset>
           <label htmlFor="signup-email">Correo electrónico:</label>
           <input
@@ -91,19 +99,6 @@ export const Signup = () => {
             value={pass2}
             required
             onChange={(e) => setPass2(e.target.value)}
-          />
-        </fieldset>
-
-        <fieldset>
-          <label htmlFor="signup-user">Nombre de usuario:</label>
-          <input
-            placeholder="Introduce nombre de usuario"
-            type="text"
-            id="signup-user"
-            name="signup-user"
-            value={user}
-            required
-            onChange={(e) => setUser(e.target.value)}
           />
         </fieldset>
 

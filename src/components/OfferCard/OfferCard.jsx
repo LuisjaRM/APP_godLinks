@@ -1,6 +1,6 @@
 import "./OfferCard.css";
 
-// react-router-dom
+// React
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -20,6 +20,10 @@ import { useNavigateTo } from "../../contexts/NavigateToContext";
 import { addFavoriteService } from "../../services/api";
 
 export const OfferCard = ({ offer }) => {
+  const { user, token } = useAuth();
+  const [showLogin, setShowLogin] = useShowLogin();
+  const [, setNavigateTo] = useNavigateTo();
+
   // Date Logic
   const timeNow = Date.now();
   const nowDate = new Date(timeNow);
@@ -53,13 +57,7 @@ export const OfferCard = ({ offer }) => {
   const offer_expiry = new Date(offer.offer_expiry);
   const dateOffer_expiry = offer_expiry.toLocaleDateString("en-GB");
 
-  // UserContext
-
-  const { user, token } = useAuth();
-  const [showLogin, setShowLogin] = useShowLogin();
-  const [, setNavigateTo] = useNavigateTo();
-
-  // Favorite Logic
+  // Handle Fotm Favorite
 
   const [isLiked, setIsLiked] = useState(offer.favorite);
 
@@ -89,7 +87,8 @@ export const OfferCard = ({ offer }) => {
 
   const windowLocation = window.location.href.slice(21, -2);
 
-  // CSS States
+  // CSS state to descrip
+
   const [expand, setExpand] = useState(false);
 
   return (
@@ -165,14 +164,14 @@ export const OfferCard = ({ offer }) => {
             <h2>{offer.title}</h2>
           </li>
           <li className="offer-price">
-            <p className="price-dcto">{offer.price} €</p>
-            <p className="price">{offer.offer_price} €</p>
+            <p className="price-dcto">{offer.offer_price} €</p>
+            <p className="price">{offer.price} €</p>
           </li>
           <li className="offer-cad">Cad: {dateOffer_expiry}</li>
           <li className={`offer-descrip ${expand ? "expand" : ""}`}>
             {offer.descrip}
 
-            {offer.descrip.length > 93 ? (
+            {offer.descrip.length > 58 ? (
               <button
                 className={`expand-button ${expand ? "expand" : ""}`}
                 onClick={(e) => {
@@ -181,7 +180,7 @@ export const OfferCard = ({ offer }) => {
                   setExpand(!expand);
                 }}
               >
-                {expand ? "⬆️" : "..."}
+                {expand ? "⇧" : "..."}
               </button>
             ) : (
               ""
@@ -205,11 +204,11 @@ export const OfferCard = ({ offer }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Link 🔗
+            Ir a la oferta 🔗
           </a>
         </button>
 
-        <button className="comments-button">🗨️</button>
+        <p className="comments">🗨️ (0)</p>
       </section>
     </section>
   );
