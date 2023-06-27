@@ -33,3 +33,9 @@
   border-radius: 5px;
   box-shadow: 1px 1px 10px black;
 }
+
+.post-comment .error {
+  margin-top: 0.5rem;
+  text-align: center;
+  color: red;
+}

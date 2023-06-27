@@ -62,7 +62,7 @@ export const CommentsCard = ({ comment, refresh }) => {
   const [showEditComment, setShowEditComment] = useState(false);
 
   const [newComment, setNewComment] = useState(comment.comment);
-  const [, setError] = useState("");
+  const [error, setError] = useState("");
 
   const handleEditComment = async (e) => {
     e.preventDefault();
@@ -116,6 +116,7 @@ export const CommentsCard = ({ comment, refresh }) => {
 
   return (
     <>
+      {error ? <p className="error">⚠️ {error}</p> : null}
       <section className="comment-card">
         {user.id === comment.user_id ? (
           <section className="comments-buttons">

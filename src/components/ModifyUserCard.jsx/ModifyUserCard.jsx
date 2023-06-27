@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { useShowLogin } from "../../contexts/ShowLoginContext";
 import { useShowVerify } from "../../contexts/ShowVerifyContext";
+import { useError } from "../../contexts/ErrorContext";
 
 // Navigate
 
@@ -23,6 +24,7 @@ import {
 } from "../../services/api";
 
 export const ModifyUserCard = ({ userInfo, refresh }) => {
+  const [error, setError] = useError();
   const { token, logout } = useAuth();
 
   // Context
@@ -36,10 +38,6 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
   //State of navigate
 
   const navigate = useNavigate();
-
-  // State of error
-
-  const [error, setError] = useState("");
 
   // States of Forms
   const [avatar, setAvatar] = useState("");
@@ -139,6 +137,9 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
       }, 1500);
     } catch (error) {
       setError(error.message);
+      setTimeout(() => {
+        setError("");
+      }, 5000);
     }
   };
 
@@ -155,6 +156,9 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
       }, 1500);
     } catch (error) {
       setError(error.message);
+      setTimeout(() => {
+        setError("");
+      }, 5000);
     }
   };
 
@@ -170,10 +174,14 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
       logout();
     } catch (error) {
       setError(error.message);
+      setTimeout(() => {
+        setError("");
+      }, 5000);
     }
   };
 
   // Edit password
+
   const changePassword = async () => {
     try {
       await ModifyPasswordService({ oldPassword, newPassword }, token);
@@ -183,6 +191,9 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
       logout();
     } catch (error) {
       setError(error.message);
+      setTimeout(() => {
+        setError("");
+      }, 5000);
     }
   };
 
@@ -242,6 +253,8 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
         >
           ✏️
         </button>
+
+        {error ? <p className="error">⚠️ {error}</p> : null}
 
         <p className="created-at">
           <strong>Miembro desde</strong>: {dateCreated}
@@ -362,6 +375,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
         >
           ✏️
         </button>
+
         <form onSubmit={handleClickDelete}>
           <button className="delete-button">Eliminar cuenta</button>
         </form>

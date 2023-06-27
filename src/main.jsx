@@ -14,6 +14,7 @@ import { ShowLoginProvider } from "./contexts/ShowLoginContext";
 import { ShowVerifyProvider } from "./contexts/ShowVerifyContext";
 import { ShowRecoverProvider } from "./contexts/ShowRecoverContext";
 import { NavigateToProvider } from "./contexts/NavigateToContext.jsx";
+import { ErrorProvider } from "./contexts/ErrorContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -23,7 +24,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <ShowVerifyProvider>
             <ShowRecoverProvider>
               <NavigateToProvider>
-                <App />
+                <ErrorProvider>
+                  <App />
+                </ErrorProvider>
               </NavigateToProvider>
             </ShowRecoverProvider>
           </ShowVerifyProvider>
