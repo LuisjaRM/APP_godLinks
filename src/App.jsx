@@ -1,6 +1,6 @@
 import "./App.css";
 
-// react-router-dom
+// React
 
 import {
   createBrowserRouter,
@@ -21,7 +21,6 @@ import { ModifyOffer } from "./Pages/ModifyOffer/ModifyOffer";
 import { UserInfo } from "./Pages/UserInfo/UserInfo";
 import { UserProfile } from "./Pages/UserProfile/UserProfile";
 import { NotFound } from "./Pages/NotFound/NotFound";
-
 
 const router = createBrowserRouter(
   createRoutesFromElements(

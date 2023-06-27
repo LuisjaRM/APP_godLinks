@@ -1,6 +1,7 @@
 import "./LoginOrSignup.css";
 
 // Components
+
 import { Login } from "../Login/Login";
 import { Signup } from "../Signup/Signup";
 
@@ -18,7 +19,7 @@ export const LoginOrSignup = ({ isLogin, setIsLogin }) => {
     showLogin && (
       <>
         <section
-          className="modal"
+          className="modal-back dark"
           onClick={() => {
             setIsLogin(true);
             setShowLogin(!showLogin);
@@ -27,7 +28,7 @@ export const LoginOrSignup = ({ isLogin, setIsLogin }) => {
           <section className="modal-body">
             {isLogin ? <Login /> : <Signup />}
 
-            <a
+            <p
               className="change-button"
               onClick={(e) => {
                 setIsLogin(!isLogin);
@@ -37,7 +38,7 @@ export const LoginOrSignup = ({ isLogin, setIsLogin }) => {
               {isLogin
                 ? "Aún no tienes cuenta? Regístrate"
                 : "Ya tienes cuenta? Inicia sesión"}
-            </a>
+            </p>
           </section>
         </section>
       </>

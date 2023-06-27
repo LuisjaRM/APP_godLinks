@@ -1,4 +1,8 @@
-.text-stroke {
+.title:hover {
+  border-bottom: 1px solid khaki;
+}
+
+.title .text-stroke {
   font-size: 95px;
   stroke: #000;
   stroke-width: 2;
@@ -22,7 +26,7 @@
   95% {
     stroke-dasharray: 0%;
     stroke-dashoffset: 90%;
-    fill: #e211e200;
+    fill: #a5a205;
   }
   100% {
     stroke-dasharray: 0%;

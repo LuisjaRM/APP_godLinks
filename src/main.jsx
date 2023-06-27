@@ -1,4 +1,7 @@
 import "./index.css";
+
+// App
+
 import App from "./App.jsx";
 
 // React

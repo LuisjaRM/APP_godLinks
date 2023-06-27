@@ -11,16 +11,25 @@ export const VerifyUser = ({ setIsLogin }) => {
 
   return (
     showVerify && (
-      <section className="modal">
-        <section className="verify-body">
+      <section
+        className="modal-back dark"
+        onClick={(e) => {
+          e.stopPropagation();
+          setIsLogin(true);
+          setShowVerify(!showVerify);
+          setShowLogin(!showLogin);
+        }}
+      >
+        <section className="modal-body verify">
           <p>Te hemos enviado un correo para que verifiques tu cuenta 😃</p>
+
           <button
-            className="verify-button"
+            className="button verify-button"
             onClick={(e) => {
+              e.stopPropagation();
               setIsLogin(true);
               setShowVerify(!showVerify);
               setShowLogin(!showLogin);
-              e.stopPropagation();
             }}
           >
             Continuar

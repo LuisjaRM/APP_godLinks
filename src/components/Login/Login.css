@@ -1,46 +1,33 @@
 .login {
-  margin-top: 1.5rem;
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.login .form {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
 }
 
-.login .login-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-.login .fieldset {
+.login fieldset {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   border: none;
 }
 
-.login .input {
-  width: 100%;
+.login input {
   padding: 0.25rem;
-  border-radius: 5px;
-  box-shadow: 1px 1px 10px black;
-}
-
-.login .button {
-  cursor: pointer;
-  margin-top: 1rem;
-  width: fit-content;
-  padding: 0.25rem 1rem;
-  background-color: khaki;
-  font-weight: bold;
   border: none;
   border-radius: 5px;
   box-shadow: 1px 1px 10px black;
 }
 
-.login .error {
-  width: 100%;
-  text-align: center;
-  color: red;
+.login .login-button {
+  margin-top: 1rem;
 }

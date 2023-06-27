@@ -1,6 +1,6 @@
 import "./Filter.css";
 
-// react-router-dom
+// React
 
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
@@ -12,13 +12,12 @@ import { useNavigateTo } from "../../contexts/NavigateToContext";
 
 export const Filter = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const currentPath = location.pathname;
 
   const { user } = useAuth();
   const [showLogin, setShowLogin] = useShowLogin();
   const [, setNavigateTo] = useNavigateTo();
-
-  const navigate = useNavigate();
 
   const handleClickFavorites = () => {
     setNavigateTo("/favorites");
@@ -26,31 +25,27 @@ export const Filter = () => {
   };
 
   return (
-    <>
-      <section className="filterOffers">
-        <nav className="filter-list">
-          {currentPath !== "/allOffers" ? (
-            <Link className="link" to="/allOffers">
-              Todas las ofertas
-            </Link>
-          ) : null}
-          {currentPath !== "/" ? (
-            <Link className="link" to="/">
-              Ofertas del día
-            </Link>
-          ) : null}
-          {currentPath !== "/offersByVotes" ? (
-            <Link className="link" to="/offersByVotes">
-              Ofertas más votadas
-            </Link>
-          ) : null}
-          {currentPath !== "/favorites" ? (
-            <p onClick={handleClickFavorites} className="link">
-              Ofertas favoritas
-            </p>
-          ) : null}
-        </nav>
-      </section>
-    </>
+    <nav className="filter1">
+      {currentPath !== "/allOffers" ? (
+        <Link className="link" to="/allOffers">
+          Todas las ofertas
+        </Link>
+      ) : null}
+      {currentPath !== "/" ? (
+        <Link className="link" to="/">
+          Ofertas del día
+        </Link>
+      ) : null}
+      {currentPath !== "/offersByVotes" ? (
+        <Link className="link" to="/offersByVotes">
+          Ofertas más votadas
+        </Link>
+      ) : null}
+      {currentPath !== "/favorites" ? (
+        <p onClick={handleClickFavorites} className="link">
+          Ofertas favoritas
+        </p>
+      ) : null}
+    </nav>
   );
 };

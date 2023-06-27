@@ -1,5 +1,9 @@
 import "./UserButton.css";
 
+// Components
+
+import { UserNav } from "../UserNav/UserNav";
+
 // Contexts
 
 import { useShowLogin } from "../../contexts/ShowLoginContext";
@@ -10,27 +14,28 @@ export const UserButton = () => {
   const { user } = useAuth();
 
   return (
-    <>
-      <button
-        className={`user-button ${user ? "loged" : ""} ${
-          showLogin ? "openNav" : ""
-        }`}
-        onClick={() => setShowLogin(!showLogin)}
-      >
-        {user ? (
-          <img
-            className="user-image"
-            src={
-              user.avatar
-                ? `${import.meta.env.VITE_BACKEND}uploads/${user.avatar}`
-                : "/android-icon-36x36.png"
-            }
-            alt={user.user}
-          />
-        ) : (
-          "👩‍🦲"
-        )}
-      </button>
-    </>
+    <button
+      className={`button user-button`}
+      onClick={() => setShowLogin(!showLogin)}
+    >
+      {user ? (
+        <img
+          className="user-image"
+          src={
+            user.avatar
+              ? `${import.meta.env.VITE_BACKEND}uploads/${user.avatar}`
+              : "/default-user.webp"
+          }
+          alt={user.user}
+        />
+      ) : (
+        <img
+          className="user-image"
+          src="/default-user.webp"
+          alt="default-user"
+        />
+      )}
+      <UserNav />
+    </button>
   );
 };

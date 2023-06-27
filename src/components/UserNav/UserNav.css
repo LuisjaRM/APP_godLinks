@@ -1,32 +1,30 @@
-.modal-user {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 99;
-}
-
-.userNav-wrap {
-  position: absolute;
-  top: 3rem;
-  left: 0.25rem;
-  width: 6.5rem;
-  background-color: khaki;
-  border-radius: 10px;
-  box-shadow: 1px 1px 10px black;
-}
-
 .user-nav {
+  position: absolute;
+  top: calc((7.5vh - 28px) / 2);
+  left: 1rem;
+  width: 6.5rem;
+  height: 7rem;
   display: flex;
   flex-direction: column;
+  justify-content: end;
   gap: 0.5rem;
   padding: 0.25rem;
   font-size: 75%;
-  border-radius: 15%;
+  border-radius: 10px;
+  background-color: rgb(196, 186, 104);
+  box-shadow: 1px 1px 10px black;
+  list-style: none;
 }
 
-.link-perfile {
+.user-nav .username {
+  width: fit-content;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-weight: bold;
+}
+
+.user-nav .link {
   cursor: pointer;
   padding: 0.25rem 0;
   text-decoration: none;
@@ -35,25 +33,17 @@
   border-bottom: 1px solid black;
 }
 
-.link-perfile:hover {
-  background-color: rgb(238, 223, 90);
+.user-nav .link:hover {
+  background-color: rgb(219, 209, 130);
 }
 
-.logout-perfile {
-  cursor: pointer;
-  padding: 0.25rem 0;
+.user-nav .link.logout {
+  border: none;
   font-weight: bold;
-  text-align: center;
-  text-decoration: none;
-  color: black;
 }
 
-.logout-perfile:hover {
-  background-color: rgb(238, 223, 90);
-}
-
-.modal-user {
-  animation: fadeInOut 0.4s ease-in-out;
+.modal-back {
+  animation: fadeInOut 0.5s ease-in-out;
 }
 
 @keyframes fadeInOut {
