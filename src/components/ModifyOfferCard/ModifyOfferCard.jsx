@@ -58,10 +58,6 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
     setShowConfirmModal(!showConfirmModal);
   };
 
-  // Change Made Modal
-
-  const [showChangeMadeModal, setShowChangeMadeModal] = useState();
-
   // Confirm Modal
 
   const [showConfirmModal, setShowConfirmModal] = useState();
@@ -595,19 +591,6 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
                 No
               </button>
             </section>
-          </section>
-        </section>
-      ) : (
-        ""
-      )}
-
-      {showChangeMadeModal ? (
-        <section className="changeMade-modal">
-          <section className="changeMade-modal-body">
-            {avatar && <h3>Tu avatar se ha modificado con éxito </h3>}
-            {user && <h3>Tu nombre de usuario se ha modificado con éxito</h3>}
-
-            {clickDelete && <h3>Tu usuario se ha eliminado con éxito</h3>}
           </section>
         </section>
       ) : (
