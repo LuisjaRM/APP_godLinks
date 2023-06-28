@@ -6,7 +6,7 @@ import { SvgIcon } from "@mui/material";
 import ImageSearchIcon from "@mui/icons-material/ImageSearch";
 import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
 
-// react
+// React
 
 import { useState } from "react";
 import { useNavigate } from "react-router";
@@ -24,7 +24,15 @@ export const PostOfferImage = ({
   openPostImage,
   setOpenPostImage,
 }) => {
+  // Destructuring useAuth
+
   const { token } = useAuth();
+
+  // State upload offer
+
+  const [showUploadOfferModal, setShowUploadOfferModal] = useState();
+
+  // Navigate
 
   const navigate = useNavigate();
 
@@ -43,14 +51,21 @@ export const PostOfferImage = ({
       await postOfferImageService(token, offerId, image);
 
       setOpenPostImage(!openPostImage);
+      setShowUploadOfferModal(!showUploadOfferModal);
 
-      windowLocation === "/allOffers" ? navigate("/") : navigate("/allOffers");
+      setTimeout(() => {
+        setShowUploadOfferModal(!showUploadOfferModal);
+        windowLocation === "/allOffers"
+          ? navigate("/")
+          : navigate("/allOffers");
+      }, 1500);
     } catch (error) {
       setError(error.message);
     }
   };
 
   return (
+    <>
     <section className={`post-offer-image-body ${openPostImage ? "show" : ""}`}>
       <section
         onClick={(e) => e.stopPropagation()}
@@ -68,6 +83,7 @@ export const PostOfferImage = ({
                 id="input-image"
                 onChange={(e) => setImage(e.target.files[0])}
               />
+
               <SvgIcon
                 className="post-image-icon"
                 component={ImageSearchIcon}
@@ -75,10 +91,8 @@ export const PostOfferImage = ({
               />
             </label>
           </fieldset>
-
-          {error ? <p className="error">{error}</p> : null}
-
-          <button className="post-offer-button">
+           {error ? <p className="error">{error}</p> : null}
+           <button className="post-offer-button">
             <SvgIcon
               className="post-offer-icon"
               component={AddToPhotosIcon}
@@ -107,6 +121,15 @@ export const PostOfferImage = ({
           </button>
         </section>
       </section>
-    </section>
+      {showUploadOfferModal ? (
+        <section className="uploadOffer-modal">
+          <section className="uploadOffer-modal-body">
+            <h3>Oferta subida con éxito </h3>
+          </section>
+        </section>
+      ) : (
+        ""
+      )}
+    </>
   );
 };

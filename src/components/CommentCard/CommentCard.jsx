@@ -27,6 +27,16 @@ import {
 export const CommentsCard = ({ comment, refresh }) => {
   const navigate = useNavigate();
 
+  // State Confirm Modal
+
+  const [showConfirmModal, setShowConfirmModal] = useState();
+
+  // State Change Made Modal
+
+  const [showChangeMadeModal, setShowChangeMadeModal] = useState();
+
+  // Destructuring useAuth
+
   const { user, token } = useAuth();
 
   // Date Logic
@@ -78,6 +88,7 @@ export const CommentsCard = ({ comment, refresh }) => {
       await patchCommentService(token, comment.id, { newComment });
       refresh();
       setNewComment("");
+      setError("");
     } catch (error) {
       setError(error.message);
     }
@@ -85,15 +96,13 @@ export const CommentsCard = ({ comment, refresh }) => {
 
   // Delete comment
 
-  const [showDeleteComment, setShowDeleteComment] = useState(false);
-
   const handleClickCancel = (e) => {
     e.stopPropagation();
-    setShowDeleteComment(!showDeleteComment);
+    setShowConfirmModal(!showConfirmModal);
   };
 
   const handleClickAway = () => {
-    setShowDeleteComment(!showDeleteComment);
+    setShowConfirmModal(!showConfirmModal);
   };
 
   const handleClickConfirm = (e) => {
@@ -105,7 +114,12 @@ export const CommentsCard = ({ comment, refresh }) => {
     try {
       // Fetch
       await deleteCommentService(token, comment.id);
-      refresh();
+      setShowChangeMadeModal(!showChangeMadeModal);
+      setError("");
+      setTimeout(() => {
+        setShowChangeMadeModal(!showChangeMadeModal);
+        refresh();
+      }, 1500);
     } catch (error) {
       setError(error.message);
     }
@@ -129,7 +143,7 @@ export const CommentsCard = ({ comment, refresh }) => {
       <section className="comment-card">
         {user.id === comment.user_id ? (
           <section className="comments-buttons">
-            <button
+              <button
               className="edit"
               onClick={(e) => {
                 e.preventDefault();
@@ -143,13 +157,12 @@ export const CommentsCard = ({ comment, refresh }) => {
                 inheritViewBox
               />
             </button>
-
             <button
               className="delete"
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                setShowDeleteComment(!showDeleteComment);
+                setShowConfirmModal(!showConfirmModal);
               }}
             >
               <SvgIcon
@@ -162,6 +175,7 @@ export const CommentsCard = ({ comment, refresh }) => {
         ) : (
           ""
         )}
+
         <section className="header">
           <section
             className="user-info"
@@ -227,7 +241,7 @@ export const CommentsCard = ({ comment, refresh }) => {
         </section>
       </section>
 
-      {showDeleteComment ? (
+      {showConfirmModal ? (
         <section className="confirmModal" onClick={handleClickAway}>
           <section className="confirmModal-body">
             <h2>¿Estás seguro de que quieres borrar este comentario?</h2>
@@ -239,6 +253,16 @@ export const CommentsCard = ({ comment, refresh }) => {
                 No
               </button>
             </section>
+          </section>
+        </section>
+      ) : (
+        ""
+      )}
+
+      {showChangeMadeModal ? (
+        <section className="changeMade-modal">
+          <section className="changeMade-modal-body">
+            {deleteComment && <h3>Tu comentario se ha eliminado con éxito</h3>}
           </section>
         </section>
       ) : (

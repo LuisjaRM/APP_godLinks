@@ -60,10 +60,18 @@ export const OfferCard = ({ offer }) => {
     text = "d";
   }
 
+  // Expired Offer Date Logic
+
   const offer_expiry = new Date(offer.offer_expiry);
   const dateOffer_expiry = offer_expiry.toLocaleDateString("en-GB");
+  const timeOffer_Expiry = offer_expiry.getTime() - 1000 * 60 * 60;
+  const dateOffer_Expiry = new Date(timeOffer_Expiry);
 
-  // Handle Fotm Favorite
+  // Disabled Caducated offers
+
+  const expired = dateOffer_Expiry.getTime() < nowDate.getTime();
+
+  // Handle Form Favorite
 
   const [isLiked, setIsLiked] = useState(offer.favorite);
 
@@ -102,7 +110,9 @@ export const OfferCard = ({ offer }) => {
   const { offers } = useGetOfferById(offer.id, token);
 
   return (
-    <section className="offer-card" onClick={handleClickOfferCard}>
+     <section 
+        className={`offer-card ${expired ? "expired" : ""}`} 
+        onClick={handleClickOfferCard}>
       {windowLocation === "/userInfo" && user.id === offer.user_id ? (
         <section className="edit-wrap">
           <button
@@ -146,7 +156,7 @@ export const OfferCard = ({ offer }) => {
       <section className="main">
         <section className="image-box">
           <img
-            className="image"
+            className={`image ${expired ? "expired" : ""}`}
             src={
               offer.photo
                 ? `${import.meta.env.VITE_BACKEND}uploads/${offer.photo}`
@@ -169,41 +179,49 @@ export const OfferCard = ({ offer }) => {
           c21.009,33.324,50.227,65.585,86.845,95.889c62.046,51.348,123.114,78.995,125.683,80.146c2.203,0.988,4.779,0.988,6.981,0
           c2.57-1.151,63.637-28.798,125.683-80.146c36.618-30.304,65.836-62.565,86.845-95.889C498.548,263.271,512,219.394,512,174.936
           C512,137.911,498.388,101.305,474.655,74.503z"
-              />
-            </svg>
-          </button>
+                />
+              </svg>
+            </button>
+          </section>
+
+          <ul className="offer-info">
+            <li className="offer-title">
+              <h2>{offer.title}</h2>
+            </li>
+            <li className="offer-price">
+              <p className="price-dcto">{offer.offer_price} €</p>
+              <p className={`price ${expired ? "expired" : ""}`}>
+                {offer.price} €
+              </p>
+            </li>
+            <li className="offer-cad">Cad: {dateOffer_expiry}</li>
+            <li className={`offer-descrip ${expand ? "expand" : ""}`}>
+              {offer.descrip}
+
+              {offer.descrip.length > 58 ? (
+                <button
+                  className={`expand-button ${expand ? "expand" : ""}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setExpand(!expand);
+                  }}
+                >
+                  {expand ? "⇧" : "..."}
+                </button>
+              ) : (
+                ""
+              )}
+            </li>
+          </ul>
         </section>
 
-        <ul className="offer-info">
-          <li className="offer-title">
-            <h2>{offer.title}</h2>
-          </li>
-          <li className="offer-price">
-            <p className="price-dcto">{offer.offer_price} €</p>
-            <p className="price">{offer.price} €</p>
-          </li>
-          <li className="offer-cad">Cad: {dateOffer_expiry}</li>
-          <li className={`offer-descrip ${expand ? "expand" : ""}`}>
-            {offer.descrip}
-
-            {offer.descrip.length > 58 ? (
-              <button
-                className={`expand-button ${expand ? "expand" : ""}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  setExpand(!expand);
-                }}
-              >
-                {expand ? "⇧" : "..."}
-              </button>
-            ) : (
-              ""
-            )}
-          </li>
-        </ul>
-      </section>
-
+        <section className="footer">
+          <PostVote
+            votes={offer.avgVotes}
+            offerId={offer.id}
+            userId={offer.user_id}
+          />
       <section className="footer">
         <PostVote
           votes={offer.avgVotes}
@@ -231,6 +249,7 @@ export const OfferCard = ({ offer }) => {
 
         <p className="comments">🗨️ ({offers.comments?.length})</p>
       </section>
-    </section>
+      {/*expired && <section className="expired-offer"></section>*/}
+    </>
   );
 };
