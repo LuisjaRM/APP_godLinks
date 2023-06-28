@@ -1,5 +1,6 @@
 .page_404 {
-  height: calc(100vh - 7.5vh - 7.5vh - 7.5vh);
+  /* 100vh - vh de header, filter, footer y el padding de main */
+  height: calc(100vh - 7.5vh - 7.5vh - 7.5vh - 2rem);
   background-color: white;
   color: black;
 }

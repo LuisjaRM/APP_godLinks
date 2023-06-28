@@ -27,24 +27,23 @@ export const UserInfo = () => {
 
   const { dataUser, loading, error, refresh } = useGetUserInfo(token, id);
 
+
   if (loading) return <Loading />;
   if (error) return <ErrorMessage />;
 
   return (
-    <>
+    <section className="user-offers">
       {dataUser.userInfo?.map((userInfo, index) => (
         <UserInfoCard key={index} userInfo={userInfo} />
       ))}
 
-      <section className="body">
-        <ul className="offers-list">
-          {dataUser.offers?.map((offer) => (
-            <li key={offer.id}>
-              <OfferCard refresh={refresh} offer={offer} />
-            </li>
-          ))}
-        </ul>
-      </section>
-    </>
+      <ul className="offers">
+        {dataUser.offers?.map((offer) => (
+          <li key={offer.id}>
+            <OfferCard refresh={refresh} offer={offer} />
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 };

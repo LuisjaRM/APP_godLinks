@@ -33,8 +33,8 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
   const [image, setImage] = useState("");
   const [url, setUrl] = useState("");
-  const [title, setTitle] = useState("");
-  const [descrip, setDescrip] = useState("");
+  const [title, setTitle] = useState(offer.title);
+  const [descrip, setDescrip] = useState(offer.descrip);
   const [offer_price, setOffer_price] = useState("");
   const [price, setPrice] = useState("");
   const [plataform, setPlataform] = useState("");
@@ -93,13 +93,13 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
     setHideFormPlataform(true);
     setHideFormOfferExpiry(true);
     setImage("");
-    setUrl(offer.url);
-    setTitle(offer.title);
-    setDescrip(offer.descrip);
-    setOffer_price(offer.offer_price);
-    setPrice(offer.price);
-    setPlataform(offer.plataform);
-    setOffer_expiry(offerExpiryDefault);
+    setUrl("");
+    setTitle("");
+    setDescrip("");
+    setOffer_price("");
+    setPrice("");
+    setPlataform("");
+    setOffer_expiry("");
     setClickDelete(false);
   };
 
@@ -114,13 +114,13 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
     setHideFormPlataform(true);
     setHideFormOfferExpiry(true);
     setImage("");
-    setUrl(offer.url);
-    setTitle(offer.title);
-    setDescrip(offer.descrip);
-    setOffer_price(offer.offer_price);
-    setPrice(offer.price);
-    setPlataform(offer.plataform);
-    setOffer_expiry(offerExpiryDefault);
+    setUrl("");
+    setTitle("");
+    setDescrip("");
+    setOffer_price("");
+    setPrice("");
+    setPlataform("");
+    setOffer_expiry("");
     setClickDelete(false);
   };
 
@@ -279,12 +279,12 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
   const changeOfferExpiry = async () => {
     try {
       await patchOfferService(token, offer.id, { offer_expiry });
-      setOffer_expiry(offer_expiry);
+      setOffer_expiry(offerExpiryDefault);
       setHideFormOfferExpiry(!hideFormOfferExpiry);
       setShowChangeMadeModal(!showChangeMadeModal);
       setTimeout(() => {
         setShowChangeMadeModal(!showChangeMadeModal);
-        setPlataform("");
+        setOffer_expiry("");
         refresh();
       }, 1500);
     } catch (error) {
@@ -293,7 +293,6 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
         setError("");
       }, 5000);
     }
-    setOffer_expiry("");
   };
 
   // Delete Offer
@@ -676,10 +675,10 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
             )}
             {price && <h3>El precio original se ha modificado con éxito</h3>}
             {plataform && <h3>La plataforma se ha modificado con éxito</h3>}
-            {offer_expiry && (
+            {offerExpiryDefault && (
               <h3>La caducidad de la oferta se ha modificado con éxito</h3>
             )}
-            {clickDelete && <h3>Tu usuario se ha eliminado con éxito</h3>}
+            {clickDelete && <h3>Tu oferta se ha eliminado con éxito</h3>}
           </section>
         </section>
       ) : (
