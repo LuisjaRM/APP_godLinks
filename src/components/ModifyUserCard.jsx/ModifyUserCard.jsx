@@ -105,8 +105,6 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
     setClickDelete(false);
   };
 
-  // Arreglo
-
   const handleClickAway = (e) => {
     e.stopPropagation();
     setShowConfirmModal(!showConfirmModal);

@@ -8,6 +8,10 @@ import LoginIcon from "@mui/icons-material/Login";
 
 import { useNavigate } from "react-router";
 
+// Material
+
+import LoginIcon from "@mui/icons-material/Login";
+
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";

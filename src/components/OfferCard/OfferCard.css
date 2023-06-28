@@ -52,8 +52,12 @@
   font-weight: bold;
 }
 
-.offer-card .header .user-info .user-name:hover {
+.offer-card .header .user-name:hover {
   text-decoration: underline;
+}
+
+.offer-card .header .created {
+  cursor: default;
 }
 
 /* OfferCard main */
@@ -70,23 +74,13 @@
 }
 
 .offer-card .main .image {
+  cursor: default;
   width: 144px;
   height: 220px;
   object-fit: cover;
   border-radius: 10px;
   border: 1px solid black;
   box-shadow: 1px 1px 5px black;
-}
-
-.offer-card .main .favorite-button {
-  background: none;
-  position: absolute;
-  top: 1px;
-  right: 1px;
-  border-radius: 5px;
-  border: none;
-  width: 24px;
-  height: 24px;
 }
 
 .offer-card .main .offer-info {
@@ -148,6 +142,57 @@
   border: none;
 }
 
+/* Favorite button */
+
+.offer-card .main .favorite-button {
+  cursor: pointer;
+  background: none;
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  border-radius: 5px;
+  border: none;
+  width: 24px;
+  height: 24px;
+}
+
+svg {
+  fill: rgb(141, 139, 139);
+}
+
+svg:hover {
+  fill: salmon;
+}
+
+.like {
+  fill: red;
+  animation-name: like;
+  animation-duration: 0.3s;
+  animation-iteration-count: 2;
+}
+
+@keyframes like {
+  0% {
+    transform: scale(1);
+  }
+
+  25% {
+    transform: scale(1.1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  75% {
+    transform: scale(1.3);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
 /* Offer footer */
 
 .offer-card .footer {
@@ -176,45 +221,8 @@
   color: black;
 }
 
-.favorite-button {
-  cursor: pointer;
-  width: 1rem;
-  height: 1rem;
-  background: transparent;
-  border: none;
-}
-
-svg {
-  fill: rgb(141, 139, 139);
-}
-
-.like {
-  fill: rgb(0, 89, 255);
-  animation-name: like;
-  animation-duration: 0.3s;
-  animation-iteration-count: 2;
-}
-
-@keyframes like {
-  0% {
-    transform: scale(1);
-  }
-
-  25% {
-    transform: scale(1.1);
-  }
-
-  50% {
-    transform: scale(1.2);
-  }
-
-  75% {
-    transform: scale(1.3);
-  }
-
-  100% {
-    transform: scale(1);
-  }
+.offer-card .footer .comments {
+  cursor: default;
 }
 
 /* Para el responsive de ordenador */

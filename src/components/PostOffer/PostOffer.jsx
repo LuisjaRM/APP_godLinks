@@ -15,12 +15,14 @@ import { postOfferService } from "../../services/api";
 import { PostOfferImage } from "../PostOfferImage/PostOfferImage";
 
 export const PostOffer = () => {
-  const { user, token } = useAuth();
-  const [showLogin, setShowLogin] = useShowLogin();
-
   const [openPostOffer, setOpenPostOffer] = useState();
   const [openPostImage, setOpenPostImage] = useState();
   const [offerId, setOfferId] = useState();
+
+  const { user, token } = useAuth();
+  const [showLogin, setShowLogin] = useShowLogin();
+
+  // Form states
 
   const [url, setUrl] = useState("");
   const [title, setTitle] = useState("");
@@ -31,10 +33,13 @@ export const PostOffer = () => {
   const [offer_expiry, setOffer_expiry] = useState("");
   const [error, setError] = useState("");
 
+  // Handle form
+
   const handleForm = async (e) => {
     e.preventDefault();
 
     try {
+      // Fetch
       const data = await postOfferService(
         { url, title, descrip, price, offer_price, plataform, offer_expiry },
         token
@@ -61,12 +66,11 @@ export const PostOffer = () => {
         >
           X
         </button>
-        <form className="post-form" onSubmit={handleForm}>
-          <fieldset className="fieldset">
-            <label className="label">Enlace:</label>
+        <form className="form" onSubmit={handleForm}>
+          <fieldset>
+            <label>Enlace:</label>
             <input
               placeholder="https://www.tupagina.com/"
-              className="input"
               type="url"
               name="url"
               id="url"
@@ -76,11 +80,10 @@ export const PostOffer = () => {
             />
           </fieldset>
 
-          <fieldset className="fieldset">
-            <label className="label">Título:</label>
+          <fieldset>
+            <label>Título:</label>
             <input
               placeholder="Título"
-              className="input"
               type="text"
               name="title"
               id="title"
@@ -90,11 +93,10 @@ export const PostOffer = () => {
             />
           </fieldset>
 
-          <fieldset className="fieldset">
-            <label className="label">Descripción de la oferta:</label>
+          <fieldset>
+            <label>Descripción de la oferta:</label>
             <textarea
               placeholder="Escribe una breve descripción de la oferta..."
-              className="input"
               type="text"
               name="descrip"
               id="descrip"
@@ -103,11 +105,10 @@ export const PostOffer = () => {
             />
           </fieldset>
 
-          <fieldset className="fieldset">
-            <label className="label">Precio con descuento:</label>
+          <fieldset>
+            <label>Precio con descuento:</label>
             <input
               placeholder="00.00 €"
-              className="input"
               type="number"
               name="price"
               id="offer_price"
@@ -116,11 +117,10 @@ export const PostOffer = () => {
             />
           </fieldset>
 
-          <fieldset className="fieldset">
-            <label className="label">Precio sin descuento:</label>
+          <fieldset>
+            <label>Precio sin descuento:</label>
             <input
               placeholder="00.00 €"
-              className="input"
               type="number"
               name="offer_price"
               id="price"
@@ -129,11 +129,10 @@ export const PostOffer = () => {
             />
           </fieldset>
 
-          <fieldset className="fieldset">
-            <label className="label">Plataforma:</label>
+          <fieldset>
+            <label>Plataforma:</label>
             <input
               placeholder="Plataforma"
-              className="input"
               type="text"
               name="plataform"
               id="plataform"
@@ -142,10 +141,9 @@ export const PostOffer = () => {
             />
           </fieldset>
 
-          <fieldset className="fieldset">
-            <label className="label">Caducidad de la oferta:</label>
+          <fieldset>
+            <label>Caducidad de la oferta:</label>
             <input
-              className="input"
               type="date"
               name="offer_expiry"
               id="offer_expiry"

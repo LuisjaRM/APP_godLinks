@@ -17,7 +17,7 @@ import { useNavigateTo } from "../../contexts/NavigateToContext";
 
 // Fetchs
 
-import { addFavoriteService } from "../../services/api";
+import { addFavoriteService, useGetOfferById } from "../../services/api";
 
 export const OfferCard = ({ offer }) => {
   const { user, token } = useAuth();
@@ -91,6 +91,10 @@ export const OfferCard = ({ offer }) => {
 
   const [expand, setExpand] = useState(false);
 
+  // Comments
+
+  const { offers } = useGetOfferById(offer.id, token);
+
   return (
     <section className="offer-card" onClick={handleClickOfferCard}>
       {windowLocation === "/userInfo" && user.id === offer.user_id ? (
@@ -116,7 +120,7 @@ export const OfferCard = ({ offer }) => {
             src={
               offer.avatar
                 ? `${import.meta.env.VITE_BACKEND}uploads/${offer.avatar}`
-                : "/android-icon-36x36.png"
+                : "/default-user.webp"
             }
             alt={offer.title}
           />
@@ -124,7 +128,7 @@ export const OfferCard = ({ offer }) => {
           <p className="user-name">{offer.user}</p>
         </section>
 
-        <p>
+        <p className="created" onClick={(e) => e.stopPropagation()}>
           hace {timeSinceCreated_at} {text}
         </p>
       </section>
@@ -136,9 +140,10 @@ export const OfferCard = ({ offer }) => {
             src={
               offer.photo
                 ? `${import.meta.env.VITE_BACKEND}uploads/${offer.photo}`
-                : "/android-icon-36x36.png"
+                : "/default-image.webp"
             }
             alt={offer.title}
+            onClick={(e) => e.stopPropagation}
           />
           <button className="favorite-button" onClick={handleLike}>
             <svg
@@ -208,7 +213,7 @@ export const OfferCard = ({ offer }) => {
           </a>
         </button>
 
-        <p className="comments">🗨️ (0)</p>
+        <p className="comments">🗨️ ({offers.comments?.length})</p>
       </section>
     </section>
   );

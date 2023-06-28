@@ -29,11 +29,11 @@ export const OfferById = () => {
   const { offers, loading, error, refresh } = useGetOfferById(id, token);
 
   if (loading) return <p>cargando ofertas...</p>;
-  if (error) return <ErrorMessage/>;
+  if (error) return <ErrorMessage />;
 
   return (
     <>
-      <section className="body">
+      <section className="offers">
         {offers.offerInfo?.map((offerInfo, index) => (
           <OfferCard key={index} offer={offerInfo} />
         ))}

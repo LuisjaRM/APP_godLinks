@@ -22,19 +22,17 @@ export const AllOffers = () => {
   const { offers, loading, error } = useGetAllOffers(token);
 
   if (loading) return <p>cargando ofertas...</p>;
-  if (error) return <ErrorMessage/>;
+  if (error) return <ErrorMessage />;
 
   return (
     <>
-      <section className="body">
-        <ul className="offers-list">
-          {offers.offers?.map((offer) => (
-            <li key={offer.id}>
-              <OfferCard offer={offer} />
-            </li>
-          ))}
-        </ul>
-      </section>
+      <ul className="offers">
+        {offers.offers?.map((offer) => (
+          <li key={offer.id}>
+            <OfferCard offer={offer} />
+          </li>
+        ))}
+      </ul>
 
       <PostOffer />
     </>
