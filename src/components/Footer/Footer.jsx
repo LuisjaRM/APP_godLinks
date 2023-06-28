@@ -3,15 +3,25 @@ import "./Footer.css";
 // Contexts
 import { Link } from "react-router-dom";
 import { useNightMode } from "../../contexts/NightModeContext";
+import { useState } from "react";
 
 export const Footer = () => {
-  const fecha = new Date().getFullYear();
+  const [show, setShow] = useState(false);
   const [nightdayMode] = useNightMode();
 
+  const botonSoySubnormal = () => {
+    setShow(!show);
+  };
+
   return (
-    <footer className={nightdayMode ? "dark" : "light"}>
-      <h2 className="title">GodLinks S.A.{fecha}</h2>
-      <div className="footer-container">
+    <footer className={`${nightdayMode ? "dark" : "light"} ${show ? "show" : ""} `}>
+      <div className="jaja">
+        <button onClick={botonSoySubnormal} className="more-content">
+          Ir al pie de pagina ↓
+        </button>
+      </div>
+
+      <div className={`footer-container ${show ? "show" : ""} `}>
         <div className="footer-content-container">
           <h3 className="website-logo">Sobre nosotros</h3>
           <span className="footer-info">godLinkssa@gmail.com</span>
@@ -107,11 +117,6 @@ export const Footer = () => {
             ></a>
           </div>
         </div>
-      </div>
-      <div className="copyright-container">
-        <span className="copyright">
-          Copyright {fecha}, GodLinks. Todos los derechos reservados.
-        </span>
       </div>
     </footer>
   );

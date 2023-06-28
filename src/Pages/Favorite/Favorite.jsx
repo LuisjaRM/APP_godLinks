@@ -5,6 +5,7 @@ import "./Favorite.css";
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 import { OfferCard } from "../../components/OfferCard/OfferCard";
 import { PostOffer } from "../../components/PostOffer/PostOffer";
+import { Loading } from "../../components/Loading/Loading";
 
 // Contexts
 
@@ -21,7 +22,7 @@ export const Favorite = () => {
   const { token } = useAuth();
   const { offers, loading, error } = useGetMyFavoriteOffers(token);
 
-  if (loading) return <p>cargando ofertas...</p>;
+  if (loading) return <Loading />;
   if (error) return <ErrorMessage />;
 
   return (
