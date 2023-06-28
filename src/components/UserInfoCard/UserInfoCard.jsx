@@ -1,6 +1,7 @@
 import "./UserInfoCard.css";
 
 export const UserInfoCard = ({ userInfo }) => {
+  // Date Logic
   const created_at = new Date(userInfo.created_at);
   const dateCreated = created_at.toLocaleDateString("es-ES", {
     year: "numeric",
@@ -9,14 +10,14 @@ export const UserInfoCard = ({ userInfo }) => {
   });
 
   return (
-    <section className="userInfo">
+    <section className="user">
       <section className="header">
         <img
           className="user-image"
           src={
             userInfo.avatar
               ? `${import.meta.env.VITE_BACKEND}uploads/${userInfo.avatar}`
-              : "/android-icon-36x36.png"
+              : "/default-user.webp"
           }
           alt={userInfo.user}
         />

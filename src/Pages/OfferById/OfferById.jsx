@@ -42,15 +42,13 @@ export const OfferById = () => {
           <PostComment key={i} id={id} refresh={refresh} offer={offerInfo} />
         ))}
 
-        <section className="comments-body">
-          <ul className="comments-list">
-            {offers.comments?.map((comment) => (
-              <li key={comment.id}>
-                <CommentsCard comment={comment} refresh={refresh} />
-              </li>
-            ))}
-          </ul>
-        </section>
+        <ul className="comments-body">
+          {offers.comments?.map((comment) => (
+            <li key={comment.id}>
+              <CommentsCard comment={comment} refresh={refresh} />
+            </li>
+          ))}
+        </ul>
       </section>
 
       <PostOffer />

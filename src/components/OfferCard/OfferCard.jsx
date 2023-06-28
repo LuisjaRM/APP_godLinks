@@ -1,5 +1,11 @@
 import "./OfferCard.css";
 
+// Material
+
+import { SvgIcon } from "@mui/material";
+import EditIcon from "@mui/icons-material/Edit";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+
 // React
 
 import { useState } from "react";
@@ -107,7 +113,11 @@ export const OfferCard = ({ offer }) => {
               navigate(`/modifyOffer/${offer.id}`);
             }}
           >
-            ✏️
+            <SvgIcon
+              className="edit-icon"
+              component={EditIcon}
+              inheritViewBox
+            />
           </button>
         </section>
       ) : (
@@ -209,7 +219,13 @@ export const OfferCard = ({ offer }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Ir a la oferta 🔗
+            <p>Ir a la oferta</p>
+
+            <SvgIcon
+              className="new-tab-icon"
+              component={OpenInNewIcon}
+              inheritViewBox
+            />
           </a>
         </button>
 

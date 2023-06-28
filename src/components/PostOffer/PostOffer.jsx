@@ -55,10 +55,10 @@ export const PostOffer = () => {
   };
 
   return (
-    <section className={`postOffer-body ${openPostOffer ? "show" : ""}`}>
+    <section className={`post-offer-body ${openPostOffer ? "show" : ""}`}>
       <section
         onClick={(e) => e.stopPropagation()}
-        className={`postOffer ${openPostOffer ? "show" : ""}`}
+        className={`post-offer ${openPostOffer ? "show" : ""}`}
       >
         <button
           onClick={() => setOpenPostOffer(false)}
@@ -105,7 +105,7 @@ export const PostOffer = () => {
             />
           </fieldset>
 
-          <fieldset>
+          <fieldset className="price-fieldset">
             <label>Precio con descuento:</label>
             <input
               placeholder="00.00 €"
@@ -115,9 +115,6 @@ export const PostOffer = () => {
               value={offer_price}
               onChange={(e) => setOffer_price(e.target.value)}
             />
-          </fieldset>
-
-          <fieldset>
             <label>Precio sin descuento:</label>
             <input
               placeholder="00.00 €"
@@ -129,7 +126,7 @@ export const PostOffer = () => {
             />
           </fieldset>
 
-          <fieldset>
+          <fieldset className="last-fieldset">
             <label>Plataforma:</label>
             <input
               placeholder="Plataforma"
@@ -139,9 +136,7 @@ export const PostOffer = () => {
               value={plataform}
               onChange={(e) => setPlataform(e.target.value)}
             />
-          </fieldset>
 
-          <fieldset>
             <label>Caducidad de la oferta:</label>
             <input
               type="date"
@@ -154,9 +149,8 @@ export const PostOffer = () => {
           </fieldset>
 
           {error ? <p className="error">⚠️ {error}</p> : null}
-          <section className="button-wrap">
-            <button className="button">Continuar</button>
-          </section>
+
+          <button className="button">Continuar</button>
         </form>
       </section>
 
@@ -165,7 +159,7 @@ export const PostOffer = () => {
           e.stopPropagation();
           user ? setOpenPostOffer(!openPostOffer) : setShowLogin(!showLogin);
         }}
-        className={`postOffer-button ${openPostOffer ? "show" : ""}`}
+        className={`post-button ${openPostOffer ? "show" : ""}`}
       >
         ➕
       </button>

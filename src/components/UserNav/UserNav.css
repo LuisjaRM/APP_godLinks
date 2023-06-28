@@ -4,7 +4,7 @@
   top: calc((7.5vh - 28px) / 2);
   left: 1rem;
   width: 6.5rem;
-  height: 7rem;
+  height: 6.5rem;
   display: flex;
   flex-direction: column;
   justify-content: end;
@@ -28,7 +28,7 @@
 
 .user-nav .link {
   cursor: pointer;
-  padding: 0.25rem 0;
+  height: 1rem;
   text-decoration: none;
   color: black;
   text-align: center;
@@ -41,8 +41,17 @@
 }
 
 .user-nav .link.logout {
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
   border: none;
   font-weight: bold;
+}
+
+.user-nav .logout-icon {
+  font-size: 125%;
 }
 
 .modal-back {

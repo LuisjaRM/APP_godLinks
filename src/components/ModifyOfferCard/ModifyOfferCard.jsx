@@ -33,8 +33,8 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
   const [image, setImage] = useState("");
   const [url, setUrl] = useState("");
-  const [title, setTitle] = useState("");
-  const [descrip, setDescrip] = useState("");
+  const [title, setTitle] = useState(offer.title);
+  const [descrip, setDescrip] = useState(offer.descrip);
   const [offer_price, setOffer_price] = useState("");
   const [price, setPrice] = useState("");
   const [plataform, setPlataform] = useState("");
