@@ -4,6 +4,10 @@ import "./UserNav.css";
 
 import { useNavigate } from "react-router";
 
+// Material
+
+// import LoginIcon from "@mui/icons-material/Login";
+
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
@@ -55,7 +59,7 @@ export const UserNav = () => {
               navigate("/");
             }}
           >
-            Cerrar sesión
+            Cerrar sesión 🔚
           </li>
         </nav>
       </section>

@@ -233,8 +233,6 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
     setOffer_expiry("");
   };
 
-  // Arreglo
-
   // Delete Offer
 
   const [clickDelete, setClickDelete] = useState(false);

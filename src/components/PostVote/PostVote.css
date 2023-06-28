@@ -15,7 +15,7 @@
   font-size: 75%;
 }
 
-.rating .heart .postVote-button {
+.rating .vote-button {
   cursor: pointer;
   border: none;
   background-color: rgba(0, 0, 0, 0);
@@ -23,12 +23,9 @@
 
 .rating .avgVotes {
   font-size: 75%;
-  color: red;
 }
 
-.vote-error {
+.error.vote {
   width: 4rem;
   font-size: 50%;
-  color: red;
-  text-align: center;
 }

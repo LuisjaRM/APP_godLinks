@@ -1,15 +1,3 @@
-.postOffer-body.show .closed-button {
-  cursor: pointer;
-  position: absolute;
-  top: 0.25rem;
-  right: 0.5rem;
-  padding: 0.1rem;
-  border: none;
-  background-color: rgba(0, 0, 0, 0);
-  font-weight: bold;
-  font-size: 110%;
-}
-
 .postOffer-body.show {
   position: fixed;
   top: 0;
@@ -61,7 +49,19 @@
   color: black;
 }
 
-.postOffer-body .postOffer.show .post-form {
+.postOffer .closed-button {
+  cursor: pointer;
+  position: absolute;
+  top: 0.25rem;
+  right: 0.5rem;
+  padding: 0.1rem;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  font-weight: bold;
+  font-size: 110%;
+}
+
+.postOffer .form {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -69,14 +69,14 @@
   position: relative;
 }
 
-.postOffer-body .postOffer.show .post-form .fieldset {
+.postOffer fieldset {
   border: none;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
 }
 
-.postOffer-body .postOffer.show .post-form .fieldset .input {
+.postOffer input {
   padding: 0.25rem;
   border-radius: 5px;
 }
@@ -93,12 +93,12 @@
   width: 7.5rem;
 }
 
-.postOffer-body .postOffer.show .post-form .button-wrap {
+.postOffer .button-wrap {
   margin-top: 0.25rem;
   text-align: center;
 }
 
-.postOffer-body .postOffer.show .post-form .button-wrap .button {
+.postOffer .button {
   width: fit-content;
   padding: 0.25rem 1rem;
   border: none;

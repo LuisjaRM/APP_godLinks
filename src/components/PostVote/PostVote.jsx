@@ -14,17 +14,24 @@ import { useShowLogin } from "../../contexts/ShowLoginContext";
 import { postVoteService } from "../../services/api";
 
 export const PostVote = ({ votes, offerId, userId }) => {
-  const rating = votes ? Number(votes) : 0;
-
   const { user, token } = useAuth();
   const [showLogin, setShowLogin] = useShowLogin();
   const [userVote, setUserVote] = useState(0);
   const [error, setError] = useState();
 
+  // Save votes in a variable
+  const rating = votes ? Number(votes) : 0;
+
+  // Check if the user is logged in and if they try to vote on their own offer
+  const sameUser = user ? (user.id === userId ? true : false) : false;
+
+  // Function
+
   const postVote = async (vote) => {
     try {
       user
-        ? await postVoteService(token, offerId, { vote })
+        ? // Fetch
+          await postVoteService(token, offerId, { vote })
         : setShowLogin(!showLogin);
     } catch (error) {
       setError(error.message);
@@ -34,8 +41,6 @@ export const PostVote = ({ votes, offerId, userId }) => {
       }, 1500);
     }
   };
-
-  const sameUser = user ? (user.id === userId ? true : false) : false;
 
   return (
     <section className="rating-wrap">
@@ -48,7 +53,7 @@ export const PostVote = ({ votes, offerId, userId }) => {
               setUserVote(1);
               postVote(1);
             }}
-            className="postVote-button"
+            className="vote-button"
           >
             {user && !sameUser && userVote > 0
               ? "💙"
@@ -66,7 +71,7 @@ export const PostVote = ({ votes, offerId, userId }) => {
               setUserVote(2);
               postVote(2);
             }}
-            className="postVote-button"
+            className="vote-button"
           >
             {user && !sameUser && userVote > 1
               ? "💙"
@@ -84,7 +89,7 @@ export const PostVote = ({ votes, offerId, userId }) => {
               setUserVote(3);
               postVote(3);
             }}
-            className="postVote-button"
+            className="vote-button"
           >
             {user && !sameUser && userVote > 2
               ? "💙"
@@ -102,7 +107,7 @@ export const PostVote = ({ votes, offerId, userId }) => {
               setUserVote(4);
               postVote(4);
             }}
-            className="postVote-button"
+            className="vote-button"
           >
             {user && !sameUser && userVote > 3
               ? "💙"
@@ -120,7 +125,7 @@ export const PostVote = ({ votes, offerId, userId }) => {
               setUserVote(5);
               postVote(5);
             }}
-            className="postVote-button"
+            className="vote-button"
           >
             {user && !sameUser && userVote > 4
               ? "💙"
@@ -131,7 +136,7 @@ export const PostVote = ({ votes, offerId, userId }) => {
         </li>
         <li className="avgVotes">({votes ? Number(votes).toFixed(1) : 0})</li>
       </ul>
-      {error ? <p className="vote-error">{error}</p> : ""}
+      {error ? <p className="error vote">{error}</p> : ""}
     </section>
   );
 };
