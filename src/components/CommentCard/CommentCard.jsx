@@ -1,5 +1,12 @@
 import "./CommentCard.css";
 
+// Material
+
+import { SvgIcon } from "@mui/material";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+
 // React
 
 import { useNavigate } from "react-router";
@@ -77,6 +84,7 @@ export const CommentsCard = ({ comment, refresh }) => {
   const handleEditComment = async (e) => {
     e.preventDefault();
     try {
+      // Fetch
       await patchCommentService(token, comment.id, { newComment });
       refresh();
       setNewComment("");
@@ -104,6 +112,7 @@ export const CommentsCard = ({ comment, refresh }) => {
 
   const deleteComment = async () => {
     try {
+      // Fetch
       await deleteCommentService(token, comment.id);
       setShowChangeMadeModal(!showChangeMadeModal);
       setError("");
@@ -121,6 +130,7 @@ export const CommentsCard = ({ comment, refresh }) => {
   const handleClickLike = async (e) => {
     e.stopPropagation();
     try {
+      // Fetch
       await postLikeService(token, comment.id);
       refresh();
     } catch (error) {
@@ -130,35 +140,37 @@ export const CommentsCard = ({ comment, refresh }) => {
 
   return (
     <>
-      {error ? <p className="error">⚠️ {error}</p> : null}
       <section className="comment-card">
         {user.id === comment.user_id ? (
           <section className="comments-buttons">
-            <section className="edit-wrap">
               <button
-                className="edit"
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  setShowEditComment(!showEditComment);
-                }}
-              >
-                ✏️
-              </button>
-            </section>
-
-            <section className="delete-wrap">
-              <button
-                className="delete"
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  setShowConfirmModal(!showConfirmModal);
-                }}
-              >
-                🗑️
-              </button>
-            </section>
+              className="edit"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setShowEditComment(!showEditComment);
+              }}
+            >
+              <SvgIcon
+                className="edit-icon"
+                component={EditIcon}
+                inheritViewBox
+              />
+            </button>
+            <button
+              className="delete"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setShowConfirmModal(!showConfirmModal);
+              }}
+            >
+              <SvgIcon
+                className="delete-icon"
+                component={DeleteIcon}
+                inheritViewBox
+              />
+            </button>
           </section>
         ) : (
           ""
@@ -177,7 +189,7 @@ export const CommentsCard = ({ comment, refresh }) => {
               src={
                 comment.avatar
                   ? `${import.meta.env.VITE_BACKEND}uploads/${comment.avatar}`
-                  : "/android-icon-36x36.png"
+                  : "/default-user.webp"
               }
               alt={comment.user}
             />
@@ -192,12 +204,11 @@ export const CommentsCard = ({ comment, refresh }) => {
 
         <section className="main">
           <form
-            className={`set-comment-form ${showEditComment ? "show" : ""}`}
+            className={`form ${showEditComment ? "show" : ""}`}
             onSubmit={handleEditComment}
           >
-            <fieldset className="fieldset">
+            <fieldset>
               <input
-                className="input"
                 type="text"
                 id={`edit-comment-${comment.id}`}
                 name="edit-comment"
@@ -205,9 +216,12 @@ export const CommentsCard = ({ comment, refresh }) => {
                 required
                 onChange={(e) => setNewComment(e.target.value)}
               />
-              <button className="edit-comment-button">Enviar</button>
+              <button className="edit-button">Enviar</button>
             </fieldset>
           </form>
+
+          {error ? <p className="error">⚠️ {error}</p> : null}
+
           <p className={`comment ${showEditComment ? "hide" : ""}`}>
             {comment.comment}
           </p>
@@ -215,7 +229,11 @@ export const CommentsCard = ({ comment, refresh }) => {
 
         <section className="footer">
           <button onClick={handleClickLike} className="like-button">
-            👍
+            <SvgIcon
+              className="like-icon"
+              component={ThumbUpIcon}
+              inheritViewBox
+            />
           </button>
           <p className="comment-likes">
             {comment.addLikes ? comment.addLikes : 0}

@@ -3,18 +3,13 @@ import { Link } from "react-router-dom";
 
 export const ErrorMessage = () => {
   return (
-    <section className="errorMessage">
-
+    <section className="error-message">
       {/* ErrorMessage*/}
 
       <section className="error-message-box">
         <h1 className="error-text-ap">¡Vaya! parece que algo ha salido mal</h1>
         <p className="error-mess-p"> Fallo en la conexión con el servidor</p>
-      </section>
 
-      {/* Buttons*/}
-
-      <section className="book-box">
         <Link to={"/"} className="book home-page">
           Volver al inicio
         </Link>

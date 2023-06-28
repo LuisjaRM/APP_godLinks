@@ -1,5 +1,11 @@
 import "./OfferCard.css";
 
+// Material
+
+import { SvgIcon } from "@mui/material";
+import EditIcon from "@mui/icons-material/Edit";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+
 // React
 
 import { useState } from "react";
@@ -17,7 +23,7 @@ import { useNavigateTo } from "../../contexts/NavigateToContext";
 
 // Fetchs
 
-import { addFavoriteService } from "../../services/api";
+import { addFavoriteService, useGetOfferById } from "../../services/api";
 
 export const OfferCard = ({ offer }) => {
   const { user, token } = useAuth();
@@ -99,68 +105,75 @@ export const OfferCard = ({ offer }) => {
 
   const [expand, setExpand] = useState(false);
 
+  // Comments
+
+  const { offers } = useGetOfferById(offer.id, token);
+
   return (
-    <>
-      <section
-        className={`offer-card ${expired ? "expired" : ""}`}
-        onClick={handleClickOfferCard}
-      >
-        {windowLocation === "/userInfo" && user.id === offer.user_id ? (
-          <section className="edit-wrap">
-            <button
-              className="edit"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                navigate(`/modifyOffer/${offer.id}`);
-              }}
-            >
-              ✏️
-            </button>
-          </section>
-        ) : (
-          ""
-        )}
-        <section className="header">
-          <section className="user-info" onClick={handleClickUserInfo}>
-            <img
-              className="user-image"
-              src={
-                offer.avatar
-                  ? `${import.meta.env.VITE_BACKEND}uploads/${offer.avatar}`
-                  : "/android-icon-36x36.png"
-              }
-              alt={offer.title}
+     <section 
+        className={`offer-card ${expired ? "expired" : ""}`} 
+        onClick={handleClickOfferCard}>
+      {windowLocation === "/userInfo" && user.id === offer.user_id ? (
+        <section className="edit-wrap">
+          <button
+            className="edit"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              navigate(`/modifyOffer/${offer.id}`);
+            }}
+          >
+            <SvgIcon
+              className="edit-icon"
+              component={EditIcon}
+              inheritViewBox
             />
+          </button>
+        </section>
+      ) : (
+        ""
+      )}
+      <section className="header">
+        <section className="user-info" onClick={handleClickUserInfo}>
+          <img
+            className="user-image"
+            src={
+              offer.avatar
+                ? `${import.meta.env.VITE_BACKEND}uploads/${offer.avatar}`
+                : "/default-user.webp"
+            }
+            alt={offer.title}
+          />
 
-            <p className="user-name">{offer.user}</p>
-          </section>
-
-          <p>
-            hace {timeSinceCreated_at} {text}
-          </p>
+          <p className="user-name">{offer.user}</p>
         </section>
 
-        <section className="main">
-          <section className="image-box">
-            <img
-              className={`image ${expired ? "expired" : ""}`}
-              src={
-                offer.photo
-                  ? `${import.meta.env.VITE_BACKEND}uploads/${offer.photo}`
-                  : "/android-icon-36x36.png"
-              }
-              alt={offer.title}
-            />
-            <button className="favorite-button" onClick={handleLike}>
-              <svg
-                className={isLiked ? "like" : ""}
-                viewBox="0 0 512 512"
-                width="15px"
-                height="28px"
-              >
-                <path
-                  d="M474.655,74.503C449.169,45.72,413.943,29.87,375.467,29.87c-30.225,0-58.5,12.299-81.767,35.566
+        <p className="created" onClick={(e) => e.stopPropagation()}>
+          hace {timeSinceCreated_at} {text}
+        </p>
+      </section>
+
+      <section className="main">
+        <section className="image-box">
+          <img
+            className={`image ${expired ? "expired" : ""}`}
+            src={
+              offer.photo
+                ? `${import.meta.env.VITE_BACKEND}uploads/${offer.photo}`
+                : "/default-image.webp"
+            }
+            alt={offer.title}
+            onClick={(e) => e.stopPropagation}
+          />
+          <button className="favorite-button" onClick={handleLike}>
+            <svg
+              className={isLiked ? "like" : ""}
+              viewBox="0 0 512 512"
+              width="15px"
+              height="28px"
+            >
+              <path
+                d="M474.655,74.503C449.169,45.72,413.943,29.87,375.467,29.87c-30.225,0-58.5,12.299-81.767,35.566
           c-15.522,15.523-28.33,35.26-37.699,57.931c-9.371-22.671-22.177-42.407-37.699-57.931c-23.267-23.267-51.542-35.566-81.767-35.566
           c-38.477,0-73.702,15.851-99.188,44.634C13.612,101.305,0,137.911,0,174.936c0,44.458,13.452,88.335,39.981,130.418
           c21.009,33.324,50.227,65.585,86.845,95.889c62.046,51.348,123.114,78.995,125.683,80.146c2.203,0.988,4.779,0.988,6.981,0
@@ -209,23 +222,34 @@ export const OfferCard = ({ offer }) => {
             offerId={offer.id}
             userId={offer.user_id}
           />
+      <section className="footer">
+        <PostVote
+          votes={offer.avgVotes}
+          offerId={offer.id}
+          userId={offer.user_id}
+        />
 
-          <button className="link-button">
-            <a
-              className="offer-link"
-              onClick={(e) => e.stopPropagation()}
-              href={offer.url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Ir a la oferta 🔗
-            </a>
-          </button>
+        <button className="link-button">
+          <a
+            className="offer-link"
+            onClick={(e) => e.stopPropagation()}
+            href={offer.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <p>Ir a la oferta</p>
 
-          <p className="comments">🗨️ (0)</p>
-        </section>
+            <SvgIcon
+              className="new-tab-icon"
+              component={OpenInNewIcon}
+              inheritViewBox
+            />
+          </a>
+        </button>
+
+        <p className="comments">🗨️ ({offers.comments?.length})</p>
       </section>
-      {expired && <section className="expired-offer"></section>}
+      {/*expired && <section className="expired-offer"></section>*/}
     </>
   );
 };

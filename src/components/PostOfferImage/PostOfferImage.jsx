@@ -1,5 +1,11 @@
 import "./PostOfferImage.css";
 
+// Material
+
+import { SvgIcon } from "@mui/material";
+import ImageSearchIcon from "@mui/icons-material/ImageSearch";
+import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
+
 // React
 
 import { useState } from "react";
@@ -41,6 +47,7 @@ export const PostOfferImage = ({
     e.preventDefault();
 
     try {
+      // Fetch
       await postOfferImageService(token, offerId, image);
 
       setOpenPostImage(!openPostImage);
@@ -59,45 +66,59 @@ export const PostOfferImage = ({
 
   return (
     <>
-      <section className={`postOfferImage-body ${openPostImage ? "show" : ""}`}>
-        <section
-          onClick={(e) => e.stopPropagation()}
-          className={`postOfferImage ${openPostImage ? "show" : ""}`}
-        >
-          <form className="post-form" onSubmit={handleForm}>
-            <fieldset className="fieldset">
-              <label className="label">📷</label>
+    <section className={`post-offer-image-body ${openPostImage ? "show" : ""}`}>
+      <section
+        onClick={(e) => e.stopPropagation()}
+        className={`post-offer-image ${openPostImage ? "show" : ""}`}
+      >
+        <h2 className="title">Sube una imagen a tu oferta</h2>
+
+        <form className="form" onSubmit={handleForm}>
+          <fieldset>
+            <label className="image-label">
               <input
-                className="input-image"
+                className="image-input"
                 type="file"
                 name="input-image"
                 id="input-image"
                 onChange={(e) => setImage(e.target.files[0])}
               />
-            </fieldset>
 
-            <button className="button">Continuar</button>
-            {error ? <p className="error">{error}</p> : null}
-          </form>
+              <SvgIcon
+                className="post-image-icon"
+                component={ImageSearchIcon}
+                inheritViewBox
+              />
+            </label>
+          </fieldset>
+           {error ? <p className="error">{error}</p> : null}
+           <button className="post-offer-button">
+            <SvgIcon
+              className="post-offer-icon"
+              component={AddToPhotosIcon}
+              inheritViewBox
+            />
+          </button>
+        </form>
 
-          <section className="button-wrap">
-            <button
-              className="button"
-              onClick={() => {
-                setOpenPostImage(!openPostImage);
-                setShowUploadOfferModal(!showUploadOfferModal);
+        <section className="post-offer-noImage">
+          <p> Subir la oferta sin imagen:</p>
 
-                setTimeout(() => {
-                  setShowUploadOfferModal(!showUploadOfferModal);
-                  windowLocation === "/allOffers"
-                    ? navigate("/")
-                    : navigate("/allOffers");
-                }, 1500);
-              }}
-            >
-              Subir la oferta sin imagen
-            </button>
-          </section>
+          <button
+            className="post-offer-button"
+            onClick={() => {
+              setOpenPostImage(!openPostImage);
+              windowLocation === "/allOffers"
+                ? navigate("/")
+                : navigate("/allOffers");
+            }}
+          >
+            <SvgIcon
+              className="post-offer-icon"
+              component={AddToPhotosIcon}
+              inheritViewBox
+            />
+          </button>
         </section>
       </section>
       {showUploadOfferModal ? (

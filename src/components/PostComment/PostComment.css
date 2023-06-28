@@ -1,4 +1,4 @@
-.comment-form .fieldset {
+.comment-form fieldset {
   border: none;
   display: flex;
   align-items: center;
@@ -6,7 +6,7 @@
   position: relative;
 }
 
-.comment-form .fieldset .label .comment-user-image {
+.comment-form .comment-user-image {
   margin-top: 0.25rem;
   width: 28px;
   height: 28px;
@@ -15,7 +15,7 @@
   box-shadow: 1px 1px 10px black;
 }
 
-.comment-form .fieldset .input {
+.comment-form input {
   min-height: 5vh;
   width: 100%;
   padding-left: 0.25rem;
@@ -23,19 +23,13 @@
   border-radius: 5px;
 }
 
-.sendComment-button {
+.send-button {
   position: absolute;
   right: 0;
-  height: 80%;
+  height: 85%;
   padding: 0 0.5rem;
   background-color: khaki;
   border: none;
   border-radius: 5px;
   box-shadow: 1px 1px 10px black;
-}
-
-.post-comment .error {
-  margin-top: 0.5rem;
-  text-align: center;
-  color: red;
 }

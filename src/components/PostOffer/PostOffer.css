@@ -1,16 +1,27 @@
-.postOffer-body.show .closed-button {
-  cursor: pointer;
-  position: absolute;
-  top: 0.25rem;
-  right: 0.5rem;
-  padding: 0.1rem;
-  border: none;
-  background-color: rgba(0, 0, 0, 0);
-  font-weight: bold;
-  font-size: 110%;
+/* Open and Closed PostOffer */
+
+.post-offer-body .post-button {
+  width: 24px;
+  height: 24px;
+  font-size: 60%;
+  border-radius: 50%;
+  border: 1px solid black;
+  box-shadow: 1px 1px 10px black;
+  background-color: khaki;
+  position: fixed;
+  bottom: 10vh;
+  right: 2.5vh;
 }
 
-.postOffer-body.show {
+.post-offer-body .post-button.show {
+  display: none;
+}
+
+.post-offer-body .post-offer {
+  display: none;
+}
+
+.post-offer-body.show {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -24,28 +35,7 @@
   transition: transform 0.8s cubic-bezier(0.78, 0.95, 0.4, 1.6);
 }
 
-.postOffer-body .postOffer-button {
-  width: 24px;
-  height: 24px;
-  font-size: 60%;
-  border-radius: 50%;
-  border: 1px solid black;
-  box-shadow: 1px 1px 10px black;
-  background-color: khaki;
-  position: fixed;
-  bottom: 10vh;
-  right: 2.5vh;
-}
-
-.postOffer-body .postOffer-button.show {
-  display: none;
-}
-
-.postOffer-body .postOffer {
-  display: none;
-}
-
-.postOffer-body .postOffer.show {
+.post-offer-body .post-offer.show {
   display: block;
   width: 90vw;
   height: 71vh;
@@ -61,55 +51,77 @@
   color: black;
 }
 
-.postOffer-body .postOffer.show .post-form {
+.post-offer .closed-button {
+  cursor: pointer;
+  position: absolute;
+  top: 0.25rem;
+  right: 0.5rem;
+  padding: 0.1rem;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  font-weight: bold;
+  font-size: 110%;
+}
+
+/* Form */
+
+.post-offer .form {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  align-items: center;
+  gap: 0.5rem;
   height: 100%;
   position: relative;
 }
 
-.postOffer-body .postOffer.show .post-form .fieldset {
+.post-offer fieldset {
   border: none;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
 }
 
-.postOffer-body .postOffer.show .post-form .fieldset .input {
+.post-offer .price-fieldset {
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+}
+
+.post-offer .last-fieldset {
+  gap: 0.5rem;
+}
+
+.post-offer input,
+.post-offer textarea {
   padding: 0.25rem;
   border-radius: 5px;
 }
 
-#price {
-  width: 3.5rem;
-}
-
+#price,
 #offer_price {
+  height: fit-content;
   width: 3.5rem;
 }
 
+#plataform,
 #offer_expiry {
-  width: 7.5rem;
+  height: fit-content;
+  width: 9.5rem;
 }
 
-.postOffer-body .postOffer.show .post-form .button-wrap {
-  margin-top: 0.25rem;
-  text-align: center;
-}
-
-.postOffer-body .postOffer.show .post-form .button-wrap .button {
+.post-offer .button {
+  cursor: pointer;
+  margin-top: 1rem;
   width: fit-content;
   padding: 0.25rem 1rem;
   border: none;
   border-radius: 5px;
-  box-shadow: 1px 1px 10px black;
+  box-shadow: 2px 2px 10px black;
   background-color: rgb(1, 1, 97);
   color: yellow;
 }
 
-.postOffer-body .postOffer.show .post-form .error {
-  width: 100%;
-  text-align: center;
-  color: red;
+.post-offer .error {
+  margin-top: 0.5rem;
 }
