@@ -3,8 +3,12 @@
   display: flex;
   flex-direction: column;
   padding: 0.75rem;
-  border: 2px dashed khaki;
+  border: 1px solid khaki;
   border-radius: 10px;
+}
+
+.offer-card:hover {
+  box-shadow: 1px 1px 15px white;
 }
 
 /* Edit-button */
@@ -72,7 +76,7 @@
 .offer-card .main .image {
   cursor: default;
   width: 144px;
-  height: 144px;
+  height: 220px;
   object-fit: cover;
   border-radius: 10px;
   border: 1px solid black;

@@ -1,17 +1,22 @@
 import "./UserNav.css";
 
+// Material
+
+import LoginIcon from "@mui/icons-material/Login";
+
 // React
 
 import { useNavigate } from "react-router";
 
 // Material
 
-// import LoginIcon from "@mui/icons-material/Login";
+import LoginIcon from "@mui/icons-material/Login";
 
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
 import { useShowLogin } from "../../contexts/ShowLoginContext";
+import { SvgIcon } from "@mui/material";
 
 export const UserNav = () => {
   const navigate = useNavigate();
@@ -59,7 +64,7 @@ export const UserNav = () => {
               navigate("/");
             }}
           >
-            Cerrar sesión 🔚
+            Cerrar sesión <SvgIcon component={LoginIcon} inheritViewBox />
           </li>
         </nav>
       </section>
