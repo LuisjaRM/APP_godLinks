@@ -4,6 +4,7 @@ import "./UserProfile.css";
 
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 import { ModifyUserCard } from "../../components/ModifyUserCard.jsx/ModifyUserCard";
+import { Loading } from "../../components/Loading/Loading";
 
 // Hooks
 
@@ -19,7 +20,7 @@ export const UserProfile = () => {
   const { token } = useAuth();
   const { dataUser, loading, error, refresh } = useGetMyData(token);
 
-  if (loading) return <p>cargando perfil de usuario</p>;
+  if (loading) return <Loading />;
   if (error) return <ErrorMessage message={error} />;
 
   return (

@@ -11,6 +11,7 @@ import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 import { PostComment } from "../../components/PostComment/PostComment";
 import { CommentsCard } from "../../components/CommentCard/CommentCard";
 import { PostOffer } from "../../components/PostOffer/PostOffer";
+import { Loading } from "../../components/Loading/Loading";
 
 // Contexts
 
@@ -28,7 +29,7 @@ export const OfferById = () => {
   const { token } = useAuth();
   const { offers, loading, error, refresh } = useGetOfferById(id, token);
 
-  if (loading) return <p>cargando ofertas...</p>;
+  if (loading) return <Loading />;
   if (error) return <ErrorMessage />;
 
   return (

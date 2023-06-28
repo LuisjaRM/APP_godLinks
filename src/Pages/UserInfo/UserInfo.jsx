@@ -9,6 +9,7 @@ import { useParams } from "react-router";
 import { OfferCard } from "../../components/OfferCard/OfferCard";
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 import { UserInfoCard } from "../../components/UserInfoCard/UserInfoCard";
+import { Loading } from "../../components/Loading/Loading";
 
 // Contexts
 
@@ -26,7 +27,8 @@ export const UserInfo = () => {
 
   const { dataUser, loading, error, refresh } = useGetUserInfo(token, id);
 
-  if (loading) return <p>cargando ofertas...</p>;
+
+  if (loading) return <Loading />;
   if (error) return <ErrorMessage />;
 
   return (
