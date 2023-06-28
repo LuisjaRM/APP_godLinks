@@ -2,21 +2,17 @@ import "./UserNav.css";
 
 // Material
 
-import LoginIcon from "@mui/icons-material/Login";
+import { SvgIcon } from "@mui/material";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 // React
 
 import { useNavigate } from "react-router";
 
-// Material
-
-import LoginIcon from "@mui/icons-material/Login";
-
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
 import { useShowLogin } from "../../contexts/ShowLoginContext";
-import { SvgIcon } from "@mui/material";
 
 export const UserNav = () => {
   const navigate = useNavigate();
@@ -50,7 +46,7 @@ export const UserNav = () => {
             className="link"
             onClick={() => {
               setShowLogin(!showLogin);
-              navigate("/userInfo/:id");
+              navigate(`/userInfo/${user.id}`);
             }}
           >
             Mis ofertas
@@ -64,7 +60,12 @@ export const UserNav = () => {
               navigate("/");
             }}
           >
-            Cerrar sesión <SvgIcon component={LoginIcon} inheritViewBox />
+            <p>Cerrar sesión</p>
+            <SvgIcon
+              className="logout-icon"
+              component={LogoutIcon}
+              inheritViewBox
+            />
           </li>
         </nav>
       </section>

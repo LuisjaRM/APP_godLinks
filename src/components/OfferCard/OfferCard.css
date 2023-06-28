@@ -8,7 +8,7 @@
 }
 
 .offer-card:hover {
-  box-shadow: 1px 1px 15px white;
+  box-shadow: 1px 1px 15px khaki;
 }
 
 /* Edit-button */
@@ -76,10 +76,10 @@
 .offer-card .main .image {
   cursor: default;
   width: 144px;
-  height: 220px;
-  object-fit: cover;
+  height: 144px;
+  object-fit: contain;
   border-radius: 10px;
-  border: 1px solid black;
+  background-color: white;
   box-shadow: 1px 1px 5px black;
 }
 
@@ -134,8 +134,9 @@
 .offer-card .main .expand-button {
   cursor: pointer;
   position: absolute;
-  bottom: 0.1rem;
-  right: 0.21rem;
+  height: 20px;
+  bottom: 0rem;
+  right: 0rem;
   padding: 0 0.1rem;
   background-color: rgb(1, 1, 48);
   color: rgb(163, 156, 94);
@@ -217,8 +218,15 @@ svg:hover {
 }
 
 .offer-card .footer .offer-link {
+  display: flex;
+  gap: 0.25rem;
   text-decoration: none;
   color: black;
+  font-weight: bold;
+}
+
+.offer-card .footer .new-tab-icon {
+  font-size: 125%;
 }
 
 .offer-card .footer .comments {
