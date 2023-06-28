@@ -65,7 +65,6 @@ export const PostOfferImage = ({
   };
 
   return (
-    <>
     <section className={`post-offer-image-body ${openPostImage ? "show" : ""}`}>
       <section
         onClick={(e) => e.stopPropagation()}
@@ -91,8 +90,8 @@ export const PostOfferImage = ({
               />
             </label>
           </fieldset>
-           {error ? <p className="error">{error}</p> : null}
-           <button className="post-offer-button">
+          {error ? <p className="error">{error}</p> : null}
+          <button className="post-offer-button">
             <SvgIcon
               className="post-offer-icon"
               component={AddToPhotosIcon}
@@ -130,6 +129,6 @@ export const PostOfferImage = ({
       ) : (
         ""
       )}
-    </>
+    </section>
   );
 };
