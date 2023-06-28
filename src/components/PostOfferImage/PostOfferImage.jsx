@@ -1,6 +1,6 @@
 import "./PostOfferImage.css";
 
-// react
+// React
 
 import { useState } from "react";
 import { useNavigate } from "react-router";
@@ -18,7 +18,15 @@ export const PostOfferImage = ({
   openPostImage,
   setOpenPostImage,
 }) => {
+  // Destructuring useAuth
+
   const { token } = useAuth();
+
+  // State upload offer
+
+  const [showUploadOfferModal, setShowUploadOfferModal] = useState();
+
+  // Navigate
 
   const navigate = useNavigate();
 
@@ -36,49 +44,71 @@ export const PostOfferImage = ({
       await postOfferImageService(token, offerId, image);
 
       setOpenPostImage(!openPostImage);
+      setShowUploadOfferModal(!showUploadOfferModal);
 
-      windowLocation === "/allOffers" ? navigate("/") : navigate("/allOffers");
+      setTimeout(() => {
+        setShowUploadOfferModal(!showUploadOfferModal);
+        windowLocation === "/allOffers"
+          ? navigate("/")
+          : navigate("/allOffers");
+      }, 1500);
     } catch (error) {
       setError(error.message);
     }
   };
 
   return (
-    <section className={`postOfferImage-body ${openPostImage ? "show" : ""}`}>
-      <section
-        onClick={(e) => e.stopPropagation()}
-        className={`postOfferImage ${openPostImage ? "show" : ""}`}
-      >
-        <form className="post-form" onSubmit={handleForm}>
-          <fieldset className="fieldset">
-            <label className="label">📷</label>
-            <input
-              className="input-image"
-              type="file"
-              name="input-image"
-              id="input-image"
-              onChange={(e) => setImage(e.target.files[0])}
-            />
-          </fieldset>
+    <>
+      <section className={`postOfferImage-body ${openPostImage ? "show" : ""}`}>
+        <section
+          onClick={(e) => e.stopPropagation()}
+          className={`postOfferImage ${openPostImage ? "show" : ""}`}
+        >
+          <form className="post-form" onSubmit={handleForm}>
+            <fieldset className="fieldset">
+              <label className="label">📷</label>
+              <input
+                className="input-image"
+                type="file"
+                name="input-image"
+                id="input-image"
+                onChange={(e) => setImage(e.target.files[0])}
+              />
+            </fieldset>
 
-          <button className="button">Continuar</button>
-          {error ? <p className="error">{error}</p> : null}
-        </form>
+            <button className="button">Continuar</button>
+            {error ? <p className="error">{error}</p> : null}
+          </form>
 
-        <section className="button-wrap">
-          <button
-            className="button"
-            onClick={() => {
-              setOpenPostImage(!openPostImage);
-              windowLocation === "/allOffers"
-                ? navigate("/")
-                : navigate("/allOffers");
-            }}
-          >
-            Subir la oferta sin imagen
-          </button>
+          <section className="button-wrap">
+            <button
+              className="button"
+              onClick={() => {
+                setOpenPostImage(!openPostImage);
+                setShowUploadOfferModal(!showUploadOfferModal);
+
+                setTimeout(() => {
+                  setShowUploadOfferModal(!showUploadOfferModal);
+                  windowLocation === "/allOffers"
+                    ? navigate("/")
+                    : navigate("/allOffers");
+                }, 1500);
+              }}
+            >
+              Subir la oferta sin imagen
+            </button>
+          </section>
         </section>
       </section>
-    </section>
+      {showUploadOfferModal ? (
+        <section className="uploadOffer-modal">
+          <section className="uploadOffer-modal-body">
+            <h3>Oferta subida con éxito </h3>
+          </section>
+        </section>
+      ) : (
+        ""
+      )}
+    </>
   );
 };
