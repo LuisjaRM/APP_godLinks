@@ -89,7 +89,6 @@
   box-shadow: 1px 1px 5px black;
 }
 
-
 .offer-card .main .image.expired {
   filter: grayscale(100%);
 }
@@ -104,7 +103,6 @@
   width: 24px;
   height: 24px;
 }*/
-
 
 .offer-card .main .offer-info {
   width: 9rem;
@@ -258,6 +256,13 @@ svg:hover {
 
 .offer-card .footer .comments {
   cursor: default;
+}
+
+p.expired-offer {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: rgb(180, 38, 38);
 }
 
 /* Para el responsive de ordenador */
