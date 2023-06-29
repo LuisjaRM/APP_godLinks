@@ -115,7 +115,9 @@ export const OfferCard = ({ offer }) => {
       onClick={handleClickOfferCard}
     >
       {expired && <p className="expired-offer">Oferta Caducada</p>}
-      {windowLocation === "/userInfo" && user.id === offer.user_id ? (
+      {windowLocation === "/userInfo" &&
+      !expired &&
+      user.id === offer.user_id ? (
         <section className="edit-wrap">
           <button
             className="edit"

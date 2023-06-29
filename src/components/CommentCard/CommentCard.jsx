@@ -143,7 +143,7 @@ export const CommentsCard = ({ comment, refresh }) => {
       <section className="comment-card">
         {user.id === comment.user_id ? (
           <section className="comments-buttons">
-              <button
+            <button
               className="edit"
               onClick={(e) => {
                 e.preventDefault();
@@ -242,14 +242,14 @@ export const CommentsCard = ({ comment, refresh }) => {
       </section>
 
       {showConfirmModal ? (
-        <section className="confirmModal" onClick={handleClickAway}>
-          <section className="confirmModal-body">
+        <section className="modal-back dark" onClick={handleClickAway}>
+          <section className="modal-body little">
             <h2>¿Estás seguro de que quieres borrar este comentario?</h2>
             <section className="buttons">
-              <button className="confirm-button" onClick={handleClickConfirm}>
+              <button className="button" onClick={handleClickConfirm}>
                 Sí
               </button>
-              <button className="confirm-button" onClick={handleClickCancel}>
+              <button className="button" onClick={handleClickCancel}>
                 No
               </button>
             </section>
@@ -260,8 +260,8 @@ export const CommentsCard = ({ comment, refresh }) => {
       )}
 
       {showChangeMadeModal ? (
-        <section className="changeMade-modal">
-          <section className="changeMade-modal-body">
+        <section className="modal-back dark">
+          <section className="modal-body little">
             {deleteComment && <h3>Tu comentario se ha eliminado con éxito</h3>}
           </section>
         </section>

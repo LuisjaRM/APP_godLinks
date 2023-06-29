@@ -9,26 +9,31 @@ export const Footer = () => {
   const [show, setShow] = useState(false);
   const [nightdayMode] = useNightMode();
 
-  const botonSoySubnormal = () => {
+  const buttonShow = () => {
     setShow(!show);
   };
 
   return (
-    <footer className={`${nightdayMode ? "dark" : "light"} ${show ? "show" : ""} `}>
-      <div className="jaja">
-        <button onClick={botonSoySubnormal} className="more-content">
-          Ir al pie de pagina ↓
+    <footer className={`${nightdayMode ? "dark" : "light"}`}>
+      <section className="footer-header">
+        <h2 className="title-footer">GodLinks S.A.</h2>
+        <button
+          onClick={buttonShow}
+          className="more-content"
+          title="Ir al pié de página"
+        >
+          ↓
         </button>
-      </div>
+      </section>
 
-      <div className={`footer-container ${show ? "show" : ""} `}>
-        <div className="footer-content-container">
+      <section className={`footer-container ${show ? "show" : ""} `}>
+        <section className="footer-content-container">
           <h3 className="website-logo">Sobre nosotros</h3>
-          <span className="footer-info">godLinkssa@gmail.com</span>
-        </div>
-        <div className="footer-menus">
-          <div className="footer-content-container">
-            <span className="menu-title">menu</span>
+          <p className="footer-info">godLinkssa@gmail.com</p>
+        </section>
+        <section className="footer-menus">
+          <section className="footer-content-container">
+            <p className="menu-title">menu</p>
             <Link className="menu-item-footer" to="/">
               Home
             </Link>
@@ -38,10 +43,10 @@ export const Footer = () => {
             <Link className="menu-item-footer" to="/offersByVotes">
               Ofertas mas votadas
             </Link>
-          </div>
+          </section>
 
-          <div className="footer-content-container">
-            <span className="menu-title">legal</span>
+          <section className="footer-content-container">
+            <p className="menu-title">legal</p>
             <a
               href="https://www.aquasocialmedia.com/blog-dynamic/91-que-es-y-para-que-sirve-la-politica-de-privacidad"
               target="_blank"
@@ -66,11 +71,11 @@ export const Footer = () => {
             >
               Consejo Legal
             </a>
-          </div>
-        </div>
-        <div className="footer-content-container">
-          <span className="menu-title">Síguenos</span>
-          <div className="social-container">
+          </section>
+        </section>
+        <section className="footer-content-container">
+          <p className="menu-title">Síguenos</p>
+          <article className="social-container">
             <a
               href="https://github.com/LuisjaRM"
               target="_blank"
@@ -92,8 +97,8 @@ export const Footer = () => {
               className="social-link"
               title="Mladen Aleksandrov"
             ></a>
-          </div>
-          <div className="social-box">
+          </article>
+          <article className="social-box">
             <a
               href="https://www.linkedin.com/in/luisjarodriguez/"
               target="_blank"
@@ -115,9 +120,9 @@ export const Footer = () => {
               className="social-linkedin"
               title="Mladen Aleksandrov"
             ></a>
-          </div>
-        </div>
-      </div>
+          </article>
+        </section>
+      </section>
     </footer>
   );
 };

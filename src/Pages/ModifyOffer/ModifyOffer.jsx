@@ -30,7 +30,7 @@ export const ModifyOffer = () => {
   if (error) return <ErrorMessage />;
 
   return (
-    <section className="modifyOffer">
+    <section className="modify-offer">
       {offers.offerInfo?.map((offerInfo, index) => (
         <ModifyOfferCard key={index} refresh={refresh} offer={offerInfo} />
       ))}

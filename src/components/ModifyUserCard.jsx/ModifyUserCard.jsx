@@ -1,5 +1,14 @@
 import "./ModifyUserCard.css";
 
+// Material
+
+import { SvgIcon } from "@mui/material";
+import EditIcon from "@mui/icons-material/Edit";
+import ImageSearchIcon from "@mui/icons-material/ImageSearch";
+import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
+import SendIcon from "@mui/icons-material/Send";
+import LockIcon from "@mui/icons-material/Lock";
+
 // React
 
 import { useState } from "react";
@@ -27,22 +36,20 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
   const [error, setError] = useError();
   const { token, logout } = useAuth();
 
-  // Context
-
   const [showLogin, setShowLogin] = useShowLogin();
   const [showVerify, setShowVerify] = useShowVerify();
 
   // Document Title
   document.title = "Mi perfil";
 
-  //State of navigate
+  // State of navigate
 
   const navigate = useNavigate();
 
   // States of Forms
   const [avatar, setAvatar] = useState("");
-  const [user, setUser] = useState("");
-  const [email, setEmail] = useState("");
+  const [user, setUser] = useState(userInfo.user);
+  const [email, setEmail] = useState(userInfo.email);
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
 
@@ -51,7 +58,6 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
   const [hideFormAvatar, setHideFormAvatar] = useState(true);
   const [hideFormUser, setHideFormUser] = useState(true);
   const [hideFormEmail, setHideFormEmail] = useState(true);
-  const [hideFormPassword, setHideFormPassword] = useState(true);
 
   // Schema created_at
 
@@ -82,24 +88,25 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
   const handleClickConfirm = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    setShowConfirmModal(!showConfirmModal);
+    setShowConfirmModal(false);
+    setShowChangePasswordModal(false);
     avatar && changeAvatar();
-    user && changeUser();
-    email && changeEmail();
+    user != userInfo.user && changeUser();
+    email != userInfo.email && changeEmail();
     newPassword && changePassword();
     clickDelete && deleteUser();
   };
 
   const handleClickCancel = (e) => {
     e.stopPropagation();
-    setShowConfirmModal(!showConfirmModal);
+    setShowConfirmModal(false);
+    setShowChangePasswordModal(false);
     setHideFormAvatar(true);
     setHideFormUser(true);
     setHideFormEmail(true);
-    setHideFormPassword(true);
     setAvatar("");
-    setUser("");
-    setEmail("");
+    setUser(userInfo.user);
+    setEmail(userInfo.email);
     setOldPassword("");
     setNewPassword("");
     setClickDelete(false);
@@ -107,14 +114,14 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
 
   const handleClickAway = (e) => {
     e.stopPropagation();
-    setShowConfirmModal(!showConfirmModal);
+    setShowConfirmModal(false);
+    setShowChangePasswordModal(false);
     setHideFormAvatar(true);
     setHideFormUser(true);
     setHideFormEmail(true);
-    setHideFormPassword(true);
     setAvatar("");
-    setUser("");
-    setEmail("");
+    setUser(userInfo.user);
+    setEmail(userInfo.email);
     setOldPassword("");
     setNewPassword("");
     setClickDelete(false);
@@ -124,6 +131,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
 
   const changeAvatar = async () => {
     try {
+      // Fetch
       await ModifyUserService({ avatar }, token);
       setAvatar(avatar);
       setHideFormAvatar(!hideFormAvatar);
@@ -146,6 +154,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
 
   const changeUser = async () => {
     try {
+      // Fetch
       await ModifyUserService({ user }, token);
       setUser(user);
       setHideFormUser(!hideFormUser);
@@ -153,7 +162,6 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
       setShowChangeMadeModal(!showChangeMadeModal);
       setTimeout(() => {
         setShowChangeMadeModal(!showChangeMadeModal);
-        setUser("");
         refresh();
       }, 1500);
     } catch (error) {
@@ -168,6 +176,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
 
   const changeEmail = async () => {
     try {
+      // Fetch
       await ModifyUserService({ email }, token);
       setEmail(email);
       setHideFormEmail(!hideFormEmail);
@@ -186,11 +195,16 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
 
   const changePassword = async () => {
     try {
+      // Fetch
       await ModifyPasswordService({ oldPassword, newPassword }, token);
-      setHideFormPassword(!hideFormPassword);
-      setShowLogin(!showLogin);
-      navigate("/");
-      logout();
+      setShowChangeMadeModal(!showChangeMadeModal);
+      setTimeout(() => {
+        setShowChangeMadeModal(!showChangeMadeModal);
+        setShowLogin(!showLogin);
+        navigate("/");
+        logout();
+        refresh();
+      }, 1500);
     } catch (error) {
       setError(error.message);
       setTimeout(() => {
@@ -199,7 +213,12 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
     }
   };
 
-  // delete user
+  // Change Password Modal
+
+  const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
+
+  // Delete user
+
   const [clickDelete, setClickDelete] = useState(false);
 
   const handleClickDelete = (e) => {
@@ -210,6 +229,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
 
   const deleteUser = async () => {
     try {
+      // Fetch
       await DeleteUserService(token, userInfo.id);
       setShowChangeMadeModal(!showChangeMadeModal);
       setTimeout(() => {
@@ -228,202 +248,261 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
   return (
     <>
       <ul className="header-profile">
-        <li className="list-image">
+        <li className="image-li">
           <img
             className={`user-image-profile ${hideFormAvatar ? "" : "hide"}`}
             src={
               userInfo.avatar
                 ? `${import.meta.env.VITE_BACKEND}uploads/${userInfo.avatar}`
-                : "/android-icon-36x36.png"
+                : "/default-user.webp"
             }
             alt={userInfo.user}
           />
           <form
-            className={`modify-image-form  ${hideFormAvatar ? "hide" : ""}`}
+            className={`form  ${hideFormAvatar ? "hide" : ""}`}
             onSubmit={handleForm}
           >
-            <fieldset className="fieldset">
-              <label className="label" htmlFor="avatar">
-                Avatar:
+            <fieldset className="modify-image-fieldset">
+              <label className="user-image-profile-label">
+                <input
+                  className="modify-image-input"
+                  type="file"
+                  name="modify-image"
+                  id="modify-image"
+                  required
+                  onChange={(e) => setAvatar(e.target.files[0])}
+                />
+
+                <SvgIcon
+                  className="post-image-icon"
+                  component={ImageSearchIcon}
+                  inheritViewBox
+                />
               </label>
-              <input
-                className="image-picker"
-                type="file"
-                name="avatar"
-                id="avatar"
-                required
-                onChange={(e) => setAvatar(e.target.files[0])}
-              />
             </fieldset>
-            <button>📷</button>
+
+            <button className="modify-image-button">
+              <SvgIcon
+                className="post-offer-icon"
+                component={AddToPhotosIcon}
+                inheritViewBox
+              />
+            </button>
           </form>
+
           <button
-            className="edit-button"
+            className={`edit-button edit-image`}
             onClick={() => {
               setHideFormAvatar(!hideFormAvatar);
             }}
           >
-            ✏️
+            <SvgIcon
+              className="edit-icon"
+              component={EditIcon}
+              inheritViewBox
+            />
           </button>
         </li>
 
-        <li> {error ? <p className="error">⚠️ {error}</p> : null}</li>
+        <li className="created-at">Miembro desde {dateCreated}</li>
 
-        <li className="created-at">
-          <strong>Miembro desde</strong>: {dateCreated}
-        </li>
+        <li>{error ? <p className="error">⚠️ {error}</p> : null}</li>
 
-        <li className="list-element">
-          <p className={`user-name-profile ${hideFormUser ? "" : "hide"}`}>
-            <strong>Nombre de usuario</strong>: {userInfo.user}
+        <li className="field">
+          <section className="field-header">
+            <h2 className="field-title">Nombre de usuario:</h2>
+
+            <button
+              className="edit-button"
+              onClick={() => {
+                setHideFormUser(!hideFormUser);
+              }}
+            >
+              <SvgIcon
+                className="edit-icon"
+                component={EditIcon}
+                inheritViewBox
+              />
+            </button>
+          </section>
+
+          <p
+            className={`input-element user-name-profile ${
+              hideFormUser ? "" : "hide"
+            }`}
+          >
+            {userInfo.user}
           </p>
+
           <form
-            className={`modify-user-form ${hideFormUser ? "hide" : ""}`}
+            className={`form ${hideFormUser ? "hide" : ""}`}
             onSubmit={handleForm}
           >
-            <fieldset className="fieldset">
-              <label className="label" htmlFor="user">
-                Usuario:
-              </label>
+            <fieldset className="modify-fieldset">
               <input
-                placeholder={userInfo.user}
-                className="input"
+                className="modify-input"
                 type="user"
-                name="user"
-                id="user"
+                name="modify-user"
+                id="modify-user"
                 value={user}
                 required
                 onChange={(e) => setUser(e.target.value)}
               />
+
+              <button className="send-modify-button">
+                <SvgIcon
+                  className="send-modify-icon"
+                  component={SendIcon}
+                  inheritViewBox
+                />
+              </button>
             </fieldset>
-            <button>✅</button>
           </form>
-          <button
-            className="edit-button"
-            onClick={() => {
-              setHideFormUser(!hideFormUser);
-            }}
-          >
-            ✏️
-          </button>
         </li>
 
-        <li className="list-element">
-          <p className={`user-email-profile ${hideFormEmail ? "" : "hide"}`}>
-            <strong>Email</strong>: {userInfo.email}
+        <li className="field">
+          <section className="field-header">
+            <h2 className="field-title">Correo Electrónico:</h2>
+
+            <button
+              className="edit-button"
+              onClick={() => {
+                setHideFormEmail(!hideFormEmail);
+              }}
+            >
+              <SvgIcon
+                className="edit-icon"
+                component={EditIcon}
+                inheritViewBox
+              />
+            </button>
+          </section>
+
+          <p
+            className={`input-element user-email-profile ${
+              hideFormEmail ? "" : "hide"
+            }`}
+          >
+            {userInfo.email}
           </p>
+
           <form
-            className={`modify-email-form ${hideFormEmail ? "hide" : ""}`}
+            className={`form ${hideFormEmail ? "hide" : ""}`}
             onSubmit={handleForm}
           >
-            <fieldset className="fieldset">
-              <label className="label" htmlFor="email">
-                Correo Electrónico:
-              </label>
+            <fieldset className="modify-fieldset">
               <input
-                placeholder={userInfo.email}
-                className="input"
+                className="modify-input"
                 type="email"
-                name="email"
-                id="email"
+                name="modify-email"
+                id="modify-email"
                 value={email}
                 required
                 onChange={(e) => setEmail(e.target.value)}
               />
+
+              <button className="send-modify-button">
+                <SvgIcon
+                  className="send-modify-icon"
+                  component={SendIcon}
+                  inheritViewBox
+                />
+              </button>
             </fieldset>
-            <button>✅</button>
           </form>
-          <button
-            className="edit-button"
-            onClick={() => {
-              setHideFormEmail(!hideFormEmail);
-            }}
-          >
-            ✏️
-          </button>
         </li>
 
-        <li className="list-privacity">
-          <h2>Privacidad</h2>
+        <li className="privacity">
+          <section className="title">
+            <h2>Privacidad</h2>
+
+            <SvgIcon
+              className="privacity-icon"
+              component={LockIcon}
+              inheritViewBox
+            />
+          </section>
 
           <button
-            className={`user-password-profile ${
-              hideFormPassword ? "" : "hide"
-            }`}
+            className="modify-password button"
             onClick={() => {
-              setHideFormPassword(!hideFormPassword);
+              setShowChangePasswordModal(!showChangePasswordModal);
             }}
           >
-            Modificar contraseña:
+            Cambiar contraseña
           </button>
 
-          <form
-            className={`modify-password-form ${hideFormPassword ? "hide" : ""}`}
-            onSubmit={handleForm}
-          >
-            <fieldset className="fieldset">
-              <label className="label" htmlFor="oldPassword">
-                Contraseña actual:
-              </label>
-              <input
-                placeholder="Intoduce contraseña actual"
-                className="input"
-                type="password"
-                name="password"
-                id="oldPassword"
-                value={oldPassword}
-                required
-                onChange={(e) => setOldPassword(e.target.value)}
-              />
-              <label className="label" htmlFor="newPassword">
-                Nueva contraseña:
-              </label>
-              <input
-                placeholder="Introduce nueva contraseña"
-                className="input"
-                type="password"
-                name="newPassword"
-                id="newPassword"
-                value={newPassword}
-                required
-                onChange={(e) => setNewPassword(e.target.value)}
-              />
-            </fieldset>
-            <button>✅</button>
-          </form>
-
           <form onSubmit={handleClickDelete}>
-            <button className="delete-button">Eliminar cuenta</button>
+            <button className="delete button">Eliminar cuenta</button>
           </form>
         </li>
       </ul>
 
-      {showConfirmModal ? (
-        <section className="confirmModal" onClick={handleClickAway}>
-          <section className="confirmModal-body">
+      {showChangePasswordModal && (
+        <section className="modal-back dark" onClick={handleClickAway}>
+          <section
+            className="modal-body little"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <form className="modify-password-form" onSubmit={handleForm}>
+              <fieldset className="modify-password-fieldset">
+                <label htmlFor="oldPassword">Contraseña actual:</label>
+
+                <input
+                  placeholder="Contraseña actual"
+                  className="modify-password-input"
+                  type="password"
+                  name="oldPassword"
+                  id="oldPassword"
+                  value={oldPassword}
+                  required
+                  onChange={(e) => setOldPassword(e.target.value)}
+                />
+
+                <label htmlFor="newPassword">Nueva contraseña:</label>
+
+                <input
+                  placeholder="Nueva contraseña"
+                  className="modify-password-input"
+                  type="password"
+                  name="newPassword"
+                  id="newPassword"
+                  value={newPassword}
+                  required
+                  onChange={(e) => setNewPassword(e.target.value)}
+                />
+              </fieldset>
+
+              <button className="button">Continuar</button>
+            </form>
+          </section>
+        </section>
+      )}
+
+      {showConfirmModal && (
+        <section className="modal-back dark" onClick={handleClickAway}>
+          <section className="modal-body little">
             <h2>
               ¿Estás seguro de que quieres
               {clickDelete ? " borrar" : " modificar"} este usuario?
             </h2>
             <section className="buttons">
-              <button className="confirm-button" onClick={handleClickConfirm}>
+              <button className="button" onClick={handleClickConfirm}>
                 Sí
               </button>
-              <button className="confirm-button" onClick={handleClickCancel}>
+              <button className="button" onClick={handleClickCancel}>
                 No
               </button>
             </section>
           </section>
         </section>
-      ) : (
-        ""
       )}
 
-      {showChangeMadeModal ? (
-        <section className="changeMade-modal">
-          <section className="changeMade-modal-body">
+      {showChangeMadeModal && (
+        <section className="modal-back dark">
+          <section className="modal-body little">
             {avatar && <h3>Tu avatar se ha modificado con éxito </h3>}
-            {user && (
+            {user != userInfo.user && (
               <h3>
                 Tu nombre de usuario se ha modificado con éxito{" "}
                 <svg
@@ -455,12 +534,10 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
                 </svg>
               </h3>
             )}
-
+            {newPassword && <h3>Tu contraseña se ha modificado con éxito</h3>}
             {clickDelete && <h3>Tu usuario se ha eliminado con éxito</h3>}
           </section>
         </section>
-      ) : (
-        ""
       )}
     </>
   );
