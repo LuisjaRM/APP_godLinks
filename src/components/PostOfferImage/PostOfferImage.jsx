@@ -58,7 +58,7 @@ export const PostOfferImage = ({
         windowLocation === "/allOffers"
           ? navigate("/")
           : navigate("/allOffers");
-      }, 1500);
+      }, 2000);
     } catch (error) {
       setError(error.message);
     }
@@ -107,9 +107,14 @@ export const PostOfferImage = ({
             className="post-offer-button"
             onClick={() => {
               setOpenPostImage(!openPostImage);
-              windowLocation === "/allOffers"
-                ? navigate("/")
-                : navigate("/allOffers");
+              setShowUploadOfferModal(!showUploadOfferModal);
+
+              setTimeout(() => {
+                setShowUploadOfferModal(!showUploadOfferModal);
+                windowLocation === "/allOffers"
+                  ? navigate("/")
+                  : navigate("/allOffers");
+              }, 2000);
             }}
           >
             <SvgIcon
@@ -120,14 +125,13 @@ export const PostOfferImage = ({
           </button>
         </section>
       </section>
-      {showUploadOfferModal ? (
-        <section className="uploadOffer-modal">
-          <section className="uploadOffer-modal-body">
-            <h3>Oferta subida con éxito </h3>
+
+      {showUploadOfferModal && (
+        <section className="modal-back">
+          <section className="modal-body little">
+            <h3>Oferta subida con éxito</h3>
           </section>
         </section>
-      ) : (
-        ""
       )}
     </section>
   );

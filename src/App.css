@@ -35,12 +35,24 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
   background-color: rgb(1, 1, 97);
   color: khaki;
   border: 1px solid khaki;
   border-radius: 10px;
   box-shadow: 1px 1px 10px black;
+}
+
+.modal-body.little {
+  width: 244px;
+  height: 244px;
+  text-align: center;
+}
+
+.modal-body .buttons {
+  display: flex;
+  gap: 1rem;
 }
 
 .modal-body .button {
@@ -84,5 +96,120 @@ main {
 }
 
 .post-image-icon {
+  color: black;
+}
+
+/* Edit button */
+
+.edit-button {
+  cursor: pointer;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+/* Edit image */
+
+.image-li {
+  width: 175px;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.edit-button.edit-image {
+  position: absolute;
+  right: 0;
+}
+
+.modify-image {
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 1px 1px 5px black;
+}
+
+.modify-image-fieldset {
+  width: fit-content;
+  border: none;
+}
+
+.modify-image-label {
+  cursor: pointer;
+  width: 88px;
+  height: 88px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.modify-image-label:hover {
+  box-shadow: 2px 2px 10px khaki;
+}
+
+.modify-image-input {
+  display: none;
+}
+
+.modify-image-button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  color: khaki;
+}
+
+/* Edit other fields */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.field-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-element {
+  width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 5px;
+  background-color: khaki;
+  color: black;
+  padding: 0.5rem;
+  font-size: 100%;
+}
+
+.modify-fieldset {
+  width: 250px;
+  border: none;
+  position: relative;
+}
+
+.modify-input {
+  width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(236, 231, 180);
+  padding: 0.5rem;
+  font-size: 100%;
+}
+
+.send-modify-button {
+  position: absolute;
+  right: 0.5rem;
+  height: 95%;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
   color: black;
 }

@@ -20,7 +20,7 @@ export const VerifyUser = ({ setIsLogin }) => {
           setShowLogin(!showLogin);
         }}
       >
-        <section className="modal-body verify">
+        <section className="modal-body little verify">
           <p>Te hemos enviado un correo para que verifiques tu cuenta 😃</p>
 
           <button
