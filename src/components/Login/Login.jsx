@@ -1,9 +1,12 @@
 import "./Login.css";
+import "../../intl/es.json";
+import "../../intl/en.json";
 
 // React
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {FormattedMessage} from 'react-intl';
 
 // Contexts
 
@@ -47,11 +50,11 @@ export const Login = () => {
 
   return (
     <section className="login">
-      <h2 className="title">Inicia Sesión</h2>
+      <h2 className="title"><FormattedMessage id="signin"/> </h2>
 
       <form className="form" onSubmit={handleForm}>
         <fieldset>
-          <label htmlFor="login-email">Correo Electrónico:</label>
+          <label htmlFor="login-email"><FormattedMessage id="email"/></label>
           <input
             placeholder="example@mail.com"
             type="email"
@@ -64,9 +67,9 @@ export const Login = () => {
         </fieldset>
 
         <fieldset>
-          <label htmlFor="login-password">Contraseña:</label>
+          <label htmlFor="login-password"><FormattedMessage id="password"/></label>
           <input
-            placeholder="Introduce tu contraseña"
+            placeholder={<FormattedMessage id="enter-password"/>}
             type="password"
             name="login-password"
             autoComplete="login-password"
