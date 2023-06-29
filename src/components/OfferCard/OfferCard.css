@@ -93,17 +93,6 @@
   filter: grayscale(100%);
 }
 
-/*.offer-card .main .favorite-button {
-  background: none;
-  position: absolute;
-  top: 1px;
-  right: 1px;
-  border-radius: 5px;
-  border: none;
-  width: 24px;
-  height: 24px;
-}*/
-
 .offer-card .main .offer-info {
   width: 9rem;
   list-style: none;
@@ -190,11 +179,19 @@ svg:hover {
   fill: salmon;
 }
 
-.like {
+svg:focus {
+  fill: rgb(141, 139, 139);
+}
+
+svg.like {
   fill: red;
   animation-name: like;
   animation-duration: 0.3s;
   animation-iteration-count: 2;
+}
+
+svg.like:focus {
+  fill: red;
 }
 
 @keyframes like {
