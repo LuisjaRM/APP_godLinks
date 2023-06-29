@@ -31,6 +31,10 @@
   font-size: medium;
 }
 
+.offer-card .edit-wrap .edit-icon.expired {
+  display: none;
+}
+
 /* OfferCard header */
 
 .offer-card .header {
@@ -235,6 +239,10 @@ svg:hover {
   border: none;
   border-radius: 5px;
   box-shadow: 1px 1px 10px black;
+}
+
+.offer-card .footer .link-button.expired {
+  display: none;
 }
 
 .offer-card .footer .link-button:hover {

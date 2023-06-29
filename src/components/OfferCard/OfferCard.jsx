@@ -126,7 +126,7 @@ export const OfferCard = ({ offer }) => {
             }}
           >
             <SvgIcon
-              className="edit-icon"
+              className={`edit-icon ${expired ? "expired" : ""}`}
               component={EditIcon}
               inheritViewBox
             />
@@ -224,7 +224,7 @@ export const OfferCard = ({ offer }) => {
           offerId={offer.id}
           userId={offer.user_id}
         />
-        <button className="link-button">
+        <button className={`link-button ${expired ? "expired" : ""}`}>
           <a
             className="offer-link"
             onClick={(e) => e.stopPropagation()}
