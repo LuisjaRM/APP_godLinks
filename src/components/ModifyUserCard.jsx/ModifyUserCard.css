@@ -92,3 +92,23 @@
   border-radius: 5px;
   box-shadow: 1px 1px 10px black;
 }
+
+/* Check Animation */
+
+.circle {
+  animation: stroke-fill 1s linear forwards;
+}
+
+.check {
+  animation: stroke-fill 5s linear forwards;
+}
+
+@keyframes stroke-fill {
+  0% {
+    stroke-dasharray: 0, 0;
+  }
+
+  100% {
+    stroke-dasharray: 500, 200000;
+  }
+}
