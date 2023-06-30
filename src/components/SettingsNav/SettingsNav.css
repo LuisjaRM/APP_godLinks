@@ -1,0 +1,62 @@
+.settings-nav {
+  cursor: default;
+  position: absolute;
+  top: calc((7.5vh - 28px) / 2);
+  right: 1rem;
+  width: 6.5rem;
+  height: 6.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  gap: 1rem;
+  padding: 1rem;
+  font-size: 75%;
+  border-radius: 10px;
+  background-color: rgb(196, 186, 104);
+  box-shadow: 1px 1px 10px black;
+  list-style: none;
+}
+
+/* .settings-nav .day-night {
+  cursor: pointer;
+  width: fit-content;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-weight: bold;
+} */
+
+/* .settings-nav .language {
+  cursor: pointer;
+  height: 1rem;
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  border-bottom: 1px solid black;
+} */
+
+ul.settings-nav li.language button {
+}
+
+ul.settings-nav li.day-night:hover,
+ul.settings-nav li.language button:hover {
+  background-color: rgb(219, 209, 130);
+}
+
+/* .settings-nav .settings-icon {
+  font-size: 125%;
+} */
+
+.modal-back {
+  animation: fadeInOut 0.5s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
