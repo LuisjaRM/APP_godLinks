@@ -70,7 +70,7 @@ export const Login = () => {
           <label htmlFor="login-password"><FormattedMessage id="password"/></label>
           <input
             placeholder={<FormattedMessage id="enter-password"/>}
-            type="password"
+            type={<FormattedMessage id="password"/>}
             name="login-password"
             autoComplete="login-password"
             id="login-password"
