@@ -56,6 +56,16 @@
   color: black;
 }
 
+.post-offer-body .post-offer {
+  transform: translatex(995px);
+  transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.post-offer-body {
+  transform: translateX(1%);
+  transition: transform 0.8s cubic-bezier(0.18, 0.15, 0.1, 1.1);
+}
+
 .post-offer .closed-button {
   cursor: pointer;
   position: absolute;
