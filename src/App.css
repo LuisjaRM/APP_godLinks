@@ -48,6 +48,9 @@ main {
   width: 244px;
   height: 244px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .modal-body .buttons {
