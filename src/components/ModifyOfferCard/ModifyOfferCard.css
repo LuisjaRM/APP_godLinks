@@ -22,6 +22,11 @@
   display: none;
 }
 
+.send-modify-button.date {
+  right: -2rem;
+  color: khaki;
+}
+
 /* Delete button */
 
 .modify-offer-card .delete-button {

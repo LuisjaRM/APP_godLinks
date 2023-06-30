@@ -47,7 +47,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
   const [offer_price, setOffer_price] = useState(offer.offer_price);
   const [price, setPrice] = useState(offer.price);
   const [plataform, setPlataform] = useState(offer.plataform);
-  const [offer_expiry, setOffer_expiry] = useState(offerExpiryDefault);
+  const [offer_expiry, setOffer_expiry] = useState("");
 
   // States to hide
 
@@ -62,9 +62,54 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
   // HandleForm
 
-  const handleForm = async (e) => {
+  const [fieldChanged, setFieldChanged] = useState("");
+
+  const handleFormImage = async (e) => {
     e.preventDefault();
     setShowConfirmModal(!showConfirmModal);
+    setFieldChanged("image");
+  };
+
+  const handleFormUrl = async (e) => {
+    e.preventDefault();
+    setShowConfirmModal(!showConfirmModal);
+    setFieldChanged("url");
+  };
+
+  const handleFormTitle = async (e) => {
+    e.preventDefault();
+    setShowConfirmModal(!showConfirmModal);
+    setFieldChanged("title");
+  };
+
+  const handleFormDescrip = async (e) => {
+    e.preventDefault();
+    setShowConfirmModal(!showConfirmModal);
+    setFieldChanged("descrip");
+  };
+
+  const handleFormOfferPrice = async (e) => {
+    e.preventDefault();
+    setShowConfirmModal(!showConfirmModal);
+    setFieldChanged("offer_price");
+  };
+
+  const handleFormPrice = async (e) => {
+    e.preventDefault();
+    setShowConfirmModal(!showConfirmModal);
+    setFieldChanged("price");
+  };
+
+  const handleFormPlataform = async (e) => {
+    e.preventDefault();
+    setShowConfirmModal(!showConfirmModal);
+    setFieldChanged("plataform");
+  };
+
+  const handleFormOfferExpiry = async (e) => {
+    e.preventDefault();
+    setShowConfirmModal(!showConfirmModal);
+    setFieldChanged("offer_expiry");
   };
 
   // Confirm Modal
@@ -74,7 +119,6 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
   // Change Made Modal
 
   const [showChangeMadeModal, setShowChangeMadeModal] = useState();
-  const [fieldChanged, setFieldChanged] = useState();
 
   // Handles Click
 
@@ -82,14 +126,15 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
     e.preventDefault();
     e.stopPropagation();
     setShowConfirmModal(!showConfirmModal);
-    image && changeImage();
-    url != offer.url && changeUrl();
-    title != offer.title && changeTitle();
-    descrip != offer.descrip && changeDescrip();
-    offer_price != offer.offer_price && changeOfferPrice();
-    price != offer.price && changePrice();
-    plataform != offer.plataform && changePlataform();
-    offer_expiry != offerExpiryDefault && changeOfferExpiry();
+
+    fieldChanged === "image" && changeImage();
+    fieldChanged === "url" && changeUrl();
+    fieldChanged === "title" && changeTitle();
+    fieldChanged === "descrip" && changeDescrip();
+    fieldChanged === "offer_price" && changeOfferPrice();
+    fieldChanged === "price" && changePrice();
+    fieldChanged === "plataform" && changePlataform();
+    fieldChanged === "offer_expiry" && changeOfferExpiry();
     clickDelete && deleteOffer();
   };
 
@@ -105,12 +150,12 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
     setHideFormPlataform(true);
     setHideFormOfferExpiry(true);
     setImage("");
-    setUrl("");
-    setTitle("");
-    setDescrip("");
-    setOffer_price("");
-    setPrice("");
-    setPlataform("");
+    setUrl(offer.url);
+    setTitle(offer.title);
+    setDescrip(offer.descrip);
+    setOffer_price(offer.offer_price);
+    setPrice(offer.price);
+    setPlataform(offer.plataform);
     setOffer_expiry("");
     setClickDelete(false);
   };
@@ -126,12 +171,12 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
     setHideFormPlataform(true);
     setHideFormOfferExpiry(true);
     setImage("");
-    setUrl("");
-    setTitle("");
-    setDescrip("");
-    setOffer_price("");
-    setPrice("");
-    setPlataform("");
+    setUrl(offer.url);
+    setTitle(offer.title);
+    setDescrip(offer.descrip);
+    setOffer_price(offer.offer_price);
+    setPrice(offer.price);
+    setPlataform(offer.plataform);
     setOffer_expiry("");
     setClickDelete(false);
   };
@@ -146,13 +191,10 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
       await postOfferImageService(token, offer.id, image);
       setImage(image);
       setHideFormImage(!hideFormImage);
-      setFieldChanged("image");
 
       setShowChangeMadeModal(!showChangeMadeModal);
       setTimeout(() => {
         setShowChangeMadeModal(!showChangeMadeModal);
-        setImage("");
-        setFieldChanged("");
         refresh();
       }, 1500);
     } catch (error) {
@@ -171,13 +213,10 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
       await patchOfferService(token, offer.id, { url });
       setUrl(url);
       setHideFormUrl(!hideFormUrl);
-      setFieldChanged("url");
 
       setShowChangeMadeModal(!showChangeMadeModal);
       setTimeout(() => {
         setShowChangeMadeModal(!showChangeMadeModal);
-        setUrl("");
-        setFieldChanged("");
         refresh();
       }, 1500);
     } catch (error) {
@@ -196,13 +235,10 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
       await patchOfferService(token, offer.id, { title });
       setTitle(title);
       setHideFormTitle(!hideFormTitle);
-      setFieldChanged("title");
 
       setShowChangeMadeModal(!showChangeMadeModal);
       setTimeout(() => {
         setShowChangeMadeModal(!showChangeMadeModal);
-        setTitle("");
-        setFieldChanged("");
         refresh();
       }, 1500);
     } catch (error) {
@@ -221,13 +257,10 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
       await patchOfferService(token, offer.id, { descrip });
       setDescrip(descrip);
       setHideFormDescrip(!hideFormDescrip);
-      setFieldChanged("descrip");
 
       setShowChangeMadeModal(!showChangeMadeModal);
       setTimeout(() => {
         setShowChangeMadeModal(!showChangeMadeModal);
-        setDescrip("");
-        setFieldChanged("");
         refresh();
       }, 1500);
     } catch (error) {
@@ -246,13 +279,10 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
       await patchOfferService(token, offer.id, { offer_price });
       setOffer_price(offer_price);
       setHideFormOfferPrice(!hideFormOfferPrice);
-      setFieldChanged("offer_price");
 
       setShowChangeMadeModal(!showChangeMadeModal);
       setTimeout(() => {
         setShowChangeMadeModal(!showChangeMadeModal);
-        setOffer_price("");
-        setFieldChanged("");
         refresh();
       }, 1500);
     } catch (error) {
@@ -271,13 +301,10 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
       await patchOfferService(token, offer.id, { price });
       setPrice(price);
       setHideFormPrice(!hideFormPrice);
-      setFieldChanged("price");
 
       setShowChangeMadeModal(!showChangeMadeModal);
       setTimeout(() => {
         setShowChangeMadeModal(!showChangeMadeModal);
-        setPrice("");
-        setFieldChanged("");
         refresh();
       }, 1500);
     } catch (error) {
@@ -296,13 +323,10 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
       await patchOfferService(token, offer.id, { plataform });
       setPlataform(plataform);
       setHideFormPlataform(!hideFormPlataform);
-      setFieldChanged("plataform");
 
       setShowChangeMadeModal(!showChangeMadeModal);
       setTimeout(() => {
         setShowChangeMadeModal(!showChangeMadeModal);
-        setPlataform("");
-        setFieldChanged("");
         refresh();
       }, 1500);
     } catch (error) {
@@ -321,13 +345,10 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
       await patchOfferService(token, offer.id, { offer_expiry });
       setOffer_expiry(offerExpiryDefault);
       setHideFormOfferExpiry(!hideFormOfferExpiry);
-      setFieldChanged("offer_expiry");
 
       setShowChangeMadeModal(!showChangeMadeModal);
       setTimeout(() => {
         setShowChangeMadeModal(!showChangeMadeModal);
-        setOffer_expiry("");
-        setFieldChanged("");
         refresh();
       }, 1500);
     } catch (error) {
@@ -384,7 +405,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
           <form
             className={`form ${hideFormImage ? "hide" : ""}`}
-            onSubmit={handleForm}
+            onSubmit={handleFormImage}
           >
             <fieldset className="modify-image-fieldset">
               <label className="modify-image-label">
@@ -450,7 +471,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
           <form
             className={`form ${hideFormUrl ? "hide" : ""}`}
-            onSubmit={handleForm}
+            onSubmit={handleFormUrl}
           >
             <fieldset className="modify-fieldset">
               <input
@@ -500,7 +521,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
           <form
             className={`form ${hideFormTitle ? "hide" : ""}`}
-            onSubmit={handleForm}
+            onSubmit={handleFormTitle}
           >
             <fieldset className="modify-fieldset">
               <input
@@ -550,7 +571,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
           <form
             className={`form ${hideFormDescrip ? "hide" : ""}`}
-            onSubmit={handleForm}
+            onSubmit={handleFormDescrip}
           >
             <fieldset className="modify-fieldset">
               <input
@@ -599,7 +620,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
           <form
             className={`form ${hideFormOfferPrice ? "hide" : ""}`}
-            onSubmit={handleForm}
+            onSubmit={handleFormOfferPrice}
           >
             <fieldset className="modify-fieldset">
               <input
@@ -648,7 +669,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
           <form
             className={`form ${hideFormPrice ? "hide" : ""}`}
-            onSubmit={handleForm}
+            onSubmit={handleFormPrice}
           >
             <fieldset className="modify-fieldset">
               <input
@@ -697,7 +718,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
           <form
             className={`form ${hideFormPlataform ? "hide" : ""}`}
-            onSubmit={handleForm}
+            onSubmit={handleFormPlataform}
           >
             <fieldset className="modify-fieldset">
               <input
@@ -746,11 +767,12 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
           <form
             className={`form ${hideFormOfferExpiry ? "hide" : ""}`}
-            onSubmit={handleForm}
+            onSubmit={handleFormOfferExpiry}
           >
             <fieldset className="modify-fieldset">
               <input
                 className="modify-input"
+                type="date"
                 name="offer_expiry"
                 id="modify-offer_expiry"
                 value={offer_expiry}
@@ -758,7 +780,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
                 onChange={(e) => setOffer_expiry(e.target.value)}
               />
 
-              <button className="send-modify-button">
+              <button className="send-modify-button date">
                 <SvgIcon
                   className="send-modify-icon"
                   component={SendIcon}
