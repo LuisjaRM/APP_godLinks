@@ -47,7 +47,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
   const [offer_price, setOffer_price] = useState(offer.offer_price);
   const [price, setPrice] = useState(offer.price);
   const [plataform, setPlataform] = useState(offer.plataform);
-  const [offer_expiry, setOffer_expiry] = useState(offerExpiryDefault);
+  const [offer_expiry, setOffer_expiry] = useState("");
 
   // States to hide
 
@@ -89,7 +89,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
     offer_price != offer.offer_price && changeOfferPrice();
     price != offer.price && changePrice();
     plataform != offer.plataform && changePlataform();
-    offer_expiry != offerExpiryDefault && changeOfferExpiry();
+    offer_expiry && changeOfferExpiry();
     clickDelete && deleteOffer();
   };
 
@@ -105,12 +105,12 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
     setHideFormPlataform(true);
     setHideFormOfferExpiry(true);
     setImage("");
-    setUrl("");
-    setTitle("");
-    setDescrip("");
-    setOffer_price("");
-    setPrice("");
-    setPlataform("");
+    setUrl(offer.url);
+    setTitle(offer.title);
+    setDescrip(offer.descrip);
+    setOffer_price(offer.offer_price);
+    setPrice(offer.price);
+    setPlataform(offer.plataform);
     setOffer_expiry("");
     setClickDelete(false);
   };
@@ -126,12 +126,12 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
     setHideFormPlataform(true);
     setHideFormOfferExpiry(true);
     setImage("");
-    setUrl("");
-    setTitle("");
-    setDescrip("");
-    setOffer_price("");
-    setPrice("");
-    setPlataform("");
+    setUrl(offer.url);
+    setTitle(offer.title);
+    setDescrip(offer.descrip);
+    setOffer_price(offer.offer_price);
+    setPrice(offer.price);
+    setPlataform(offer.plataform);
     setOffer_expiry("");
     setClickDelete(false);
   };
@@ -751,6 +751,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
             <fieldset className="modify-fieldset">
               <input
                 className="modify-input"
+                type="date"
                 name="offer_expiry"
                 id="modify-offer_expiry"
                 value={offer_expiry}
@@ -758,7 +759,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
                 onChange={(e) => setOffer_expiry(e.target.value)}
               />
 
-              <button className="send-modify-button">
+              <button className="send-modify-button date">
                 <SvgIcon
                   className="send-modify-icon"
                   component={SendIcon}
