@@ -15,6 +15,10 @@ import App from "./App.jsx";
 
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { IntlProvider } from "react-intl";
+import messagesEN from "./intl/en.json";
+import messagesES from "./intl/es.json";
+
 
 // Contexts
 
@@ -28,20 +32,22 @@ import { ErrorProvider } from "./contexts/ErrorContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AuthContextProvider>
-      <NightModeProvider>
-        <ShowLoginProvider>
-          <ShowVerifyProvider>
-            <ShowRecoverProvider>
-              <NavigateToProvider>
-                <ErrorProvider>
-                  <App />
-                </ErrorProvider>
-              </NavigateToProvider>
-            </ShowRecoverProvider>
-          </ShowVerifyProvider>
-        </ShowLoginProvider>
-      </NightModeProvider>
-    </AuthContextProvider>
+    <IntlProvider locale="es" messages={messagesEN} >
+      <AuthContextProvider>
+        <NightModeProvider>
+          <ShowLoginProvider>
+            <ShowVerifyProvider>
+              <ShowRecoverProvider>
+                <NavigateToProvider>
+                  <ErrorProvider>
+                    <App />
+                  </ErrorProvider>
+                </NavigateToProvider>
+              </ShowRecoverProvider>
+            </ShowVerifyProvider>
+          </ShowLoginProvider>
+        </NightModeProvider>
+      </AuthContextProvider>
+    </IntlProvider>
   </React.StrictMode>
 );
