@@ -9,8 +9,8 @@
   box-shadow: 1px 1px 10px black;
   background-color: khaki;
   position: fixed;
-  bottom: 10vh;
-  right: 2.5vh;
+  top: calc(15vh + 1rem);
+  right: 1rem;
 }
 
 .post-offer-body .post-button.show {
