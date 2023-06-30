@@ -1,18 +1,25 @@
 import "./Footer.css";
 
-// Contexts
+// React
 
 import { Link } from "react-router-dom";
-import { useNightMode } from "../../contexts/NightModeContext";
 import { useState } from "react";
+
+// Contexts
+
+import { useNightMode } from "../../contexts/NightModeContext";
 
 export const Footer = () => {
   const [show, setShow] = useState(false);
   const [nightdayMode] = useNightMode();
 
-  const buttonShow = () => {
+  const handleMoreClick = () => {
     setShow(!show);
   };
+
+  // const scrollUp = () => {
+  //   window.scrollTo({ top: 0, behavior: "smooth" });
+  // };
 
   return (
     <footer className={`${nightdayMode ? "dark" : "light"}`}>
@@ -20,7 +27,7 @@ export const Footer = () => {
         <h2 className="title-footer">GodLinks S.A.</h2>
 
         <button
-          onClick={buttonShow}
+          onClick={handleMoreClick}
           className="more-content"
           title="Ir al pié de página"
         >
