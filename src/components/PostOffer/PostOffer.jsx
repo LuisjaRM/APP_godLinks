@@ -106,7 +106,7 @@ export const PostOffer = () => {
           </fieldset>
 
           <fieldset className="price-fieldset">
-            <label>Precio con descuento:</label>
+            <label>Precio de la oferta:</label>
             <input
               placeholder="00.00 €"
               type="number"
@@ -115,7 +115,7 @@ export const PostOffer = () => {
               value={offer_price}
               onChange={(e) => setOffer_price(e.target.value)}
             />
-            <label>Precio sin descuento:</label>
+            <label>Precio original:</label>
             <input
               placeholder="00.00 €"
               type="number"
@@ -160,6 +160,7 @@ export const PostOffer = () => {
           user ? setOpenPostOffer(!openPostOffer) : setShowLogin(!showLogin);
         }}
         className={`post-button ${openPostOffer ? "show" : ""}`}
+        title="Subir una oferta"
       >
         ➕
       </button>

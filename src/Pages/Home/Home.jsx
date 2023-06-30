@@ -10,6 +10,7 @@ import { Loading } from "../../components/Loading/Loading";
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
+import { useShowFilter } from "../../contexts/ShowFilter";
 
 // Fetchs
 
@@ -18,6 +19,11 @@ import { useGetDailyOffers } from "../../services/api";
 export const Home = () => {
   // Document Title
   document.title = "GodLinks";
+
+  // ShowFilter
+
+  const [, setShowFilter] = useShowFilter();
+  setShowFilter(true);
 
   const { token } = useAuth();
   const { offers, loading, error } = useGetDailyOffers(token);

@@ -10,6 +10,7 @@ import { Loading } from "../../components/Loading/Loading";
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
+import { useShowFilter } from "../../contexts/ShowFilter";
 
 // Fetchs
 
@@ -18,6 +19,11 @@ import { useGetOffersByVotes } from "../../services/api";
 export const OffersByVotes = () => {
   // Document Title
   document.title = "Las ofertas más populares";
+
+  // ShowFilter
+
+  const [, setShowFilter] = useShowFilter();
+  setShowFilter(true);
 
   const { token } = useAuth();
   const { offers, loading, error } = useGetOffersByVotes(token);
