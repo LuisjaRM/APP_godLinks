@@ -18,15 +18,17 @@ import { Footer } from "./components/Footer/Footer";
 
 export const Root = () => {
   const [isLogin, setIsLogin] = useState(true);
-
   const [showFilter] = useShowFilter();
+
   return (
     <>
       <Header />
 
-      <aside>
-        <Filter />
-      </aside>
+      {showFilter && (
+        <aside>
+          <Filter />
+        </aside>
+      )}
 
       <main>
         <Outlet />

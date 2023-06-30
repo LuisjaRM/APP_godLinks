@@ -1,7 +1,6 @@
 /* Open and Closed PostOffer */
 
 .post-offer-body .post-button {
-  cursor: pointer;
   width: 24px;
   height: 24px;
   font-size: 60%;
@@ -12,10 +11,6 @@
   position: fixed;
   top: calc(15vh + 1rem);
   right: 1rem;
-}
-
-.post-offer-body .post-button:hover {
-  box-shadow: 2px 2px 10px khaki;
 }
 
 .post-offer-body .post-button.show {

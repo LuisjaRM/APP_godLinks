@@ -25,7 +25,7 @@ import { NotFound } from "./Pages/NotFound/NotFound";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Root />} errorElement={<h1>Error Router</h1>}>
+    <Route path="/" element={<Root />}>
       <Route index element={<Home />} />
       <Route path="allOffers" element={<AllOffers />} />
       <Route path="offersByVotes" element={<OffersByVotes />} />
