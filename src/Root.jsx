@@ -3,6 +3,10 @@
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
 
+// Contexts
+
+import { useShowFilter } from "./contexts/ShowFilter";
+
 // Components
 
 import { Header } from "./components/Header/Header";
@@ -14,6 +18,8 @@ import { Footer } from "./components/Footer/Footer";
 
 export const Root = () => {
   const [isLogin, setIsLogin] = useState(true);
+
+  const [showFilter] = useShowFilter();
   return (
     <>
       <Header />

@@ -10,6 +10,9 @@ main {
 
 .modal-back {
   position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   top: 0;
   bottom: 0;
   left: 0;

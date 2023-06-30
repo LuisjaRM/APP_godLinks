@@ -4,9 +4,18 @@ import "./NotFound.css";
 
 import { Link } from "react-router-dom";
 
+// Contexts
+
+import { useShowFilter } from "../../contexts/ShowFilter";
+
 export const NotFound = () => {
   // Document Title
   document.title = "¡Ups!";
+
+  // ShowFilter
+
+  const [, setShowFilter] = useShowFilter();
+  setShowFilter(false);
 
   return (
     <section className="page_404">

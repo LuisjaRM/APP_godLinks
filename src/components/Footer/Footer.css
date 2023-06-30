@@ -13,13 +13,12 @@ footer {
 /* Header */
 
 footer .footer-header {
+  height: calc(7.5vh - 2.5rem);
+  width: 100%;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid khaki;
 }
 
 .footer-header .title-footer {
@@ -52,6 +51,8 @@ footer .footer-container.show {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid khaki;
 }
 
 footer .about-us {
@@ -115,8 +116,14 @@ footer .social-networks .section-title {
 }
 
 footer .creator {
+  width: 250px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+footer .social-creator {
+  display: flex;
   gap: 0.5rem;
 }
 

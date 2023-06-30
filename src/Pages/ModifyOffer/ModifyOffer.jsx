@@ -13,6 +13,7 @@ import { Loading } from "../../components/Loading/Loading";
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
+import { useShowFilter } from "../../contexts/ShowFilter";
 
 // Fetchs
 
@@ -21,6 +22,11 @@ import { useGetOfferById } from "../../services/api";
 export const ModifyOffer = () => {
   // Document Title
   document.title = "Modifica tu oferta";
+
+  // ShowFilter
+
+  const [, setShowFilter] = useShowFilter();
+  setShowFilter(false);
 
   const { id } = useParams();
   const { token } = useAuth();

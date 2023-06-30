@@ -1,5 +1,9 @@
 import "./UserProfile.css";
 
+// Contexts
+
+import { useShowFilter } from "../../contexts/ShowFilter";
+
 // Components
 
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
@@ -16,6 +20,11 @@ import { useAuth } from "../../contexts/AuthContext";
 export const UserProfile = () => {
   // Document Title
   document.title = "Mi perfil";
+
+  // ShowFilter
+
+  const [, setShowFilter] = useShowFilter();
+  setShowFilter(false);
 
   const { token } = useAuth();
   const { dataUser, loading, error, refresh } = useGetMyData(token);

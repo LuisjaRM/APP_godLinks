@@ -88,80 +88,89 @@ export const Footer = () => {
 
           <article className="creator">
             <p>Victor Otero:</p>
-            <a
-              href="https://github.com/Victorotr"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-              title="Victor Otero"
-            >
-              <img className="github-image" src="/github.png" alt="github" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/victor-otero-vidal/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-              title="Victor Otero"
-            >
-              <img
-                className="linkedin-image"
-                src="/linkedin.png"
-                alt="linkedin"
-              />
-            </a>
+
+            <section className="social-creator">
+              <a
+                href="https://github.com/Victorotr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+                title="Victor Otero"
+              >
+                <img className="github-image" src="/github.png" alt="github" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/victor-otero-vidal/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+                title="Victor Otero"
+              >
+                <img
+                  className="linkedin-image"
+                  src="/linkedin.png"
+                  alt="linkedin"
+                />
+              </a>
+            </section>
           </article>
 
           <article className="creator">
             <p>Mladen Aleksandrov:</p>
-            <a
-              href="https://github.com/Mladen44"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-              title="Mladen Aleksandrov"
-            >
-              <img className="github-image" src="/github.png" alt="github" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/mladen-aleksandrov-angelov-36b642271/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-              title="Mladen Aleksandrov"
-            >
-              <img
-                className="linkedin-image"
-                src="/linkedin.png"
-                alt="linkedin"
-              />
-            </a>
+
+            <section className="social-creator">
+              <a
+                href="https://github.com/Mladen44"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+                title="Mladen Aleksandrov"
+              >
+                <img className="github-image" src="/github.png" alt="github" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/mladen-aleksandrov-angelov-36b642271/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+                title="Mladen Aleksandrov"
+              >
+                <img
+                  className="linkedin-image"
+                  src="/linkedin.png"
+                  alt="linkedin"
+                />
+              </a>
+            </section>
           </article>
 
           <article className="creator">
             <p>Luisja Rodríguez:</p>
-            <a
-              href="https://github.com/LuisjaRM"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-              title="Luisja Rodriguez"
-            >
-              <img className="github-image" src="/github.png" alt="github" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/luisjarodriguez/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-              title="Luisja Rodriguez"
-            >
-              <img
-                className="linkedin-image"
-                src="/linkedin.png"
-                alt="linkedin"
-              />
-            </a>
+
+            <section className="social-creator">
+              <a
+                href="https://github.com/LuisjaRM"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+                title="Luisja Rodriguez"
+              >
+                <img className="github-image" src="/github.png" alt="github" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/luisjarodriguez/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+                title="Luisja Rodriguez"
+              >
+                <img
+                  className="linkedin-image"
+                  src="/linkedin.png"
+                  alt="linkedin"
+                />
+              </a>
+            </section>
           </article>
         </section>
       </section>
