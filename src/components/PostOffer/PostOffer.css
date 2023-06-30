@@ -9,8 +9,8 @@
   box-shadow: 1px 1px 10px black;
   background-color: khaki;
   position: fixed;
-  bottom: 10vh;
-  right: 2.5vh;
+  top: calc(15vh 1rem);
+  right: 1rem;
 }
 
 .post-offer-body .post-button.show {
@@ -49,6 +49,16 @@
   transform: translateY(-7%) translateX(130%) rotateX(0deg);
   background-color: khaki;
   color: black;
+}
+
+.post-offer-body .post-offer {
+  transform: translatex(995px);
+  transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.post-offer-body {
+  transform: translateX(1%);
+  transition: transform 0.8s cubic-bezier(0.18, 0.15, 0.1, 1.1);
 }
 
 .post-offer .closed-button {
