@@ -20,6 +20,7 @@ import { OfferById } from "./Pages/OfferById/OfferById";
 import { ModifyOffer } from "./Pages/ModifyOffer/ModifyOffer";
 import { UserInfo } from "./Pages/UserInfo/UserInfo";
 import { UserProfile } from "./Pages/UserProfile/UserProfile";
+import { AboutUs } from "./Pages/AboutUs/AboutUs";
 import { NotFound } from "./Pages/NotFound/NotFound";
 
 const router = createBrowserRouter(
@@ -33,6 +34,7 @@ const router = createBrowserRouter(
       <Route path="modifyOffer/:id" element={<ModifyOffer />} />
       <Route path="userInfo/:id" element={<UserInfo />} />
       <Route path="profile" element={<UserProfile />} />
+      <Route path="aboutUs" element={<AboutUs />} />
       <Route path="*" element={<NotFound />} />
     </Route>
   )

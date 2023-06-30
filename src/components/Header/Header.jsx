@@ -1,18 +1,13 @@
 import "./Header.css";
 
-// Contexts
-
-import { useNightMode } from "../../contexts/NightModeContext";
-
 // Components
 
 import { UserButton } from "../UserButton/UserButton";
 import { TitleAnimation } from "../TitleAnimation/TitleAnimation";
+import { SettingsButton } from "../SettingsButton/SettingsButton";
 //import { Search } from "../Search/Search";
 
 export const Header = () => {
-  const [nightMode, toggleNightMode] = useNightMode();
-
   return (
     <header>
       <UserButton />
@@ -23,12 +18,8 @@ export const Header = () => {
         <Search/>
       */}
 
-      <button
-        className="button toggle-button"
-        onClick={() => toggleNightMode()}
-      >
-        {nightMode ? "🌙" : "🌞"}
-      </button>
+      <SettingsButton />
+      {/* {nightMode ? "🌙" : "🌞"} */}
     </header>
   );
 };

@@ -1,14 +1,19 @@
 import "./Footer.css";
 
+// React
+
+import { Link, useNavigate } from "react-router-dom";
+
 // Contexts
 
-import { Link } from "react-router-dom";
 import { useNightMode } from "../../contexts/NightModeContext";
 import { useState } from "react";
 
 export const Footer = () => {
   const [show, setShow] = useState(false);
   const [nightdayMode] = useNightMode();
+
+  const navigate = useNavigate();
 
   const buttonShow = () => {
     setShow(!show);
@@ -36,7 +41,13 @@ export const Footer = () => {
             godLinkssa@gmail.com
           </a>
 
-          <a href="">Página que habla sobre nosotros</a>
+          <a
+            onClick={() => {
+              navigate("/aboutUs");
+            }}
+          >
+            Página que habla sobre nosotros
+          </a>
         </section>
 
         <section className="footer-container-section">

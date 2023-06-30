@@ -29,6 +29,7 @@ import { ShowRecoverProvider } from "./contexts/ShowRecoverContext";
 import { ShowFilterProvider } from "./contexts/ShowFilter";
 import { NavigateToProvider } from "./contexts/NavigateToContext.jsx";
 import { ErrorProvider } from "./contexts/ErrorContext";
+import { ShowSettingsProvider } from "./contexts/ShowSettingsContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -36,17 +37,19 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <AuthContextProvider>
         <NightModeProvider>
           <ShowLoginProvider>
-            <ShowVerifyProvider>
-              <ShowRecoverProvider>
-                <ShowFilterProvider>
-                  <NavigateToProvider>
-                    <ErrorProvider>
-                      <App />
-                    </ErrorProvider>
-                  </NavigateToProvider>
-                </ShowFilterProvider>
-              </ShowRecoverProvider>
-            </ShowVerifyProvider>
+            <ShowSettingsProvider>
+              <ShowVerifyProvider>
+                <ShowRecoverProvider>
+                  <ShowFilterProvider>
+                    <NavigateToProvider>
+                      <ErrorProvider>
+                        <App />
+                      </ErrorProvider>
+                    </NavigateToProvider>
+                  </ShowFilterProvider>
+                </ShowRecoverProvider>
+              </ShowVerifyProvider>
+            </ShowSettingsProvider>
           </ShowLoginProvider>
         </NightModeProvider>
       </AuthContextProvider>
