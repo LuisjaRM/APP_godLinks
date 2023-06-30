@@ -1,5 +1,6 @@
 import "./ErrorMessage.css";
 import { Link } from "react-router-dom";
+import {FormattedMessage} from 'react-intl';
 
 export const ErrorMessage = () => {
   return (
@@ -7,11 +8,11 @@ export const ErrorMessage = () => {
       {/* ErrorMessage*/}
 
       <section className="error-message-box">
-        <h1 className="error-text-ap">¡Vaya! parece que algo ha salido mal</h1>
-        <p className="error-mess-p"> Fallo en la conexión con el servidor</p>
+        <h1 className="error-text-ap"><FormattedMessage id="oops"/></h1>
+        <p className="error-mess-p"> <FormattedMessage id="fail-connection"/></p>
 
         <Link to={"/"} className="book home-page">
-          Volver al inicio
+        <FormattedMessage id="home"/>
         </Link>
       </section>
 

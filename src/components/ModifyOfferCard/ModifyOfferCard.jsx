@@ -13,6 +13,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import {FormattedMessage} from 'react-intl';
 
 // Contexts
 
@@ -430,7 +431,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
         <li className="field">
           <section className="field-header">
-            <h2 className="field-title">Enlace:</h2>
+            <h2 className="field-title"><FormattedMessage id="link"/></h2>
 
             <button
               onClick={() => setHideFormUrl(!hideFormUrl)}
@@ -476,7 +477,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
         <li className="field">
           <section className="field-header">
-            <h2 className="field-title">Título:</h2>
+            <h2 className="field-title"><FormattedMessage id="title"/></h2>
 
             <button
               onClick={() => setHideFormTitle(!hideFormTitle)}
@@ -526,7 +527,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
         <li className="field">
           <section className="field-header">
-            <h2 className="field-title">Descripción:</h2>
+            <h2 className="field-title"><FormattedMessage id="description"/></h2>
 
             <button
               onClick={() => setHideFormDescrip(!hideFormDescrip)}
@@ -575,7 +576,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
         <li className="field">
           <section className="field-header">
-            <h2 className="field-title">Precio de la oferta:</h2>
+            <h2 className="field-title"><FormattedMessage id="offerprice"/></h2>
 
             <button
               onClick={() => setHideFormOfferPrice(!hideFormOfferPrice)}
@@ -624,7 +625,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
         <li className="field">
           <section className="field-header">
-            <h2 className="field-title">Precio original:</h2>
+            <h2 className="field-title"><FormattedMessage id="originalprice"/></h2>
 
             <button
               onClick={() => setHideFormPrice(!hideFormPrice)}
@@ -673,7 +674,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
         <li className="field">
           <section className="field-header">
-            <h2 className="field-title">Plataforma:</h2>
+            <h2 className="field-title"><FormattedMessage id="platform"/></h2>
 
             <button
               onClick={() => setHideFormPlataform(!hideFormPlataform)}
@@ -772,7 +773,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
         <li>
           <button onClick={handleClickDelete} className="delete-button">
-            <p>Borrar oferta</p>
+            <p><FormattedMessage id="deleteoffer"/></p>
 
             <SvgIcon
               className="delete-offer-icon"

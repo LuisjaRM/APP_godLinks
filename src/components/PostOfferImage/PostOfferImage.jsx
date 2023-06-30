@@ -10,6 +10,7 @@ import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
 
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import {FormattedMessage} from 'react-intl';
 
 // Contexts
 
@@ -70,7 +71,7 @@ export const PostOfferImage = ({
         onClick={(e) => e.stopPropagation()}
         className={`post-offer-image ${openPostImage ? "show" : ""}`}
       >
-        <h2 className="title">Sube una imagen a tu oferta</h2>
+        <h2 className="title"><FormattedMessage id="upload-image"/></h2>
 
         <form className="form" onSubmit={handleForm}>
           <fieldset>
@@ -101,7 +102,7 @@ export const PostOfferImage = ({
         </form>
 
         <section className="post-offer-noImage">
-          <p> Subir la oferta sin imagen:</p>
+          <p> <FormattedMessage id="upload-without-image"/></p>
 
           <button
             className="post-offer-button"
@@ -129,7 +130,7 @@ export const PostOfferImage = ({
       {showUploadOfferModal && (
         <section className="modal-back">
           <section className="modal-body little">
-            <h3>Oferta subida con éxito</h3>
+            <h3><FormattedMessage id="offeruploaded"/></h3>
           </section>
         </section>
       )}

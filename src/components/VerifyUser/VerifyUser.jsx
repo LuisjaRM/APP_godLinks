@@ -1,4 +1,6 @@
 import "./VerifyUser.css";
+import {FormattedMessage} from 'react-intl';
+
 
 // Contexts
 

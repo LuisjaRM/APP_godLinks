@@ -10,6 +10,7 @@ import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {FormattedMessage} from 'react-intl';
 
 // Components
 

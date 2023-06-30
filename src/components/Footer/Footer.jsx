@@ -5,6 +5,7 @@ import "./Footer.css";
 import { Link } from "react-router-dom";
 import { useNightMode } from "../../contexts/NightModeContext";
 import { useState } from "react";
+import {FormattedMessage} from 'react-intl';
 
 export const Footer = () => {
   const [show, setShow] = useState(false);
@@ -30,13 +31,13 @@ export const Footer = () => {
 
       <section className={`footer-container ${show ? "show" : ""} `}>
         <section className="about-us">
-          <h3 className="section-title">Sobre nosotros</h3>
+          <h3 className="section-title"><FormattedMessage id="about-us"/></h3>
 
           <a href="mailto:godLinkssa@gmail.com" className="footer-info">
             godLinkssa@gmail.com
           </a>
 
-          <a href="">Página que habla sobre nosotros</a>
+          <a href=""><FormattedMessage id="ourpage"/></a>
         </section>
 
         <section className="footer-container-section">
@@ -44,25 +45,25 @@ export const Footer = () => {
             <h3 className="section-title">Menú</h3>
 
             <Link className="menu-item" to="/">
-              Home
+            <FormattedMessage id="home"/>
             </Link>
             <Link className="menu-item" to="/favorites">
-              Tus ofertas favoritas
+            <FormattedMessage id="favorite-offers"/>
             </Link>
             <Link className="menu-item" to="/offersByVotes">
-              Ofertas mas votadas
+            <FormattedMessage id="most-rated-offers"/>
             </Link>
           </section>
 
           <section className="menu">
-            <h3 className="section-title">Legal</h3>
+            <h3 className="section-title"><FormattedMessage id="legal"/></h3>
             <a
               href="https://www.aquasocialmedia.com/blog-dynamic/91-que-es-y-para-que-sirve-la-politica-de-privacidad"
               target="_blank"
               rel="noopener noreferrer"
               className="menu-item"
             >
-              Política de Privacidad
+              <FormattedMessage id="privacy"/>
             </a>
             <a
               href="https://blog.hubspot.es/website/que-son-cookies"
@@ -78,13 +79,13 @@ export const Footer = () => {
               rel="noopener noreferrer"
               className="menu-item"
             >
-              Consejo Legal
+              <FormattedMessage id="legaladvice"/>
             </a>
           </section>
         </section>
 
         <section className="social-networks">
-          <h3 className="section-title">Síguenos</h3>
+          <h3 className="section-title"><FormattedMessage id="followus"/></h3>
 
           <article className="creator">
             <p>Victor Otero:</p>

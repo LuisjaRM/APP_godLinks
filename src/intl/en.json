@@ -1,0 +1,87 @@
+{"all-offers": "All offers",
+"todays-offers":"Today's offers",
+"most-rated-offers": "Most rated offers",
+"favorite-offers": "Favorite offers",
+
+"login":"Log in",
+"signup":"Sign up",
+"email":"Email",
+"password": "Password",
+"enterPassword":" Enter your password",
+"continue":"Continue",
+"forgot-password": "Forgot your password",
+
+
+"password-assistance":"Password Assitance",
+"enter-email":"Enter the email address associated with your account",
+"email-vertification":"We have sent an email to your account",
+
+"username":"Username",
+"re-enterpassword": "Re-enter password",
+
+"myprofile":"My profile",
+"myoffers":"My offers",
+
+"link": "Website link",
+"title":"Title",
+"description": "Description",
+"description-hint":"Enter a brief deal description",
+"offerprice": "Offer price",
+"originalprice": "Original price",
+"platform":"Platform",
+"expiration-date":"Expiration date",
+
+"change-password":"Change your password",
+"enter-new-email":" Enter your new email",
+"delete-account": "Delete your account",
+"delete-account-confirmation":" ¿Are you sure you want to delete your account",
+"delete-user":"Delete user",
+"modify-user": "Modify user",
+"user-modify-success": "Your user has been successfully modified",
+"user-delete-success": "Your user has been successfully deleted",
+"linkt-to-offer": "Go to Offer",
+"offer-opp": "What's your offer view?",
+"send":"Send",
+"upload-image": "Upload an image",
+"upload-without-image":"Upload the offer without image",
+"offeruploaded": " The offer has been sucessfully uploaded",
+"verification-code": "Enter your verification code",
+"password-match": "Passwords don't match",
+"password-reset": "Reset your password",
+"password-reset-confirmation": "Your password has been successfully modified",
+"signout": "Sign out",
+
+"oops":"Oops!, it seems something has gone wrong",
+"fail-connection":"Failed connection to server",
+"home":"Home",
+
+"delete-comment?":"Are you sure you wan to delete this review?",
+"yes":"Yes",
+"no":"No",
+"delete-confirmation":"Your review has been successfully deleted",
+
+"about-us": "About us",
+"ourpage": "This page speaks about us",
+"legal": "Legal",
+"privacy": "Privacy policy",
+"legaladvice":"Legal advice",
+"followus":"Follow us",
+
+"newuser?":" New user? Start here.",
+"deleteoffer": "Delete offer",
+"delete-offer-confirmation": "Are you sure you want to delete this offer",
+"image-change-success": "The image has been successfully modified",
+"link-change-success": "The link has been successfully modified",
+"title-change-success": "The title has been successfully modified",
+"description-change-success": "The description has been successfully modified",
+"offerprice-change-success": "The offer price has been successfully modified",
+"originalprice-change-success": " The original price has been successfully modified",
+"platform-change-success": "The platform has been successfully modified",
+"expiration-change-success": "The offer expiration date has been successfully modified",
+"offer-delete-cofirmation": "Your offer has been successfully deleted",
+
+"member-since": "Member since"
+
+
+}
+

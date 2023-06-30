@@ -3,6 +3,7 @@ import "./PostComment.css";
 // React
 
 import { useState } from "react";
+import {FormattedMessage} from 'react-intl';
 
 // Context
 

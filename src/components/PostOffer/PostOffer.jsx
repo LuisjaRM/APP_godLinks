@@ -3,6 +3,7 @@ import "./PostOffer.css";
 // react
 
 import { useState } from "react";
+import {FormattedMessage} from 'react-intl';
 
 // Contexts
 
@@ -68,7 +69,7 @@ export const PostOffer = () => {
         </button>
         <form className="form" onSubmit={handleForm}>
           <fieldset>
-            <label>Enlace:</label>
+            <label><FormattedMessage id="link"/></label>
             <input
               placeholder="https://www.tupagina.com/"
               type="url"
@@ -81,7 +82,7 @@ export const PostOffer = () => {
           </fieldset>
 
           <fieldset>
-            <label>Título:</label>
+            <label><FormattedMessage id="title"/></label>
             <input
               placeholder="Título"
               type="text"
@@ -94,7 +95,7 @@ export const PostOffer = () => {
           </fieldset>
 
           <fieldset>
-            <label>Descripción de la oferta:</label>
+            <label><FormattedMessage id="description"/></label>
             <textarea
               placeholder="Escribe una breve descripción de la oferta..."
               type="text"
@@ -106,7 +107,7 @@ export const PostOffer = () => {
           </fieldset>
 
           <fieldset className="price-fieldset">
-            <label>Precio con descuento:</label>
+            <label><FormattedMessage id="offerprice"/></label>
             <input
               placeholder="00.00 €"
               type="number"
@@ -115,7 +116,7 @@ export const PostOffer = () => {
               value={offer_price}
               onChange={(e) => setOffer_price(e.target.value)}
             />
-            <label>Precio sin descuento:</label>
+            <label><FormattedMessage id="originalprice"/></label>
             <input
               placeholder="00.00 €"
               type="number"
@@ -127,7 +128,7 @@ export const PostOffer = () => {
           </fieldset>
 
           <fieldset className="last-fieldset">
-            <label>Plataforma:</label>
+            <label><FormattedMessage id="platform"/></label>
             <input
               placeholder="Plataforma"
               type="text"
@@ -137,7 +138,7 @@ export const PostOffer = () => {
               onChange={(e) => setPlataform(e.target.value)}
             />
 
-            <label>Caducidad de la oferta:</label>
+            <label><FormattedMessage id="expiration-date"/></label>
             <input
               type="date"
               name="offer_expiry"
@@ -150,7 +151,7 @@ export const PostOffer = () => {
 
           {error ? <p className="error">⚠️ {error}</p> : null}
 
-          <button className="button">Continuar</button>
+          <button className="button"><FormattedMessage id="continue"/></button>
         </form>
       </section>
 

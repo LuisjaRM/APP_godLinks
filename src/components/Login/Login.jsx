@@ -50,7 +50,7 @@ export const Login = () => {
 
   return (
     <section className="login">
-      <h2 className="title"><FormattedMessage id="signin"/> </h2>
+      <h2 className="title"><FormattedMessage id="Login"/> </h2>
 
       <form className="form" onSubmit={handleForm}>
         <fieldset>
@@ -70,7 +70,7 @@ export const Login = () => {
           <label htmlFor="login-password"><FormattedMessage id="password"/></label>
           <input
             placeholder={<FormattedMessage id="enter-password"/>}
-            type={<FormattedMessage id="password"/>}
+            type="password"
             name="login-password"
             autoComplete="login-password"
             id="login-password"
@@ -80,7 +80,7 @@ export const Login = () => {
           />
         </fieldset>
 
-        <button className="button login-button">Continuar</button>
+        <button className="button login-button"><FormattedMessage id="continue"/></button>
       </form>
 
       {error ? <p className="error">⚠️ {error}</p> : null}
@@ -93,7 +93,7 @@ export const Login = () => {
           setShowLogin(!showLogin);
         }}
       >
-        ¿Has olvidado tu contraseña?
+        <FormattedMessage id="forgot-password"/>
       </p>
     </section>
   );

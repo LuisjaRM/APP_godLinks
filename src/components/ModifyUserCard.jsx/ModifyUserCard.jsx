@@ -12,6 +12,7 @@ import LockIcon from "@mui/icons-material/Lock";
 // React
 
 import { useState } from "react";
+import {FormattedMessage} from 'react-intl';
 
 // Contexts
 
