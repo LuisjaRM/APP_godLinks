@@ -1,7 +1,16 @@
 import "./ErrorMessage.css";
-import { Link } from "react-router-dom";
+
+// React
+
+import { useNavigate } from "react-router";
 
 export const ErrorMessage = () => {
+  const navigate = useNavigate();
+  const handleClick = (e) => {
+    e.stopPropagation();
+    navigate("/");
+  };
+
   return (
     <section className="error-message">
       {/* ErrorMessage*/}
@@ -10,9 +19,9 @@ export const ErrorMessage = () => {
         <h1 className="error-text-ap">¡Vaya! parece que algo ha salido mal</h1>
         <p className="error-mess-p"> Fallo en la conexión con el servidor</p>
 
-        <Link to={"/"} className="book home-page">
+        <button onClick={handleClick} className="book home-page">
           Volver al inicio
-        </Link>
+        </button>
       </section>
 
       {/* Stars */}
