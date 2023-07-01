@@ -25,8 +25,16 @@ export const SettingsNav = () => {
         }}
       >
         <ul className="settings-nav" onClick={(e) => e.stopPropagation()}>
-          <li className="day-night" onClick={() => toggleNightMode()}>
-            Día y noche
+          <li>
+            <label className="lewis">
+              <input
+                className="verstappen"
+                type="checkbox"
+                onClick={() => toggleNightMode()}
+              />
+              <ion-icon name="sunny" class="sun"></ion-icon>
+              <ion-icon name="moon" class="moon"></ion-icon>
+            </label>
           </li>
           <li className="language">
             <button onClick={() => setLanguage("es")}>ES</button>

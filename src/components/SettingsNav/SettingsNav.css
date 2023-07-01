@@ -38,17 +38,47 @@
 ul.settings-nav li.language button {
 }
 
-ul.settings-nav li.day-night:hover,
-ul.settings-nav li.language button:hover {
-  background-color: rgb(219, 209, 130);
-}
-
 /* .settings-nav .settings-icon {
   font-size: 125%;
 } */
 
 .modal-back {
   animation: fadeInOut 0.5s ease-in-out;
+}
+
+/* animacion */
+
+.verstappen {
+  position: absolute;
+  opacity: 0;
+}
+
+.sun {
+  position: absolute;
+  font-size: 20px;
+  color: #f0cd06;
+  filter: drop-shadow(0 0 2px rgba(245, 0, 0, 0.5));
+  transform: scale(0);
+  transition: 1s ease;
+}
+
+.verstappen:checked ~ .sun {
+  transform: scale(1) rotate(360deg);
+}
+
+.moon {
+  font-size: 20px;
+  color: #666;
+  filter: drop-shadow(0 0 2px rgb(255, 250, 250));
+  transition: 1s ease;
+}
+
+.verstappen:checked ~ .moon {
+  transform: rotate(360deg) scale(0);
+}
+
+.verstappen:checked ~ .boton {
+  background: #f8f8f8;
 }
 
 @keyframes fadeInOut {
