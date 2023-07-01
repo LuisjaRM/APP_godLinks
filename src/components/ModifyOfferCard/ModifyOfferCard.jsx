@@ -479,6 +479,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
                 type="url"
                 name="modify-url"
                 id="modify-url"
+                autoComplete="off"
                 value={url}
                 required
                 onChange={(e) => setUrl(e.target.value)}
@@ -529,6 +530,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
                 type="text"
                 name="title"
                 id="modify-title"
+                autoComplete="off"
                 value={title}
                 required
                 onChange={(e) => setTitle(e.target.value)}
@@ -579,6 +581,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
                 type="text"
                 name="descrip"
                 id="modify-descrip"
+                autoComplete="off"
                 value={descrip}
                 onChange={(e) => setDescrip(e.target.value)}
               />
@@ -628,6 +631,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
                 type="number"
                 name="price"
                 id="modify-offer_price"
+                autoComplete="off"
                 value={offer_price}
                 onChange={(e) => setOffer_price(e.target.value)}
               />
@@ -677,6 +681,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
                 type="number"
                 name="offer_price"
                 id="modify-price"
+                autoComplete="off"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
               />
@@ -726,6 +731,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
                 type="text"
                 name="plataform"
                 id="modify-plataform"
+                autoComplete="off"
                 value={plataform}
                 onChange={(e) => setPlataform(e.target.value)}
               />
@@ -775,6 +781,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
                 type="date"
                 name="offer_expiry"
                 id="modify-offer_expiry"
+                autoComplete="off"
                 value={offer_expiry}
                 required
                 onChange={(e) => setOffer_expiry(e.target.value)}

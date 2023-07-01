@@ -74,6 +74,7 @@ export const PostOffer = () => {
               type="url"
               name="url"
               id="url"
+              autoComplete="off"
               value={url}
               required
               onChange={(e) => setUrl(e.target.value)}
@@ -87,6 +88,7 @@ export const PostOffer = () => {
               type="text"
               name="title"
               id="title"
+              autoComplete="off"
               value={title}
               required
               onChange={(e) => setTitle(e.target.value)}
@@ -100,6 +102,7 @@ export const PostOffer = () => {
               type="text"
               name="descrip"
               id="descrip"
+              autoComplete="off"
               value={descrip}
               onChange={(e) => setDescrip(e.target.value)}
             />
@@ -112,6 +115,7 @@ export const PostOffer = () => {
               type="number"
               name="price"
               id="offer_price"
+              autoComplete="off"
               value={offer_price}
               onChange={(e) => setOffer_price(e.target.value)}
             />
@@ -121,6 +125,7 @@ export const PostOffer = () => {
               type="number"
               name="offer_price"
               id="price"
+              autoComplete="off"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
             />
@@ -133,6 +138,7 @@ export const PostOffer = () => {
               type="text"
               name="plataform"
               id="plataform"
+              autoComplete="off"
               value={plataform}
               onChange={(e) => setPlataform(e.target.value)}
             />

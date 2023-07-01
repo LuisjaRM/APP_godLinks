@@ -31,7 +31,6 @@ export const Search = () => {
           className="input"
           type="text"
           name="search"
-          autoComplete="off"
           required
           value={searched}
           onChange={(e) => setSearched(e.target.value)}

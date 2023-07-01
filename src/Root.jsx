@@ -3,9 +3,16 @@
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
 
+// Intl
+
+import { IntlProvider } from "react-intl";
+import messagesEN from "./intl/en.json";
+import messagesES from "./intl/es.json";
+
 // Contexts
 
 import { useShowFilter } from "./contexts/ShowFilter";
+import { useLanguage } from "./contexts/LanguageContext";
 
 // Components
 
@@ -20,24 +27,33 @@ export const Root = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [showFilter] = useShowFilter();
 
+  // Intl
+
+  const [language] = useLanguage();
+
   return (
     <>
-      <Header />
+      <IntlProvider
+        locale={language}
+        messages={language === "es" ? messagesES : messagesEN}
+      >
+        <Header />
 
-      {showFilter && (
-        <aside>
-          <Filter />
-        </aside>
-      )}
+        {showFilter && (
+          <aside>
+            <Filter />
+          </aside>
+        )}
 
-      <main>
-        <Outlet />
-        <LoginOrSignup isLogin={isLogin} setIsLogin={setIsLogin} />
-        <VerifyUser setIsLogin={setIsLogin} />
-        <RecoverPassword />
-      </main>
+        <main>
+          <Outlet />
+          <LoginOrSignup isLogin={isLogin} setIsLogin={setIsLogin} />
+          <VerifyUser setIsLogin={setIsLogin} />
+          <RecoverPassword />
+        </main>
 
-      <Footer />
+        <Footer />
+      </IntlProvider>
     </>
   );
 };

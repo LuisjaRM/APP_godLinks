@@ -212,6 +212,7 @@ export const CommentsCard = ({ comment, refresh }) => {
                 type="text"
                 id={`edit-comment-${comment.id}`}
                 name="edit-comment"
+                autoComplete="off"
                 value={newComment}
                 required
                 onChange={(e) => setNewComment(e.target.value)}
