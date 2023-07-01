@@ -116,6 +116,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
     fieldChanged === "user" && changeUser();
     fieldChanged === "email" && changeEmail();
     fieldChanged === "newPassword" && changePassword();
+    clickDelete && deleteUser();
   };
 
   const handleClickCancel = (e) => {
