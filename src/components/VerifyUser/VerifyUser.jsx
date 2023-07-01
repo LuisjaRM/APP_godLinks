@@ -21,8 +21,22 @@ export const VerifyUser = ({ setIsLogin }) => {
         }}
       >
         <section className="modal-body little verify">
-          <p>Te hemos enviado un correo para que verifiques tu cuenta 😃</p>
+          <p>Te hemos enviado un correo para que verifiques tu cuenta</p>
+          <div id="anim-wrapper">
+            <div id="anim-bg">
+              <div id="env-wrapper">
+                <div className="speedline line1"></div>
+                <div className="speedline line2"></div>
+                <div className="speedline line3"></div>
+                <i id="env" className="fas fa-envelope"></i>
+              </div>
+            </div>
 
+            <div id="check-container">
+              <div className="check-stroke1"></div>
+              <div className="check-stroke2"></div>
+            </div>
+          </div>
           <button
             className="button verify-button"
             onClick={(e) => {
