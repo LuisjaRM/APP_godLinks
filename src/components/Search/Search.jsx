@@ -1,20 +1,71 @@
 import "./Search.css";
 
+// Material
+
+import { SvgIcon } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+
+// React
+
+import { useState } from "react";
+import { useNavigate } from "react-router";
+
 export const Search = () => {
+  const [searched, setSearched] = useState();
+  const navigate = useNavigate();
+
+  // Handle submit
+
+  const handleSubmit = () => {
+    navigate(`/search/${searched}`);
+  };
+
+  // CSS states
+
+  const [isSearch, setIsSearch] = useState(false);
+
   return (
-    <div className="search-important">
-      <form action="" className="search-bar">
+    <section className={`search ${isSearch && "show"}`}>
+      <form onSubmit={handleSubmit} className={`form ${isSearch && "show"}`}>
         <input
-          type="search"
+          className="input"
+          type="text"
           name="search"
-          pattern=".*\S.*"
-          required
           autoComplete="off"
+          required
+          value={searched}
+          onChange={(e) => setSearched(e.target.value)}
         />
-        <button className="search-btn" type="submit">
-          <span>Search</span>
+
+        <button className="search-button">
+          <SvgIcon
+            className={`search-icon`}
+            component={SearchIcon}
+            inheritViewBox
+          />
         </button>
       </form>
-    </div>
+
+      <button
+        onClick={() => {
+          setSearched("");
+          setIsSearch(!isSearch);
+        }}
+        className={`cancel-button ${isSearch && "show"}`}
+      >
+        X
+      </button>
+
+      <button
+        onClick={() => setIsSearch(!isSearch)}
+        className={`button  open-search ${isSearch && "hide"}`}
+      >
+        <SvgIcon
+          className={`search-icon`}
+          component={SearchIcon}
+          inheritViewBox
+        />
+      </button>
+    </section>
   );
 };

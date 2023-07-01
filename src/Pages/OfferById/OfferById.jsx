@@ -1,6 +1,6 @@
 import "./OfferById.css";
 
-// react-router-dom
+// React
 
 import { useParams } from "react-router";
 
@@ -24,7 +24,7 @@ import { useGetOfferById } from "../../services/api";
 
 export const OfferById = () => {
   // Document Title
-  document.title = "GodLinks: Oferta ";
+  document.title = "GodLinks: Oferta";
 
   // ShowFilter
 

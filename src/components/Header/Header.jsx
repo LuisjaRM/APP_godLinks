@@ -4,8 +4,10 @@ import "./Header.css";
 
 import { UserButton } from "../UserButton/UserButton";
 import { TitleAnimation } from "../TitleAnimation/TitleAnimation";
+import { Search } from "../Search/Search";
 import { SettingsButton } from "../SettingsButton/SettingsButton";
-//import { Search } from "../Search/Search";
+
+
 
 export const Header = () => {
   return (
@@ -14,12 +16,10 @@ export const Header = () => {
 
       <TitleAnimation />
 
-      {/* 
-        <Search/>
-      */}
-
-      <SettingsButton />
-      {/* {nightMode ? "🌙" : "🌞"} */}
+      <section className="accesible-buttons">
+        <Search />
+        <SettingsButton />
+      </section>
     </header>
   );
 };

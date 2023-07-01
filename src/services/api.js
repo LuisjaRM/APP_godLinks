@@ -24,6 +24,12 @@ export const useGetOffersByVotes = (token) =>
     token,
   });
 
+export const useGetOffersSearched = (token, search) =>
+  useGetOffers({
+    url: `${import.meta.env.VITE_BACKEND}search?search=${search}`,
+    token,
+  });
+
 export const useGetMyFavoriteOffers = (token) =>
   useGetOffers({ url: `${import.meta.env.VITE_BACKEND}favorites`, token });
 
