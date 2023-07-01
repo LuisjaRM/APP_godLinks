@@ -52,6 +52,7 @@ export const PostComment = ({ id, refresh, offer }) => {
             type="text"
             id="post-comment"
             name="post-comment"
+            autoComplete="off"
             value={comment}
             required
             onChange={(e) => setComment(e.target.value)}

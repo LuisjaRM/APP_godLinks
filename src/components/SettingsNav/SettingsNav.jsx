@@ -4,12 +4,17 @@ import "./SettingsNav.css";
 
 import { useNightMode } from "../../contexts/NightModeContext";
 import { useShowSettings } from "../../contexts/ShowSettingsContext";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 // Settings Dropdown
 
 export const SettingsNav = () => {
   const [, toggleNightMode] = useNightMode();
   const [showSettings, setShowSettings] = useShowSettings();
+
+  // Intl
+
+  const [, setLanguage] = useLanguage();
 
   return (
     showSettings && (
@@ -24,8 +29,8 @@ export const SettingsNav = () => {
             Día y noche
           </li>
           <li className="language">
-            <button>Es</button>
-            <button>En</button>
+            <button onClick={() => setLanguage("es")}>ES</button>
+            <button onClick={() => setLanguage("en")}>EN</button>
           </li>
         </ul>
       </section>

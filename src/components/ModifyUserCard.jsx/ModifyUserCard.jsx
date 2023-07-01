@@ -365,6 +365,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
                 type="user"
                 name="modify-user"
                 id="modify-user"
+                autoComplete="off"
                 value={user}
                 required
                 onChange={(e) => setUser(e.target.value)}
@@ -417,6 +418,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
                 type="email"
                 name="modify-email"
                 id="modify-email"
+                autoComplete="off"
                 value={email}
                 required
                 onChange={(e) => setEmail(e.target.value)}
