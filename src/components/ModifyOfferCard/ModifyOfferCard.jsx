@@ -726,17 +726,23 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
             onSubmit={handleFormPlataform}
           >
             <fieldset className="modify-fieldset">
-              <input
-                className="modify-input"
-                type="text"
+              <select
                 name="plataform"
                 id="modify-plataform"
-                autoComplete="off"
                 value={plataform}
                 onChange={(e) => setPlataform(e.target.value)}
-              />
+              >
+                <option selected value="Playstation-5">
+                  Playstation 5
+                </option>
+                <option value="Playstation-4">Playstation 4</option>
+                <option value="Xbox-One">Xbox One</option>
+                <option value="Xbox-Series">Xbox Series</option>
+                <option value="Nintendo-Switch">Nintendo Switch</option>
+                <option value="PC-Gaming">PC Gaming</option>
+              </select>
 
-              <button className="send-modify-button">
+              <button className="send-modify-button light">
                 <SvgIcon
                   className="send-modify-icon"
                   component={SendIcon}
@@ -787,7 +793,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
                 onChange={(e) => setOffer_expiry(e.target.value)}
               />
 
-              <button className="send-modify-button date">
+              <button className="send-modify-button light">
                 <SvgIcon
                   className="send-modify-icon"
                   component={SendIcon}

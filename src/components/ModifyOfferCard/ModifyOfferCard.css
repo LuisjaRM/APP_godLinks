@@ -22,7 +22,17 @@
   display: none;
 }
 
-.send-modify-button.date {
+.modify-offer-card select {
+  width: 250px;
+  border-radius: 5px;
+  background-color: khaki;
+  color: black;
+  padding: 0.5rem;
+  font-size: 100%;
+}
+
+.send-modify-button.light {
+  background-color: rgba(0, 0, 0, 0);
   right: -2rem;
   color: khaki;
 }

@@ -29,7 +29,7 @@ export const PostOffer = () => {
   const [descrip, setDescrip] = useState("");
   const [offer_price, setOffer_price] = useState("");
   const [price, setPrice] = useState("");
-  const [plataform, setPlataform] = useState("");
+  const [plataform, setPlataform] = useState("Playstation-5");
   const [offer_expiry, setOffer_expiry] = useState("");
   const [error, setError] = useState("");
 
@@ -133,15 +133,21 @@ export const PostOffer = () => {
 
           <fieldset className="last-fieldset">
             <label>Plataforma:</label>
-            <input
-              placeholder="Plataforma"
-              type="text"
+            <select
               name="plataform"
               id="plataform"
-              autoComplete="off"
               value={plataform}
               onChange={(e) => setPlataform(e.target.value)}
-            />
+            >
+              <option selected value="Playstation-5">
+                Playstation 5
+              </option>
+              <option value="Playstation-4">Playstation 4</option>
+              <option value="Xbox-One">Xbox One</option>
+              <option value="Xbox-Series">Xbox Series</option>
+              <option value="Nintendo-Switch">Nintendo Switch</option>
+              <option value="PC-Gaming">PC Gaming</option>
+            </select>
 
             <label>Caducidad de la oferta:</label>
             <input

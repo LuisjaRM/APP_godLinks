@@ -1,8 +1,8 @@
 main {
   background-color: rgb(1, 1, 48);
   color: rgb(163, 156, 94);
-  /* 100vh - vh de header, filter y footer - padding de main */
-  min-height: calc(100vh - 7.5vh - 7.5vh - 7.5vh);
+  /* 100vh - vh de header, filters y footer - padding de main */
+  min-height: calc(100vh - 7.5vh - 7.5vh - 5vh - 7.5vh);
   padding: 1rem;
 }
 

@@ -1,5 +1,5 @@
 .user-profile {
-  min-height: calc(100vh - 7.5vh - 7.5vh - 7.5vh);
+  min-height: calc(100vh - 7.5vh - 7.5vh - 1rem - 1rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
