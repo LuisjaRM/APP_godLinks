@@ -10,7 +10,7 @@ import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {FormattedMessage} from 'react-intl';
+import { FormattedMessage } from "react-intl";
 
 // Components
 
@@ -21,7 +21,7 @@ import { PostVote } from "../PostVote/PostVote";
 import { useAuth } from "../../contexts/AuthContext";
 import { useShowLogin } from "../../contexts/ShowLoginContext";
 import { useNavigateTo } from "../../contexts/NavigateToContext";
-import { useLanguage} from "../../contexts/LanguageContext";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 // Fetchs
 
@@ -64,7 +64,7 @@ export const OfferCard = ({ offer }) => {
 
   //Language context
 
-  const [language,setLanguage]=useLanguage
+  const [language] = useLanguage();
 
   // Expired Offer Date Logic
 
@@ -120,7 +120,11 @@ export const OfferCard = ({ offer }) => {
       className={`offer-card ${expired ? "expired" : ""}`}
       onClick={handleClickOfferCard}
     >
-      {expired && <p className="expired-offer"><FormattedMessage id="expired-offer"/></p>}
+      {expired && (
+        <p className="expired-offer">
+          <FormattedMessage id="expired-offer" />
+        </p>
+      )}
       {windowLocation === "/userInfo" &&
         !expired &&
         user.id === offer.user_id && (
@@ -157,7 +161,9 @@ export const OfferCard = ({ offer }) => {
         </section>
 
         <p className="created" onClick={(e) => e.stopPropagation()}>
-          {language==="es" ? `hace ${timeSinceCreated_at} ${text}`:`${timeSinceCreated_at} ${text} ago`}
+          {language === "es"
+            ? `hace ${timeSinceCreated_at} ${text}`
+            : `${timeSinceCreated_at} ${text} ago`}
         </p>
       </section>
 
@@ -239,7 +245,9 @@ export const OfferCard = ({ offer }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <p><FormattedMessage id="goto-offer"/></p>
+            <p>
+              <FormattedMessage id="goto-offer" />
+            </p>
 
             <SvgIcon
               className="new-tab-icon"

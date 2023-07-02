@@ -2,13 +2,12 @@ import "./Footer.css";
 
 // Intl
 
-import {FormattedMessage} from 'react-intl';
+import { FormattedMessage } from "react-intl";
 
 // React
 
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
 
 // Contexts
 
@@ -44,7 +43,9 @@ export const Footer = () => {
 
       <section className={`footer-container ${show ? "show" : ""} `}>
         <section className="about-us">
-          <h3 className="section-title"><FormattedMessage id="about-us"/></h3>
+          <h3 className="section-title">
+            <FormattedMessage id="about-us" />
+          </h3>
 
           <a href="mailto:godLinkssa@gmail.com" className="footer-info">
             godLinkssa@gmail.com
@@ -55,9 +56,8 @@ export const Footer = () => {
               navigate("/aboutUs");
             }}
           >
-            <FormattedMessage id="ourpage"/>
+            <FormattedMessage id="ourpage" />
           </p>
-
         </section>
 
         <section className="footer-container-section">
@@ -65,25 +65,27 @@ export const Footer = () => {
             <h3 className="section-title">Menú</h3>
 
             <Link className="menu-item" to="/">
-            <FormattedMessage id="home"/>
+              <FormattedMessage id="home" />
             </Link>
             <Link className="menu-item" to="/favorites">
-            <FormattedMessage id="favorite-offers"/>
+              <FormattedMessage id="favorite-offers" />
             </Link>
             <Link className="menu-item" to="/offersByVotes">
-            <FormattedMessage id="most-rated-offers"/>
+              <FormattedMessage id="most-rated-offers" />
             </Link>
           </section>
 
           <section className="menu">
-            <h3 className="section-title"><FormattedMessage id="legal"/></h3>
+            <h3 className="section-title">
+              <FormattedMessage id="legal" />
+            </h3>
             <a
               href="https://www.aquasocialmedia.com/blog-dynamic/91-que-es-y-para-que-sirve-la-politica-de-privacidad"
               target="_blank"
               rel="noopener noreferrer"
               className="menu-item"
             >
-              <FormattedMessage id="privacy"/>
+              <FormattedMessage id="privacy" />
             </a>
             <a
               href="https://blog.hubspot.es/website/que-son-cookies"
@@ -99,13 +101,15 @@ export const Footer = () => {
               rel="noopener noreferrer"
               className="menu-item"
             >
-              <FormattedMessage id="legaladvice"/>
+              <FormattedMessage id="legaladvice" />
             </a>
           </section>
         </section>
 
         <section className="social-networks">
-          <h3 className="section-title"><FormattedMessage id="followus"/></h3>
+          <h3 className="section-title">
+            <FormattedMessage id="followus" />
+          </h3>
 
           <article className="creator">
             <p>Victor Otero:</p>
