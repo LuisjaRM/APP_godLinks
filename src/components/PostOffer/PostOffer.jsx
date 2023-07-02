@@ -1,9 +1,12 @@
 import "./PostOffer.css";
 
+// Intl
+
+import {FormattedMessage} from 'react-intl';
+
 // react
 
 import { useState } from "react";
-import {FormattedMessage} from 'react-intl';
 
 // Contexts
 
@@ -30,7 +33,7 @@ export const PostOffer = () => {
   const [descrip, setDescrip] = useState("");
   const [offer_price, setOffer_price] = useState("");
   const [price, setPrice] = useState("");
-  const [plataform, setPlataform] = useState("");
+  const [plataform, setPlataform] = useState("Playstation-5");
   const [offer_expiry, setOffer_expiry] = useState("");
   const [error, setError] = useState("");
 
@@ -75,6 +78,7 @@ export const PostOffer = () => {
               type="url"
               name="url"
               id="url"
+              autoComplete="off"
               value={url}
               required
               onChange={(e) => setUrl(e.target.value)}
@@ -88,6 +92,7 @@ export const PostOffer = () => {
               type="text"
               name="title"
               id="title"
+              autoComplete="off"
               value={title}
               required
               onChange={(e) => setTitle(e.target.value)}
@@ -101,6 +106,7 @@ export const PostOffer = () => {
               type="text"
               name="descrip"
               id="descrip"
+              autoComplete="off"
               value={descrip}
               onChange={(e) => setDescrip(e.target.value)}
             />
@@ -113,15 +119,18 @@ export const PostOffer = () => {
               type="number"
               name="price"
               id="offer_price"
+              autoComplete="off"
               value={offer_price}
               onChange={(e) => setOffer_price(e.target.value)}
             />
+            
             <label><FormattedMessage id="originalprice"/></label>
             <input
               placeholder="00.00 €"
               type="number"
               name="offer_price"
               id="price"
+              autoComplete="off"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
             />
@@ -129,14 +138,19 @@ export const PostOffer = () => {
 
           <fieldset className="last-fieldset">
             <label><FormattedMessage id="platform"/></label>
-            <input
-              placeholder="Plataforma"
-              type="text"
+            <select
               name="plataform"
               id="plataform"
               value={plataform}
               onChange={(e) => setPlataform(e.target.value)}
-            />
+            >
+              <option value="Playstation-5">Playstation 5</option>
+              <option value="Playstation-4">Playstation 4</option>
+              <option value="Xbox-One">Xbox One</option>
+              <option value="Xbox-Series">Xbox Series</option>
+              <option value="Nintendo-Switch">Nintendo Switch</option>
+              <option value="PC-Gaming">PC Gaming</option>
+            </select>
 
             <label><FormattedMessage id="expiration-date"/></label>
             <input
@@ -161,6 +175,7 @@ export const PostOffer = () => {
           user ? setOpenPostOffer(!openPostOffer) : setShowLogin(!showLogin);
         }}
         className={`post-button ${openPostOffer ? "show" : ""}`}
+        title="Subir una oferta"
       >
         ➕
       </button>

@@ -1,6 +1,6 @@
 import "./OfferById.css";
 
-// react-router-dom
+// React
 
 import { useParams } from "react-router";
 
@@ -17,6 +17,7 @@ import { Loading } from "../../components/Loading/Loading";
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
+import { useShowFilter } from "../../contexts/ShowFilter";
 
 // Fetchs
 
@@ -24,8 +25,15 @@ import { useGetOfferById } from "../../services/api";
 
 export const OfferById = () => {
   // Document Title
+
   document.title = "GodLinks: Oferta ";
   //document.title = "GodLinks: Offer ";
+
+  // ShowFilter
+
+  const [, setShowFilter] = useShowFilter();
+  setShowFilter(true);
+
 
   const { id } = useParams();
   const { token } = useAuth();

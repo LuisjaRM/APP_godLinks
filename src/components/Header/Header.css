@@ -24,3 +24,10 @@ header .button {
 header .button:hover {
   box-shadow: 2px 2px 10px khaki;
 }
+
+header .accesible-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}

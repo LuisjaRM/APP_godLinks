@@ -10,6 +10,7 @@ import { Loading } from "../../components/Loading/Loading";
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
+import { useShowFilter } from "../../contexts/ShowFilter";
 
 // Fetchs
 
@@ -19,6 +20,11 @@ export const Favorite = () => {
   // Document Title
   document.title = "Tus ofertas favoritas";
   //document.title = "Your favorite offers";
+
+  // ShowFilter
+
+  const [, setShowFilter] = useShowFilter();
+  setShowFilter(true);
 
   const { token } = useAuth();
   const { offers, loading, error } = useGetMyFavoriteOffers(token);

@@ -1,26 +1,30 @@
-import "./AllOffers.css";
+import "./OffersSearched.css";
 
+// React
+
+import { useParams } from "react-router";
 
 // Components
 
+import { Loading } from "../../components/Loading/Loading";
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 import { OfferCard } from "../../components/OfferCard/OfferCard";
 import { PostOffer } from "../../components/PostOffer/PostOffer";
-import { Loading } from "../../components/Loading/Loading";
 
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
 import { useShowFilter } from "../../contexts/ShowFilter";
 
-// Fetchs
+// Fetch
 
-import { useGetAllOffers } from "../../services/api";
+import { useGetOffersSearched } from "../../services/api";
 
-export const AllOffers = () => {
+export const OffersSearched = () => {
+  const { search } = useParams();
+
   // Document Title
-  document.title = "Las mejores ofertas del mercado";
-  //document.title = "The best offers in the market";
+  document.title = `Tu búsqueda: ${search}`;
 
   // ShowFilter
 
@@ -28,7 +32,7 @@ export const AllOffers = () => {
   setShowFilter(true);
 
   const { token } = useAuth();
-  const { offers, loading, error } = useGetAllOffers(token);
+  const { offers, loading, error } = useGetOffersSearched(token, search);
 
   if (loading) return <Loading />;
   if (error) return <ErrorMessage />;

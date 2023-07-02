@@ -2,6 +2,7 @@
 "todays-offers":"Today's offers",
 "most-rated-offers": "Most rated offers",
 "favorite-offers": "Favorite offers",
+
 "GodLinks-offer": "GodLinks: Offer",
 
 "login":"Log in",
@@ -21,19 +22,23 @@
 "myprofile":"My profile",
 "myoffers":"My offers",
 
+
 "link": "Website link",
 "title":"Title",
 "description": "Description",
 "description-hint":"Enter a brief deal description",
 "offerprice": "Offer price",
 "originalprice": "Original price",
+
 "platform":"Platform",
 "expiration-date":"Expiration date",
 
 "change-password":"Change your password",
 "enter-new-email":" Enter your new email",
 "delete-account": "Delete your account",
+
 "delete-account-confirmation":" Are you sure you want to delete your account?",
+
 "delete-user":"Delete user",
 "modify-user": "Modify user",
 "user-modify-success": "Your user has been successfully modified",
@@ -41,6 +46,7 @@
 "linkt-to-offer": "Go to Offer",
 "offer-opp": "What's your offer view?",
 "send":"Send",
+ 
 "upload-image": "Upload an image",
 "upload-without-image":"Upload the offer without image",
 "offeruploaded": " The offer has been sucessfully uploaded",
@@ -96,9 +102,5 @@
 
 "expired-offer": "Expired offer",
 "goto-offer": "Go to offer"
-
-
-
-
 }
 

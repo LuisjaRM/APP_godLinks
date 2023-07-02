@@ -1,5 +1,9 @@
 import "./PostOfferImage.css";
 
+// Intl
+
+import {FormattedMessage} from 'react-intl';
+
 // Material
 
 import { SvgIcon } from "@mui/material";
@@ -10,7 +14,6 @@ import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
 
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import {FormattedMessage} from 'react-intl';
 
 // Contexts
 
@@ -130,7 +133,36 @@ export const PostOfferImage = ({
       {showUploadOfferModal && (
         <section className="modal-back">
           <section className="modal-body little">
+
             <h3><FormattedMessage id="offeruploaded"/></h3>
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="50"
+              width="50"
+              viewBox="0 0 118.43873 118.43873"
+            >
+              <path
+                className="check"
+                strokeLinejoin="round"
+                d="M34.682 60.352l15.61 15.61 33.464-33.464"
+                stroke="#08b237"
+                strokeLinecap="round"
+                strokeWidth="4.3"
+                fill="none"
+              />
+              <circle
+                className="circle"
+                strokeLinejoin="round"
+                cx="59.219"
+                strokeLinecap="round"
+                stroke="#08b237"
+                cy="59.219"
+                r="57.069"
+                strokeWidth="4.3"
+                fill="none"
+              />
+            </svg>
           </section>
         </section>
       )}

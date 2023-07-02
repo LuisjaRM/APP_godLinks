@@ -1,6 +1,7 @@
 /* Open and Closed PostOffer */
 
 .post-offer-body .post-button {
+  cursor: pointer;
   width: 24px;
   height: 24px;
   font-size: 60%;
@@ -9,7 +10,7 @@
   box-shadow: 1px 1px 10px black;
   background-color: khaki;
   position: fixed;
-  top: calc(15vh + 1rem);
+  top: calc(20vh + 1rem);
   right: 1rem;
 }
 
@@ -93,7 +94,8 @@
 }
 
 .post-offer input,
-.post-offer textarea {
+.post-offer textarea,
+.post-offer select {
   padding: 0.25rem;
   border-radius: 5px;
 }

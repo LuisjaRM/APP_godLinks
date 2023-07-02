@@ -15,6 +15,8 @@ import { Loading } from "../../components/Loading/Loading";
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
+import { useShowFilter } from "../../contexts/ShowFilter";
+
 // Fetchs
 
 import { useGetUserInfo } from "../../services/api";
@@ -24,11 +26,15 @@ export const UserInfo = () => {
   document.title = "Mis ofertas";
   //document.title = "My offers";
 
+  // ShowFilter
+
+  const [, setShowFilter] = useShowFilter();
+  setShowFilter(false);
+
   const { token } = useAuth();
   const { id } = useParams();
 
   const { dataUser, loading, error, refresh } = useGetUserInfo(token, id);
-
 
   if (loading) return <Loading />;
   if (error) return <ErrorMessage />;

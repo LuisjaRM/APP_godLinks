@@ -1,5 +1,9 @@
 import "./ModifyUserCard.css";
 
+// Intl
+
+import {FormattedMessage} from 'react-intl';
+
 // Material
 
 import { SvgIcon } from "@mui/material";
@@ -12,7 +16,6 @@ import LockIcon from "@mui/icons-material/Lock";
 // React
 
 import { useState } from "react";
-import {FormattedMessage} from 'react-intl';
 
 // Contexts
 
@@ -39,9 +42,6 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
 
   const [showLogin, setShowLogin] = useShowLogin();
   const [showVerify, setShowVerify] = useShowVerify();
-
-  // Document Title
-  document.title = <FormattedMessage id="myprofile"/>;
 
   // State of navigate
 
@@ -79,9 +79,30 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
 
   // HandleForm
 
-  const handleForm = async (e) => {
+  const [fieldChanged, setFieldChanged] = useState("");
+
+  const handleFormAvatar = async (e) => {
     e.preventDefault();
     setShowConfirmModal(!showConfirmModal);
+    setFieldChanged("avatar");
+  };
+
+  const handleFormUser = async (e) => {
+    e.preventDefault();
+    setShowConfirmModal(!showConfirmModal);
+    setFieldChanged("user");
+  };
+
+  const handleFormEmail = async (e) => {
+    e.preventDefault();
+    setShowConfirmModal(!showConfirmModal);
+    setFieldChanged("email");
+  };
+
+  const handleFormNewPassword = async (e) => {
+    e.preventDefault();
+    setShowConfirmModal(!showConfirmModal);
+    setFieldChanged("newPassword");
   };
 
   // Confirm Modal
@@ -91,10 +112,11 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
     e.stopPropagation();
     setShowConfirmModal(false);
     setShowChangePasswordModal(false);
-    avatar && changeAvatar();
-    user != userInfo.user && changeUser();
-    email != userInfo.email && changeEmail();
-    newPassword && changePassword();
+
+    fieldChanged === "avatar" && changeAvatar();
+    fieldChanged === "user" && changeUser();
+    fieldChanged === "email" && changeEmail();
+    fieldChanged === "newPassword" && changePassword();
     clickDelete && deleteUser();
   };
 
@@ -261,7 +283,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
           />
           <form
             className={`form  ${hideFormAvatar ? "hide" : ""}`}
-            onSubmit={handleForm}
+            onSubmit={handleFormAvatar}
           >
             <fieldset className="modify-image-fieldset">
               <label className="user-image-profile-label">
@@ -337,7 +359,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
 
           <form
             className={`form ${hideFormUser ? "hide" : ""}`}
-            onSubmit={handleForm}
+            onSubmit={handleFormUser}
           >
             <fieldset className="modify-fieldset">
               <input
@@ -345,6 +367,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
                 type="user"
                 name="modify-user"
                 id="modify-user"
+                autoComplete="off"
                 value={user}
                 required
                 onChange={(e) => setUser(e.target.value)}
@@ -389,7 +412,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
 
           <form
             className={`form ${hideFormEmail ? "hide" : ""}`}
-            onSubmit={handleForm}
+            onSubmit={handleFormEmail}
           >
             <fieldset className="modify-fieldset">
               <input
@@ -397,6 +420,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
                 type="email"
                 name="modify-email"
                 id="modify-email"
+                autoComplete="off"
                 value={email}
                 required
                 onChange={(e) => setEmail(e.target.value)}
@@ -445,7 +469,10 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
             className="modal-body little"
             onClick={(e) => e.stopPropagation()}
           >
-            <form className="modify-password-form" onSubmit={handleForm}>
+            <form
+              className="modify-password-form"
+              onSubmit={handleFormNewPassword}
+            >
               <fieldset className="modify-password-fieldset">
                 <label htmlFor="oldPassword"><FormattedMessage id="currentpassword"/></label>
 
@@ -503,41 +530,44 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
       {showChangeMadeModal && (
         <section className="modal-back dark">
           <section className="modal-body little">
-            {avatar && <h3><FormattedMessage id="avatar-modify-success"/></h3>}
-            {user != userInfo.user && (
-              <h3>
-               <FormattedMessage id="username-modify-success"/>{" "}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="20"
-                  width="20"
-                  viewBox="0 0 118.43873 118.43873"
-                >
-                  <path
-                    className="check"
-                    strokeLinejoin="round"
-                    d="M34.682 60.352l15.61 15.61 33.464-33.464"
-                    stroke="#08b237"
-                    strokeLinecap="round"
-                    strokeWidth="4.3"
-                    fill="none"
-                  />
-                  <circle
-                    className="circle"
-                    strokeLinejoin="round"
-                    cx="59.219"
-                    strokeLinecap="round"
-                    stroke="#08b237"
-                    cy="59.219"
-                    r="57.069"
-                    strokeWidth="4.3"
-                    fill="none"
-                  />
-                </svg>
-              </h3>
+            {fieldChanged === "avatar" && (
+              <h3><FormattedMessage id="avatar-modify-success"/></h3>
             )}
-            {newPassword && <h3><FormattedMessage id="password-reset-confirmation"/></h3>}
+            {fieldChanged === "user" && (
+              <h3><FormattedMessage id="username-modify-success"/></h3>
+            )}
+            {fieldChanged === "newPassword" && (
+              <h3><FormattedMessage id="password-reset-confirmation"/></h3>
+            )}
             {clickDelete && <h3><FormattedMessage id="username-delete-success"/></h3>}
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="50"
+              width="50"
+              viewBox="0 0 118.43873 118.43873"
+            >
+              <path
+                className="check"
+                strokeLinejoin="round"
+                d="M34.682 60.352l15.61 15.61 33.464-33.464"
+                stroke="#08b237"
+                strokeLinecap="round"
+                strokeWidth="4.3"
+                fill="none"
+              />
+              <circle
+                className="circle"
+                strokeLinejoin="round"
+                cx="59.219"
+                strokeLinecap="round"
+                stroke="#08b237"
+                cy="59.219"
+                r="57.069"
+                strokeWidth="4.3"
+                fill="none"
+              />
+            </svg>
           </section>
         </section>
       )}
