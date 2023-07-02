@@ -18,6 +18,7 @@ import { useLanguage } from "./contexts/LanguageContext";
 
 import { Header } from "./components/Header/Header";
 import { Filter } from "./components/Filter/Filter";
+import { PlataformFilter } from "./components/PlataformFilter/PlataformFilter";
 import { LoginOrSignup } from "./components/LoginOrSignup/LoginOrSignup";
 import { VerifyUser } from "./components/VerifyUser/VerifyUser";
 import { RecoverPassword } from "./components/RecoverPassword.jsx/RecoverPassword";
@@ -42,6 +43,7 @@ export const Root = () => {
         {showFilter && (
           <aside>
             <Filter />
+            <PlataformFilter />
           </aside>
         )}
 
