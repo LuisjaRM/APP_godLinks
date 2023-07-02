@@ -19,6 +19,7 @@ import { useGetMyFavoriteOffers } from "../../services/api";
 export const Favorite = () => {
   // Document Title
   document.title = "Tus ofertas favoritas";
+  //document.title = "Your favorite offers";
 
   // ShowFilter
 

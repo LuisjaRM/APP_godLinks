@@ -1,8 +1,13 @@
 import "./ErrorMessage.css";
 
+// Intl
+
+import {FormattedMessage} from 'react-intl';
+
 // React
 
 import { useNavigate } from "react-router";
+
 
 export const ErrorMessage = () => {
   const navigate = useNavigate();
@@ -16,12 +21,13 @@ export const ErrorMessage = () => {
       {/* ErrorMessage*/}
 
       <section className="error-message-box">
-        <h1 className="error-text-ap">¡Vaya! parece que algo ha salido mal</h1>
-        <p className="error-mess-p"> Fallo en la conexión con el servidor</p>
+        <h1 className="error-text-ap"><FormattedMessage id="oops"/></h1>
+        <p className="error-mess-p"> <FormattedMessage id="fail-connection"/></p>
 
         <button onClick={handleClick} className="book home-page">
-          Volver al inicio
+          <FormattedMessage id="home"/>
         </button>
+
       </section>
 
       {/* Stars */}

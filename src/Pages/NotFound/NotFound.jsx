@@ -3,6 +3,7 @@ import "./NotFound.css";
 // React
 
 import { Link } from "react-router-dom";
+import {FormattedMessage} from 'react-intl';
 
 // Contexts
 
@@ -11,6 +12,7 @@ import { useShowFilter } from "../../contexts/ShowFilter";
 export const NotFound = () => {
   // Document Title
   document.title = "¡Ups!";
+  //document.title = "¡Oops!";
 
   // ShowFilter
 
@@ -24,11 +26,11 @@ export const NotFound = () => {
           <div className="four_zero_four_bg"></div>
 
           <article className="contant_box_404">
-            <h1 className="Paragraph">¡Vaya! Algo ha salido mal</h1>
-            <p className="Paragraph">La página que buscas no existe</p>
+            <h1 className="Paragraph"><FormattedMessage id="oops"/></h1>
+            <p className="Paragraph"><FormattedMessage id="page-notfound"/></p>
 
             <Link className="link_404" to="/">
-              Volver al inicio
+            <FormattedMessage id="home"/>
             </Link>
           </article>
         </section>

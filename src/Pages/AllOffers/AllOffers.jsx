@@ -1,5 +1,6 @@
 import "./AllOffers.css";
 
+
 // Components
 
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
@@ -19,6 +20,7 @@ import { useGetAllOffers } from "../../services/api";
 export const AllOffers = () => {
   // Document Title
   document.title = "Las mejores ofertas del mercado";
+  //document.title = "The best offers in the market";
 
   // ShowFilter
 

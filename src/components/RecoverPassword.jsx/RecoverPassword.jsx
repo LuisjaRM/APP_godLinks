@@ -3,6 +3,7 @@ import "./RecoverPassword.css";
 // React
 
 import { useState } from "react";
+import {FormattedMessage} from 'react-intl';
 
 // Context
 
@@ -66,17 +67,17 @@ export const RecoverPassword = () => {
     e.preventDefault();
 
     if (!recoverCode) {
-      setError("Debes introducir el código de recuperación");
+      setError(<FormattedMessage id="verification-code"/>);
       return;
     }
 
     if (!newPass1 || !newPass2) {
-      setError("Debes introducir una contraseña");
+      setError(<FormattedMessage id="enter-password"/>);
       return;
     }
 
     if (newPass1 !== newPass2) {
-      setError("Las contraseñas no coinciden");
+      setError(<FormattedMessage id="password-match"/>);
       return;
     }
 
@@ -118,11 +119,11 @@ export const RecoverPassword = () => {
           onClick={(e) => e.stopPropagation()}
           className={`modal-body little recover ${!showRecover && "hide"}`}
         >
-          <h2 className="title">Recupera tu contraseña</h2>
+          <h2 className="title"><FormattedMessage id="password-reset"/></h2>
 
           <form className="form" onSubmit={handleFormRecover}>
             <fieldset>
-              <label htmlFor="recover-email">Introduce tu correo:</label>
+              <label htmlFor="recover-email"><FormattedMessage id="email"/></label>
               <input
                 placeholder="example@mail.com"
                 type="email"
@@ -134,7 +135,7 @@ export const RecoverPassword = () => {
               />
             </fieldset>
 
-            <button className="button recover-button">Continuar</button>
+            <button className="button recover-button"><FormattedMessage id="continue"/></button>
           </form>
 
           {error ? <p className="error">{error}</p> : null}
@@ -144,7 +145,7 @@ export const RecoverPassword = () => {
           onClick={(e) => e.stopPropagation()}
           className={`modal-body recover ${!showReset && "hide"}`}
         >
-          <h1 className="title">Reestablece tu contraseña</h1>
+          <h1 className="title"><FormattedMessage id="password-reset"/></h1>
           <form className="form" onSubmit={handleFormReset}>
             <fieldset>
               <label htmlFor="recoverCode">Código:</label>
@@ -160,7 +161,7 @@ export const RecoverPassword = () => {
             </fieldset>
 
             <fieldset>
-              <label htmlFor="reset-password">Nueva Contraseña:</label>
+              <label htmlFor="reset-password"><FormattedMessage id="enter-password"/></label>
               <input
                 placeholder="Introduce tu contraseña"
                 type="password"
@@ -174,7 +175,7 @@ export const RecoverPassword = () => {
 
             <fieldset>
               <label htmlFor="reset-confirm-password">
-                Repetir nueva Contraseña:
+              <FormattedMessage id="re-enterpassword"/>
               </label>
               <input
                 placeholder="Introduce tu contraseña"
@@ -187,7 +188,7 @@ export const RecoverPassword = () => {
               />
             </fieldset>
 
-            <button className="button reset-button">Continuar</button>
+            <button className="button reset-button"><FormattedMessage id="continue"/></button>
           </form>
 
           {error ? <p className="error">⚠️ {error}</p> : null}
@@ -197,7 +198,7 @@ export const RecoverPassword = () => {
       {showRecoverCodeModal && (
         <section className="modal-back dark">
           <section className="modal-body little verify">
-            <p>Te hemos enviado un correo con un código de recuperación 😃</p>
+            <p><FormattedMessage id="email-verification"/></p>
           </section>
         </section>
       )}
@@ -205,7 +206,7 @@ export const RecoverPassword = () => {
       {showConfirmModal && (
         <section className="modal-back dark">
           <section className="modal-body little verify">
-            <p>Contraseña modificada con éxito</p>
+            <p><FormattedMessage id="password-reset-confirmation"/></p>
           </section>
         </section>
       )}

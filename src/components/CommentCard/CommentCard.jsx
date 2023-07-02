@@ -11,6 +11,7 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 
 import { useNavigate } from "react-router";
 import { useState } from "react";
+import {FormattedMessage} from 'react-intl';
 
 // Context
 
@@ -245,13 +246,13 @@ export const CommentsCard = ({ comment, refresh }) => {
       {showConfirmModal ? (
         <section className="modal-back dark" onClick={handleClickAway}>
           <section className="modal-body little">
-            <h2>¿Estás seguro de que quieres borrar este comentario?</h2>
+            <h2><FormattedMessage id="comment-delete?"/></h2>
             <section className="buttons">
               <button className="button" onClick={handleClickConfirm}>
-                Sí
+              <FormattedMessage id="yes"/>
               </button>
               <button className="button" onClick={handleClickCancel}>
-                No
+              <FormattedMessage id="no"/>
               </button>
             </section>
           </section>
@@ -263,7 +264,7 @@ export const CommentsCard = ({ comment, refresh }) => {
       {showChangeMadeModal ? (
         <section className="modal-back dark">
           <section className="modal-body little">
-            {deleteComment && <h3>Tu comentario se ha eliminado con éxito</h3>}
+            {deleteComment && <h3><FormattedMessage id="comment-delete-success"/></h3>}
           </section>
         </section>
       ) : (

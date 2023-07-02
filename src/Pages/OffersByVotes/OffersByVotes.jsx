@@ -1,5 +1,7 @@
 import "./OffersByVotes.css";
 
+
+
 // Components
 
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
@@ -19,6 +21,7 @@ import { useGetOffersByVotes } from "../../services/api";
 export const OffersByVotes = () => {
   // Document Title
   document.title = "Las ofertas más populares";
+  //document.title = "The most rated offers";
 
   // ShowFilter
 

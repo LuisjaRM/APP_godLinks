@@ -1,5 +1,7 @@
 import "./UserInfoCard.css";
 
+import {FormattedMessage} from 'react-intl';
+
 export const UserInfoCard = ({ userInfo }) => {
   // Date Logic
   const created_at = new Date(userInfo.created_at);
@@ -25,7 +27,7 @@ export const UserInfoCard = ({ userInfo }) => {
         <p className="user-name">{userInfo.user}</p>
       </section>
 
-      <p>Miembro desde {dateCreated}</p>
+      <p><FormattedMessage id="member-since"/> {dateCreated}</p>
     </section>
   );
 };

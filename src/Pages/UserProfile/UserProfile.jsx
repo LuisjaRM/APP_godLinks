@@ -1,5 +1,6 @@
 import "./UserProfile.css";
 
+
 // Contexts
 
 import { useShowFilter } from "../../contexts/ShowFilter";
@@ -20,6 +21,7 @@ import { useAuth } from "../../contexts/AuthContext";
 export const UserProfile = () => {
   // Document Title
   document.title = "Mi perfil";
+//document.title = "My profile";
 
   // ShowFilter
 

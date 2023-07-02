@@ -8,6 +8,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 // React
 
 import { useNavigate } from "react-router";
+import {FormattedMessage} from 'react-intl';
 
 
 // Contexts
@@ -40,7 +41,7 @@ export const UserNav = () => {
               setShowLogin(!showLogin);
             }}
           >
-            Mi perfil
+           <FormattedMessage id="myprofile"/>
           </li>
 
           <li
@@ -50,7 +51,7 @@ export const UserNav = () => {
               navigate(`/userInfo/${user.id}`);
             }}
           >
-            Mis ofertas
+            <FormattedMessage id="myoffers"/>
           </li>
 
           <li
@@ -61,7 +62,7 @@ export const UserNav = () => {
               navigate("/");
             }}
           >
-            <p>Cerrar sesión</p>
+            <p><FormattedMessage id="signout"/></p>
             <SvgIcon
               className="logout-icon"
               component={LogoutIcon}

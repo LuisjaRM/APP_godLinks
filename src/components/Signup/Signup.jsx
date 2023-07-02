@@ -3,6 +3,7 @@ import "./Signup.css";
 // React
 
 import { useState } from "react";
+import {FormattedMessage} from 'react-intl';
 
 // Contexts
 
@@ -30,7 +31,7 @@ export const Signup = () => {
     e.stopPropagation();
 
     if (pass1 !== pass2) {
-      setError("Las contraseñas no coinciden");
+      setError(<FormattedMessage id="password-match"/>);
       return;
     }
 
@@ -47,11 +48,11 @@ export const Signup = () => {
 
   return (
     <section className="signup">
-      <h2 className="title">Regístrate</h2>
+      <h2 className="title"><FormattedMessage id="signup"/></h2>
 
       <form className="form" onSubmit={handleForm}>
         <fieldset>
-          <label htmlFor="signup-user">Nombre de usuario:</label>
+          <label htmlFor="signup-user"><FormattedMessage id="username"/></label>
           <input
             placeholder="Introduce nombre de usuario"
             type="text"
@@ -64,7 +65,7 @@ export const Signup = () => {
         </fieldset>
 
         <fieldset>
-          <label htmlFor="signup-email">Correo electrónico:</label>
+          <label htmlFor="signup-email"><FormattedMessage id="email"/></label>
           <input
             placeholder="example@mail.com"
             type="email"
@@ -77,7 +78,7 @@ export const Signup = () => {
         </fieldset>
 
         <fieldset>
-          <label htmlFor="signup-password">Contraseña:</label>
+          <label htmlFor="signup-password"><FormattedMessage id="password"/></label>
           <input
             placeholder="Introduce tu contraseña"
             type="password"
@@ -90,7 +91,7 @@ export const Signup = () => {
         </fieldset>
 
         <fieldset>
-          <label htmlFor="signup-confirm-password">Repetir contraseña:</label>
+          <label htmlFor="signup-confirm-password"><FormattedMessage id="re-enterpassword"/></label>
           <input
             placeholder="Repite tu contraseña"
             type="password"
@@ -102,7 +103,7 @@ export const Signup = () => {
           />
         </fieldset>
 
-        <button className="button signup-button">Continuar</button>
+        <button className="button signup-button"><FormattedMessage id="continue"/></button>
       </form>
 
       {error ? <p className="error">⚠️ {error}</p> : null}

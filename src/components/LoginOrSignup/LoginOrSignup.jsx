@@ -1,5 +1,7 @@
 import "./LoginOrSignup.css";
 
+import {FormattedMessage} from 'react-intl';
+
 // Components
 
 import { Login } from "../Login/Login";
@@ -36,8 +38,8 @@ export const LoginOrSignup = ({ isLogin, setIsLogin }) => {
               }}
             >
               {isLogin
-                ? "Aún no tienes cuenta? Regístrate"
-                : "Ya tienes cuenta? Inicia sesión"}
+                ? <FormattedMessage id="newuser?"/>
+                : <FormattedMessage id="login"/>}
             </p>
           </section>
         </section>
