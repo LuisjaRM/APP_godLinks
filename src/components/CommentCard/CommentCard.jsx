@@ -245,7 +245,7 @@ export const CommentsCard = ({ comment, refresh }) => {
       {showConfirmModal ? (
         <section className="modal-back dark" onClick={handleClickAway}>
           <section className="modal-body little">
-            <h2><FormattedMessage id="delete-comment?"/></h2>
+            <h2><FormattedMessage id="comment-delete?"/></h2>
             <section className="buttons">
               <button className="button" onClick={handleClickConfirm}>
               <FormattedMessage id="yes"/>
@@ -263,7 +263,7 @@ export const CommentsCard = ({ comment, refresh }) => {
       {showChangeMadeModal ? (
         <section className="modal-back dark">
           <section className="modal-body little">
-            {deleteComment && <h3><FormattedMessage id="delete-confirmation"/></h3>}
+            {deleteComment && <h3><FormattedMessage id="comment-delete-success"/></h3>}
           </section>
         </section>
       ) : (

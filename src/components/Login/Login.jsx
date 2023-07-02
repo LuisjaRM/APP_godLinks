@@ -1,12 +1,11 @@
 import "./Login.css";
-import "../../intl/es.json";
-import "../../intl/en.json";
 
 // React
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {FormattedMessage} from 'react-intl';
+
 
 // Contexts
 
@@ -56,7 +55,7 @@ export const Login = () => {
         <fieldset>
           <label htmlFor="login-email"><FormattedMessage id="email"/></label>
           <input
-            placeholder="example@mail.com"
+            placeholder="ejemplo@email.com"
             type="email"
             name="login-email"
             id="login-email"
@@ -69,7 +68,7 @@ export const Login = () => {
         <fieldset>
           <label htmlFor="login-password"><FormattedMessage id="password"/></label>
           <input
-            placeholder={<FormattedMessage id="enter-password"/>}
+            placeholder= "Escribe tu contraseña"
             type="password"
             name="login-password"
             autoComplete="login-password"

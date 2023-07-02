@@ -23,7 +23,7 @@ export const VerifyUser = ({ setIsLogin }) => {
         }}
       >
         <section className="modal-body little verify">
-          <p>Te hemos enviado un correo para que verifiques tu cuenta 😃</p>
+          <p><FormattedMessage id="email-verification"/></p>
 
           <button
             className="button verify-button"
@@ -34,7 +34,7 @@ export const VerifyUser = ({ setIsLogin }) => {
               setShowLogin(!showLogin);
             }}
           >
-            Continuar
+            <FormattedMessage id="continue"/>
           </button>
         </section>
       </section>

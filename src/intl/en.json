@@ -2,6 +2,7 @@
 "todays-offers":"Today's offers",
 "most-rated-offers": "Most rated offers",
 "favorite-offers": "Favorite offers",
+"GodLinks-offer": "GodLinks: Offer",
 
 "login":"Log in",
 "signup":"Sign up",
@@ -11,8 +12,6 @@
 "continue":"Continue",
 "forgot-password": "Forgot your password",
 
-
-"password-assistance":"Password Assitance",
 "enter-email":"Enter the email address associated with your account",
 "email-vertification":"We have sent an email to your account",
 
@@ -34,7 +33,7 @@
 "change-password":"Change your password",
 "enter-new-email":" Enter your new email",
 "delete-account": "Delete your account",
-"delete-account-confirmation":" ¿Are you sure you want to delete your account",
+"delete-account-confirmation":" Are you sure you want to delete your account?",
 "delete-user":"Delete user",
 "modify-user": "Modify user",
 "user-modify-success": "Your user has been successfully modified",
@@ -46,30 +45,35 @@
 "upload-without-image":"Upload the offer without image",
 "offeruploaded": " The offer has been sucessfully uploaded",
 "verification-code": "Enter your verification code",
+"currentpassword": "Current password",
+"newpassword": "New password",
 "password-match": "Passwords don't match",
-"password-reset": "Reset your password",
+"password-reset": " Reset your password",
 "password-reset-confirmation": "Your password has been successfully modified",
 "signout": "Sign out",
 
 "oops":"Oops!, it seems something has gone wrong",
 "fail-connection":"Failed connection to server",
+"page-notfound": "The website is not found",
 "home":"Home",
 
-"delete-comment?":"Are you sure you wan to delete this review?",
+"comment-delete?":"Are you sure you wan to delete this comment?",
 "yes":"Yes",
 "no":"No",
-"delete-confirmation":"Your review has been successfully deleted",
+"comment-delete-succcess":"Your comment has been successfully deleted",
 
 "about-us": "About us",
 "ourpage": "This page speaks about us",
 "legal": "Legal",
-"privacy": "Privacy policy",
+"privacy": "Privacy",
 "legaladvice":"Legal advice",
 "followus":"Follow us",
 
 "newuser?":" New user? Start here.",
 "deleteoffer": "Delete offer",
-"delete-offer-confirmation": "Are you sure you want to delete this offer",
+"delete-offer-confirmation": "Are you sure you want to delete this offer?",
+"modify-offer-confirmation": "Are you sure you want to delete this offer?",
+
 "image-change-success": "The image has been successfully modified",
 "link-change-success": "The link has been successfully modified",
 "title-change-success": "The title has been successfully modified",
@@ -78,9 +82,22 @@
 "originalprice-change-success": " The original price has been successfully modified",
 "platform-change-success": "The platform has been successfully modified",
 "expiration-change-success": "The offer expiration date has been successfully modified",
-"offer-delete-cofirmation": "Your offer has been successfully deleted",
+"offer-deleted-success": "Your offer has been successfully deleted",
 
-"member-since": "Member since"
+"member-since": "Member since",
+"bestoffers": "The best offers of the market",
+"modify-offer": "Modify your offer",
+
+"avatar-modify-success":"Your avatar has been successfully modified",
+"username-modify-success": "Your username has been sucessfully modified",
+
+"user-delete-confirmation":"Are you sure you want to delete your account?",
+"user-modify-confirmation":"Are you sure you want to modify the account?",
+
+"expired-offer": "Expired offer",
+"goto-offer": "Go to offer"
+
+
 
 
 }

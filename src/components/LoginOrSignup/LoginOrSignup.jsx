@@ -38,8 +38,8 @@ export const LoginOrSignup = ({ isLogin, setIsLogin }) => {
               }}
             >
               {isLogin
-                ? <FormattedMessage id="newuser"/>
-                : <FormattedMessage id="signin"/>}
+                ? <FormattedMessage id="newuser?"/>
+                : <FormattedMessage id="login"/>}
             </p>
           </section>
         </section>

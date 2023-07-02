@@ -4,6 +4,7 @@ import "./UserInfo.css";
 
 import { useParams } from "react-router";
 
+
 // Components
 
 import { OfferCard } from "../../components/OfferCard/OfferCard";
@@ -21,6 +22,7 @@ import { useGetUserInfo } from "../../services/api";
 export const UserInfo = () => {
   // Document Title
   document.title = "Mis ofertas";
+  //document.title = "My offers";
 
   const { token } = useAuth();
   const { id } = useParams();

@@ -41,7 +41,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
   const [showVerify, setShowVerify] = useShowVerify();
 
   // Document Title
-  document.title = "Mi perfil";
+  document.title = <FormattedMessage id="myprofile"/>;
 
   // State of navigate
 
@@ -305,13 +305,13 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
           </button>
         </li>
 
-        <li className="created-at">Miembro desde {dateCreated}</li>
+        <li className="created-at"><FormattedMessage id="member-since"/> {dateCreated}</li>
 
         <li>{error ? <p className="error">⚠️ {error}</p> : null}</li>
 
         <li className="field">
           <section className="field-header">
-            <h2 className="field-title">Nombre de usuario:</h2>
+            <h2 className="field-title"><FormattedMessage id="username"/></h2>
 
             <button
               className="edit-button"
@@ -363,7 +363,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
 
         <li className="field">
           <section className="field-header">
-            <h2 className="field-title">Correo Electrónico:</h2>
+            <h2 className="field-title"><FormattedMessage id="email"/></h2>
 
             <button
               className="edit-button"
@@ -415,7 +415,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
 
         <li className="privacity">
           <section className="title">
-            <h2>Privacidad</h2>
+            <h2><FormattedMessage id="privacy"/></h2>
 
             <SvgIcon
               className="privacity-icon"
@@ -430,11 +430,11 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
               setShowChangePasswordModal(!showChangePasswordModal);
             }}
           >
-            Cambiar contraseña
+            <FormattedMessage id="change-password"/>
           </button>
 
           <form onSubmit={handleClickDelete}>
-            <button className="delete button">Eliminar cuenta</button>
+            <button className="delete button"><FormattedMessage id="delete-account"/></button>
           </form>
         </li>
       </ul>
@@ -447,7 +447,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
           >
             <form className="modify-password-form" onSubmit={handleForm}>
               <fieldset className="modify-password-fieldset">
-                <label htmlFor="oldPassword">Contraseña actual:</label>
+                <label htmlFor="oldPassword"><FormattedMessage id="currentpassword"/></label>
 
                 <input
                   placeholder="Contraseña actual"
@@ -460,7 +460,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
                   onChange={(e) => setOldPassword(e.target.value)}
                 />
 
-                <label htmlFor="newPassword">Nueva contraseña:</label>
+                <label htmlFor="newPassword"><FormattedMessage id="newpassword"/></label>
 
                 <input
                   placeholder="Nueva contraseña"
@@ -474,7 +474,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
                 />
               </fieldset>
 
-              <button className="button">Continuar</button>
+              <button className="button"><FormattedMessage id="continue"/></button>
             </form>
           </section>
         </section>
@@ -484,15 +484,16 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
         <section className="modal-back dark" onClick={handleClickAway}>
           <section className="modal-body little">
             <h2>
-              ¿Estás seguro de que quieres
-              {clickDelete ? " borrar" : " modificar"} este usuario?
+            {clickDelete
+              ? <FormattedMessage id="user-delete-confirmation"/>:
+              <FormattedMessage id="user-modify-confirmation"/>}
             </h2>
             <section className="buttons">
               <button className="button" onClick={handleClickConfirm}>
-                Sí
+              <FormattedMessage id="yes"/>
               </button>
               <button className="button" onClick={handleClickCancel}>
-                No
+              <FormattedMessage id="no"/>
               </button>
             </section>
           </section>
@@ -502,10 +503,10 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
       {showChangeMadeModal && (
         <section className="modal-back dark">
           <section className="modal-body little">
-            {avatar && <h3>Tu avatar se ha modificado con éxito </h3>}
+            {avatar && <h3><FormattedMessage id="avatar-modify-success"/></h3>}
             {user != userInfo.user && (
               <h3>
-                Tu nombre de usuario se ha modificado con éxito{" "}
+               <FormattedMessage id="username-modify-success"/>{" "}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   height="20"
@@ -535,8 +536,8 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
                 </svg>
               </h3>
             )}
-            {newPassword && <h3>Tu contraseña se ha modificado con éxito</h3>}
-            {clickDelete && <h3>Tu usuario se ha eliminado con éxito</h3>}
+            {newPassword && <h3><FormattedMessage id="password-reset-confirmation"/></h3>}
+            {clickDelete && <h3><FormattedMessage id="username-delete-success"/></h3>}
           </section>
         </section>
       )}

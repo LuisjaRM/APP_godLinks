@@ -17,7 +17,8 @@ import { useGetMyFavoriteOffers } from "../../services/api";
 
 export const Favorite = () => {
   // Document Title
-  document.title = "";
+  document.title = "Tus ofertas favoritas";
+  //document.title = "Your favorite offers";
 
   const { token } = useAuth();
   const { offers, loading, error } = useGetMyFavoriteOffers(token);

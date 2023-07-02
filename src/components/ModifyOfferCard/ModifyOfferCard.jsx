@@ -723,7 +723,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
         <li className="field">
           <section className="field-header">
-            <h2 className="element">Caducidad:</h2>
+            <h2 className="element"><FormattedMessage id="expiration-date"/></h2>
 
             <button
               onClick={() => setHideFormOfferExpiry(!hideFormOfferExpiry)}
@@ -788,15 +788,16 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
         <section className="modal-back dark" onClick={handleClickAway}>
           <section className="modal-body little">
             <h2>
-              ¿Estás seguro de que quieres
-              {clickDelete ? " borrar" : " modificar"} esta oferta?
+              {clickDelete
+              ? <FormattedMessage id="modify-offer-confirmation"/> 
+              :<FormattedMessage id="delete-offer-confirmation"/>}
             </h2>
             <section className="buttons">
               <button className="button" onClick={handleClickConfirm}>
-                Sí
+              <FormattedMessage id="yes"/>
               </button>
               <button className="button" onClick={handleClickCancel}>
-                No
+              <FormattedMessage id="no"/>
               </button>
             </section>
           </section>
@@ -808,30 +809,30 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
         <section className="modal-back dark">
           <section className="modal-body little">
             {fieldChanged === "image" && (
-              <h3>La imagen se ha modificado con éxito </h3>
+              <h3><FormattedMessage id="image-change-success"/></h3>
             )}
             {fieldChanged === "url" && (
-              <h3>El enlace se ha modificado con éxito</h3>
+              <h3><FormattedMessage id="link-change-success"/></h3>
             )}
             {fieldChanged === "title" && (
-              <h3>El título se ha modificado con éxito</h3>
+              <h3><FormattedMessage id="title-change-success"/></h3>
             )}
             {fieldChanged === "descrip" && (
-              <h3>La descripción se ha modificado con éxito</h3>
+              <h3><FormattedMessage id="description-change-success"/></h3>
             )}
             {fieldChanged === "offer_price" && (
-              <h3>El precio de la oferta se ha modificado con éxito</h3>
+              <h3><FormattedMessage id="image-change-success"/></h3>
             )}
             {fieldChanged === "price" && (
-              <h3>El precio original se ha modificado con éxito</h3>
+              <h3><FormattedMessage id="offerprice-change-success"/></h3>
             )}
             {fieldChanged === "plataform" && (
-              <h3>La plataforma se ha modificado con éxito</h3>
+              <h3><FormattedMessage id="platform-change-success"/></h3>
             )}
             {fieldChanged === "offer_expiry" && (
-              <h3>La caducidad de la oferta se ha modificado con éxito</h3>
+              <h3><FormattedMessage id="expiration-change-success"/></h3>
             )}
-            {clickDelete && <h3>Tu oferta se ha eliminado con éxito</h3>}
+            {clickDelete && <h3><FormattedMessage id="offer-deleted-success"/></h3>}
           </section>
         </section>
       ) : (

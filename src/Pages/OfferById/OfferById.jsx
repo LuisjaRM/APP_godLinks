@@ -4,6 +4,7 @@ import "./OfferById.css";
 
 import { useParams } from "react-router";
 
+
 // Components
 
 import { OfferCard } from "../../components/OfferCard/OfferCard";
@@ -24,6 +25,7 @@ import { useGetOfferById } from "../../services/api";
 export const OfferById = () => {
   // Document Title
   document.title = "GodLinks: Oferta ";
+  //document.title = "GodLinks: Offer ";
 
   const { id } = useParams();
   const { token } = useAuth();
