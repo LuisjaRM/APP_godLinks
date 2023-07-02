@@ -732,9 +732,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
                 value={plataform}
                 onChange={(e) => setPlataform(e.target.value)}
               >
-                <option selected value="Playstation-5">
-                  Playstation 5
-                </option>
+                <option value="Playstation-5">Playstation 5</option>
                 <option value="Playstation-4">Playstation 4</option>
                 <option value="Xbox-One">Xbox One</option>
                 <option value="Xbox-Series">Xbox Series</option>

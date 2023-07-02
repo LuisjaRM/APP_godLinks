@@ -1,6 +1,7 @@
 /* Open and Closed PostOffer */
 
 .post-offer-body .post-button {
+  cursor: pointer;
   width: 24px;
   height: 24px;
   font-size: 60%;

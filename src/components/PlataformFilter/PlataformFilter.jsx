@@ -9,14 +9,27 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 // React
 
 import { useNavigate } from "react-router";
+import { useRef } from "react";
 
 export const PlataformFilter = () => {
   const navigate = useNavigate();
 
+  // Scroll
+
+  const filterRef = useRef(null);
+
+  const handleMoveLeft = () => {
+    filterRef.current.scrollBy(-100, 0);
+  };
+
+  const handleMoveRight = () => {
+    filterRef.current.scrollBy(100, 0);
+  };
+
   return (
     <>
       <section className="plataform-filter">
-        <button className="move-button">
+        <button className="move-button" onClick={handleMoveLeft}>
           <SvgIcon
             className="move-icon"
             component={ChevronLeftIcon}
@@ -24,7 +37,7 @@ export const PlataformFilter = () => {
           />
         </button>
 
-        <ul className="plataform-list">
+        <ul ref={filterRef} className="plataform-list">
           <li
             className="plataform"
             onClick={() => navigate("/plataform/Playstation-5")}
@@ -63,7 +76,7 @@ export const PlataformFilter = () => {
           </li>
         </ul>
 
-        <button className="move-button">
+        <button className="move-button" onClick={handleMoveRight}>
           <SvgIcon
             className="move-icon"
             component={ChevronRightIcon}
