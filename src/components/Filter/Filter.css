@@ -18,14 +18,67 @@
   align-items: center;
   text-align: center;
   font-size: 80%;
-  background-color: rgb(192, 183, 105);
+  background-color: rgba(235, 184, 17, 0.747);
   text-decoration: none;
   color: black;
   font-weight: bold;
   border-radius: 7.5px;
+  animation-name: button-activation--out;
+  animation-fill-mode: forwards;
+  outline: 0;
+  border: solid 0px transparent;
 }
 
-.filter .link:hover {
+
+
+.filter .link:active {
   text-decoration: underline;
   box-shadow: 2px 2px 10px khaki;
+  animation-duration: 0.15s;
+  animation-name: button-activation--in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes button-activation--in {
+  0% {
+    box-shadow: 5px 5px 5px 0px rgb(0, 0, 0),
+      -1px -1px 5px -3px rgb(0, 0, 0);
+  }
+
+  50% {
+    box-shadow: 0px 0px 5px 0px rgb(0, 0, 0),
+      0px 0px 5px -3px rgb(0, 0, 0);
+  }
+
+  51% {
+    box-shadow: 0px 0px 5px 0px rgb(0, 0, 0) inset,
+      0px 0px 5px -3px rgb(0, 0, 0) inset;
+  }
+
+  100% {
+    box-shadow: 5px 5px 5px 0px rgb(0, 0, 0) inset,
+      -1px -1px 5px -3px rgb(0, 0, 0) inset;
+  }
+}
+
+@keyframes button-activation--out {
+  0% {
+    box-shadow: 5px 5px 5px 0px rgb(0, 0, 1) inset,
+      -1px -1px 5px -3px rgb(0, 0, 1) inset;
+  }
+
+  50% {
+    box-shadow: 0px 0px 5px 0px rgb(0, 0, 1) inset,
+      0px 0px 5px -3px rgb(0, 0, 1) inset;
+  }
+
+  51% {
+    box-shadow: 0px 0px 5px 0px rgb(0, 0, 1),
+      0px 0px 5px -3px rgb(0, 0, 1);
+  }
+
+  100% {
+    box-shadow: 5px 5px 5px 0px rgb(0, 0, 1),
+      -1px -1px 5px -3px rgb(0, 0, 1);
+  }
 }
