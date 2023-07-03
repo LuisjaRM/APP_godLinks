@@ -7,8 +7,8 @@
 
   "login": "Iniciar sesión",
   "signup": "Regístrate",
-  "email": "Correo electrónico",
-  "password": "Contraseña",
+  "email": "Correo electrónico:",
+  "password": "Contraseña:",
   "enterPassword": " Introduce tu contraseña",
   "continue": "Continuar",
   "forgot-password": "¿Olvidaste tu contraseña?",

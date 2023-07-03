@@ -60,7 +60,7 @@ export const Login = () => {
 
   // Error messages
 
-  error === "Email o contraseña incorrectos" && setError();
+  error === "Email o contraseña incorrectos" && setError("Hola");
 
   return (
     <section className="login">
@@ -90,6 +90,7 @@ export const Login = () => {
           </label>
           <section className="input-wrap">
             <input
+              className="password-input"
               placeholder="Escribe tu contraseña"
               type={seePassword ? "text" : "password"}
               name="login-password"
@@ -97,7 +98,12 @@ export const Login = () => {
               id="login-password"
               value={password}
               required
-              onChange={(e) => setPassword(e.target.value)}
+              onKeyDown={(e) => {
+                e.key === "Enter" && e.preventDefault();
+              }}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
             />
 
             <button

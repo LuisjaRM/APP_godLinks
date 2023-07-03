@@ -113,6 +113,7 @@ export const RecoverPassword = () => {
   // See Password
 
   const [seePassword, setSeePassword] = useState(false);
+  const [seeRepeatPassword, setSeeRepeatPassword] = useState(false);
 
   // Error messages
 
@@ -214,6 +215,9 @@ export const RecoverPassword = () => {
                   id="reset-password"
                   value={newPass1}
                   required
+                  onKeyDown={(e) => {
+                    e.key === "Enter" && e.preventDefault();
+                  }}
                   onChange={(e) => setNewPass1(e.target.value)}
                 />
 
@@ -240,11 +244,14 @@ export const RecoverPassword = () => {
               <section className="input-wrap">
                 <input
                   placeholder="Introduce tu contraseña"
-                  type={seePassword ? "text" : "password"}
+                  type={seeRepeatPassword ? "text" : "password"}
                   name="reset-confirm-password"
                   id="reset-confirm-password"
                   value={newPass2}
                   required
+                  onKeyDown={(e) => {
+                    e.key === "Enter" && e.preventDefault();
+                  }}
                   onChange={(e) => setNewPass2(e.target.value)}
                 />
 
@@ -252,7 +259,7 @@ export const RecoverPassword = () => {
                   className="eye-button"
                   onClick={(e) => {
                     e.preventDefault();
-                    setSeePassword(!seePassword);
+                    setSeeRepeatPassword(!seeRepeatPassword);
                   }}
                 >
                   <SvgIcon
