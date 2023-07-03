@@ -4,7 +4,9 @@ import { useContext } from "react";
 const NightModeContext = React.createContext();
 
 export const NightModeProvider = ({ children }) => {
-  const [nightMode, toggleNightMode] = useState(localStorage.getItem("Theme"));
+  const [nightMode, toggleNightMode] = useState(
+    localStorage.getItem("Theme") || "night"
+  );
 
   useEffect(() => {
     localStorage.setItem("Theme", nightMode);

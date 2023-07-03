@@ -30,9 +30,12 @@ export const Root = () => {
 
   // Scroll
 
-  const bodyRef = useRef(null);
+  // const bodyRef = useRef(null);
 
-  // bodyRef.current.scrollBy(0, 1000);
+  // const handleMoveUp = () => {
+  //   console.log("click");
+  //   bodyRef.current.scrollBy(0, 100);
+  // };
 
   // Intl
 
@@ -43,25 +46,31 @@ export const Root = () => {
       locale={"es" || localStorage.getItem("language")}
       messages={language === "es" ? messagesES : messagesEN}
     >
-      <section ref={bodyRef} className="body">
-        <Header />
+      {/* <section ref={bodyRef} className="body"> */}
+      <Header />
 
-        {showFilter && (
-          <aside>
-            <Filter />
-            <PlataformFilter />
-          </aside>
-        )}
+      {showFilter && (
+        <aside>
+          <Filter />
+          <PlataformFilter />
+        </aside>
+      )}
 
-        <main>
-          <Outlet />
-          <LoginOrSignup isLogin={isLogin} setIsLogin={setIsLogin} />
-          <VerifyUser setIsLogin={setIsLogin} />
-          <RecoverPassword />
-        </main>
+      <main>
+        <Outlet />
+        <LoginOrSignup isLogin={isLogin} setIsLogin={setIsLogin} />
+        <VerifyUser setIsLogin={setIsLogin} />
+        <RecoverPassword />
+      </main>
 
-        <Footer />
-      </section>
+      {/* <aside>
+          <button onClick={handleMoveUp} className="move-up">
+            A
+          </button>
+        </aside> */}
+
+      <Footer />
+      {/* </section> */}
     </IntlProvider>
   );
 };

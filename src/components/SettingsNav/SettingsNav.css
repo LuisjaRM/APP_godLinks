@@ -50,30 +50,17 @@ li.language button.en {
   background-color: rgba(1, 1, 97, 0.4);
 }
 
-/* .settings-nav .settings-icon {
-  font-size: 50%;
-} */
-
-.modal.hide {
-  display: none;
-}
-
-.modal {
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
-  animation: fadeInOut 0.5s ease-in-out;
+.settings-nav .toggle-button {
+  cursor: pointer;
+  border: none;
+  padding: 0.25rem;
+  background-color: rgba(0, 0, 0, 0);
+  background-color: black;
 }
 
 /* animacion */
 
-.verstappen {
+/* .verstappen {
   position: absolute;
   opacity: 0;
 }
@@ -114,4 +101,4 @@ li.language button.en {
   100% {
     opacity: 1;
   }
-}
+} */
