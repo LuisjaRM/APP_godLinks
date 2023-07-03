@@ -8,8 +8,8 @@
   display: flex;
   flex-direction: column;
   justify-content: end;
-  gap: 1rem;
-  padding: 1rem;
+  gap: 0.5rem;
+  padding: 0.5rem;
   font-size: 75%;
   border-radius: 10px;
   background-color: rgb(196, 186, 104);
@@ -17,29 +17,28 @@
   list-style: none;
 }
 
-/* .settings-nav .day-night {
-  cursor: pointer;
-  width: fit-content;
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+ul.settings-nav li#theme-title,
+ul.settings-nav li#language-title {
   font-weight: bold;
-} */
-
-/* .settings-nav .language {
-  cursor: pointer;
-  height: 1rem;
-  text-decoration: none;
-  color: black;
-  text-align: center;
-  border-bottom: 1px solid black;
-} */
+}
 
 ul.settings-nav li.language button {
+  cursor: pointer;
+  /* margin-right: 0.1rem; */
+  border: 1px solid rgb(1, 1, 97);
+  border-radius: 0.25rem;
+  color: rgb(1, 1, 97);
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+}
+
+li.language button:hover,
+li.language button:active {
+  color: rgb(255, 255, 255);
+  background-color: rgba(1, 1, 97, 0.4);
 }
 
 /* .settings-nav .settings-icon {
-  font-size: 125%;
+  font-size: 50%;
 } */
 
 .modal-back {
@@ -68,7 +67,7 @@ ul.settings-nav li.language button {
 
 .moon {
   font-size: 20px;
-  color: #666;
+  color: #c2c0c0;
   filter: drop-shadow(0 0 2px rgb(255, 250, 250));
   transition: 1s ease;
 }

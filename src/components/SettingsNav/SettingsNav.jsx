@@ -25,6 +25,7 @@ export const SettingsNav = () => {
         }}
       >
         <ul className="settings-nav" onClick={(e) => e.stopPropagation()}>
+          <li id="theme-title">Tema</li>
           <li>
             <label className="lewis">
               <input
@@ -36,6 +37,7 @@ export const SettingsNav = () => {
               <ion-icon name="moon" class="moon"></ion-icon>
             </label>
           </li>
+          <li id="language-title">Idioma</li>
           <li className="language">
             <button onClick={() => setLanguage("es")}>ES</button>
             <button onClick={() => setLanguage("en")}>EN</button>
