@@ -5,7 +5,6 @@ import "./NotFound.css";
 import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 
-
 // Contexts
 
 import { useShowFilter } from "../../contexts/ShowFilter";
@@ -16,7 +15,6 @@ export const NotFound = () => {
 
   // Document Title
   document.title = "¡Ups!";
-  //document.title = "¡Oops!";
 
   // ShowFilter
 
@@ -67,9 +65,9 @@ export const NotFound = () => {
                     src="http://salehriaz.com/404Page/img/astronaut.svg"
                     width="140px"
                   />
-                  <div className="tv-viewport-size">
-                    <div>404</div>
-                  </div>
+                  <aside className="tv-viewport-size">
+                    <p className="error-anim-number">404</p>
+                  </aside>
                 </section>
               </section>
             </section>

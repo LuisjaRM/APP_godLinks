@@ -1,16 +1,19 @@
-.stars {
+.stars,
+.page_404 {
   /* 100vh - vh de header, footer y el padding de main */
   height: calc(100vh - 7.5vh - 7.5vh - 2rem);
   background-color: white;
   color: black;
 }
 
-
-
 .link-bt-error {
   text-decoration: none;
 }
 
+.error-anim-number {
+  font-size: 30px;
+  color: white;
+}
 
 .paragraph {
   display: flex;
@@ -337,5 +340,3 @@ article .link_404 {
     margin-top: -45px;
   }
 }
-
-
