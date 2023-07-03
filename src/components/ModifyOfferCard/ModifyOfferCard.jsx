@@ -2,7 +2,7 @@ import "./ModifyOfferCard.css";
 
 // Intl
 
-import {FormattedMessage} from 'react-intl';
+import { FormattedMessage } from "react-intl";
 
 // Material
 
@@ -393,6 +393,28 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
     }
   };
 
+  // PreviweImage
+
+  const [filepreview, setFilepreview] = useState();
+
+  // Error messages
+
+  error === `"url" length must be less than or equal to 280 characters long` &&
+    setError();
+
+  error === `"title" length must be less than or equal to 60 characters long` &&
+    setError();
+
+  error ===
+    `"descrip" length must be less than or equal to 280 characters long` &&
+    setError();
+
+  error === `"offer_price" must be a positive number` && setError();
+
+  error === `"price" must be a positive number` && setError();
+
+  error === "La fecha de caducidad no puede ser anterior a hoy" && setError();
+
   return (
     <>
       <ul className="modify-offer-card">
@@ -419,14 +441,24 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
                   name="modify-image"
                   id="modify-image"
                   required
-                  onChange={(e) => setImage(e.target.files[0])}
+                  onChange={(e) => {
+                    setImage(e.target.files[0]);
+                    setFilepreview(URL.createObjectURL(e.target.files[0]));
+                  }}
                 />
-
-                <SvgIcon
-                  className="post-image-icon"
-                  component={ImageSearchIcon}
-                  inheritViewBox
-                />
+                {filepreview ? (
+                  <img
+                    className="image-preview"
+                    src={filepreview}
+                    alt="image-preview"
+                  />
+                ) : (
+                  <SvgIcon
+                    className="post-image-icon"
+                    component={ImageSearchIcon}
+                    inheritViewBox
+                  />
+                )}
               </label>
             </fieldset>
 
@@ -455,7 +487,9 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
         <li className="field">
           <section className="field-header">
-            <h2 className="field-title"><FormattedMessage id="link"/></h2>
+            <h2 className="field-title">
+              <FormattedMessage id="link" />
+            </h2>
 
             <button
               onClick={() => setHideFormUrl(!hideFormUrl)}
@@ -502,7 +536,9 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
         <li className="field">
           <section className="field-header">
-            <h2 className="field-title"><FormattedMessage id="title"/></h2>
+            <h2 className="field-title">
+              <FormattedMessage id="title" />
+            </h2>
 
             <button
               onClick={() => setHideFormTitle(!hideFormTitle)}
@@ -553,7 +589,9 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
         <li className="field">
           <section className="field-header">
-            <h2 className="field-title"><FormattedMessage id="description"/></h2>
+            <h2 className="field-title">
+              <FormattedMessage id="description" />
+            </h2>
 
             <button
               onClick={() => setHideFormDescrip(!hideFormDescrip)}
@@ -603,7 +641,9 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
         <li className="field">
           <section className="field-header">
-            <h2 className="field-title"><FormattedMessage id="offerprice"/></h2>
+            <h2 className="field-title">
+              <FormattedMessage id="offerprice" />
+            </h2>
 
             <button
               onClick={() => setHideFormOfferPrice(!hideFormOfferPrice)}
@@ -653,7 +693,9 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
         <li className="field">
           <section className="field-header">
-            <h2 className="field-title"><FormattedMessage id="originalprice"/></h2>
+            <h2 className="field-title">
+              <FormattedMessage id="originalprice" />
+            </h2>
 
             <button
               onClick={() => setHideFormPrice(!hideFormPrice)}
@@ -703,7 +745,9 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
         <li className="field">
           <section className="field-header">
-            <h2 className="field-title"><FormattedMessage id="platform"/></h2>
+            <h2 className="field-title">
+              <FormattedMessage id="platform" />
+            </h2>
 
             <button
               onClick={() => setHideFormPlataform(!hideFormPlataform)}
@@ -757,7 +801,9 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
         <li className="field">
           <section className="field-header">
-            <h2 className="element"><FormattedMessage id="expiration-date"/></h2>
+            <h2 className="element">
+              <FormattedMessage id="expiration-date" />
+            </h2>
 
             <button
               onClick={() => setHideFormOfferExpiry(!hideFormOfferExpiry)}
@@ -808,7 +854,9 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
         <li>
           <button onClick={handleClickDelete} className="delete-button">
-            <p><FormattedMessage id="deleteoffer"/></p>
+            <p>
+              <FormattedMessage id="deleteoffer" />
+            </p>
 
             <SvgIcon
               className="delete-offer-icon"
@@ -823,16 +871,18 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
         <section className="modal-back dark" onClick={handleClickAway}>
           <section className="modal-body little">
             <h2>
-              {clickDelete
-              ? <FormattedMessage id="modify-offer-confirmation"/> 
-              :<FormattedMessage id="delete-offer-confirmation"/>}
+              {clickDelete ? (
+                <FormattedMessage id="modify-offer-confirmation" />
+              ) : (
+                <FormattedMessage id="delete-offer-confirmation" />
+              )}
             </h2>
             <section className="buttons">
               <button className="button" onClick={handleClickConfirm}>
-              <FormattedMessage id="yes"/>
+                <FormattedMessage id="yes" />
               </button>
               <button className="button" onClick={handleClickCancel}>
-              <FormattedMessage id="no"/>
+                <FormattedMessage id="no" />
               </button>
             </section>
           </section>
@@ -844,31 +894,51 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
         <section className="modal-back dark">
           <section className="modal-body little">
             {fieldChanged === "image" && (
-              <h3><FormattedMessage id="image-change-success"/></h3>
+              <h3>
+                <FormattedMessage id="image-change-success" />
+              </h3>
             )}
             {fieldChanged === "url" && (
-              <h3><FormattedMessage id="link-change-success"/></h3>
+              <h3>
+                <FormattedMessage id="link-change-success" />
+              </h3>
             )}
             {fieldChanged === "title" && (
-              <h3><FormattedMessage id="title-change-success"/></h3>
+              <h3>
+                <FormattedMessage id="title-change-success" />
+              </h3>
             )}
             {fieldChanged === "descrip" && (
-              <h3><FormattedMessage id="description-change-success"/></h3>
+              <h3>
+                <FormattedMessage id="description-change-success" />
+              </h3>
             )}
             {fieldChanged === "offer_price" && (
-              <h3><FormattedMessage id="image-change-success"/></h3>
+              <h3>
+                <FormattedMessage id="image-change-success" />
+              </h3>
             )}
             {fieldChanged === "price" && (
-              <h3><FormattedMessage id="offerprice-change-success"/></h3>
+              <h3>
+                <FormattedMessage id="offerprice-change-success" />
+              </h3>
             )}
             {fieldChanged === "plataform" && (
-              <h3><FormattedMessage id="platform-change-success"/></h3>
+              <h3>
+                <FormattedMessage id="platform-change-success" />
+              </h3>
             )}
             {fieldChanged === "offer_expiry" && (
-              <h3><FormattedMessage id="expiration-change-success"/></h3>
+              <h3>
+                <FormattedMessage id="expiration-change-success" />
+              </h3>
             )}
 
-            {clickDelete && <h3><FormattedMessage id="offer-deleted-success"/></h3>}
+            {clickDelete && (
+              <h3>
+                <FormattedMessage id="offer-deleted-success" />
+              </h3>
+            )}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="50"

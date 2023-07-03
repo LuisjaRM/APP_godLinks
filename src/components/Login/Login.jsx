@@ -1,11 +1,18 @@
 import "./Login.css";
 
+// Intl
+
+import { FormattedMessage } from "react-intl";
+
+// Material
+
+import { SvgIcon } from "@mui/material";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+
 // React
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {FormattedMessage} from 'react-intl';
-
 
 // Contexts
 
@@ -47,13 +54,25 @@ export const Login = () => {
     }
   };
 
+  // See Password
+
+  const [seePassword, setSeePassword] = useState(false);
+
+  // Error messages
+
+  error === "Email o contraseña incorrectos" && setError();
+
   return (
     <section className="login">
-      <h2 className="title"><FormattedMessage id="Login"/> </h2>
+      <h2 className="title">
+        <FormattedMessage id="login" />
+      </h2>
 
       <form className="form" onSubmit={handleForm}>
         <fieldset>
-          <label htmlFor="login-email"><FormattedMessage id="email"/></label>
+          <label htmlFor="login-email">
+            <FormattedMessage id="email" />
+          </label>
           <input
             placeholder="ejemplo@email.com"
             type="email"
@@ -66,20 +85,40 @@ export const Login = () => {
         </fieldset>
 
         <fieldset>
-          <label htmlFor="login-password"><FormattedMessage id="password"/></label>
-          <input
-            placeholder= "Escribe tu contraseña"
-            type="password"
-            name="login-password"
-            autoComplete="login-password"
-            id="login-password"
-            value={password}
-            required
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <label htmlFor="login-password">
+            <FormattedMessage id="password" />
+          </label>
+          <section className="input-wrap">
+            <input
+              placeholder="Escribe tu contraseña"
+              type={seePassword ? "text" : "password"}
+              name="login-password"
+              autoComplete="login-password"
+              id="login-password"
+              value={password}
+              required
+              onChange={(e) => setPassword(e.target.value)}
+            />
+
+            <button
+              className="eye-button"
+              onClick={(e) => {
+                e.preventDefault();
+                setSeePassword(!seePassword);
+              }}
+            >
+              <SvgIcon
+                className="eye-icon"
+                component={VisibilityIcon}
+                inheritViewBox
+              />
+            </button>
+          </section>
         </fieldset>
 
-        <button className="button login-button"><FormattedMessage id="continue"/></button>
+        <button className="button login-button">
+          <FormattedMessage id="continue" />
+        </button>
       </form>
 
       {error ? <p className="error">⚠️ {error}</p> : null}
@@ -92,7 +131,7 @@ export const Login = () => {
           setShowLogin(!showLogin);
         }}
       >
-        <FormattedMessage id="forgot-password"/>
+        <FormattedMessage id="forgot-password" />
       </p>
     </section>
   );

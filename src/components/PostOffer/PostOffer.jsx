@@ -2,7 +2,7 @@ import "./PostOffer.css";
 
 // Intl
 
-import {FormattedMessage} from 'react-intl';
+import { FormattedMessage } from "react-intl";
 
 // react
 
@@ -58,6 +58,24 @@ export const PostOffer = () => {
     }
   };
 
+  // Error messages
+
+  error === `"url" length must be less than or equal to 280 characters long` &&
+    setError();
+
+  error === `"title" length must be less than or equal to 60 characters long` &&
+    setError();
+
+  error ===
+    `"descrip" length must be less than or equal to 280 characters long` &&
+    setError();
+
+  error === `"offer_price" must be a positive number` && setError();
+
+  error === `"price" must be a positive number` && setError();
+
+  error === "La fecha de caducidad no puede ser anterior a hoy" && setError();
+
   return (
     <section className={`post-offer-body ${openPostOffer ? "show" : ""}`}>
       <section
@@ -72,7 +90,9 @@ export const PostOffer = () => {
         </button>
         <form className="form" onSubmit={handleForm}>
           <fieldset>
-            <label><FormattedMessage id="link"/></label>
+            <label>
+              <FormattedMessage id="link" />
+            </label>
             <input
               placeholder="https://www.tupagina.com/"
               type="url"
@@ -86,7 +106,9 @@ export const PostOffer = () => {
           </fieldset>
 
           <fieldset>
-            <label><FormattedMessage id="title"/></label>
+            <label>
+              <FormattedMessage id="title" />
+            </label>
             <input
               placeholder="Título"
               type="text"
@@ -100,7 +122,9 @@ export const PostOffer = () => {
           </fieldset>
 
           <fieldset>
-            <label><FormattedMessage id="description"/></label>
+            <label>
+              <FormattedMessage id="description" />
+            </label>
             <textarea
               placeholder="Escribe una breve descripción de la oferta..."
               type="text"
@@ -113,7 +137,9 @@ export const PostOffer = () => {
           </fieldset>
 
           <fieldset className="price-fieldset">
-            <label><FormattedMessage id="offerprice"/></label>
+            <label>
+              <FormattedMessage id="offerprice" />
+            </label>
             <input
               placeholder="00.00 €"
               type="number"
@@ -123,8 +149,10 @@ export const PostOffer = () => {
               value={offer_price}
               onChange={(e) => setOffer_price(e.target.value)}
             />
-            
-            <label><FormattedMessage id="originalprice"/></label>
+
+            <label>
+              <FormattedMessage id="originalprice" />
+            </label>
             <input
               placeholder="00.00 €"
               type="number"
@@ -137,7 +165,9 @@ export const PostOffer = () => {
           </fieldset>
 
           <fieldset className="last-fieldset">
-            <label><FormattedMessage id="platform"/></label>
+            <label>
+              <FormattedMessage id="platform" />
+            </label>
             <select
               name="plataform"
               id="plataform"
@@ -152,7 +182,9 @@ export const PostOffer = () => {
               <option value="PC-Gaming">PC Gaming</option>
             </select>
 
-            <label><FormattedMessage id="expiration-date"/></label>
+            <label>
+              <FormattedMessage id="expiration-date" />
+            </label>
             <input
               type="date"
               name="offer_expiry"
@@ -165,7 +197,9 @@ export const PostOffer = () => {
 
           {error ? <p className="error">⚠️ {error}</p> : null}
 
-          <button className="button"><FormattedMessage id="continue"/></button>
+          <button className="button">
+            <FormattedMessage id="continue" />
+          </button>
         </form>
       </section>
 

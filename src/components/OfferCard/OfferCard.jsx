@@ -106,6 +106,7 @@ export const OfferCard = ({ offer }) => {
   // Get patch of window location
 
   const windowLocation = window.location.href.slice(21, -2);
+  const windowOfferLocation = window.location.href.slice(21);
 
   // CSS state to descrip
 
@@ -125,7 +126,8 @@ export const OfferCard = ({ offer }) => {
           <FormattedMessage id="expired-offer" />
         </p>
       )}
-      {windowLocation === "/userInfo" &&
+      {(windowLocation === "/userInfo" ||
+        windowOfferLocation === `/offerById/${offer.id}`) &&
         !expired &&
         user.id === offer.user_id && (
           <section className="edit-wrap">
