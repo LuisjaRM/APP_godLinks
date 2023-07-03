@@ -2,7 +2,7 @@ import "./PostOfferImage.css";
 
 // Intl
 
-import {FormattedMessage} from 'react-intl';
+import { FormattedMessage } from "react-intl";
 
 // Material
 
@@ -68,13 +68,23 @@ export const PostOfferImage = ({
     }
   };
 
+  // PreviweImage
+
+  const [filepreview, setFilepreview] = useState();
+
+  // Error messages
+
+  error === "No has seleccionado ninguna imagen" && setError();
+
   return (
     <section className={`post-offer-image-body ${openPostImage ? "show" : ""}`}>
       <section
         onClick={(e) => e.stopPropagation()}
         className={`post-offer-image ${openPostImage ? "show" : ""}`}
       >
-        <h2 className="title"><FormattedMessage id="upload-image"/></h2>
+        <h2 className="title">
+          <FormattedMessage id="upload-image" />
+        </h2>
 
         <form className="form" onSubmit={handleForm}>
           <fieldset>
@@ -84,17 +94,29 @@ export const PostOfferImage = ({
                 type="file"
                 name="input-image"
                 id="input-image"
-                onChange={(e) => setImage(e.target.files[0])}
+                onChange={(e) => {
+                  setImage(e.target.files[0]);
+                  setFilepreview(URL.createObjectURL(e.target.files[0]));
+                }}
               />
-
-              <SvgIcon
-                className="post-image-icon"
-                component={ImageSearchIcon}
-                inheritViewBox
-              />
+              {filepreview ? (
+                <img
+                  className="image-preview"
+                  src={filepreview}
+                  alt="image-preview"
+                />
+              ) : (
+                <SvgIcon
+                  className="post-image-icon"
+                  component={ImageSearchIcon}
+                  inheritViewBox
+                />
+              )}
             </label>
           </fieldset>
+
           {error ? <p className="error">{error}</p> : null}
+
           <button className="post-offer-button">
             <SvgIcon
               className="post-offer-icon"
@@ -105,7 +127,9 @@ export const PostOfferImage = ({
         </form>
 
         <section className="post-offer-noImage">
-          <p> <FormattedMessage id="upload-without-image"/></p>
+          <p>
+            <FormattedMessage id="upload-without-image" />
+          </p>
 
           <button
             className="post-offer-button"
@@ -133,8 +157,9 @@ export const PostOfferImage = ({
       {showUploadOfferModal && (
         <section className="modal-back">
           <section className="modal-body little">
-
-            <h3><FormattedMessage id="offeruploaded"/></h3>
+            <h3>
+              <FormattedMessage id="offeruploaded" />
+            </h3>
 
             <svg
               xmlns="http://www.w3.org/2000/svg"

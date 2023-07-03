@@ -1,9 +1,12 @@
 import "./PostComment.css";
 
+// Intl
+
+import { FormattedMessage } from "react-intl";
+
 // React
 
 import { useState } from "react";
-import {FormattedMessage} from 'react-intl';
 
 // Context
 
@@ -31,6 +34,12 @@ export const PostComment = ({ id, refresh, offer }) => {
       setError(error.message);
     }
   };
+
+  // Error messages
+
+  error ===
+    `"comment" length must be less than or equal to 170 characters long` &&
+    setError();
 
   return (
     <section className="post-comment">

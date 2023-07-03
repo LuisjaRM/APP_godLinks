@@ -15,10 +15,25 @@
 }
 
 .login fieldset {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   border: none;
+}
+
+.login .input-wrap {
+  width: 150px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.login .eye-button {
+  cursor: pointer;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  color: khaki;
 }
 
 .login input {

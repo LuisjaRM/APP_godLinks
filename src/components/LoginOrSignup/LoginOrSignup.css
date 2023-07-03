@@ -1,3 +1,7 @@
 .modal-body .change-button {
   cursor: pointer;
 }
+
+.modal-body .change-button:hover {
+  text-decoration: underline;
+}

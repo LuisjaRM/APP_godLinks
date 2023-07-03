@@ -42,6 +42,10 @@ export const PostVote = ({ votes, offerId, userId }) => {
     }
   };
 
+  // Error messages
+
+  // error === "No puedes votar tu propia oferta" && setError();
+
   return (
     <section className="rating-wrap">
       <ul className="rating">

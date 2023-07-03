@@ -74,6 +74,10 @@ footer .about-us a {
   color: khaki;
 }
 
+footer .about-us p {
+  color: khaki;
+}
+
 footer .about-us a:hover {
   text-decoration: underline;
 }

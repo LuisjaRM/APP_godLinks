@@ -1,5 +1,9 @@
 import "./CommentCard.css";
 
+// Intl
+
+import { FormattedMessage } from "react-intl";
+
 // Material
 
 import { SvgIcon } from "@mui/material";
@@ -11,7 +15,6 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 
 import { useNavigate } from "react-router";
 import { useState } from "react";
-import {FormattedMessage} from 'react-intl';
 
 // Context
 
@@ -139,6 +142,12 @@ export const CommentsCard = ({ comment, refresh }) => {
     }
   };
 
+  // Error messages
+
+  error ===
+    `"comment" length must be less than or equal to 170 characters long` &&
+    setError();
+
   return (
     <>
       <section className="comment-card">
@@ -246,13 +255,15 @@ export const CommentsCard = ({ comment, refresh }) => {
       {showConfirmModal ? (
         <section className="modal-back dark" onClick={handleClickAway}>
           <section className="modal-body little">
-            <h2><FormattedMessage id="comment-delete?"/></h2>
+            <h2>
+              <FormattedMessage id="comment-delete?" />
+            </h2>
             <section className="buttons">
               <button className="button" onClick={handleClickConfirm}>
-              <FormattedMessage id="yes"/>
+                <FormattedMessage id="yes" />
               </button>
               <button className="button" onClick={handleClickCancel}>
-              <FormattedMessage id="no"/>
+                <FormattedMessage id="no" />
               </button>
             </section>
           </section>
@@ -264,7 +275,11 @@ export const CommentsCard = ({ comment, refresh }) => {
       {showChangeMadeModal ? (
         <section className="modal-back dark">
           <section className="modal-body little">
-            {deleteComment && <h3><FormattedMessage id="comment-delete-success"/></h3>}
+            {deleteComment && (
+              <h3>
+                <FormattedMessage id="comment-delete-success" />
+              </h3>
+            )}
           </section>
         </section>
       ) : (

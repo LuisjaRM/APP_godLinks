@@ -37,6 +37,14 @@
   border-radius: 50%;
 }
 
+.header-profile .image-preview {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  background-color: white;
+}
+
 .header-profile .user-image-profile-label:hover {
   box-shadow: 2px 2px 10px khaki;
 }

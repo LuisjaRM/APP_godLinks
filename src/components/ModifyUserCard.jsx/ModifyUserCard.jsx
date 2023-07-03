@@ -2,7 +2,7 @@ import "./ModifyUserCard.css";
 
 // Intl
 
-import {FormattedMessage} from 'react-intl';
+import { FormattedMessage } from "react-intl";
 
 // Material
 
@@ -268,6 +268,39 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
     }
   };
 
+  // PreviweImage
+
+  const [filepreview, setFilepreview] = useState();
+
+  // Error messages
+
+  error === `"password" length must be at least 8 characters long` &&
+    setError(<FormattedMessage id="error-password-8cha" />);
+
+  error ===
+    `"password" length must be less than or equal to 20 characters long` &&
+    setError();
+
+  error === `"password" should not contain white spaces` && setError();
+
+  error === `"password" should contain at least 1 special character` &&
+    setError();
+
+  error === `"password" should contain at least 1 uppercase character` &&
+    setError();
+
+  error === `"password" should contain at least 1 numeric character` &&
+    setError();
+
+  error === `"user" length must be at least 4 characters long` && setError();
+
+  error === `"user" length must be less than or equal to 15 characters long` &&
+    setError();
+
+  error === "No tienes permisos para modificar este usuario" && setError();
+
+  error === "La nueva contraseña es igual a la anterior" && setError();
+
   return (
     <>
       <ul className="header-profile">
@@ -293,14 +326,24 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
                   name="modify-image"
                   id="modify-image"
                   required
-                  onChange={(e) => setAvatar(e.target.files[0])}
+                  onChange={(e) => {
+                    setAvatar(e.target.files[0]);
+                    setFilepreview(URL.createObjectURL(e.target.files[0]));
+                  }}
                 />
-
-                <SvgIcon
-                  className="post-image-icon"
-                  component={ImageSearchIcon}
-                  inheritViewBox
-                />
+                {filepreview ? (
+                  <img
+                    className="image-preview"
+                    src={filepreview}
+                    alt="image-preview"
+                  />
+                ) : (
+                  <SvgIcon
+                    className="post-image-icon"
+                    component={ImageSearchIcon}
+                    inheritViewBox
+                  />
+                )}
               </label>
             </fieldset>
 
@@ -327,13 +370,17 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
           </button>
         </li>
 
-        <li className="created-at"><FormattedMessage id="member-since"/> {dateCreated}</li>
+        <li className="created-at">
+          <FormattedMessage id="member-since" /> {dateCreated}
+        </li>
 
         <li>{error ? <p className="error">⚠️ {error}</p> : null}</li>
 
         <li className="field">
           <section className="field-header">
-            <h2 className="field-title"><FormattedMessage id="username"/></h2>
+            <h2 className="field-title">
+              <FormattedMessage id="username" />
+            </h2>
 
             <button
               className="edit-button"
@@ -386,7 +433,9 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
 
         <li className="field">
           <section className="field-header">
-            <h2 className="field-title"><FormattedMessage id="email"/></h2>
+            <h2 className="field-title">
+              <FormattedMessage id="email" />
+            </h2>
 
             <button
               className="edit-button"
@@ -439,7 +488,9 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
 
         <li className="privacity">
           <section className="title">
-            <h2><FormattedMessage id="privacy"/></h2>
+            <h2>
+              <FormattedMessage id="privacy" />
+            </h2>
 
             <SvgIcon
               className="privacity-icon"
@@ -454,11 +505,13 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
               setShowChangePasswordModal(!showChangePasswordModal);
             }}
           >
-            <FormattedMessage id="change-password"/>
+            <FormattedMessage id="change-password" />
           </button>
 
           <form onSubmit={handleClickDelete}>
-            <button className="delete button"><FormattedMessage id="delete-account"/></button>
+            <button className="delete button">
+              <FormattedMessage id="delete-account" />
+            </button>
           </form>
         </li>
       </ul>
@@ -474,7 +527,9 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
               onSubmit={handleFormNewPassword}
             >
               <fieldset className="modify-password-fieldset">
-                <label htmlFor="oldPassword"><FormattedMessage id="currentpassword"/></label>
+                <label htmlFor="oldPassword">
+                  <FormattedMessage id="currentpassword" />
+                </label>
 
                 <input
                   placeholder="Contraseña actual"
@@ -487,7 +542,9 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
                   onChange={(e) => setOldPassword(e.target.value)}
                 />
 
-                <label htmlFor="newPassword"><FormattedMessage id="newpassword"/></label>
+                <label htmlFor="newPassword">
+                  <FormattedMessage id="newpassword" />
+                </label>
 
                 <input
                   placeholder="Nueva contraseña"
@@ -501,7 +558,9 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
                 />
               </fieldset>
 
-              <button className="button"><FormattedMessage id="continue"/></button>
+              <button className="button">
+                <FormattedMessage id="continue" />
+              </button>
             </form>
           </section>
         </section>
@@ -511,16 +570,18 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
         <section className="modal-back dark" onClick={handleClickAway}>
           <section className="modal-body little">
             <h2>
-            {clickDelete
-              ? <FormattedMessage id="user-delete-confirmation"/>:
-              <FormattedMessage id="user-modify-confirmation"/>}
+              {clickDelete ? (
+                <FormattedMessage id="user-delete-confirmation" />
+              ) : (
+                <FormattedMessage id="user-modify-confirmation" />
+              )}
             </h2>
             <section className="buttons">
               <button className="button" onClick={handleClickConfirm}>
-              <FormattedMessage id="yes"/>
+                <FormattedMessage id="yes" />
               </button>
               <button className="button" onClick={handleClickCancel}>
-              <FormattedMessage id="no"/>
+                <FormattedMessage id="no" />
               </button>
             </section>
           </section>
@@ -531,15 +592,25 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
         <section className="modal-back dark">
           <section className="modal-body little">
             {fieldChanged === "avatar" && (
-              <h3><FormattedMessage id="avatar-modify-success"/></h3>
+              <h3>
+                <FormattedMessage id="avatar-modify-success" />
+              </h3>
             )}
             {fieldChanged === "user" && (
-              <h3><FormattedMessage id="username-modify-success"/></h3>
+              <h3>
+                <FormattedMessage id="username-modify-success" />
+              </h3>
             )}
             {fieldChanged === "newPassword" && (
-              <h3><FormattedMessage id="password-reset-confirmation"/></h3>
+              <h3>
+                <FormattedMessage id="password-reset-confirmation" />
+              </h3>
             )}
-            {clickDelete && <h3><FormattedMessage id="username-delete-success"/></h3>}
+            {clickDelete && (
+              <h3>
+                <FormattedMessage id="username-delete-success" />
+              </h3>
+            )}
 
             <svg
               xmlns="http://www.w3.org/2000/svg"
