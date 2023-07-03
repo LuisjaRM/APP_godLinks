@@ -25,10 +25,14 @@ ul.settings-nav li#language-title {
 ul.settings-nav li.language button {
   cursor: pointer;
   /* margin-right: 0.1rem; */
+  padding: 0.1rem;
   border: 1px solid rgb(1, 1, 97);
-  border-radius: 0.25rem;
+  /* border-radius: 0.25rem; */
   color: rgb(1, 1, 97);
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+}
+
+ul.settings-nav li.language button.es {
 }
 
 li.language button:hover,
@@ -41,7 +45,20 @@ li.language button:active {
   font-size: 50%;
 } */
 
-.modal-back {
+.modal.hide {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
   animation: fadeInOut 0.5s ease-in-out;
 }
 
@@ -52,7 +69,7 @@ li.language button:active {
   opacity: 0;
 }
 
-.sun {
+.last {
   position: absolute;
   font-size: 20px;
   color: #f0cd06;
@@ -61,18 +78,18 @@ li.language button:active {
   transition: 1s ease;
 }
 
-.verstappen:checked ~ .sun {
+.verstappen:checked ~ .last {
   transform: scale(1) rotate(360deg);
 }
 
-.moon {
+.first {
   font-size: 20px;
   color: #c2c0c0;
   filter: drop-shadow(0 0 2px rgb(255, 250, 250));
   transition: 1s ease;
 }
 
-.verstappen:checked ~ .moon {
+.verstappen:checked ~ .first {
   transform: rotate(360deg) scale(0);
 }
 
