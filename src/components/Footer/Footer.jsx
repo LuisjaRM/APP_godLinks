@@ -19,8 +19,6 @@ export const Footer = () => {
 
   const navigate = useNavigate();
 
-  console.log(nightMode);
-
   const handleMoreClick = () => {
     setShow(!show);
   };
