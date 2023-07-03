@@ -15,16 +15,18 @@ import { useNightMode } from "../../contexts/NightModeContext";
 
 export const Footer = () => {
   const [show, setShow] = useState(false);
-  const [nightdayMode] = useNightMode();
+  const [nightMode] = useNightMode();
 
   const navigate = useNavigate();
+
+  console.log(nightMode);
 
   const handleMoreClick = () => {
     setShow(!show);
   };
 
   return (
-    <footer className={`${nightdayMode ? "dark" : "light"}`}>
+    <footer className={`${nightMode === "night" ? "dark" : "light"}`}>
       <section className="footer-header">
         <h2 className="title-footer">GodLinks S.A.</h2>
 
