@@ -10,6 +10,7 @@ import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 
 // Components
 
@@ -20,6 +21,7 @@ import { PostVote } from "../PostVote/PostVote";
 import { useAuth } from "../../contexts/AuthContext";
 import { useShowLogin } from "../../contexts/ShowLoginContext";
 import { useNavigateTo } from "../../contexts/NavigateToContext";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 // Fetchs
 
@@ -59,6 +61,10 @@ export const OfferCard = ({ offer }) => {
     timeSinceCreated_at = day;
     text = "d";
   }
+
+  //Language context
+
+  const [language] = useLanguage();
 
   // Expired Offer Date Logic
 
@@ -100,6 +106,7 @@ export const OfferCard = ({ offer }) => {
   // Get patch of window location
 
   const windowLocation = window.location.href.slice(21, -2);
+  const windowOfferLocation = window.location.href.slice(21);
 
   // CSS state to descrip
 
@@ -114,29 +121,32 @@ export const OfferCard = ({ offer }) => {
       className={`offer-card ${expired ? "expired" : ""}`}
       onClick={handleClickOfferCard}
     >
-      {expired && <p className="expired-offer">Oferta Caducada</p>}
-      {windowLocation === "/userInfo" &&
-      !expired &&
-      user.id === offer.user_id ? (
-        <section className="edit-wrap">
-          <button
-            className="edit"
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              navigate(`/modifyOffer/${offer.id}`);
-            }}
-          >
-            <SvgIcon
-              className={`edit-icon ${expired ? "expired" : ""}`}
-              component={EditIcon}
-              inheritViewBox
-            />
-          </button>
-        </section>
-      ) : (
-        ""
+      {expired && (
+        <p className="expired-offer">
+          <FormattedMessage id="expired-offer" />
+        </p>
       )}
+      {(windowLocation === "/userInfo" ||
+        windowOfferLocation === `/offerById/${offer.id}`) &&
+        !expired &&
+        user.id === offer.user_id && (
+          <section className="edit-wrap">
+            <button
+              className="edit"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                navigate(`/modifyOffer/${offer.id}`);
+              }}
+            >
+              <SvgIcon
+                className={`edit-icon ${expired ? "expired" : ""}`}
+                component={EditIcon}
+                inheritViewBox
+              />
+            </button>
+          </section>
+        )}
       <section className="header">
         <section className="user-info" onClick={handleClickUserInfo}>
           <img
@@ -153,7 +163,9 @@ export const OfferCard = ({ offer }) => {
         </section>
 
         <p className="created" onClick={(e) => e.stopPropagation()}>
-          hace {timeSinceCreated_at} {text}
+          {language === "es"
+            ? `hace ${timeSinceCreated_at} ${text}`
+            : `${timeSinceCreated_at} ${text} ago`}
         </p>
       </section>
 
@@ -192,6 +204,9 @@ export const OfferCard = ({ offer }) => {
           <li className="offer-title">
             <h2>{offer.title}</h2>
           </li>
+          <li className="offer-plataform">
+            {offer.plataform.replace("-", " ")}
+          </li>
           <li className="offer-price">
             <p className="price-dcto">{offer.offer_price} €</p>
             <p className={`price ${expired ? "expired" : ""}`}>
@@ -202,7 +217,7 @@ export const OfferCard = ({ offer }) => {
           <li className={`offer-descrip ${expand ? "expand" : ""}`}>
             {offer.descrip}
 
-            {offer.descrip.length > 58 ? (
+            {offer.descrip.length > 58 && (
               <button
                 className={`expand-button ${expand ? "expand" : ""}`}
                 onClick={(e) => {
@@ -213,8 +228,6 @@ export const OfferCard = ({ offer }) => {
               >
                 {expand ? "⇧" : "..."}
               </button>
-            ) : (
-              ""
             )}
           </li>
         </ul>
@@ -234,7 +247,9 @@ export const OfferCard = ({ offer }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <p>Ir a la oferta</p>
+            <p>
+              <FormattedMessage id="goto-offer" />
+            </p>
 
             <SvgIcon
               className="new-tab-icon"

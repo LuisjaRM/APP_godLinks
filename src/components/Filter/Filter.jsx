@@ -3,6 +3,7 @@ import "./Filter.css";
 // React
 
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import {FormattedMessage} from 'react-intl';
 
 // Contexts
 
@@ -28,22 +29,22 @@ export const Filter = () => {
     <nav className="filter">
       {currentPath !== "/allOffers" ? (
         <Link className="link" to="/allOffers">
-          Todas las ofertas
+          <FormattedMessage id="all-offers"/>
         </Link>
       ) : null}
       {currentPath !== "/" ? (
         <Link className="link" to="/">
-          Ofertas del día
+          <FormattedMessage id="todays-offers"/>
         </Link>
       ) : null}
       {currentPath !== "/offersByVotes" ? (
         <Link className="link" to="/offersByVotes">
-          Ofertas más votadas
+          <FormattedMessage id="most-rated-offers"/>
         </Link>
       ) : null}
       {currentPath !== "/favorites" ? (
         <p onClick={handleClickFavorites} className="link">
-          Ofertas favoritas
+          <FormattedMessage id="favorite-offers"/>
         </p>
       ) : null}
     </nav>

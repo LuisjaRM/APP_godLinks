@@ -5,6 +5,7 @@ import "./NotFound.css";
 import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 
+
 // Contexts
 
 import { useShowFilter } from "../../contexts/ShowFilter";
@@ -15,6 +16,7 @@ export const NotFound = () => {
 
   // Document Title
   document.title = "¡Ups!";
+  //document.title = "¡Oops!";
 
   // ShowFilter
 

@@ -1,5 +1,9 @@
 import "./PostOffer.css";
 
+// Intl
+
+import { FormattedMessage } from "react-intl";
+
 // react
 
 import { useState } from "react";
@@ -29,7 +33,7 @@ export const PostOffer = () => {
   const [descrip, setDescrip] = useState("");
   const [offer_price, setOffer_price] = useState("");
   const [price, setPrice] = useState("");
-  const [plataform, setPlataform] = useState("");
+  const [plataform, setPlataform] = useState("Playstation-5");
   const [offer_expiry, setOffer_expiry] = useState("");
   const [error, setError] = useState("");
 
@@ -54,6 +58,24 @@ export const PostOffer = () => {
     }
   };
 
+  // Error messages
+
+  error === `"url" length must be less than or equal to 280 characters long` &&
+    setError();
+
+  error === `"title" length must be less than or equal to 60 characters long` &&
+    setError();
+
+  error ===
+    `"descrip" length must be less than or equal to 280 characters long` &&
+    setError();
+
+  error === `"offer_price" must be a positive number` && setError();
+
+  error === `"price" must be a positive number` && setError();
+
+  error === "La fecha de caducidad no puede ser anterior a hoy" && setError();
+
   return (
     <section className={`post-offer-body ${openPostOffer ? "show" : ""}`}>
       <section
@@ -68,7 +90,9 @@ export const PostOffer = () => {
         </button>
         <form className="form" onSubmit={handleForm}>
           <fieldset>
-            <label>Enlace:</label>
+            <label>
+              <FormattedMessage id="link" />
+            </label>
             <input
               placeholder="https://www.tupagina.com/"
               type="url"
@@ -82,7 +106,9 @@ export const PostOffer = () => {
           </fieldset>
 
           <fieldset>
-            <label>Título:</label>
+            <label>
+              <FormattedMessage id="title" />
+            </label>
             <input
               placeholder="Título"
               type="text"
@@ -96,7 +122,9 @@ export const PostOffer = () => {
           </fieldset>
 
           <fieldset>
-            <label>Descripción de la oferta:</label>
+            <label>
+              <FormattedMessage id="description" />
+            </label>
             <textarea
               placeholder="Escribe una breve descripción de la oferta..."
               type="text"
@@ -109,7 +137,9 @@ export const PostOffer = () => {
           </fieldset>
 
           <fieldset className="price-fieldset">
-            <label>Precio de la oferta:</label>
+            <label>
+              <FormattedMessage id="offerprice" />
+            </label>
             <input
               placeholder="00.00 €"
               type="number"
@@ -119,7 +149,10 @@ export const PostOffer = () => {
               value={offer_price}
               onChange={(e) => setOffer_price(e.target.value)}
             />
-            <label>Precio original:</label>
+
+            <label>
+              <FormattedMessage id="originalprice" />
+            </label>
             <input
               placeholder="00.00 €"
               type="number"
@@ -132,18 +165,26 @@ export const PostOffer = () => {
           </fieldset>
 
           <fieldset className="last-fieldset">
-            <label>Plataforma:</label>
-            <input
-              placeholder="Plataforma"
-              type="text"
+            <label>
+              <FormattedMessage id="platform" />
+            </label>
+            <select
               name="plataform"
               id="plataform"
-              autoComplete="off"
               value={plataform}
               onChange={(e) => setPlataform(e.target.value)}
-            />
+            >
+              <option value="Playstation-5">Playstation 5</option>
+              <option value="Playstation-4">Playstation 4</option>
+              <option value="Xbox-One">Xbox One</option>
+              <option value="Xbox-Series">Xbox Series</option>
+              <option value="Nintendo-Switch">Nintendo Switch</option>
+              <option value="PC-Gaming">PC Gaming</option>
+            </select>
 
-            <label>Caducidad de la oferta:</label>
+            <label>
+              <FormattedMessage id="expiration-date" />
+            </label>
             <input
               type="date"
               name="offer_expiry"
@@ -156,7 +197,9 @@ export const PostOffer = () => {
 
           {error ? <p className="error">⚠️ {error}</p> : null}
 
-          <button className="button">Continuar</button>
+          <button className="button">
+            <FormattedMessage id="continue" />
+          </button>
         </form>
       </section>
 

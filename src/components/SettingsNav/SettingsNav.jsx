@@ -9,12 +9,14 @@ import { useLanguage } from "../../contexts/LanguageContext";
 // Settings Dropdown
 
 export const SettingsNav = () => {
-  const [, toggleNightMode] = useNightMode();
+  const [nightMode, toggleNightMode] = useNightMode();
+
   const [showSettings, setShowSettings] = useShowSettings();
 
   // Intl
 
-  const [, setLanguage] = useLanguage();
+
+  const [language, setLanguage] = useLanguage();
 
   return (
     showSettings && (
@@ -25,20 +27,41 @@ export const SettingsNav = () => {
         }}
       >
         <ul className="settings-nav" onClick={(e) => e.stopPropagation()}>
+          <li id="theme-title">Tema</li>
           <li>
-            <label className="lewis">
-              <input
-                className="verstappen"
-                type="checkbox"
-                onClick={() => toggleNightMode()}
-              />
-              <ion-icon name="sunny" class="sun"></ion-icon>
-              <ion-icon name="moon" class="moon"></ion-icon>
-            </label>
+            <button
+              onClick={() => {
+                nightMode === "night"
+                  ? toggleNightMode("day")
+                  : toggleNightMode("night");
+              }}
+              className="toggle-button"
+            >
+              {nightMode === "night" ? "🌙" : "🌞"}
+            </button>
           </li>
+
+          <li id="language-title">Idioma</li>
+
           <li className="language">
-            <button onClick={() => setLanguage("es")}>ES</button>
-            <button onClick={() => setLanguage("en")}>EN</button>
+            <button
+              className={language === "es" && "es"}
+              id="button-es"
+              onClick={() => {
+                setLanguage("es");
+              }}
+            >
+              ES
+            </button>
+            <button
+              className={language === "en" && "en"}
+              id="button-en"
+              onClick={() => {
+                setLanguage("en");
+              }}
+            >
+              EN
+            </button>
           </li>
         </ul>
       </section>

@@ -1,5 +1,9 @@
 import "./Footer.css";
 
+// Intl
+
+import { FormattedMessage } from "react-intl";
+
 // React
 
 import { useState } from "react";
@@ -11,21 +15,16 @@ import { useNightMode } from "../../contexts/NightModeContext";
 
 export const Footer = () => {
   const [show, setShow] = useState(false);
-  const [nightdayMode] = useNightMode();
+  const [nightMode] = useNightMode();
 
   const navigate = useNavigate();
 
   const handleMoreClick = () => {
-
     setShow(!show);
   };
 
-  // const scrollUp = () => {
-  //   window.scrollTo({ top: 0, behavior: "smooth" });
-  // };
-
   return (
-    <footer className={`${nightdayMode ? "dark" : "light"}`}>
+    <footer className={`${nightMode === "night" ? "dark" : "light"}`}>
       <section className="footer-header">
         <h2 className="title-footer">GodLinks S.A.</h2>
 
@@ -40,19 +39,21 @@ export const Footer = () => {
 
       <section className={`footer-container ${show ? "show" : ""} `}>
         <section className="about-us">
-          <h3 className="section-title">Sobre nosotros</h3>
+          <h3 className="section-title">
+            <FormattedMessage id="about-us" />
+          </h3>
 
           <a href="mailto:godLinkssa@gmail.com" className="footer-info">
             godLinkssa@gmail.com
           </a>
 
-          <a
+          <p
             onClick={() => {
               navigate("/aboutUs");
             }}
           >
-            Página que habla sobre nosotros
-          </a>
+            <FormattedMessage id="ourpage" />
+          </p>
         </section>
 
         <section className="footer-container-section">
@@ -60,25 +61,27 @@ export const Footer = () => {
             <h3 className="section-title">Menú</h3>
 
             <Link className="menu-item" to="/">
-              Home
+              <FormattedMessage id="home" />
             </Link>
             <Link className="menu-item" to="/favorites">
-              Tus ofertas favoritas
+              <FormattedMessage id="favorite-offers" />
             </Link>
             <Link className="menu-item" to="/offersByVotes">
-              Ofertas mas votadas
+              <FormattedMessage id="most-rated-offers" />
             </Link>
           </section>
 
           <section className="menu">
-            <h3 className="section-title">Legal</h3>
+            <h3 className="section-title">
+              <FormattedMessage id="legal" />
+            </h3>
             <a
               href="https://www.aquasocialmedia.com/blog-dynamic/91-que-es-y-para-que-sirve-la-politica-de-privacidad"
               target="_blank"
               rel="noopener noreferrer"
               className="menu-item"
             >
-              Política de Privacidad
+              <FormattedMessage id="privacy" />
             </a>
             <a
               href="https://blog.hubspot.es/website/que-son-cookies"
@@ -94,13 +97,15 @@ export const Footer = () => {
               rel="noopener noreferrer"
               className="menu-item"
             >
-              Consejo Legal
+              <FormattedMessage id="legaladvice" />
             </a>
           </section>
         </section>
 
         <section className="social-networks">
-          <h3 className="section-title">Síguenos</h3>
+          <h3 className="section-title">
+            <FormattedMessage id="followus" />
+          </h3>
 
           <article className="creator">
             <p>Victor Otero:</p>

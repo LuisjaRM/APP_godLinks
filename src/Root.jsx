@@ -1,13 +1,13 @@
-// React
-
-import { Outlet } from "react-router-dom";
-import { useState } from "react";
-
 // Intl
 
 import { IntlProvider } from "react-intl";
 import messagesEN from "./intl/en.json";
 import messagesES from "./intl/es.json";
+
+// React
+
+import { Outlet } from "react-router-dom";
+import { useRef, useState } from "react";
 
 // Contexts
 
@@ -18,6 +18,7 @@ import { useLanguage } from "./contexts/LanguageContext";
 
 import { Header } from "./components/Header/Header";
 import { Filter } from "./components/Filter/Filter";
+import { PlataformFilter } from "./components/PlataformFilter/PlataformFilter";
 import { LoginOrSignup } from "./components/LoginOrSignup/LoginOrSignup";
 import { VerifyUser } from "./components/VerifyUser/VerifyUser";
 import { RecoverPassword } from "./components/RecoverPassword.jsx/RecoverPassword";
@@ -27,33 +28,49 @@ export const Root = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [showFilter] = useShowFilter();
 
+  // Scroll
+
+  // const bodyRef = useRef(null);
+
+  // const handleMoveUp = () => {
+  //   console.log("click");
+  //   bodyRef.current.scrollBy(0, 100);
+  // };
+
   // Intl
 
   const [language] = useLanguage();
 
   return (
-    <>
-      <IntlProvider
-        locale={language}
-        messages={language === "es" ? messagesES : messagesEN}
-      >
-        <Header />
+    <IntlProvider
+      locale={"es" || localStorage.getItem("language")}
+      messages={language === "es" ? messagesES : messagesEN}
+    >
+      {/* <section ref={bodyRef} className="body"> */}
+      <Header />
 
-        {showFilter && (
-          <aside>
-            <Filter />
-          </aside>
-        )}
+      {showFilter && (
+        <aside>
+          <Filter />
+          <PlataformFilter />
+        </aside>
+      )}
 
-        <main>
-          <Outlet />
-          <LoginOrSignup isLogin={isLogin} setIsLogin={setIsLogin} />
-          <VerifyUser setIsLogin={setIsLogin} />
-          <RecoverPassword />
-        </main>
+      <main>
+        <Outlet />
+        <LoginOrSignup isLogin={isLogin} setIsLogin={setIsLogin} />
+        <VerifyUser setIsLogin={setIsLogin} />
+        <RecoverPassword />
+      </main>
 
-        <Footer />
-      </IntlProvider>
-    </>
+      {/* <aside>
+          <button onClick={handleMoveUp} className="move-up">
+            A
+          </button>
+        </aside> */}
+
+      <Footer />
+      {/* </section> */}
+    </IntlProvider>
   );
 };

@@ -1,5 +1,14 @@
 import "./RecoverPassword.css";
 
+// Intl
+
+import { FormattedMessage } from "react-intl";
+
+// Material
+
+import { SvgIcon } from "@mui/material";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+
 // React
 
 import { useState } from "react";
@@ -66,17 +75,17 @@ export const RecoverPassword = () => {
     e.preventDefault();
 
     if (!recoverCode) {
-      setError("Debes introducir el código de recuperación");
+      setError(<FormattedMessage id="verification-code" />);
       return;
     }
 
     if (!newPass1 || !newPass2) {
-      setError("Debes introducir una contraseña");
+      setError(<FormattedMessage id="enter-password" />);
       return;
     }
 
     if (newPass1 !== newPass2) {
-      setError("Las contraseñas no coinciden");
+      setError(<FormattedMessage id="password-match" />);
       return;
     }
 
@@ -101,6 +110,33 @@ export const RecoverPassword = () => {
     }
   };
 
+  // See Password
+
+  const [seePassword, setSeePassword] = useState(false);
+  const [seeRepeatPassword, setSeeRepeatPassword] = useState(false);
+
+  // Error messages
+
+  error === `"password" length must be at least 8 characters long` &&
+    setError(<FormattedMessage id="error-password-8cha" />);
+
+  error ===
+    `"password" length must be less than or equal to 20 characters long` &&
+    setError();
+
+  error === `"password" should not contain white spaces` && setError();
+
+  error === `"password" should contain at least 1 special character` &&
+    setError();
+
+  error === `"password" should contain at least 1 uppercase character` &&
+    setError();
+
+  error === `"password" should contain at least 1 numeric character` &&
+    setError();
+
+  error === `"user" length must be at least 4 characters long` && setError();
+
   return (
     <>
       <section
@@ -118,11 +154,15 @@ export const RecoverPassword = () => {
           onClick={(e) => e.stopPropagation()}
           className={`modal-body little recover ${!showRecover && "hide"}`}
         >
-          <h2 className="title">Recupera tu contraseña</h2>
+          <h2 className="title">
+            <FormattedMessage id="password-reset" />
+          </h2>
 
           <form className="form" onSubmit={handleFormRecover}>
             <fieldset>
-              <label htmlFor="recover-email">Introduce tu correo:</label>
+              <label htmlFor="recover-email">
+                <FormattedMessage id="email" />
+              </label>
               <input
                 placeholder="example@mail.com"
                 type="email"
@@ -134,7 +174,9 @@ export const RecoverPassword = () => {
               />
             </fieldset>
 
-            <button className="button recover-button">Continuar</button>
+            <button className="button recover-button">
+              <FormattedMessage id="continue" />
+            </button>
           </form>
 
           {error ? <p className="error">{error}</p> : null}
@@ -144,7 +186,9 @@ export const RecoverPassword = () => {
           onClick={(e) => e.stopPropagation()}
           className={`modal-body recover ${!showReset && "hide"}`}
         >
-          <h1 className="title">Reestablece tu contraseña</h1>
+          <h1 className="title">
+            <FormattedMessage id="password-reset" />
+          </h1>
           <form className="form" onSubmit={handleFormReset}>
             <fieldset>
               <label htmlFor="recoverCode">Código:</label>
@@ -160,34 +204,76 @@ export const RecoverPassword = () => {
             </fieldset>
 
             <fieldset>
-              <label htmlFor="reset-password">Nueva Contraseña:</label>
-              <input
-                placeholder="Introduce tu contraseña"
-                type="password"
-                name="reset-password"
-                id="reset-password"
-                value={newPass1}
-                required
-                onChange={(e) => setNewPass1(e.target.value)}
-              />
+              <label htmlFor="reset-password">
+                <FormattedMessage id="enter-password" />
+              </label>
+              <section className="input-wrap">
+                <input
+                  placeholder="Introduce tu contraseña"
+                  type={seePassword ? "text" : "password"}
+                  name="reset-password"
+                  id="reset-password"
+                  value={newPass1}
+                  required
+                  onKeyDown={(e) => {
+                    e.key === "Enter" && e.preventDefault();
+                  }}
+                  onChange={(e) => setNewPass1(e.target.value)}
+                />
+
+                <button
+                  className="eye-button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setSeePassword(!seePassword);
+                  }}
+                >
+                  <SvgIcon
+                    className="eye-icon"
+                    component={VisibilityIcon}
+                    inheritViewBox
+                  />
+                </button>
+              </section>
             </fieldset>
 
             <fieldset>
               <label htmlFor="reset-confirm-password">
-                Repetir nueva Contraseña:
+                <FormattedMessage id="re-enterpassword" />
               </label>
-              <input
-                placeholder="Introduce tu contraseña"
-                type="password"
-                name="reset-confirm-password"
-                id="reset-confirm-password"
-                value={newPass2}
-                required
-                onChange={(e) => setNewPass2(e.target.value)}
-              />
+              <section className="input-wrap">
+                <input
+                  placeholder="Introduce tu contraseña"
+                  type={seeRepeatPassword ? "text" : "password"}
+                  name="reset-confirm-password"
+                  id="reset-confirm-password"
+                  value={newPass2}
+                  required
+                  onKeyDown={(e) => {
+                    e.key === "Enter" && e.preventDefault();
+                  }}
+                  onChange={(e) => setNewPass2(e.target.value)}
+                />
+
+                <button
+                  className="eye-button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setSeeRepeatPassword(!seeRepeatPassword);
+                  }}
+                >
+                  <SvgIcon
+                    className="eye-icon"
+                    component={VisibilityIcon}
+                    inheritViewBox
+                  />
+                </button>
+              </section>
             </fieldset>
 
-            <button className="button reset-button">Continuar</button>
+            <button className="button reset-button">
+              <FormattedMessage id="continue" />
+            </button>
           </form>
 
           {error ? <p className="error">⚠️ {error}</p> : null}
@@ -197,7 +283,9 @@ export const RecoverPassword = () => {
       {showRecoverCodeModal && (
         <section className="modal-back dark">
           <section className="modal-body little verify">
-            <p>Te hemos enviado un correo con un código de recuperación 😃</p>
+            <p>
+              <FormattedMessage id="email-verification" />
+            </p>
           </section>
         </section>
       )}
@@ -205,7 +293,9 @@ export const RecoverPassword = () => {
       {showConfirmModal && (
         <section className="modal-back dark">
           <section className="modal-body little verify">
-            <p>Contraseña modificada con éxito</p>
+            <p>
+              <FormattedMessage id="password-reset-confirmation" />
+            </p>
           </section>
         </section>
       )}

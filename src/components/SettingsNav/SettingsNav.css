@@ -8,8 +8,8 @@
   display: flex;
   flex-direction: column;
   justify-content: end;
-  gap: 1rem;
-  padding: 1rem;
+  gap: 0.5rem;
+  padding: 0.5rem;
   font-size: 75%;
   border-radius: 10px;
   background-color: rgb(196, 186, 104);
@@ -17,43 +17,55 @@
   list-style: none;
 }
 
-/* .settings-nav .day-night {
-  cursor: pointer;
-  width: fit-content;
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+ul.settings-nav li#theme-title,
+ul.settings-nav li#language-title {
   font-weight: bold;
-} */
-
-/* .settings-nav .language {
-  cursor: pointer;
-  height: 1rem;
-  text-decoration: none;
-  color: black;
-  text-align: center;
-  border-bottom: 1px solid black;
-} */
-
-ul.settings-nav li.language button {
 }
 
-/* .settings-nav .settings-icon {
-  font-size: 125%;
-} */
+ul.settings-nav li.language button {
+  cursor: pointer;
+  /* margin-right: 0.1rem; */
+  padding: 0.1rem;
+  border: 1px solid rgb(1, 1, 97);
+  color: rgb(1, 1, 97);
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+}
 
-.modal-back {
-  animation: fadeInOut 0.5s ease-in-out;
+ul.settings-nav li.language button#button-es {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+ul.settings-nav li.language button#button-en {
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
+li.language button:hover,
+li.language button.es,
+li.language button.en,
+li.language button.es,
+li.language button.en {
+  color: rgb(255, 255, 255);
+  background-color: rgba(1, 1, 97, 0.4);
+}
+
+.settings-nav .toggle-button {
+  cursor: pointer;
+  border: none;
+  padding: 0.25rem;
+  background-color: rgba(0, 0, 0, 0);
+  background-color: black;
 }
 
 /* animacion */
 
-.verstappen {
+/* .verstappen {
   position: absolute;
   opacity: 0;
 }
 
-.sun {
+.last {
   position: absolute;
   font-size: 20px;
   color: #f0cd06;
@@ -62,18 +74,18 @@ ul.settings-nav li.language button {
   transition: 1s ease;
 }
 
-.verstappen:checked ~ .sun {
+.verstappen:checked ~ .last {
   transform: scale(1) rotate(360deg);
 }
 
-.moon {
+.first {
   font-size: 20px;
-  color: #666;
+  color: #c2c0c0;
   filter: drop-shadow(0 0 2px rgb(255, 250, 250));
   transition: 1s ease;
 }
 
-.verstappen:checked ~ .moon {
+.verstappen:checked ~ .first {
   transform: rotate(360deg) scale(0);
 }
 
@@ -89,4 +101,4 @@ ul.settings-nav li.language button {
   100% {
     opacity: 1;
   }
-}
+} */

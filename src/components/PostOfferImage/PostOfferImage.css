@@ -48,10 +48,21 @@
 
 .post-offer-image .image-label {
   cursor: pointer;
-  padding: 3rem;
+  width: 152px;
+  height: 152px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: white;
   border: 2px solid black;
   border-radius: 10px;
+}
+
+.post-offer-image .image-preview {
+  width: 144px;
+  height: 144px;
+  object-fit: contain;
+  background-color: white;
 }
 
 .post-offer-image .image-input {

@@ -1,0 +1,39 @@
+.plataform-filter {
+  height: 5vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: rgb(1, 1, 48);
+  color: rgb(163, 156, 94);
+  border-bottom: 1px solid khaki;
+}
+
+.plataform-filter .plataform-list {
+  display: flex;
+  overflow-x: scroll;
+  list-style: none;
+}
+
+.plataform-filter .move-button {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  color: khaki;
+}
+
+.plataform-filter .plataform {
+  cursor: pointer;
+  height: calc(5vh - 1rem);
+  min-width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 80%;
+  font-weight: bold;
+}
+
+.plataform-filter .plataform:hover {
+  text-decoration: underline;
+}

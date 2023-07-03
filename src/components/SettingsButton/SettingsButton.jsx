@@ -32,10 +32,7 @@ export const SettingsButton = () => {
         inheritViewBox
       />
 
-      <SettingsNav
-        showSettings={showSettings}
-        setShowSettings={setShowSettings}
-      />
+      <SettingsNav />
     </button>
   );
 };

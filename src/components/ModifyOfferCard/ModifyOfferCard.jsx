@@ -1,5 +1,9 @@
 import "./ModifyOfferCard.css";
 
+// Intl
+
+import { FormattedMessage } from "react-intl";
+
 // Material
 
 import { SvgIcon } from "@mui/material";
@@ -389,6 +393,28 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
     }
   };
 
+  // PreviweImage
+
+  const [filepreview, setFilepreview] = useState();
+
+  // Error messages
+
+  error === `"url" length must be less than or equal to 280 characters long` &&
+    setError();
+
+  error === `"title" length must be less than or equal to 60 characters long` &&
+    setError();
+
+  error ===
+    `"descrip" length must be less than or equal to 280 characters long` &&
+    setError();
+
+  error === `"offer_price" must be a positive number` && setError();
+
+  error === `"price" must be a positive number` && setError();
+
+  error === "La fecha de caducidad no puede ser anterior a hoy" && setError();
+
   return (
     <>
       <ul className="modify-offer-card">
@@ -415,14 +441,24 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
                   name="modify-image"
                   id="modify-image"
                   required
-                  onChange={(e) => setImage(e.target.files[0])}
+                  onChange={(e) => {
+                    setImage(e.target.files[0]);
+                    setFilepreview(URL.createObjectURL(e.target.files[0]));
+                  }}
                 />
-
-                <SvgIcon
-                  className="post-image-icon"
-                  component={ImageSearchIcon}
-                  inheritViewBox
-                />
+                {filepreview ? (
+                  <img
+                    className="image-preview"
+                    src={filepreview}
+                    alt="image-preview"
+                  />
+                ) : (
+                  <SvgIcon
+                    className="post-image-icon"
+                    component={ImageSearchIcon}
+                    inheritViewBox
+                  />
+                )}
               </label>
             </fieldset>
 
@@ -451,7 +487,9 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
         <li className="field">
           <section className="field-header">
-            <h2 className="field-title">Enlace:</h2>
+            <h2 className="field-title">
+              <FormattedMessage id="link" />
+            </h2>
 
             <button
               onClick={() => setHideFormUrl(!hideFormUrl)}
@@ -498,7 +536,9 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
         <li className="field">
           <section className="field-header">
-            <h2 className="field-title">Título:</h2>
+            <h2 className="field-title">
+              <FormattedMessage id="title" />
+            </h2>
 
             <button
               onClick={() => setHideFormTitle(!hideFormTitle)}
@@ -549,7 +589,9 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
         <li className="field">
           <section className="field-header">
-            <h2 className="field-title">Descripción:</h2>
+            <h2 className="field-title">
+              <FormattedMessage id="description" />
+            </h2>
 
             <button
               onClick={() => setHideFormDescrip(!hideFormDescrip)}
@@ -599,7 +641,9 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
         <li className="field">
           <section className="field-header">
-            <h2 className="field-title">Precio de la oferta:</h2>
+            <h2 className="field-title">
+              <FormattedMessage id="offerprice" />
+            </h2>
 
             <button
               onClick={() => setHideFormOfferPrice(!hideFormOfferPrice)}
@@ -649,7 +693,9 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
         <li className="field">
           <section className="field-header">
-            <h2 className="field-title">Precio original:</h2>
+            <h2 className="field-title">
+              <FormattedMessage id="originalprice" />
+            </h2>
 
             <button
               onClick={() => setHideFormPrice(!hideFormPrice)}
@@ -699,7 +745,9 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
         <li className="field">
           <section className="field-header">
-            <h2 className="field-title">Plataforma:</h2>
+            <h2 className="field-title">
+              <FormattedMessage id="platform" />
+            </h2>
 
             <button
               onClick={() => setHideFormPlataform(!hideFormPlataform)}
@@ -726,17 +774,21 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
             onSubmit={handleFormPlataform}
           >
             <fieldset className="modify-fieldset">
-              <input
-                className="modify-input"
-                type="text"
+              <select
                 name="plataform"
                 id="modify-plataform"
-                autoComplete="off"
                 value={plataform}
                 onChange={(e) => setPlataform(e.target.value)}
-              />
+              >
+                <option value="Playstation-5">Playstation 5</option>
+                <option value="Playstation-4">Playstation 4</option>
+                <option value="Xbox-One">Xbox One</option>
+                <option value="Xbox-Series">Xbox Series</option>
+                <option value="Nintendo-Switch">Nintendo Switch</option>
+                <option value="PC-Gaming">PC Gaming</option>
+              </select>
 
-              <button className="send-modify-button">
+              <button className="send-modify-button light">
                 <SvgIcon
                   className="send-modify-icon"
                   component={SendIcon}
@@ -749,7 +801,9 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
         <li className="field">
           <section className="field-header">
-            <h2 className="element">Caducidad:</h2>
+            <h2 className="element">
+              <FormattedMessage id="expiration-date" />
+            </h2>
 
             <button
               onClick={() => setHideFormOfferExpiry(!hideFormOfferExpiry)}
@@ -787,7 +841,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
                 onChange={(e) => setOffer_expiry(e.target.value)}
               />
 
-              <button className="send-modify-button date">
+              <button className="send-modify-button light">
                 <SvgIcon
                   className="send-modify-icon"
                   component={SendIcon}
@@ -800,7 +854,9 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
 
         <li>
           <button onClick={handleClickDelete} className="delete-button">
-            <p>Borrar oferta</p>
+            <p>
+              <FormattedMessage id="deleteoffer" />
+            </p>
 
             <SvgIcon
               className="delete-offer-icon"
@@ -815,15 +871,18 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
         <section className="modal-back dark" onClick={handleClickAway}>
           <section className="modal-body little">
             <h2>
-              ¿Estás seguro de que quieres
-              {clickDelete ? " borrar" : " modificar"} esta oferta?
+              {clickDelete ? (
+                <FormattedMessage id="modify-offer-confirmation" />
+              ) : (
+                <FormattedMessage id="delete-offer-confirmation" />
+              )}
             </h2>
             <section className="buttons">
               <button className="button" onClick={handleClickConfirm}>
-                Sí
+                <FormattedMessage id="yes" />
               </button>
               <button className="button" onClick={handleClickCancel}>
-                No
+                <FormattedMessage id="no" />
               </button>
             </section>
           </section>
@@ -835,30 +894,78 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
         <section className="modal-back dark">
           <section className="modal-body little">
             {fieldChanged === "image" && (
-              <h3>La imagen se ha modificado con éxito </h3>
+              <h3>
+                <FormattedMessage id="image-change-success" />
+              </h3>
             )}
             {fieldChanged === "url" && (
-              <h3>El enlace se ha modificado con éxito</h3>
+              <h3>
+                <FormattedMessage id="link-change-success" />
+              </h3>
             )}
             {fieldChanged === "title" && (
-              <h3>El título se ha modificado con éxito</h3>
+              <h3>
+                <FormattedMessage id="title-change-success" />
+              </h3>
             )}
             {fieldChanged === "descrip" && (
-              <h3>La descripción se ha modificado con éxito</h3>
+              <h3>
+                <FormattedMessage id="description-change-success" />
+              </h3>
             )}
             {fieldChanged === "offer_price" && (
-              <h3>El precio de la oferta se ha modificado con éxito</h3>
+              <h3>
+                <FormattedMessage id="image-change-success" />
+              </h3>
             )}
             {fieldChanged === "price" && (
-              <h3>El precio original se ha modificado con éxito</h3>
+              <h3>
+                <FormattedMessage id="offerprice-change-success" />
+              </h3>
             )}
             {fieldChanged === "plataform" && (
-              <h3>La plataforma se ha modificado con éxito</h3>
+              <h3>
+                <FormattedMessage id="platform-change-success" />
+              </h3>
             )}
             {fieldChanged === "offer_expiry" && (
-              <h3>La caducidad de la oferta se ha modificado con éxito</h3>
+              <h3>
+                <FormattedMessage id="expiration-change-success" />
+              </h3>
             )}
-            {clickDelete && <h3>Tu oferta se ha eliminado con éxito</h3>}
+
+            {clickDelete && (
+              <h3>
+                <FormattedMessage id="offer-deleted-success" />
+              </h3>
+            )}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="50"
+              width="50"
+              viewBox="0 0 118.43873 118.43873"
+            >
+              <path
+                className="check"
+                strokeLinejoin="round"
+                d="M34.682 60.352l15.61 15.61 33.464-33.464"
+                stroke="#08b237"
+                strokeLinecap="round"
+                strokeWidth="4.3"
+                fill="none"
+              />
+              <circle
+                className="circle"
+                strokeLinejoin="round"
+                cx="59.219"
+                strokeLinecap="round"
+                stroke="#08b237"
+                cy="59.219"
+                r="57.069"
+                strokeWidth="4.3"
+                fill="none"
+              />
+            </svg>
           </section>
         </section>
       ) : (

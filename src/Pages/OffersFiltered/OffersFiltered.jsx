@@ -1,26 +1,30 @@
-import "./AllOffers.css";
+import "./OffersFiltered.css";
 
+// React
 
-// Components
-
-import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
-import { OfferCard } from "../../components/OfferCard/OfferCard";
-import { PostOffer } from "../../components/PostOffer/PostOffer";
-import { Loading } from "../../components/Loading/Loading";
+import { useParams } from "react-router";
 
 // Contexts
 
-import { useAuth } from "../../contexts/AuthContext";
 import { useShowFilter } from "../../contexts/ShowFilter";
+import { useAuth } from "../../contexts/AuthContext";
 
-// Fetchs
+// Components
 
-import { useGetAllOffers } from "../../services/api";
+import { Loading } from "../../components/Loading/Loading";
+import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
+import { OfferCard } from "../../components/OfferCard/OfferCard";
+import { PostOffer } from "../../components/PostOffer/PostOffer";
 
-export const AllOffers = () => {
+// Fetch
+
+import { useGetOffersFiltered } from "../../services/api";
+
+export const OffersFiltered = () => {
+  const { plataform } = useParams();
+
   // Document Title
-  document.title = "Las mejores ofertas del mercado";
-  //document.title = "The best offers in the market";
+  document.title = `${plataform}: las mejores ofertas `;
 
   // ShowFilter
 
@@ -28,7 +32,7 @@ export const AllOffers = () => {
   setShowFilter(true);
 
   const { token } = useAuth();
-  const { offers, loading, error } = useGetAllOffers(token);
+  const { offers, loading, error } = useGetOffersFiltered(token, plataform);
 
   if (loading) return <Loading />;
   if (error) return <ErrorMessage />;
