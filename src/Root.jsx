@@ -32,7 +32,7 @@ export const Root = () => {
 
   const bodyRef = useRef(null);
 
-  bodyRef.current.scrollBy(0, 1000);
+  // bodyRef.current.scrollBy(0, 1000);
 
   // Intl
 
