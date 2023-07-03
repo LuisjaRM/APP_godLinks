@@ -5,20 +5,17 @@ import "./SettingsNav.css";
 import { useNightMode } from "../../contexts/NightModeContext";
 import { useShowSettings } from "../../contexts/ShowSettingsContext";
 import { useLanguage } from "../../contexts/LanguageContext";
-import { useState } from "react";
 
 // Settings Dropdown
 
 export const SettingsNav = ({ hideSettings, setHideSettings }) => {
   const [nightMode, toggleNightMode] = useNightMode();
   const [showSettings, setShowSettings] = useShowSettings();
-  const [dayOrNight, setDayOrNight] = useState();
-  const [cahngeLanguage, setChangeLanguage] = useState();
 
   // Intl
 
-  const [, setLanguage] = useLanguage();
-  console.log(nightMode);
+  const [language, setLanguage] = useLanguage();
+
   return (
     showSettings && (
       <section
@@ -38,13 +35,11 @@ export const SettingsNav = ({ hideSettings, setHideSettings }) => {
                 type="checkbox"
                 onClick={() => {
                   toggleNightMode(!nightMode);
-                  setDayOrNight(!dayOrNight);
                 }}
               />
               <button
                 onClick={() => {
                   toggleNightMode(!nightMode);
-                  setDayOrNight(!dayOrNight);
                 }}
                 className="first"
               >
@@ -53,7 +48,6 @@ export const SettingsNav = ({ hideSettings, setHideSettings }) => {
               <button
                 onClick={() => {
                   toggleNightMode(!nightMode);
-                  setDayOrNight(!dayOrNight);
                 }}
                 className="last"
               >
@@ -75,10 +69,22 @@ export const SettingsNav = ({ hideSettings, setHideSettings }) => {
           </li>
           <li id="language-title">Idioma</li>
           <li className="language">
-            <button className="es" onClick={() => setLanguage("es")}>
+            <button
+              className={language === "es" && "es"}
+              id="button-es"
+              onClick={() => {
+                setLanguage("es");
+              }}
+            >
               ES
             </button>
-            <button className="en" onClick={() => setLanguage("en")}>
+            <button
+              className={language === "en" && "en"}
+              id="button-en"
+              onClick={() => {
+                setLanguage("en");
+              }}
+            >
               EN
             </button>
           </li>

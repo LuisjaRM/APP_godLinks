@@ -27,16 +27,25 @@ ul.settings-nav li.language button {
   /* margin-right: 0.1rem; */
   padding: 0.1rem;
   border: 1px solid rgb(1, 1, 97);
-  /* border-radius: 0.25rem; */
   color: rgb(1, 1, 97);
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
 }
 
-ul.settings-nav li.language button.es {
+ul.settings-nav li.language button#button-es {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+ul.settings-nav li.language button#button-en {
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
 }
 
 li.language button:hover,
-li.language button:active {
+li.language button.es,
+li.language button.en,
+li.language button.es,
+li.language button.en {
   color: rgb(255, 255, 255);
   background-color: rgba(1, 1, 97, 0.4);
 }

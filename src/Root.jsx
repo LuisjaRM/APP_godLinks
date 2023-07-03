@@ -32,7 +32,7 @@ export const Root = () => {
 
   const bodyRef = useRef(null);
 
-  bodyRef.current.scrollBy(0, 1000);
+  // bodyRef.current.scrollBy(0, 1000);
 
   // Intl
 
@@ -40,7 +40,7 @@ export const Root = () => {
 
   return (
     <IntlProvider
-      locale={language}
+      locale={"es" || localStorage.getItem("language")}
       messages={language === "es" ? messagesES : messagesEN}
     >
       <section ref={bodyRef} className="body">

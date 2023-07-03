@@ -16,7 +16,7 @@ import { useShowLogin } from "../../contexts/ShowLoginContext";
 import { useState } from "react";
 
 export const SettingsButton = () => {
-  const [showSettings, setShowSettings] = useShowSettings();
+  const [, setShowSettings] = useShowSettings();
   const [hideSettings, setHideSettings] = useState();
   const [, setShowLogin] = useShowLogin();
 
