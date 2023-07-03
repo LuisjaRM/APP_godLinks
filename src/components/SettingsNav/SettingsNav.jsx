@@ -15,7 +15,9 @@ export const SettingsNav = () => {
 
   // Intl
 
-  const [, setLanguage] = useLanguage();
+
+  const [language, setLanguage] = useLanguage();
+
   return (
     showSettings && (
       <section
@@ -26,7 +28,6 @@ export const SettingsNav = () => {
       >
         <ul className="settings-nav" onClick={(e) => e.stopPropagation()}>
           <li id="theme-title">Tema</li>
-
           <li>
             <button
               onClick={() => {
@@ -43,10 +44,22 @@ export const SettingsNav = () => {
           <li id="language-title">Idioma</li>
 
           <li className="language">
-            <button className="es" onClick={() => setLanguage("es")}>
+            <button
+              className={language === "es" && "es"}
+              id="button-es"
+              onClick={() => {
+                setLanguage("es");
+              }}
+            >
               ES
             </button>
-            <button className="en" onClick={() => setLanguage("en")}>
+            <button
+              className={language === "en" && "en"}
+              id="button-en"
+              onClick={() => {
+                setLanguage("en");
+              }}
+            >
               EN
             </button>
           </li>
