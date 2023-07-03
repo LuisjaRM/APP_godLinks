@@ -13,17 +13,21 @@ import { SettingsNav } from "../SettingsNav/SettingsNav";
 
 import { useShowSettings } from "../../contexts/ShowSettingsContext";
 import { useShowLogin } from "../../contexts/ShowLoginContext";
+import { useState } from "react";
 
 export const SettingsButton = () => {
   const [showSettings, setShowSettings] = useShowSettings();
+  const [hideSettings, setHideSettings] = useState();
   const [, setShowLogin] = useShowLogin();
 
   return (
     <button
       className={"button settings-button"}
       onClick={() => {
-        setShowSettings(!showSettings);
+        // setShowSettings(!showSettings);
         setShowLogin(false);
+        setHideSettings(!hideSettings);
+        setShowSettings(true);
       }}
     >
       <SvgIcon
@@ -33,8 +37,8 @@ export const SettingsButton = () => {
       />
 
       <SettingsNav
-        showSettings={showSettings}
-        setShowSettings={setShowSettings}
+        hideSettings={hideSettings}
+        setHideSettings={setHideSettings}
       />
     </button>
   );

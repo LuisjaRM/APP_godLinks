@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 
 const NightModeContext = React.createContext();
 
 export const NightModeProvider = ({ children }) => {
-  const [nightMode, setNightMode] = useState(true);
+  const [nightMode, toggleNightMode] = useState(localStorage.getItem("Theme"));
 
-  const toggle = () => setNightMode(!nightMode);
+  useEffect(() => {
+    localStorage.setItem("Theme", nightMode);
+  }, [nightMode]);
 
   return (
-    <NightModeContext.Provider value={[nightMode, toggle]}>
+    <NightModeContext.Provider value={[nightMode, toggleNightMode]}>
       {children}
     </NightModeContext.Provider>
   );
