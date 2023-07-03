@@ -1,13 +1,13 @@
-// React
-
-import { Outlet } from "react-router-dom";
-import { useState } from "react";
-
 // Intl
 
 import { IntlProvider } from "react-intl";
 import messagesEN from "./intl/en.json";
 import messagesES from "./intl/es.json";
+
+// React
+
+import { Outlet } from "react-router-dom";
+import { useRef, useState } from "react";
 
 // Contexts
 
@@ -28,16 +28,22 @@ export const Root = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [showFilter] = useShowFilter();
 
+  // Scroll
+
+  const bodyRef = useRef(null);
+
+  bodyRef.current.scrollBy(0, 1000);
+
   // Intl
 
   const [language] = useLanguage();
 
   return (
-    <>
-      <IntlProvider
-        locale={language}
-        messages={language === "es" ? messagesES : messagesEN}
-      >
+    <IntlProvider
+      locale={language}
+      messages={language === "es" ? messagesES : messagesEN}
+    >
+      <section ref={bodyRef} className="body">
         <Header />
 
         {showFilter && (
@@ -55,7 +61,7 @@ export const Root = () => {
         </main>
 
         <Footer />
-      </IntlProvider>
-    </>
+      </section>
+    </IntlProvider>
   );
 };

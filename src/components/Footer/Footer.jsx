@@ -23,10 +23,6 @@ export const Footer = () => {
     setShow(!show);
   };
 
-  // const scrollUp = () => {
-  //   window.scrollTo({ top: 0, behavior: "smooth" });
-  // };
-
   return (
     <footer className={`${nightdayMode ? "dark" : "light"}`}>
       <section className="footer-header">

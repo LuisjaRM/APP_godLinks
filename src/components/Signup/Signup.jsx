@@ -62,6 +62,7 @@ export const Signup = () => {
   // See Password
 
   const [seePassword, setSeePassword] = useState(false);
+  const [seeRepeatPassword, setSeeRepeatPassword] = useState(false);
 
   // Error messages
 
@@ -137,6 +138,9 @@ export const Signup = () => {
               name="signup-password"
               value={pass1}
               required
+              onKeyDown={(e) => {
+                e.key === "Enter" && e.preventDefault();
+              }}
               onChange={(e) => setPass1(e.target.value)}
             />
 
@@ -163,11 +167,14 @@ export const Signup = () => {
           <section className="input-wrap">
             <input
               placeholder="Repite tu contraseña"
-              type={seePassword ? "text" : "password"}
+              type={seeRepeatPassword ? "text" : "password"}
               id="signup-confirm-password"
               name="signup-confirm-password"
               value={pass2}
               required
+              onKeyDown={(e) => {
+                e.key === "Enter" && e.preventDefault();
+              }}
               onChange={(e) => setPass2(e.target.value)}
             />
 
@@ -175,7 +182,7 @@ export const Signup = () => {
               className="eye-button"
               onClick={(e) => {
                 e.preventDefault();
-                setSeePassword(!seePassword);
+                setSeeRepeatPassword(!seeRepeatPassword);
               }}
             >
               <SvgIcon
