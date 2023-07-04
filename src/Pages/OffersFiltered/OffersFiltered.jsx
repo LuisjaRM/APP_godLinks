@@ -29,7 +29,10 @@ export const OffersFiltered = () => {
   // document.title = `${plataform}: las mejores ofertas `;
 
   const { token } = useAuth();
-  const { offers, loading, error } = useGetOffersFiltered(token, plataform);
+  const { offers, loading, error, refresh } = useGetOffersFiltered(
+    token,
+    plataform
+  );
 
   if (loading) return <Loading />;
   if (error) return <ErrorMessage />;
@@ -44,7 +47,7 @@ export const OffersFiltered = () => {
       <ul className="offers">
         {offers.offers?.map((offer) => (
           <li key={offer.id}>
-            <OfferCard offer={offer} />
+            <OfferCard offer={offer} refresh={refresh} />
           </li>
         ))}
       </ul>

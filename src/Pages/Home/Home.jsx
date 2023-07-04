@@ -22,7 +22,7 @@ export const Home = () => {
   document.title = "GodLinks";
 
   const { token } = useAuth();
-  const { offers, loading, error } = useGetDailyOffers(token);
+  const { offers, loading, error, refresh } = useGetDailyOffers(token);
 
   if (loading) return <Loading />;
   if (error) return <ErrorMessage />;
@@ -37,7 +37,7 @@ export const Home = () => {
       <ul className="offers">
         {offers.offers?.map((offer) => (
           <li key={offer.id}>
-            <OfferCard offer={offer} />
+            <OfferCard offer={offer} refresh={refresh} />
           </li>
         ))}
       </ul>
