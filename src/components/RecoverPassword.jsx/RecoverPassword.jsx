@@ -222,14 +222,12 @@ export const RecoverPassword = () => {
                   id="reset-password"
                   value={newPass1}
                   required
-                  onKeyDown={(e) => {
-                    e.key === "Enter" && e.preventDefault();
-                  }}
                   onChange={(e) => setNewPass1(e.target.value)}
                 />
 
                 <button
                   className="eye-button"
+                  type="button"
                   onClick={(e) => {
                     e.preventDefault();
                     setSeePassword(!seePassword);
@@ -256,14 +254,12 @@ export const RecoverPassword = () => {
                   id="reset-confirm-password"
                   value={newPass2}
                   required
-                  onKeyDown={(e) => {
-                    e.key === "Enter" && e.preventDefault();
-                  }}
                   onChange={(e) => setNewPass2(e.target.value)}
                 />
 
                 <button
                   className="eye-button"
+                  type="button"
                   onClick={(e) => {
                     e.preventDefault();
                     setSeeRepeatPassword(!seeRepeatPassword);

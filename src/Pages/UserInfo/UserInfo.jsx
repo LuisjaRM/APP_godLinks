@@ -38,7 +38,7 @@ export const UserInfo = () => {
         <UserInfoCard key={index} userInfo={userInfo} />
       ))}
 
-      <ul className="offers">
+      <ul className="offers-list">
         {dataUser.offers?.map((offer) => (
           <li key={offer.id}>
             <OfferCard refresh={refresh} offer={offer} />
