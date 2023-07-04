@@ -287,7 +287,8 @@ export const OfferCard = ({ offer, refresh }) => {
         </section>
 
         <section className="footer">
-          <PostVote
+          <PostVote 
+            refresh={refresh}
             votes={offer.avgVotes}
             offerId={offer.id}
             userId={offer.user_id}
@@ -333,11 +334,11 @@ export const OfferCard = ({ offer, refresh }) => {
           </section>
         </section>
       )}
-
-      {showChangeMadeModal && (
+       {showChangeMadeModal && (
         <section className="modal-back dark">
           <section className="modal-body little">
             <h3>Oferta eliminada de favoritas</h3>
+
 
             <svg
               xmlns="http://www.w3.org/2000/svg"

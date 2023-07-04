@@ -1,9 +1,15 @@
 import "./UserProfile.css";
 
+
+// Contexts
+
+import { useShowFilter } from "../../contexts/ShowFilter";
+
+
 // Components
 
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
-import { ModifyUserCard } from "../../components/ModifyUserCard.jsx/ModifyUserCard";
+import { ModifyUserCard } from "../../components/ModifyUserCard/ModifyUserCard";
 import { Loading } from "../../components/Loading/Loading";
 
 // Hooks
@@ -17,6 +23,11 @@ export const UserProfile = () => {
   // Document Title
   document.title = "Mi perfil";
   //document.title = "My profile";
+
+  // ShowFilter
+
+  const [, setShowFilter] = useShowFilter();
+  setShowFilter(false);
 
   const { token } = useAuth();
   const { dataUser, loading, error, refresh } = useGetMyData(token);

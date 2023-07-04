@@ -89,5 +89,8 @@
   "modify-offer": "Modify your offer",
 
   "expired-offer": "Expired offer",
-  "goto-offer": "Go to offer"
+
+  "error-password-8cha": "Password length must be at least 8 characters long",
+
+  "send-vote-success": ""
 }

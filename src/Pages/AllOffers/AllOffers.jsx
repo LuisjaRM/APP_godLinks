@@ -43,7 +43,7 @@ export const AllOffers = () => {
         ))}
       </ul>
 
-      <PostOffer />
+      <PostOffer refresh={refresh} />
     </>
   );
 };
