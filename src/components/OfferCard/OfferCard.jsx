@@ -32,7 +32,7 @@ import { useLanguage } from "../../contexts/LanguageContext";
 
 import { addFavoriteService, useGetOfferById } from "../../services/api";
 
-export const OfferCard = ({ offer }) => {
+export const OfferCard = ({ offer, refresh }) => {
   const { user, token } = useAuth();
   const [showLogin, setShowLogin] = useShowLogin();
   const [, setNavigateTo] = useNavigateTo();
@@ -251,11 +251,7 @@ export const OfferCard = ({ offer }) => {
       </section>
 
       <section className="footer">
-        <PostVote
-          votes={offer.avgVotes}
-          offerId={offer.id}
-          userId={offer.user_id}
-        />
+        <PostVote refresh={refresh} votes={offer.avgVotes} offerId={offer.id} />
         <button className={`link-button ${expired ? "expired" : ""}`}>
           <a
             className="offer-link"

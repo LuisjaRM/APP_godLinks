@@ -12,137 +12,115 @@ import { useShowLogin } from "../../contexts/ShowLoginContext";
 // Fetchs
 
 import { postVoteService } from "../../services/api";
-import RatingStars from "../RatingStars/RatingStars";
 
-export const PostVote = ({ votes, offerId, userId }) => {
+// Material
+
+import { Rating } from "@mui/material";
+import { FormattedMessage } from "react-intl";
+
+export const PostVote = ({ votes, offerId, refresh }) => {
   const { user, token } = useAuth();
   const [showLogin, setShowLogin] = useShowLogin();
-  const [userVote, setUserVote] = useState(0);
   const [error, setError] = useState();
+  const [showVoteMadeModal, setShowVoteMadeModal] = useState();
 
   // Save votes in a variable
   const rating = votes ? Number(votes) : 0;
 
-  // Check if the user is logged in and if they try to vote on their own offer
-  const sameUser = user ? (user.id === userId ? true : false) : false;
+  // handle Votes
+
+  const handleVotes = (e, newValue) => {
+    postVote(newValue);
+  };
 
   // Function
 
   const postVote = async (vote) => {
     try {
-      user
-        ? // Fetch
-          await postVoteService(token, offerId, { vote })
-        : setShowLogin(!showLogin);
+      if (user) {
+        await postVoteService(token, offerId, { vote });
+        setShowVoteMadeModal(!showVoteMadeModal);
+        setTimeout(() => {
+          setShowVoteMadeModal(false);
+          refresh(); // Hacer que funcione el refresh
+        }, 1500);
+      } else {
+        setShowLogin(!showLogin);
+      }
     } catch (error) {
       setError(error.message);
       setTimeout(() => {
         setError(null);
-        setUserVote(0);
       }, 1500);
     }
   };
 
   // Error messages
 
+  error === `"vote" must be a number` && setError(); // este error no hay que traducirlo Pablo
   // error === "No puedes votar tu propia oferta" && setError();
+  // error === "Ya has votado esta oferta" && setError();
 
   return (
-    <section className="rating-wrap">
-      <ul className="rating">
-        <li className="heart">
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              setUserVote(1);
-              postVote(1);
-            }}
-            className="vote-button"
-          >
-            {user && !sameUser && userVote > 0
-              ? "💙"
-              : rating && rating > 0
-              ? "❤️"
-              : "🤍"}
-          </button>
-        </li>
+    <>
+      <section
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+        className="rating-wrap"
+      >
+        <section className="rating-box">
+          <Rating
+            size="small"
+            className="rating"
+            name="simple-controlled"
+            defaultValue={rating}
+            precision={1}
+            onChange={handleVotes}
+          />
 
-        <li className="heart">
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              setUserVote(2);
-              postVote(2);
-            }}
-            className="vote-button"
-          >
-            {user && !sameUser && userVote > 1
-              ? "💙"
-              : rating && rating > 1
-              ? "❤️"
-              : "🤍"}
-          </button>
-        </li>
+          <p className="avgVotes">({votes ? Number(votes).toFixed(1) : 0})</p>
+        </section>
+        {error ? <p className="error vote">{error}</p> : ""}
+      </section>
+      {showVoteMadeModal && (
+        <section className="modal-back dark">
+          <section className="modal-body little">
+            <h3>
+              <FormattedMessage id="send-vote-success" />{" "}
+              {/* Falta traducir esto */}
+            </h3>
 
-        <li className="heart">
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              setUserVote(3);
-              postVote(3);
-            }}
-            className="vote-button"
-          >
-            {user && !sameUser && userVote > 2
-              ? "💙"
-              : rating && rating > 2
-              ? "❤️"
-              : "🤍"}
-          </button>
-        </li>
-
-        <li className="heart">
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              setUserVote(4);
-              postVote(4);
-            }}
-            className="vote-button"
-          >
-            {user && !sameUser && userVote > 3
-              ? "💙"
-              : rating && rating > 3
-              ? "❤️"
-              : "🤍"}
-          </button>
-        </li>
-
-        <li className="heart">
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              setUserVote(5);
-              postVote(5);
-            }}
-            className="vote-button"
-          >
-            {user && !sameUser && userVote > 4
-              ? "💙"
-              : rating && rating > 4
-              ? "❤️"
-              : "🤍"}
-          </button>
-        </li>
-        <li className="avgVotes">({votes ? Number(votes).toFixed(1) : 0})</li>
-      </ul>
-      <RatingStars />
-      {error ? <p className="error vote">{error}</p> : ""}
-    </section>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="50"
+              width="50"
+              viewBox="0 0 118.43873 118.43873"
+            >
+              <path
+                className="check"
+                strokeLinejoin="round"
+                d="M34.682 60.352l15.61 15.61 33.464-33.464"
+                stroke="#08b237"
+                strokeLinecap="round"
+                strokeWidth="4.3"
+                fill="none"
+              />
+              <circle
+                className="circle"
+                strokeLinejoin="round"
+                cx="59.219"
+                strokeLinecap="round"
+                stroke="#08b237"
+                cy="59.219"
+                r="57.069"
+                strokeWidth="4.3"
+                fill="none"
+              />
+            </svg>
+          </section>
+        </section>
+      )}
+    </>
   );
 };

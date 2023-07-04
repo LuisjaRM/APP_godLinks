@@ -1,6 +1,5 @@
 import "./UserProfile.css";
 
-
 // Contexts
 
 import { useShowFilter } from "../../contexts/ShowFilter";
@@ -8,7 +7,7 @@ import { useShowFilter } from "../../contexts/ShowFilter";
 // Components
 
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
-import { ModifyUserCard } from "../../components/ModifyUserCard.jsx/ModifyUserCard";
+import { ModifyUserCard } from "../../components/ModifyUserCard/ModifyUserCard";
 import { Loading } from "../../components/Loading/Loading";
 
 // Hooks
@@ -21,7 +20,7 @@ import { useAuth } from "../../contexts/AuthContext";
 export const UserProfile = () => {
   // Document Title
   document.title = "Mi perfil";
-//document.title = "My profile";
+  //document.title = "My profile";
 
   // ShowFilter
 

@@ -60,7 +60,8 @@ export const Login = () => {
 
   // Error messages
 
-  error === "Email o contraseña incorrectos" && setError("Hola");
+  error === "Email o contraseña incorrectos" && setError();
+  error === "Usuario no verificado" && setError();
 
   return (
     <section className="login">

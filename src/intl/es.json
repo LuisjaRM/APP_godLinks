@@ -83,5 +83,7 @@
 
   "password-match": "Las contraseñas no conciden",
   "password-user-match": "La contraseña no puede ser igual al nombre de usuario",
-  "error-password-8cha": "La contraseña no debe contener más de 8 carácteres"
+  "error-password-8cha": "La contraseña no debe contener más de 8 carácteres",
+
+  "send-vote-success": "Tu voto se ha registrado correctamente"
 }

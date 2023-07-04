@@ -1,6 +1,5 @@
 import "./AllOffers.css";
 
-
 // Components
 
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
@@ -28,7 +27,7 @@ export const AllOffers = () => {
   setShowFilter(true);
 
   const { token } = useAuth();
-  const { offers, loading, error } = useGetAllOffers(token);
+  const { offers, loading, error, refresh } = useGetAllOffers(token);
 
   if (loading) return <Loading />;
   if (error) return <ErrorMessage />;
@@ -43,7 +42,7 @@ export const AllOffers = () => {
         ))}
       </ul>
 
-      <PostOffer />
+      <PostOffer refresh={refresh} />
     </>
   );
 };
