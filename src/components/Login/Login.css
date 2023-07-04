@@ -9,7 +9,6 @@
 }
 
 .login .form {
-  width: 220px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,7 +16,7 @@
 }
 
 .login fieldset {
-  width: 220px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -25,7 +24,7 @@
 }
 
 .login .input-wrap {
-  width: 220px;
+  width: 150px;
   display: flex;
   align-items: center;
   gap: 0.5rem;
