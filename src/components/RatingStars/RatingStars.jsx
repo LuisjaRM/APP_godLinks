@@ -9,7 +9,7 @@ export default function RatingStars() {
   return (
     <section>
       <fieldset>
-        {/* <legend>Controlled</legend> */}
+        {/* <legend>Valoración</legend> */}
         <Rating
           name="simple-controlled"
           value={value}
