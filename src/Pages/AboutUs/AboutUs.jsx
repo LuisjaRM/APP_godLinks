@@ -3,6 +3,7 @@ import "./AboutUs.css";
 export const AboutUs = () => {
   // Document Title
   document.title = "Sobre Nosotros";
+  // document.title = "About us";
 
   return (
     <section className="about-us">

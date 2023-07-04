@@ -1,18 +1,17 @@
 import "./OffersByVotes.css";
 
-
-
 // Components
 
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 import { OfferCard } from "../../components/OfferCard/OfferCard";
 import { PostOffer } from "../../components/PostOffer/PostOffer";
 import { Loading } from "../../components/Loading/Loading";
+import { Filter } from "../../components/Filter/Filter";
+import { PlataformFilter } from "../../components/PlataformFilter/PlataformFilter";
 
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
-import { useShowFilter } from "../../contexts/ShowFilter";
 
 // Fetchs
 
@@ -23,11 +22,6 @@ export const OffersByVotes = () => {
   document.title = "Las ofertas más populares";
   //document.title = "The most rated offers";
 
-  // ShowFilter
-
-  const [, setShowFilter] = useShowFilter();
-  setShowFilter(true);
-
   const { token } = useAuth();
   const { offers, loading, error } = useGetOffersByVotes(token);
 
@@ -36,6 +30,11 @@ export const OffersByVotes = () => {
 
   return (
     <>
+      <aside className="filters">
+        <Filter />
+        <PlataformFilter />
+      </aside>
+
       <ul className="offers">
         {offers.offers?.map((offer) => (
           <li key={offer.id}>

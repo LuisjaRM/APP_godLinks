@@ -1,0 +1,13 @@
+#scrollDown {
+  position: absolute;
+  top: 0;
+  right: 2rem;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: khaki;
+  border: none;
+  border-radius: 50%;
+}

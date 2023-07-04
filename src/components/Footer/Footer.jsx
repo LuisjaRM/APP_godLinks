@@ -1,5 +1,10 @@
 import "./Footer.css";
 
+// Material
+
+import { SvgIcon } from "@mui/material";
+import InfoIcon from "@mui/icons-material/Info";
+
 // Intl
 
 import { FormattedMessage } from "react-intl";
@@ -8,6 +13,10 @@ import { FormattedMessage } from "react-intl";
 
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+
+// Components
+
+import { ScrollDown } from "../ScrollDown/ScrollDown";
 
 // Contexts
 
@@ -19,7 +28,7 @@ export const Footer = () => {
 
   const navigate = useNavigate();
 
-  const handleMoreClick = () => {
+  const MoreInfo = () => {
     setShow(!show);
   };
 
@@ -29,12 +38,22 @@ export const Footer = () => {
         <h2 className="title-footer">GodLinks S.A.</h2>
 
         <button
-          onClick={handleMoreClick}
-          className="more-content"
-          title="Ir al pié de página"
+          onClick={MoreInfo}
+          className={`more-content ${show && "show"}`}
+          title="Desplegar pié de página"
         >
-          {show ? "↑" : "↓"}
+          {show ? (
+            "X"
+          ) : (
+            <SvgIcon
+              className="info-icon"
+              component={InfoIcon}
+              inheritViewBox
+            />
+          )}
         </button>
+
+        <ScrollDown />
       </section>
 
       <section className={`footer-container ${show ? "show" : ""} `}>
