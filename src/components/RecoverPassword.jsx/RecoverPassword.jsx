@@ -52,7 +52,8 @@ export const RecoverPassword = () => {
         setShowRecoverCodeModal(false);
         setShowReset(!showReset);
         setShowRecover(!showRecover);
-      }, 2000);
+        setEmail("");
+      }, 3000);
     } catch (error) {
       setError(error.message);
     }
@@ -104,7 +105,10 @@ export const RecoverPassword = () => {
         setShowLogin(!showLogin);
         setShowReset(!showReset);
         setError("");
-      }, 2000);
+        setRecoverCode("");
+        setNewPass1("");
+        setNewPass2("");
+      }, 3000);
     } catch (error) {
       setError(error.message);
     }
@@ -136,6 +140,9 @@ export const RecoverPassword = () => {
     setError();
 
   error === `"user" length must be at least 4 characters long` && setError();
+
+  error === "La contraseña no puede coincidir con el nombre de usuario" &&
+    setError();
 
   return (
     <>
@@ -286,6 +293,22 @@ export const RecoverPassword = () => {
             <p>
               <FormattedMessage id="email-recover" />
             </p>
+
+            <div id="anim-wrapper">
+              <div id="anim-bg">
+                <div id="env-wrapper">
+                  <div className="speedline line1"></div>
+                  <div className="speedline line2"></div>
+                  <div className="speedline line3"></div>
+                  <i id="env" className="fas fa-envelope"></i>
+                </div>
+              </div>
+
+              <div id="check-container">
+                <div className="check-stroke1"></div>
+                <div className="check-stroke2"></div>
+              </div>
+            </div>
           </section>
         </section>
       )}
@@ -296,6 +319,34 @@ export const RecoverPassword = () => {
             <p>
               <FormattedMessage id="password-reset-confirmation" />
             </p>
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="50"
+              width="50"
+              viewBox="0 0 118.43873 118.43873"
+            >
+              <path
+                className="check"
+                strokeLinejoin="round"
+                d="M34.682 60.352l15.61 15.61 33.464-33.464"
+                stroke="#08b237"
+                strokeLinecap="round"
+                strokeWidth="4.3"
+                fill="none"
+              />
+              <circle
+                className="circle"
+                strokeLinejoin="round"
+                cx="59.219"
+                strokeLinecap="round"
+                stroke="#08b237"
+                cy="59.219"
+                r="57.069"
+                strokeWidth="4.3"
+                fill="none"
+              />
+            </svg>
           </section>
         </section>
       )}

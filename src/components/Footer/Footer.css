@@ -46,16 +46,15 @@ footer .footer-container {
 }
 
 footer .footer-container.show {
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
   padding-top: 0.5rem;
   border-top: 1px solid khaki;
 }
 
 footer .about-us {
+  margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -90,6 +89,7 @@ footer .footer-container-section {
 }
 
 footer .menu {
+  padding-top: 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -110,6 +110,7 @@ footer .menu .menu-item:hover {
 }
 
 footer .social-networks {
+  padding-top: 0.5rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;

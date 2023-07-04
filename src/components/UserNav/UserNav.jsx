@@ -1,5 +1,9 @@
 import "./UserNav.css";
 
+// Intl
+
+import { FormattedMessage } from "react-intl";
+
 // Material
 
 import { SvgIcon } from "@mui/material";
@@ -8,8 +12,6 @@ import LogoutIcon from "@mui/icons-material/Logout";
 // React
 
 import { useNavigate } from "react-router";
-import {FormattedMessage} from 'react-intl';
-
 
 // Contexts
 
@@ -41,7 +43,7 @@ export const UserNav = () => {
               setShowLogin(!showLogin);
             }}
           >
-           <FormattedMessage id="myprofile"/>
+            <FormattedMessage id="myprofile" />
           </li>
 
           <li
@@ -51,7 +53,7 @@ export const UserNav = () => {
               navigate(`/userInfo/${user.id}`);
             }}
           >
-            <FormattedMessage id="myoffers"/>
+            <FormattedMessage id="myoffers" />
           </li>
 
           <li
@@ -62,7 +64,9 @@ export const UserNav = () => {
               navigate("/");
             }}
           >
-            <p><FormattedMessage id="signout"/></p>
+            <p>
+              <FormattedMessage id="signout" />
+            </p>
             <SvgIcon
               className="logout-icon"
               component={LogoutIcon}

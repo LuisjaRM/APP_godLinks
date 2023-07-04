@@ -402,7 +402,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
   error === `"url" length must be less than or equal to 280 characters long` &&
     setError();
 
-  error === `"title" length must be less than or equal to 60 characters long` &&
+  error === `"title" length must be less than or equal to 30 characters long` &&
     setError();
 
   error ===

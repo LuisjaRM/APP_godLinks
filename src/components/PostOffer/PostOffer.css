@@ -10,7 +10,7 @@
   box-shadow: 1px 1px 10px black;
   background-color: khaki;
   position: fixed;
-  top: calc(20vh + 1rem);
+  top: calc(20vh + 0.5rem);
   right: 1rem;
 }
 

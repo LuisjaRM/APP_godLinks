@@ -28,21 +28,21 @@ export const NotFound = () => {
           <section>
             <section className="stars">
               <section className="central-body">
-                <img
+                {/* <img
                   className="image-404"
                   src="https://cdn-icons-png.flaticon.com/512/645/645881.png?w=826&t=st=1688331766~exp=1688332366~hmac=85b0af251ab105666fd6e7d6a54f151c385278ea88b6d820dafc6d9f36331dca"
                   width="300px"
-                />
+                /> */}
                 <h2 className="theh2">
-                  ¡Vaya! parece que la pagina que buscas no existe{" "}
+                  <FormattedMessage id="oops" />
                 </h2>
+                <p className="paragraph2">
+                  <FormattedMessage id="page-notfound" />
+                </p>
                 <Link to="/" className="link-bt-error">
-                  <a
-                    href="http://salehriaz.com/404Page/404.html"
-                    className="btn-go-home"
-                  >
-                    HOME
-                  </a>
+                  <button className="btn-go-home">
+                    <FormattedMessage id="home" />
+                  </button>
                 </Link>
               </section>
 
@@ -65,9 +65,9 @@ export const NotFound = () => {
                     src="http://salehriaz.com/404Page/img/astronaut.svg"
                     width="140px"
                   />
-                  <aside className="tv-viewport-size">
+                  {/* <aside className="tv-viewport-size">
                     <p className="error-anim-number">404</p>
-                  </aside>
+                  </aside> */}
                 </section>
               </section>
             </section>

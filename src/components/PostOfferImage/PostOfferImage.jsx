@@ -86,71 +86,73 @@ export const PostOfferImage = ({
           <FormattedMessage id="upload-image" />
         </h2>
 
-        <form className="form" onSubmit={handleForm}>
-          <fieldset>
-            <label className="image-label">
-              <input
-                className="image-input"
-                type="file"
-                name="input-image"
-                id="input-image"
-                onChange={(e) => {
-                  setImage(e.target.files[0]);
-                  setFilepreview(URL.createObjectURL(e.target.files[0]));
-                }}
+        <section className="post-offer-image-main">
+          <form className="form" onSubmit={handleForm}>
+            <fieldset>
+              <label className="image-label">
+                <input
+                  className="image-input"
+                  type="file"
+                  name="input-image"
+                  id="input-image"
+                  onChange={(e) => {
+                    setImage(e.target.files[0]);
+                    setFilepreview(URL.createObjectURL(e.target.files[0]));
+                  }}
+                />
+                {filepreview ? (
+                  <img
+                    className="image-preview"
+                    src={filepreview}
+                    alt="image-preview"
+                  />
+                ) : (
+                  <SvgIcon
+                    className="post-image-icon"
+                    component={ImageSearchIcon}
+                    inheritViewBox
+                  />
+                )}
+              </label>
+            </fieldset>
+
+            {error ? <p className="error">{error}</p> : null}
+
+            <button className="post-offer-button">
+              <SvgIcon
+                className="post-offer-icon"
+                component={AddToPhotosIcon}
+                inheritViewBox
               />
-              {filepreview ? (
-                <img
-                  className="image-preview"
-                  src={filepreview}
-                  alt="image-preview"
-                />
-              ) : (
-                <SvgIcon
-                  className="post-image-icon"
-                  component={ImageSearchIcon}
-                  inheritViewBox
-                />
-              )}
-            </label>
-          </fieldset>
+            </button>
+          </form>
 
-          {error ? <p className="error">{error}</p> : null}
+          <section className="post-offer-noImage">
+            <p>
+              <FormattedMessage id="upload-without-image" />
+            </p>
 
-          <button className="post-offer-button">
-            <SvgIcon
-              className="post-offer-icon"
-              component={AddToPhotosIcon}
-              inheritViewBox
-            />
-          </button>
-        </form>
-
-        <section className="post-offer-noImage">
-          <p>
-            <FormattedMessage id="upload-without-image" />
-          </p>
-
-          <button
-            className="post-offer-button"
-            onClick={() => {
-              setOpenPostImage(!openPostImage);
-              setShowUploadOfferModal(!showUploadOfferModal);
-
-              setTimeout(() => {
+            <button
+              className="post-offer-button"
+              onClick={() => {
+                setOpenPostImage(!openPostImage);
                 setShowUploadOfferModal(!showUploadOfferModal);
-                windowLocation === "/allOffers"
-                  ? navigate("/")
-                  : navigate("/allOffers");
-              }, 2000);
-            }}
-          >
-            <SvgIcon
-              className="post-offer-icon"
-              component={AddToPhotosIcon}
-              inheritViewBox
-            />
-          </button>
+
+                setTimeout(() => {
+                  setShowUploadOfferModal(!showUploadOfferModal);
+                  windowLocation === "/allOffers"
+                    ? navigate("/")
+                    : navigate("/allOffers");
+                }, 2000);
+              }}
+            >
+              <SvgIcon
+                className="post-offer-icon"
+                component={AddToPhotosIcon}
+                inheritViewBox
+              />
+            </button>
+          </section>
         </section>
       </section>
 

@@ -47,7 +47,8 @@
   padding-top: 0.25rem;
 }
 
-.settings-nav .language button {
+.settings-nav .language .button-es,
+.settings-nav .language .button-en {
   cursor: pointer;
   width: 20px;
   height: 20px;
@@ -58,21 +59,22 @@
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
 }
 
-.settings-nav .language button#button-es {
+.settings-nav .language .button-es {
   border-top-left-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
 }
 
-.settings-nav .language button#button-en {
+.settings-nav .language .button-en {
   border-top-right-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
 }
 
-.language button:hover,
-.language button.es,
-.language button.en,
-.language button.es,
-.language button.en {
+.language .button-es:hover,
+.language .button-en:hover,
+.language .button-es.es,
+.language .button-en.en,
+.language .button-es.es,
+.language .button-en.en {
   color: rgb(255, 255, 255);
   background-color: rgba(1, 1, 97, 0.4);
 }

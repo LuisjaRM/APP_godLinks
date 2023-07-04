@@ -1,5 +1,9 @@
 import "./SettingsNav.css";
 
+// Intl
+
+import { FormattedMessage } from "react-intl";
+
 // Contexts
 
 import { useNightMode } from "../../contexts/NightModeContext";
@@ -27,9 +31,11 @@ export const SettingsNav = () => {
       >
         <ul className="settings-nav" onClick={(e) => e.stopPropagation()}>
           <li className="settings-element">
-            <p id="title">Tema</p>
+            <p id="title">
+              <FormattedMessage id="theme" />
+            </p>
 
-            <button
+            <i
               onClick={() => {
                 nightMode === "night"
                   ? toggleNightMode("day")
@@ -38,31 +44,31 @@ export const SettingsNav = () => {
               className="toggle-button"
             >
               {nightMode === "night" ? "🌙" : "🌞"}
-            </button>
+            </i>
           </li>
 
           <li className="settings-element language">
-            <p id="title">Idioma</p>
+            <p id="title">
+              <FormattedMessage id="language" />
+            </p>
 
             <section>
-              <button
-                className={language === "es" && "es"}
-                id="button-es"
+              <i
+                className={`button-es ${language === "es" && "es"}`}
                 onClick={() => {
                   setLanguage("es");
                 }}
               >
                 ES
-              </button>
-              <button
-                className={language === "en" && "en"}
-                id="button-en"
+              </i>
+              <i
+                className={`button-en ${language === "en" && "en"}`}
                 onClick={() => {
                   setLanguage("en");
                 }}
               >
                 EN
-              </button>
+              </i>
             </section>
           </li>
         </ul>
