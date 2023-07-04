@@ -276,7 +276,7 @@ export const OfferCard = ({ offer }) => {
           </a>
         </button>
 
-        <p className="comments">🗨️ ({offers.comments?.length})</p>
+        <p className="comments">🗨️ ({offers.comments?.length || 0})</p>
       </section>
     </section>
   );
