@@ -98,9 +98,6 @@ export const Login = () => {
               id="login-password"
               value={password}
               required
-              onKeyDown={(e) => {
-                e.key === "Enter" && e.preventDefault();
-              }}
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
@@ -108,6 +105,7 @@ export const Login = () => {
 
             <button
               className="eye-button"
+              type="button"
               onClick={(e) => {
                 e.preventDefault();
                 setSeePassword(!seePassword);
