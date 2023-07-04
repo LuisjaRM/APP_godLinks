@@ -28,7 +28,10 @@ export const OffersSearched = () => {
   document.title = `Tu búsqueda: ${search}`;
 
   const { token } = useAuth();
-  const { offers, loading, error } = useGetOffersSearched(token, search);
+  const { offers, loading, error, refresh } = useGetOffersSearched(
+    token,
+    search
+  );
 
   if (loading) return <Loading />;
   if (error) return <ErrorMessage />;
@@ -43,7 +46,7 @@ export const OffersSearched = () => {
       <ul className="offers">
         {offers.offers?.map((offer) => (
           <li key={offer.id}>
-            <OfferCard offer={offer} />
+            <OfferCard offer={offer} refresh={refresh} />
           </li>
         ))}
       </ul>

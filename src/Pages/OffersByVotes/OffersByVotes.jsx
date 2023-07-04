@@ -23,7 +23,7 @@ export const OffersByVotes = () => {
   //document.title = "The most rated offers";
 
   const { token } = useAuth();
-  const { offers, loading, error } = useGetOffersByVotes(token);
+  const { offers, loading, error, refresh } = useGetOffersByVotes(token);
 
   if (loading) return <Loading />;
   if (error) return <ErrorMessage />;
@@ -38,7 +38,7 @@ export const OffersByVotes = () => {
       <ul className="offers">
         {offers.offers?.map((offer) => (
           <li key={offer.id}>
-            <OfferCard offer={offer} />
+            <OfferCard offer={offer} refresh={refresh} />
           </li>
         ))}
       </ul>

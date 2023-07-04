@@ -23,7 +23,7 @@ export const AllOffers = () => {
   //document.title = "The best offers in the market";
 
   const { token } = useAuth();
-  const { offers, loading, error } = useGetAllOffers(token);
+  const { offers, loading, error, refresh } = useGetAllOffers(token);
 
   if (loading) return <Loading />;
   if (error) return <ErrorMessage />;
@@ -38,7 +38,7 @@ export const AllOffers = () => {
       <ul className="offers">
         {offers.offers?.map((offer) => (
           <li key={offer.id}>
-            <OfferCard offer={offer} />
+            <OfferCard offer={offer} refresh={refresh} />
           </li>
         ))}
       </ul>
