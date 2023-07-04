@@ -193,6 +193,35 @@ export const Footer = () => {
               </a>
             </section>
           </article>
+
+          <article className="creator">
+            <p>Pablo Planes :</p>
+
+            <section className="social-creator">
+              <a
+                href="https://github.com/pplanesp"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+                title="Luisja Rodriguez"
+              >
+                <img className="github-image" src="/github.png" alt="github" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/pabloplanes/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+                title="Luisja Rodriguez"
+              >
+                <img
+                  className="linkedin-image"
+                  src="/linkedin.png"
+                  alt="linkedin"
+                />
+              </a>
+            </section>
+          </article>
         </section>
       </section>
     </footer>
