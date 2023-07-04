@@ -867,7 +867,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
         </li>
       </ul>
 
-      {showConfirmModal ? (
+      {showConfirmModal && (
         <section className="modal-back dark" onClick={handleClickAway}>
           <section className="modal-body little">
             <h2>
@@ -887,10 +887,8 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
             </section>
           </section>
         </section>
-      ) : (
-        ""
       )}
-      {showChangeMadeModal ? (
+      {showChangeMadeModal && (
         <section className="modal-back dark">
           <section className="modal-body little">
             {fieldChanged === "image" && (
@@ -968,8 +966,6 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
             </svg>
           </section>
         </section>
-      ) : (
-        ""
       )}
     </>
   );

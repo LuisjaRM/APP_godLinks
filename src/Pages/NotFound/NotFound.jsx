@@ -7,7 +7,6 @@ import { FormattedMessage } from "react-intl";
 
 // Contexts
 
-import { useShowFilter } from "../../contexts/ShowFilter";
 import { useNightMode } from "../../contexts/NightModeContext";
 
 export const NotFound = () => {
@@ -15,11 +14,6 @@ export const NotFound = () => {
 
   // Document Title
   document.title = "¡Ups!";
-
-  // ShowFilter
-
-  const [, setShowFilter] = useShowFilter();
-  setShowFilter(false);
 
   return (
     <>

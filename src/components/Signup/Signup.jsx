@@ -138,14 +138,12 @@ export const Signup = () => {
               name="signup-password"
               value={pass1}
               required
-              onKeyDown={(e) => {
-                e.key === "Enter" && e.preventDefault();
-              }}
               onChange={(e) => setPass1(e.target.value)}
             />
 
             <button
               className="eye-button"
+              type="button"
               onClick={(e) => {
                 e.preventDefault();
                 setSeePassword(!seePassword);
@@ -172,14 +170,12 @@ export const Signup = () => {
               name="signup-confirm-password"
               value={pass2}
               required
-              onKeyDown={(e) => {
-                e.key === "Enter" && e.preventDefault();
-              }}
               onChange={(e) => setPass2(e.target.value)}
             />
 
             <button
               className="eye-button"
+              type="button"
               onClick={(e) => {
                 e.preventDefault();
                 setSeeRepeatPassword(!seeRepeatPassword);

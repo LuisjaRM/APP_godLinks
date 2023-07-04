@@ -1,8 +1,10 @@
 import "./UserProfile.css";
 
+
 // Contexts
 
 import { useShowFilter } from "../../contexts/ShowFilter";
+
 
 // Components
 
