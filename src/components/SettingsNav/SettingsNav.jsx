@@ -1,5 +1,10 @@
 import "./SettingsNav.css";
 
+//material
+
+import NightlightRoundIcon from '@mui/icons-material/NightlightRound';
+import Brightness5Icon from '@mui/icons-material/Brightness5';
+
 // Intl
 
 import { FormattedMessage } from "react-intl";
@@ -43,7 +48,11 @@ export const SettingsNav = () => {
               }}
               className="toggle-button"
             >
-              {nightMode === "night" ? "🌙" : "🌞"}
+              {nightMode === "night" ? (
+                <NightlightRoundIcon style={{ fontSize: '13px' }} />
+              ) : (
+                 <Brightness5Icon  style={{ fontSize: '13px' }} />
+              )}
             </i>
           </li>
 
