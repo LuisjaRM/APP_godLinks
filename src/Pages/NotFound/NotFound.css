@@ -1,9 +1,14 @@
-.stars,
 .page_404 {
   /* 100vh - vh de header, footer y el padding de main */
   height: calc(100vh - 7.5vh - 7.5vh - 2rem);
   background-color: white;
   color: black;
+}
+.stars {
+  height: calc(100vh - 7.5vh - 7.5vh - 2rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .link-bt-error {
@@ -59,6 +64,7 @@ article .link_404 {
 .theh2 {
   margin-top: 20px;
   margin-bottom: 20px;
+  color: khaki;
 }
 
 .btn-request {
@@ -81,11 +87,12 @@ article .link_404 {
   margin: 15px auto;
   width: 100px;
   padding: 10px 15px;
-  border: 1px solid #ffcb39;
+  background-color: khaki;
+  border: 1px solid white;
   border-radius: 100px;
   font-weight: 400;
   display: block;
-  color: white;
+  color: black;
   text-align: center;
   text-decoration: none;
   letter-spacing: 2px;
@@ -106,7 +113,6 @@ article .link_404 {
 }
 
 .central-body {
-  padding-top: 7rem;
   text-align: center;
 }
 
@@ -141,11 +147,11 @@ article .link_404 {
   animation: move-astronaut 50s infinite linear both alternate;
 }
 
-.image-404 {
+/* .image-404 {
   position: relative;
   z-index: 100;
   pointer-events: none;
-}
+} */
 
 .stars {
   background: url(http://salehriaz.com/404Page/img/overlay_stars.svg);

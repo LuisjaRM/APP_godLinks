@@ -8,6 +8,9 @@
 
   "enterPassword": " Enter your password",
 
+  "theme": "Theme",
+  "language": "Language",
+
   "all-offers": "All offers",
   "todays-offers": "Today's offers",
   "most-rated-offers": "Most rated offers",

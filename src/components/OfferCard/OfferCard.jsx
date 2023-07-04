@@ -1,16 +1,21 @@
 import "./OfferCard.css";
 
+// Intl
+
+import { FormattedMessage } from "react-intl";
+
 // Material
 
 import { SvgIcon } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
 // React
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FormattedMessage } from "react-intl";
 
 // Components
 
@@ -226,7 +231,19 @@ export const OfferCard = ({ offer }) => {
                   setExpand(!expand);
                 }}
               >
-                {expand ? "⇧" : "..."}
+                {expand ? (
+                  <SvgIcon
+                    className="expand-icon"
+                    component={ExpandLessIcon}
+                    inheritViewBox
+                  />
+                ) : (
+                  <SvgIcon
+                    className="expand-icon"
+                    component={ExpandMoreIcon}
+                    inheritViewBox
+                  />
+                )}
               </button>
             )}
           </li>
