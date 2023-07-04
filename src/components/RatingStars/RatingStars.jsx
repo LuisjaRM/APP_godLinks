@@ -1,10 +1,11 @@
-import React from "react";
-import Rating from "@mui/lab/Rating";
+import { useState } from "react";
+import { Rating } from "@mui/material";
+
 // import Typography from "@material-ui/core/Typography";
 // import Box from "@material-ui/core/Box";
 
 export default function RatingStars() {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
 
   return (
     <section>
