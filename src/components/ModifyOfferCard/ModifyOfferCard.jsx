@@ -872,9 +872,9 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
           <section className="modal-body little">
             <h2>
               {clickDelete ? (
-                <FormattedMessage id="modify-offer-confirmation" />
-              ) : (
                 <FormattedMessage id="delete-offer-confirmation" />
+              ) : (
+                <FormattedMessage id="modify-offer-confirmation" />
               )}
             </h2>
             <section className="buttons">

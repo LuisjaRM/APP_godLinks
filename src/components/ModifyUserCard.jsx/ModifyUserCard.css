@@ -74,6 +74,11 @@
   box-shadow: 1px 1px 10px black;
 }
 
+.header-profile .delete,
+.header-profile .modify-password {
+  height: 3rem;
+}
+
 .header-profile .button:hover {
   text-decoration: underline;
   box-shadow: 1px 1px 10px khaki;

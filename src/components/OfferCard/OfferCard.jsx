@@ -248,7 +248,7 @@ export const OfferCard = ({ offer }) => {
             rel="noopener noreferrer"
           >
             <p>
-              <FormattedMessage id="goto-offer" />
+              <FormattedMessage id="link-to-offer" />
             </p>
 
             <SvgIcon

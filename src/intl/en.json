@@ -1,18 +1,17 @@
 {
-  "all-offers": "All offers",
-  "todays-offers": "Today's offers",
-  "most-rated-offers": "Most rated offers",
-  "favorite-offers": "Favorite offers",
-
-  "GodLinks-offer": "GodLinks: Offer",
-
   "login": "Log in",
   "signup": "Sign up",
   "email": "Email",
   "password": "Password",
-  "enterPassword": " Enter your password",
   "continue": "Continue",
   "forgot-password": "Forgot your password",
+
+  "enterPassword": " Enter your password",
+
+  "all-offers": "All offers",
+  "todays-offers": "Today's offers",
+  "most-rated-offers": "Most rated offers",
+  "favorite-offers": "Favorite offers",
 
   "enter-email": "Enter the email address associated with your account",
   "email-vertification": "We have sent an email to your account",

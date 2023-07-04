@@ -205,7 +205,7 @@ export const RecoverPassword = () => {
 
             <fieldset>
               <label htmlFor="reset-password">
-                <FormattedMessage id="enter-password" />
+                <FormattedMessage id="password" />
               </label>
               <section className="input-wrap">
                 <input
@@ -284,7 +284,7 @@ export const RecoverPassword = () => {
         <section className="modal-back dark">
           <section className="modal-body little verify">
             <p>
-              <FormattedMessage id="email-verification" />
+              <FormattedMessage id="email-recover" />
             </p>
           </section>
         </section>

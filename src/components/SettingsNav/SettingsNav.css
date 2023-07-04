@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   justify-content: end;
-  gap: 0.5rem;
+  gap: 0.25rem;
   padding: 0.5rem;
   font-size: 75%;
   border-radius: 10px;
@@ -17,88 +17,62 @@
   list-style: none;
 }
 
-ul.settings-nav li#theme-title,
-ul.settings-nav li#language-title {
+.settings-nav .title {
   font-weight: bold;
 }
 
-ul.settings-nav li.language button {
-  cursor: pointer;
-  /* margin-right: 0.1rem; */
-  padding: 0.1rem;
-  border: 1px solid rgb(1, 1, 97);
-  color: rgb(1, 1, 97);
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
-}
-
-ul.settings-nav li.language button#button-es {
-  border-top-left-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
-}
-
-ul.settings-nav li.language button#button-en {
-  border-top-right-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
-}
-
-li.language button:hover,
-li.language button.es,
-li.language button.en,
-li.language button.es,
-li.language button.en {
-  color: rgb(255, 255, 255);
-  background-color: rgba(1, 1, 97, 0.4);
+.settings-nav .settings-element {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
 }
 
 .settings-nav .toggle-button {
   cursor: pointer;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
+  border-radius: 50%;
   padding: 0.25rem;
   background-color: rgba(0, 0, 0, 0);
   background-color: black;
 }
 
-/* animacion */
-
-/* .verstappen {
-  position: absolute;
-  opacity: 0;
+.settings-nav .language {
+  border-top: 1px solid black;
+  padding-top: 0.25rem;
 }
 
-.last {
-  position: absolute;
-  font-size: 20px;
-  color: #f0cd06;
-  filter: drop-shadow(0 0 2px rgba(245, 0, 0, 0.5));
-  transform: scale(0);
-  transition: 1s ease;
+.settings-nav .language button {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  padding: 0.1rem;
+  font-size: 90%;
+  border: 1px solid rgb(1, 1, 97);
+  color: rgb(1, 1, 97);
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
 }
 
-.verstappen:checked ~ .last {
-  transform: scale(1) rotate(360deg);
+.settings-nav .language button#button-es {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
 }
 
-.first {
-  font-size: 20px;
-  color: #c2c0c0;
-  filter: drop-shadow(0 0 2px rgb(255, 250, 250));
-  transition: 1s ease;
+.settings-nav .language button#button-en {
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
 }
 
-.verstappen:checked ~ .first {
-  transform: rotate(360deg) scale(0);
+.language button:hover,
+.language button.es,
+.language button.en,
+.language button.es,
+.language button.en {
+  color: rgb(255, 255, 255);
+  background-color: rgba(1, 1, 97, 0.4);
 }
-
-.verstappen:checked ~ .boton {
-  background: #f8f8f8;
-}
-
-@keyframes fadeInOut {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-} */
