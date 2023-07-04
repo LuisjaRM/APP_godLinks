@@ -9,19 +9,22 @@ export const AboutUs = () => {
       <h1>¿Que es Godlinks?</h1>
       <p>
         Este proyecto nace como una idea inspirada en lo mucho que nos gustan
-        los videojuegos. Web creada como medio virtual para compartir las
-        mejores ofertas relacionadas con el mundo del gaming. Los usuarios votan
-        cuáles les parecen las mejores ofertas.
+        los videojuegos y en los buenos ratos que nos han hecho pasar a lo largo
+        de nuestra vida.
+        <br /> Se trata de una web que funciona como medio virtual para
+        compartir ofertas relacionadas con el mundo gaming. <br />
+        Los usuarios registrados votan cuáles les parecen las mejores ofertas.
       </p>
       <h2>¿Como funciona?</h2>
       <p>
-        Las ofertas son publicadas por los propios usuarios La comunidad es la
-        que hace que una oferta sea más popular o menos a través de los votos.
-        Puedes visitar directamente desde nuestra web las páginas donde se
-        ofertan los productos de las publicaciones. Puedes guardar las ofertas
-        que más te gusten.
+        Las ofertas que aparecen en la página son publicadas por los usuarios.
+        <br />
+        La comunidad es la que hace que una oferta sea más popular o menos a
+        través de los votos. <br /> Guarda las ofertas que más te gusten para no
+        perderlas de vista. <br /> Visita directamente desde nuestra web las
+        páginas donde se ofertan los productos de las publicaciones.
       </p>
-      <h3>Conoce a nuestro increíble equipo</h3>
+      <h2>Conócenos</h2>
       Estos son los cuatro desarrolladores que hay detrás de Godlinks.
       <ul>
         <li>
@@ -51,12 +54,22 @@ export const AboutUs = () => {
       <p>
         Queremos dar las gracias al gran equipo de HACKABOSS que ha estado
         siguiendo nuestro crecimiento personal y profesional durante todo el
-        bootcamp Especialemte a Stefano tutor técnico y Bárbara especialista en
-        desarrollo profesional. También agradecer todo lo que hemos aprendido a
-        los profesores que nos han acompañado a lo largo del curso, Nelson
-        especialista en backend, Anxo especialista en frontend, Berto y Samu,
-        con videos de refuerzo cada semana.
+        bootcamp. <br /> Especialemte a Stefano profesor a la par que tutor
+        técnico y Bárbara especialista en desarrollo profesional, que nos han
+        ayudado en cada paso que dabamos. <br /> También agradecer todo lo que
+        hemos aprendido a los profesores que nos han acompañado a lo largo del
+        curso, Nelson especialista en backend, Anxo especialista en frontend,
+        Berto y Samuel, con videos de refuerzo cada semana. <br /> Os
+        agradecemos enormemente el esfuerzo que habéis realizado, en cada clase.
+        tutoría o video.
       </p>
+      <section>
+        <p>
+          Para cualquier duda que puedas tener con respecto a la web, no dudes
+          en contactar con nosotros a través de nuestras redes sociales que
+          encontrarás en el pie de página. 👇
+        </p>
+      </section>
     </section>
   );
 };

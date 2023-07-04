@@ -12,6 +12,7 @@ import { useShowLogin } from "../../contexts/ShowLoginContext";
 // Fetchs
 
 import { postVoteService } from "../../services/api";
+import RatingStars from "../RatingStars/RatingStars";
 
 export const PostVote = ({ votes, offerId, userId }) => {
   const { user, token } = useAuth();
@@ -140,6 +141,7 @@ export const PostVote = ({ votes, offerId, userId }) => {
         </li>
         <li className="avgVotes">({votes ? Number(votes).toFixed(1) : 0})</li>
       </ul>
+      <RatingStars />
       {error ? <p className="error vote">{error}</p> : ""}
     </section>
   );
