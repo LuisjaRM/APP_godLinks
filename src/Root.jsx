@@ -7,35 +7,23 @@ import messagesES from "./intl/es.json";
 // React
 
 import { Outlet } from "react-router-dom";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 // Contexts
 
-import { useShowFilter } from "./contexts/ShowFilter";
 import { useLanguage } from "./contexts/LanguageContext";
 
 // Components
 
 import { Header } from "./components/Header/Header";
-import { Filter } from "./components/Filter/Filter";
-import { PlataformFilter } from "./components/PlataformFilter/PlataformFilter";
 import { LoginOrSignup } from "./components/LoginOrSignup/LoginOrSignup";
 import { VerifyUser } from "./components/VerifyUser/VerifyUser";
 import { RecoverPassword } from "./components/RecoverPassword.jsx/RecoverPassword";
 import { Footer } from "./components/Footer/Footer";
+import { ScrollUp } from "./components/ScrollUp/ScrollUp";
 
 export const Root = () => {
   const [isLogin, setIsLogin] = useState(true);
-  const [showFilter] = useShowFilter();
-
-  // Scroll
-
-  // const bodyRef = useRef(null);
-
-  // const handleMoveUp = () => {
-  //   console.log("click");
-  //   bodyRef.current.scrollBy(0, 100);
-  // };
 
   // Intl
 
@@ -46,15 +34,7 @@ export const Root = () => {
       locale={"es" || localStorage.getItem("language")}
       messages={language === "es" ? messagesES : messagesEN}
     >
-      {/* <section ref={bodyRef} className="body"> */}
       <Header />
-
-      {showFilter && (
-        <aside>
-          <Filter />
-          <PlataformFilter />
-        </aside>
-      )}
 
       <main>
         <Outlet />
@@ -63,14 +43,11 @@ export const Root = () => {
         <RecoverPassword />
       </main>
 
-      {/* <aside>
-          <button onClick={handleMoveUp} className="move-up">
-            A
-          </button>
-        </aside> */}
+      <aside>
+        <ScrollUp />
+      </aside>
 
       <Footer />
-      {/* </section> */}
     </IntlProvider>
   );
 };

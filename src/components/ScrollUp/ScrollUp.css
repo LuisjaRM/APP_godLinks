@@ -1,0 +1,24 @@
+#scrollUp {
+  cursor: pointer;
+  position: fixed;
+  bottom: calc(7.5vh + 0.5rem);
+  left: 0.5rem;
+  background-color: khaki;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#scrollUp:hover {
+  box-shadow: 1px 1px 10px khaki;
+}
+
+.opacity-1 {
+  opacity: 1;
+}
+
+.opacity-0 {
+  opacity: 0;
+}

@@ -6,11 +6,12 @@ import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 import { OfferCard } from "../../components/OfferCard/OfferCard";
 import { PostOffer } from "../../components/PostOffer/PostOffer";
 import { Loading } from "../../components/Loading/Loading";
+import { Filter } from "../../components/Filter/Filter";
+import { PlataformFilter } from "../../components/PlataformFilter/PlataformFilter";
 
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
-import { useShowFilter } from "../../contexts/ShowFilter";
 
 // Fetchs
 
@@ -20,11 +21,6 @@ export const Home = () => {
   // Document Title
   document.title = "GodLinks";
 
-  // ShowFilter
-
-  const [, setShowFilter] = useShowFilter();
-  setShowFilter(true);
-
   const { token } = useAuth();
   const { offers, loading, error } = useGetDailyOffers(token);
 
@@ -33,6 +29,11 @@ export const Home = () => {
 
   return (
     <>
+      <aside className="filters">
+        <Filter />
+        <PlataformFilter />
+      </aside>
+
       <ul className="offers">
         {offers.offers?.map((offer) => (
           <li key={offer.id}>

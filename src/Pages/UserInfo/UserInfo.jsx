@@ -4,7 +4,6 @@ import "./UserInfo.css";
 
 import { useParams } from "react-router";
 
-
 // Components
 
 import { OfferCard } from "../../components/OfferCard/OfferCard";
@@ -15,7 +14,6 @@ import { Loading } from "../../components/Loading/Loading";
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
-import { useShowFilter } from "../../contexts/ShowFilter";
 
 // Fetchs
 
@@ -25,11 +23,6 @@ export const UserInfo = () => {
   // Document Title
   document.title = "Mis ofertas";
   //document.title = "My offers";
-
-  // ShowFilter
-
-  const [, setShowFilter] = useShowFilter();
-  setShowFilter(false);
 
   const { token } = useAuth();
   const { id } = useParams();

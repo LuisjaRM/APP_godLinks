@@ -11,11 +11,12 @@ import { Loading } from "../../components/Loading/Loading";
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 import { PostComment } from "../../components/PostComment/PostComment";
 import { CommentsCard } from "../../components/CommentCard/CommentCard";
+import { Filter } from "../../components/Filter/Filter";
+import { PlataformFilter } from "../../components/PlataformFilter/PlataformFilter";
 
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
-import { useShowFilter } from "../../contexts/ShowFilter";
 
 // Fetchs
 
@@ -27,11 +28,6 @@ export const OfferById = () => {
   document.title = "GodLinks: Oferta ";
   //document.title = "GodLinks: Offer ";
 
-  // ShowFilter
-
-  const [, setShowFilter] = useShowFilter();
-  setShowFilter(true);
-
   const { id } = useParams();
   const { token } = useAuth();
   const { offers, loading, error, refresh } = useGetOfferById(id, token);
@@ -40,22 +36,29 @@ export const OfferById = () => {
   if (error) return <ErrorMessage />;
 
   return (
-    <section className="offers">
-      {offers.offerInfo?.map((offerInfo, index) => (
-        <OfferCard key={index} offer={offerInfo} />
-      ))}
+    <>
+      <aside className="filters">
+        <Filter />
+        <PlataformFilter />
+      </aside>
 
-      {offers.offerInfo?.map((offerInfo, i) => (
-        <PostComment key={i} id={id} refresh={refresh} offer={offerInfo} />
-      ))}
-
-      <ul className="comments-body">
-        {offers.comments?.map((comment) => (
-          <li key={comment.id}>
-            <CommentsCard comment={comment} refresh={refresh} />
-          </li>
+      <section className="offers">
+        {offers.offerInfo?.map((offerInfo, index) => (
+          <OfferCard key={index} offer={offerInfo} />
         ))}
-      </ul>
-    </section>
+
+        {offers.offerInfo?.map((offerInfo, i) => (
+          <PostComment key={i} id={id} refresh={refresh} offer={offerInfo} />
+        ))}
+
+        <ul className="comments-body">
+          {offers.comments?.map((comment) => (
+            <li key={comment.id}>
+              <CommentsCard comment={comment} refresh={refresh} />
+            </li>
+          ))}
+        </ul>
+      </section>
+    </>
   );
 };
