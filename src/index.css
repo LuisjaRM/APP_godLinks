@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100&family=Yatra+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kavoon&family=Righteous&display=swap");
 
 * {
   margin: 0;
@@ -19,4 +19,7 @@
   --color: #ff9100;
   --light-color: #fab75f;
   --light2-color: #fdc780;
+  font-family: "Kavoon, Arial", cursive;
+  font-family: "Righteous", cursive;
+
 }

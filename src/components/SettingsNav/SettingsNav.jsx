@@ -15,6 +15,7 @@ import { FormattedMessage } from "react-intl";
 import { useNightMode } from "../../contexts/NightModeContext";
 import { useShowSettings } from "../../contexts/ShowSettingsContext";
 import { useLanguage } from "../../contexts/LanguageContext";
+import { useEffect } from "react";
 
 // Settings Dropdown
 
@@ -22,6 +23,20 @@ export const SettingsNav = () => {
   const [nightMode, toggleNightMode] = useNightMode();
 
   const [showSettings, setShowSettings] = useShowSettings();
+
+  const toggleShow = () => {
+    if (window.scrollY > 1) {
+      setShowSettings(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", toggleShow);
+
+    return () => {
+      window.removeEventListener("scroll", toggleShow);
+    };
+  }, []);
 
   // Intl
 
@@ -35,7 +50,7 @@ export const SettingsNav = () => {
           setShowSettings(!showSettings);
         }}
       >
-        <section className="settings-nav">
+             <section className="settings-nav">
           <h2>
             <FormattedMessage id="settings" />
           </h2>
@@ -46,6 +61,36 @@ export const SettingsNav = () => {
                 <FormattedMessage id="theme" />
               </p>
 
+            <i
+              onClick={() => {
+                nightMode === "night"
+                  ? toggleNightMode("day")
+                  : toggleNightMode("night");
+              }}
+              className="toggle-button"
+            >
+              {nightMode === "night" ? (
+                <NightlightRoundIcon style={{ fontSize: "13px" }} />
+              ) : (
+                <Brightness5Icon style={{ fontSize: "13px" }} />
+              )}
+            </i>
+          </li>
+
+          <li className="settings-element language">
+            <p id="title">
+              <FormattedMessage id="language" />
+            </p>
+
+            <section>
+              <i
+                className={`button-es ${language === "es" && "es"}`}
+                onClick={() => {
+                  setLanguage("es");
+                }}
+              >
+                ES
+              </i>
               <i
                 onClick={() => {
                   nightMode === "night"
