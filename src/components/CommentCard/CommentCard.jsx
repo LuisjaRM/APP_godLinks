@@ -87,7 +87,7 @@ export const CommentsCard = ({ comment, refresh }) => {
   const [showEditComment, setShowEditComment] = useState(false);
 
   const [newComment, setNewComment] = useState(comment.comment);
-  const [error, setError] = useState("");
+  const [, setError] = useState("");
 
   const handleEditComment = async (e) => {
     e.preventDefault();
@@ -145,12 +145,6 @@ export const CommentsCard = ({ comment, refresh }) => {
       setError(error.message);
     }
   };
-
-  // Error messages
-
-  error ===
-    `"comment" length must be less than or equal to 170 characters long` &&
-    setError();
 
   return (
     <>
@@ -234,9 +228,6 @@ export const CommentsCard = ({ comment, refresh }) => {
               <button className="edit-button">Enviar</button>
             </fieldset>
           </form>
-
-          {error ? <p className="error">⚠️ {error}</p> : null}
-
           <p className={`comment ${showEditComment ? "hide" : ""}`}>
             {comment.comment}
           </p>

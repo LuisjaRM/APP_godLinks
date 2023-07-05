@@ -57,9 +57,11 @@ export const PostVote = ({ votes, offerId, refresh }) => {
 
   // Error messages
 
-  error === `"vote" must be a number` && setError(); // este error no hay que traducirlo Pablo
-  // error === "No puedes votar tu propia oferta" && setError();
-  // error === "Ya has votado esta oferta" && setError();
+  error === `"vote" must be a number` && setError(); // No traducir
+  error === "No puedes votar tu propia oferta" &&
+    setError(<FormattedMessage id="vote-own-offer-error" />);
+  error === "Ya has votado esta oferta" &&
+    setError(<FormattedMessage id="vote-already-offer-error" />);
 
   return (
     <>

@@ -20,6 +20,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { useShowLogin } from "../../contexts/ShowLoginContext";
 import { useShowRecover } from "../../contexts/ShowRecoverContext";
 import { useNavigateTo } from "../../contexts/NavigateToContext";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 // Fetchs
 
@@ -27,6 +28,7 @@ import { logInUserService } from "../../services/api";
 
 export const Login = () => {
   const navigate = useNavigate();
+  const [language] = useLanguage();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -60,8 +62,10 @@ export const Login = () => {
 
   // Error messages
 
-  error === "Email o contraseña incorrectos" && setError();
-  error === "Usuario no verificado" && setError();
+  error === "Email o contraseña incorrectos" &&
+    setError(<FormattedMessage id="email-password-error" />);
+  error === "Usuario no verificado" &&
+    setError(<FormattedMessage id="verify-error" />);
 
   return (
     <section className="login">
@@ -75,7 +79,9 @@ export const Login = () => {
             <FormattedMessage id="email" />
           </label>
           <input
-            placeholder="ejemplo@email.com"
+            placeholder={
+              language === "es" ? "tuemail@email.com" : "yourmail@email.com"
+            }
             type="email"
             name="login-email"
             id="login-email"
@@ -92,7 +98,11 @@ export const Login = () => {
           <section className="input-wrap">
             <input
               className="password-input"
-              placeholder="Escribe tu contraseña"
+              placeholder={
+                language === "es"
+                  ? "Escribe tu contraseña"
+                  : "Enter your password"
+              }
               type={seePassword ? "text" : "password"}
               name="login-password"
               autoComplete="login-password"

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Kavoon&family=Righteous&display=swap");
+
 .header-profile {
   height: calc(100vh - 7.5vh - 7.5vh - 5vh - 7.5vh);
   list-style: none;
@@ -74,6 +76,8 @@
   border: none;
   border-radius: 5px;
   box-shadow: 1px 1px 10px black;
+  font-family: "Kavoon, Arial", cursive;
+  font-family: "Righteous", cursive;
 }
 
 .header-profile .delete,

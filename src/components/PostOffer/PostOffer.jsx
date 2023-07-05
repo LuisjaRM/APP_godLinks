@@ -18,6 +18,7 @@ import { useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { useShowLogin } from "../../contexts/ShowLoginContext";
 import { useNightMode } from "../../contexts/NightModeContext";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 // Fetchs
 
@@ -27,6 +28,10 @@ import { PostOfferImage } from "../PostOfferImage/PostOfferImage";
 export const PostOffer = () => {
   // Theme Context
   const [nightMode] = useNightMode();
+
+  // Intl Context
+
+  const [language] = useLanguage();
 
   const [openPostOffer, setOpenPostOffer] = useState();
   const [openPostImage, setOpenPostImage] = useState();
@@ -70,20 +75,23 @@ export const PostOffer = () => {
   // Error messages
 
   error === `"url" length must be less than or equal to 280 characters long` &&
-    setError();
+    setError(<FormattedMessage id="url-280char-error" />);
 
   error === `"title" length must be less than or equal to 30 characters long` &&
-    setError();
+    setError(<FormattedMessage id="title-30char-error" />);
 
   error ===
     `"descrip" length must be less than or equal to 280 characters long` &&
-    setError();
+    setError(<FormattedMessage id="descrip-280char-error" />);
 
-  error === `"offer_price" must be a positive number` && setError();
+  error === `"offer_price" must be a positive number` &&
+    setError(<FormattedMessage id="offer_price-positive-error" />);
 
-  error === `"price" must be a positive number` && setError();
+  error === `"price" must be a positive number` &&
+    setError(<FormattedMessage id="price-positive-error" />);
 
-  error === "La fecha de caducidad no puede ser anterior a hoy" && setError();
+  error === "La fecha de caducidad no puede ser anterior a hoy" &&
+    setError(<FormattedMessage id="expire-error" />);
 
   return (
     <section className={`post-offer-body ${openPostOffer ? "show" : ""}`}>
@@ -105,7 +113,11 @@ export const PostOffer = () => {
               <FormattedMessage id="link" />
             </label>
             <input
-              placeholder="https://www.tupagina.com/"
+              placeholder={
+                language === "es"
+                  ? "https://www.tupagina.com/"
+                  : "https://www.yourpage.com/"
+              }
               type="url"
               name="url"
               id="url"
@@ -121,7 +133,7 @@ export const PostOffer = () => {
               <FormattedMessage id="title" />
             </label>
             <input
-              placeholder="Título"
+              placeholder={language === "es" ? "Título" : "Title"}
               type="text"
               name="title"
               id="title"
@@ -137,7 +149,11 @@ export const PostOffer = () => {
               <FormattedMessage id="description" />
             </label>
             <textarea
-              placeholder="Escribe una breve descripción de la oferta..."
+              placeholder={
+                language === "es"
+                  ? "Escribe una breve descripción de la oferta..."
+                  : "Write a short description of the offer"
+              }
               type="text"
               name="descrip"
               id="descrip"

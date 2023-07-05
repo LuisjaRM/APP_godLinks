@@ -78,7 +78,8 @@ export const PostOfferImage = ({
 
   // Error messages
 
-  error === "No has seleccionado ninguna imagen" && setError();
+  error === "No has seleccionado ninguna imagen" &&
+    setError(<FormattedMessage id="no-image-error" />);
 
   return (
     <section className={`post-offer-image-body ${openPostImage ? "show" : ""}`}>

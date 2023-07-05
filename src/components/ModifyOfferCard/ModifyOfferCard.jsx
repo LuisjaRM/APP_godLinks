@@ -400,20 +400,23 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
   // Error messages
 
   error === `"url" length must be less than or equal to 280 characters long` &&
-    setError();
+    setError(<FormattedMessage id="url-280char-error" />);
 
   error === `"title" length must be less than or equal to 30 characters long` &&
-    setError();
+    setError(<FormattedMessage id="title-30char-error" />);
 
   error ===
     `"descrip" length must be less than or equal to 280 characters long` &&
-    setError();
+    setError(<FormattedMessage id="descrip-280char-error" />);
 
-  error === `"offer_price" must be a positive number` && setError();
+  error === `"offer_price" must be a positive number` &&
+    setError(<FormattedMessage id="offer_price-positive-error" />);
 
-  error === `"price" must be a positive number` && setError();
+  error === `"price" must be a positive number` &&
+    setError(<FormattedMessage id="price-positive-error" />);
 
-  error === "La fecha de caducidad no puede ser anterior a hoy" && setError();
+  error === "La fecha de caducidad no puede ser anterior a hoy" &&
+    setError(<FormattedMessage id="expire-error" />);
 
   return (
     <>

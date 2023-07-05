@@ -137,6 +137,7 @@ main.light {
 .error {
   text-align: center;
   color: red;
+  margin-top: 0.5rem;
 }
 
 /* Buttons */
