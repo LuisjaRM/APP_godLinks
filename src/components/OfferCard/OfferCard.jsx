@@ -307,7 +307,7 @@ export const OfferCard = ({ offer, refresh }) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <p>
+              <p className="link-to-offer">
                 <FormattedMessage id="link-to-offer" />
               </p>
 

@@ -63,7 +63,7 @@ export const Footer = () => {
 
       <section className={`footer-container ${show ? "show" : ""} `}>
         <section className="about-us">
-          <h3 className="section-title">
+          <h3 className={`section-title ${nightMode === "day" ? "light" : ""}`}>
             <FormattedMessage id="about-us" />
           </h3>
 

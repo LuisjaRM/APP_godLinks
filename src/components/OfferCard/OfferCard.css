@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Kavoon&family=Righteous&display=swap");
+
 .offer-card {
   cursor: pointer;
   display: flex;
@@ -293,6 +295,11 @@ p.expired-offer {
   font-weight: bold;
   text-align: center;
   color: rgb(180, 38, 38);
+}
+
+.link-to-offer {
+  font-family: "Kavoon, Arial", cursive;
+  font-family: "Righteous", cursive;
 }
 
 /* Para el responsive de ordenador */
