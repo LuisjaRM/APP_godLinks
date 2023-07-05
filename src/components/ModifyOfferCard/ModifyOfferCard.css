@@ -32,7 +32,7 @@
 .modify-offer-card select {
   width: 250px;
   border-radius: 5px;
-  background-color: khaki;
+  background-color: var(--light2-color);
   color: black;
   padding: 0.5rem;
   font-size: 100%;
@@ -41,7 +41,7 @@
 .send-modify-button.light {
   background-color: rgba(0, 0, 0, 0);
   right: -2rem;
-  color: khaki;
+  color: var(--color);
 }
 
 /* Delete button */
@@ -55,13 +55,13 @@
   gap: 0.5rem;
   border: none;
   border-radius: 10px;
-  background-color: khaki;
-  color: black;
+  background-color: var(--color);
+  color: var(--bg-color);
   font-weight: bold;
 }
 
 .modify-offer-card .delete-button:hover {
-  box-shadow: 1px 1px 10px khaki;
+  box-shadow: 1px 1px 10px var(--color);
   text-decoration: underline;
 }
 

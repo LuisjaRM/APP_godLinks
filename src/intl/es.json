@@ -16,6 +16,7 @@
   "myprofile": "Mi perfil",
   "myoffers": "Mis ofertas",
   "signout": "Cerrar sesión ",
+  "settings": "Ajustes",
   "theme": "Tema",
   "language": "Idioma",
 
@@ -32,9 +33,10 @@
   "platform": "Plataforma:",
   "expiration-date": "Fecha de caducidad:",
   "deleteoffer": "Borrar oferta",
+  "send-vote-success": "Tu voto se ha registrado correctamente",
 
-  "upload-image": "Sube una foto para tu oferta",
-  "upload-without-image": " Subir oferta sin imagen:",
+  "upload-image": "Haz que tu oferta destaque añadiendo una imagen",
+  "upload-without-image": " Subir oferta sin imagen",
   "offeruploaded": "La oferta se ha subido correctamente",
 
   "modify-offer-confirmation": "¿Estás seguro que quieres modificar esta oferta?",
@@ -83,7 +85,5 @@
 
   "password-match": "Las contraseñas no conciden",
   "password-user-match": "La contraseña no puede ser igual al nombre de usuario",
-  "error-password-8cha": "La contraseña no debe contener más de 8 carácteres",
-
-  "send-vote-success": "Tu voto se ha registrado correctamente"
+  "error-password-8cha": "La contraseña no debe contener más de 8 carácteres"
 }

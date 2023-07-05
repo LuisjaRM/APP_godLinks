@@ -64,7 +64,6 @@ article .link_404 {
 .theh2 {
   margin-top: 20px;
   margin-bottom: 20px;
-  color: khaki;
 }
 
 .btn-request {
@@ -87,8 +86,8 @@ article .link_404 {
   margin: 15px auto;
   width: 100px;
   padding: 10px 15px;
-  background-color: khaki;
-  border: 1px solid white;
+  background-color: var(--color);
+  border: none;
   border-radius: 100px;
   font-weight: 400;
   display: block;
@@ -146,12 +145,6 @@ article .link_404 {
   will-change: transform;
   animation: move-astronaut 50s infinite linear both alternate;
 }
-
-/* .image-404 {
-  position: relative;
-  z-index: 100;
-  pointer-events: none;
-} */
 
 .stars {
   background: url(http://salehriaz.com/404Page/img/overlay_stars.svg);

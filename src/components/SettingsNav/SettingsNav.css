@@ -9,58 +9,40 @@
   height: 6.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   gap: 0.25rem;
   padding: 0.5rem;
   font-size: 75%;
   border-radius: 10px;
-  background-color: rgb(196, 186, 104);
-  box-shadow: 1px 1px 10px black;
-  list-style: none;
+  background-color: var(--color);
+  box-shadow: 1px 1px 10px var(--bg-color);
 }
 
-.settings-nav .title {
-  font-weight: bold;
+.settings-nav .settings-ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 .settings-nav .settings-element {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 0.5rem;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
-.settings-nav .toggle-button {
-  cursor: pointer;
-  font-size: 10px;
-  width: 47px;
-  height: 16px;
-  display: flex;
-  border-radius: 10%;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  color: rgb(247, 247, 247);
-  padding: 0.25rem;
-  background-color: rgba(0, 0, 0, 0);
-  background-color: #1b1b1b;
-  border: 1px solid rgb(255, 255, 255);
+.settings-nav .toggle-icon {
+  font-size: 150%;
 }
 
-.settings-nav .language {
-  border-top: px solid black;
-  padding-top: 1rem;
-}
-
-.settings-nav .language .button-es,
-.settings-nav .language .button-en {
+.settings-nav .button-es,
+.settings-nav .button-en {
   cursor: pointer;
   width: 20px;
   height: 20px;
   padding: 0.1rem;
   font-size: 90%;
-  border: 1px solid rgb(1, 1, 97);
-  color: rgb(1, 1, 97);
+  border: 1px solid var(--bg-color);
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
 }
 

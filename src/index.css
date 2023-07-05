@@ -9,6 +9,17 @@
 #root {
   max-height: 100vh;
   max-width: 100vw;
+  font-family: "Libre Franklin, Arial, Helvetica, sans-serif";
+  --bg-color: rgb(31, 31, 31);
+  --bg2-color: rgb(44, 44, 44);
+  --bg3-color: rgb(50, 50, 50);
+  --bg-light-color: #cfcfcf;
+  --bg2-light-color: #dcdcdc;
+  --bg3-light-color: #efefef;
+  --color: #ff9100;
+  --light-color: #fab75f;
+  --light2-color: #fdc780;
   font-family: "Kavoon, Arial", cursive;
   font-family: "Righteous", cursive;
+
 }

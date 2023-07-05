@@ -14,8 +14,8 @@
   padding: 0.25rem;
   font-size: 75%;
   border-radius: 10px;
-  background-color: rgb(196, 186, 104);
-  box-shadow: 1px 1px 10px black;
+  background-color: var(--color);
+  box-shadow: 1px 1px 10px var(--bg-color);
   list-style: none;
 }
 
@@ -36,13 +36,13 @@
   text-decoration: none;
   color: black;
   text-align: center;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--bg-color);
   font-family: "Kavoon, Arial", cursive;
   font-family: "Righteous", cursive;
 }
 
 .user-nav .link:hover {
-  background-color: rgb(219, 209, 130);
+  background-color: var(--light-color);
   text-decoration: underline;
 }
 

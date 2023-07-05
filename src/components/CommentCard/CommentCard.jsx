@@ -19,6 +19,7 @@ import { useState } from "react";
 // Context
 
 import { useAuth } from "../../contexts/AuthContext";
+import { useNightMode } from "../../contexts/NightModeContext";
 
 // Fetch
 
@@ -29,6 +30,9 @@ import {
 } from "../../services/api";
 
 export const CommentsCard = ({ comment, refresh }) => {
+  // Theme Context
+  const [nightMode] = useNightMode();
+
   const navigate = useNavigate();
 
   // State Confirm Modal
@@ -150,7 +154,7 @@ export const CommentsCard = ({ comment, refresh }) => {
 
   return (
     <>
-      <section className="comment-card">
+      <section className={`comment-card ${nightMode === "day" ? "light" : ""}`}>
         {user.id === comment.user_id ? (
           <section className="comments-buttons">
             <button

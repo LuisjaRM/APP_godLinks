@@ -1,6 +1,11 @@
 .comment-card {
-  padding: 0.5rem 0;
-  border-bottom: 1px dashed khaki;
+  padding-bottom: 0.5rem;
+  color: white;
+  border-bottom: 1px dashed var(--color);
+}
+
+.comment-card.light {
+  color: var(--bg-color);
 }
 
 /* Buttons */
@@ -44,12 +49,11 @@
   height: 24px;
   object-fit: cover;
   border-radius: 50%;
-  box-shadow: 1px 1px 10px black;
+  box-shadow: 1px 1px 5px var(--color);
 }
 
 .comment-card .user-name {
   font-weight: bold;
-  color: khaki;
 }
 
 .comment-card .user-name:hover {
@@ -104,15 +108,15 @@
 .comment-card input {
   padding: 0.5rem;
   border: none;
-  background-color: rgb(66, 66, 94);
-  color: khaki;
+  background-color: var(--light-color);
+  color: var(--color);
   width: 100%;
 }
 
 .comment-card .edit-button {
   border: none;
   border-radius: 5px;
-  background-color: khaki;
+  background-color: var(--color);
   padding: 0 0.5rem;
 }
 

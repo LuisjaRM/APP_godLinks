@@ -5,13 +5,19 @@
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  background-color: rgb(1, 1, 48);
-  color: rgb(163, 156, 94);
-  border-bottom: 1px solid khaki;
+  background-color: var(--bg2-color);
+  color: var(--color);
+  border-bottom: 1px solid var(--color);
+}
+
+.plataform-filter.light {
+  background-color: var(--bg2-light-color);
+  color: var(--bg3-color);
 }
 
 .plataform-filter .plataform-list {
   display: flex;
+  gap: 1rem;
   overflow-x: scroll;
   list-style: none;
 }
@@ -20,18 +26,37 @@
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0);
   border: none;
-  color: khaki;
+  color: var(--color);
 }
 
 .plataform-filter .plataform {
   cursor: pointer;
   height: calc(5vh - 1rem);
-  min-width: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 80%;
   font-weight: bold;
+}
+
+.plataform-filter .plataform.ps5 {
+  min-width: 85px;
+}
+
+.plataform-filter .plataform.ps4 {
+  min-width: 85px;
+}
+.plataform-filter .plataform.xbo {
+  min-width: 60px;
+}
+.plataform-filter .plataform.xbs {
+  min-width: 70px;
+}
+.plataform-filter .plataform.nin {
+  min-width: 100px;
+}
+.plataform-filter .plataform.pc {
+  min-width: 20px;
 }
 
 .plataform-filter .plataform:hover {

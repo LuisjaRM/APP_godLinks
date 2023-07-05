@@ -1,12 +1,19 @@
 import "./AboutUs.css";
 
+// Context
+
+import { useNightMode } from "../../contexts/NightModeContext";
+
 export const AboutUs = () => {
+  // Theme Context
+  const [nightMode] = useNightMode();
+
   // Document Title
   document.title = "Sobre Nosotros";
   // document.title = "About us";
 
   return (
-    <section className="about-us">
+    <section className={`about-us ${nightMode === "day" ? "light" : ""}`}>
       <h1>¿Que es Godlinks?</h1>
       <p>
         Este proyecto nace como una idea inspirada en lo mucho que nos gustan
@@ -59,7 +66,7 @@ export const AboutUs = () => {
         mucho y hacer reír, y siempre trato de ver el vaso medio lleno.
       </p>
 
-      <h3>Agradeciemientos</h3>
+      <h2>Agradeciemientos</h2>
 
       <p>
         Queremos dar las gracias al gran equipo de HACKABOSS que ha estado

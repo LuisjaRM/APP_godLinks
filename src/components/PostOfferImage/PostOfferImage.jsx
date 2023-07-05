@@ -18,6 +18,7 @@ import { useNavigate } from "react-router";
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
+import { useNightMode } from "../../contexts/NightModeContext";
 
 // Fetchs
 
@@ -28,6 +29,9 @@ export const PostOfferImage = ({
   openPostImage,
   setOpenPostImage,
 }) => {
+  // Theme Context
+  const [nightMode] = useNightMode();
+
   // Destructuring useAuth
 
   const { token } = useAuth();
@@ -80,7 +84,9 @@ export const PostOfferImage = ({
     <section className={`post-offer-image-body ${openPostImage ? "show" : ""}`}>
       <section
         onClick={(e) => e.stopPropagation()}
-        className={`post-offer-image ${openPostImage ? "show" : ""}`}
+        className={`post-offer-image ${openPostImage ? "show" : ""} ${
+          nightMode === "day" ? "light" : ""
+        }`}
       >
         <h2 className="title">
           <FormattedMessage id="upload-image" />
@@ -128,12 +134,8 @@ export const PostOfferImage = ({
           </form>
 
           <section className="post-offer-noImage">
-            <p>
-              <FormattedMessage id="upload-without-image" />
-            </p>
-
-            <button
-              className="post-offer-button"
+            <p
+              className="button-main without-image"
               onClick={() => {
                 setOpenPostImage(!openPostImage);
                 setShowUploadOfferModal(!showUploadOfferModal);
@@ -146,12 +148,8 @@ export const PostOfferImage = ({
                 }, 2000);
               }}
             >
-              <SvgIcon
-                className="post-offer-icon"
-                component={AddToPhotosIcon}
-                inheritViewBox
-              />
-            </button>
+              <FormattedMessage id="upload-without-image" />
+            </p>
           </section>
         </section>
       </section>
@@ -173,7 +171,7 @@ export const PostOfferImage = ({
                 className="check"
                 strokeLinejoin="round"
                 d="M34.682 60.352l15.61 15.61 33.464-33.464"
-                stroke="#08b237"
+                stroke="black"
                 strokeLinecap="round"
                 strokeWidth="4.3"
                 fill="none"
@@ -183,7 +181,7 @@ export const PostOfferImage = ({
                 strokeLinejoin="round"
                 cx="59.219"
                 strokeLinecap="round"
-                stroke="#08b237"
+                stroke="black"
                 cy="59.219"
                 r="57.069"
                 strokeWidth="4.3"

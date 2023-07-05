@@ -3,8 +3,15 @@
   display: flex;
   flex-direction: column;
   padding: 0.75rem;
-  border: 1px solid khaki;
+  background-color: var(--bg2-color);
+  color: white;
+  border: 1px solid var(--light-color);
   border-radius: 10px;
+}
+
+.offer-card.light {
+  background-color: var(--bg2-light-color);
+  color: black;
 }
 
 .offer-card.expired {
@@ -14,7 +21,9 @@
 }
 
 .offer-card:hover {
-  box-shadow: 1px 1px 15px khaki;
+  background-color: var(--bg-color);
+  color: var(--light-color);
+  box-shadow: 1px 1px 15px var(--color);
 }
 
 /* Edit-button */
@@ -55,7 +64,6 @@
   height: 24px;
   object-fit: cover;
   border-radius: 50%;
-  box-shadow: 1px 1px 10px black;
 }
 
 .offer-card .header .user-name {
@@ -90,7 +98,6 @@
   object-fit: contain;
   border-radius: 10px;
   background-color: white;
-  box-shadow: 1px 1px 5px black;
 }
 
 .offer-card .main .image.expired {
@@ -176,8 +183,8 @@
   bottom: 0rem;
   right: 0rem;
   padding: 0 0.2rem;
-  background-color: rgb(1, 1, 48);
-  color: rgb(163, 156, 94);
+  background-color: rgba(0, 0, 0, 0);
+  color: var(--color);
   border: none;
 }
 
@@ -200,7 +207,7 @@ svg {
 }
 
 svg:hover {
-  fill: salmon;
+  fill: var(--color);
 }
 
 svg:focus {
@@ -208,14 +215,14 @@ svg:focus {
 }
 
 svg.like {
-  fill: red;
+  fill: var(--color);
   animation-name: like;
   animation-duration: 0.3s;
   animation-iteration-count: 2;
 }
 
 svg.like:focus {
-  fill: red;
+  fill: var(--color);
 }
 
 @keyframes like {
@@ -251,10 +258,9 @@ svg.like:focus {
 .offer-card .footer .link-button {
   cursor: pointer;
   padding: 0.25rem 0.5rem;
-  background-color: khaki;
+  background-color: var(--color);
   border: none;
   border-radius: 5px;
-  box-shadow: 1px 1px 10px black;
 }
 
 .offer-card .footer .link-button.expired {
@@ -263,14 +269,14 @@ svg.like:focus {
 
 .offer-card .footer .link-button:hover {
   text-decoration: underline;
-  box-shadow: 1px 1px 10px khaki;
+  box-shadow: 1px 1px 10px var(--color);
 }
 
 .offer-card .footer .offer-link {
   display: flex;
   gap: 0.25rem;
   text-decoration: none;
-  color: black;
+  color: var(--bg-color);
   font-weight: bold;
 }
 

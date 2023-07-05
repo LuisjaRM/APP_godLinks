@@ -1,7 +1,14 @@
+.settings-button {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+}
+
 .settings-button .settings-icon {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background-color: gray;
+  background-color: rgba(0, 0, 0, 0);
+  color: var(--color);
   z-index: 2;
 }

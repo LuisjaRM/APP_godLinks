@@ -7,7 +7,14 @@ footer {
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  border-top: 1px solid khaki;
+  background-color: var(--bg-color);
+  color: var(--color);
+  border-top: 1px solid var(--color);
+}
+
+footer.light {
+  background-color: var(--bg-light-color);
+  color: var(--bg-color);
 }
 
 /* Header */
@@ -22,6 +29,7 @@ footer .footer-header {
 }
 
 .footer-header .title-footer {
+  color: var(--color);
   font-size: 20px;
 }
 
@@ -35,19 +43,28 @@ footer .footer-header {
   height: 20px;
   border: none;
   border-radius: 50%;
-  background-color: black;
+  background-color: var(--bg-color);
 }
 
 .footer-header .more-content.show {
-  background-color: khaki;
+  background-color: var(--light-color);
+}
+
+.footer-header .cancel-icon {
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 50%;
+  color: var(--light-color);
+  background-color: var(--bg-color);
 }
 
 .footer-header .info-icon {
-  color: khaki;
+  color: var(--light-color);
 }
 
 .footer-header .more-content:hover {
-  box-shadow: 2px 2px 10px khaki;
+  box-shadow: 2px 2px 10px var(--light-color);
 }
 
 /* Container */
@@ -61,7 +78,7 @@ footer .footer-container.show {
   flex-direction: column;
   align-items: center;
   padding-top: 0.5rem;
-  border-top: 1px solid khaki;
+  border-top: 1px solid var(--color);
 }
 
 footer .about-us {
@@ -71,7 +88,7 @@ footer .about-us {
   align-items: center;
   gap: 0.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid khaki;
+  border-bottom: 1px solid var(--light-color);
 }
 
 footer .section-title {
@@ -81,22 +98,30 @@ footer .section-title {
 
 footer .about-us a {
   text-decoration: none;
-  color: khaki;
+  color: var(--light-color);
+}
+
+footer .about-us a.light {
+  color: var(--bg3-color);
 }
 
 footer .about-us p {
-  color: khaki;
+  color: var(--light-color);
 }
 
 footer .about-us a:hover {
   text-decoration: underline;
 }
 
+footer .about-us p.light {
+  color: var(--bg3-color);
+}
+
 footer .footer-container-section {
   display: flex;
   gap: 1rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid khaki;
+  border-bottom: 1px solid var(--color);
 }
 
 footer .menu {
@@ -112,8 +137,12 @@ footer .menu .section-title {
 }
 
 footer .menu .menu-item {
-  color: khaki;
+  color: var(--light-color);
   text-decoration: none;
+}
+
+footer .menu .menu-item.light {
+  color: var(--bg3-color);
 }
 
 footer .menu .menu-item:hover {
@@ -158,60 +187,5 @@ footer .linkedin-image {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-}
-
-/*MEDIA QUERY*/
-
-/* @media (max-width: 700px) {
-  .footer-container {
-    padding: 2rem;
-    flex-direction: column;
-  }
-
-  .footer-content-container {
-    width: 100%;
-    padding: 2rem 0;
-    border-bottom: 1px solid #2a2a2a;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .footer-content-container:nth-of-type(1) {
-    align-items: flex-start;
-  }
-  .footer-content-container:nth-of-type(3) {
-    border-bottom: none;
-    padding-bottom: 0;
-  }
-
-  .footer-menus {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    border-bottom: 1px solid #2a2a2a;
-  }
-
-  .footer-menus .footer-content-container:nth-of-type(1) {
-    width: 45%;
-    align-items: flex-start;
-    border-bottom: none;
-  }
-  .footer-menus .footer-content-container:nth-of-type(2) {
-    width: 45%;
-    align-items: flex-start;
-    border-bottom: none;
-  }
-} */
-
-/* Dark and light themes */
-
-.dark {
-  background-color: rgb(1, 1, 75);
-  color: rgb(136, 124, 14);
-}
-
-.light {
-  background-color: rgb(250, 250, 250);
-  color: rgb(0, 0, 0);
+  border: 1px solid rgba(0, 0, 0, 0.2);
 }
