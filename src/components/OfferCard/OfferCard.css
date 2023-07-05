@@ -28,6 +28,11 @@
   box-shadow: 1px 1px 15px var(--color);
 }
 
+.offer-card.light:hover {
+  background-color: var(--bg-light-color);
+  color: var(--color);
+}
+
 /* Edit-button */
 
 .offer-card .edit-wrap {
