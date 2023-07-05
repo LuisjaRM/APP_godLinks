@@ -16,6 +16,8 @@
   border-radius: 10px;
   background-color: var(--color);
   box-shadow: 1px 1px 10px var(--bg-color);
+  font-family: "Kavoon, Arial", cursive;
+  font-family: "Righteous", cursive;
 }
 
 .settings-nav .settings-ul {
