@@ -26,9 +26,10 @@ import {
   ResetPasswordService,
 } from "../../services/api";
 
-export const RecoverPassword = () => {
+export const RecoverPassword = ({ isLogin, setIsLogin }) => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
+  const [isAnimated, setIsAnimated] = useState();
 
   const [showLogin, setShowLogin] = useShowLogin();
   const [showRecover, setShowRecover] = useShowRecover();
@@ -40,6 +41,23 @@ export const RecoverPassword = () => {
   // Show Recover Code Modal
 
   const [showRecoverCodeModal, setShowRecoverCodeModal] = useState(false);
+
+  // Animation email
+  showRecoverCodeModal &&
+    setTimeout(() => {
+      setIsAnimated(true);
+    }, 1500);
+
+  showRecoverCodeModal &&
+    setTimeout(() => {
+      setIsLogin(!isLogin);
+      setShowLogin(!showLogin);
+    }, 5000);
+
+  !showRecoverCodeModal &&
+    setTimeout(() => {
+      setIsAnimated(false);
+    }, 1500);
 
   // Handle Form
 
@@ -310,25 +328,26 @@ export const RecoverPassword = () => {
       {showRecoverCodeModal && (
         <section className="modal-back dark">
           <section className="modal-body little verify">
-            <p>
-              <FormattedMessage id="email-recover" />
-            </p>
-
-            <div id="anim-wrapper">
-              <div id="anim-bg">
-                <div id="env-wrapper">
-                  <div className="speedline line1"></div>
-                  <div className="speedline line2"></div>
-                  <div className="speedline line3"></div>
-                  <i id="env" className="fas fa-envelope"></i>
-                </div>
-              </div>
-
-              <div id="check-container">
-                <div className="check-stroke1"></div>
-                <div className="check-stroke2"></div>
-              </div>
-            </div>
+            <section className="modal-back dark">
+              <section className="modal-body little verify">
+                <section className="container-email">
+                  <section
+                    className={`email-box ${isAnimated ? "animated" : ""}`}
+                  >
+                    <section className="triangle"></section>
+                    <section className="triangle"></section>
+                    <section className="triangle">GodLinks.S.A</section>
+                    <section className="triangle"></section>
+                    <section className="paper">
+                      <p>
+                        <FormattedMessage id="email-recover" />
+                      </p>
+                      <section className="content-box"></section>
+                    </section>
+                  </section>
+                </section>
+              </section>
+            </section>
           </section>
         </section>
       )}
