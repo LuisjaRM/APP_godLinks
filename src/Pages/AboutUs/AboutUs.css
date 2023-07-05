@@ -5,4 +5,19 @@
   padding: 1rem;
   gap: 1rem;
   text-align: justify;
+  color: white;
+}
+
+.about-us.light {
+  color: var(--bg-color);
+}
+
+.about-us h1,
+.about-us h2 {
+  color: var(--light-color);
+}
+
+.about-us.light h1,
+.about-us.light h2 {
+  color: var(--color);
 }

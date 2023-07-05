@@ -2,12 +2,11 @@ import "./ErrorMessage.css";
 
 // Intl
 
-import {FormattedMessage} from 'react-intl';
+import { FormattedMessage } from "react-intl";
 
 // React
 
 import { useNavigate } from "react-router";
-
 
 export const ErrorMessage = () => {
   const navigate = useNavigate();
@@ -18,26 +17,24 @@ export const ErrorMessage = () => {
 
   return (
     <section className="error-message">
-      {/* ErrorMessage*/}
-
       <section className="error-message-box">
-        <h1 className="error-text-ap"><FormattedMessage id="oops"/></h1>
-        <p className="error-mess-p"> <FormattedMessage id="fail-connection"/></p>
+        <h1 className="error-text-ap">
+          <FormattedMessage id="oops" />
+        </h1>
+        <p className="error-mess-p">
+          <FormattedMessage id="fail-connection" />
+        </p>
 
         <button onClick={handleClick} className="book home-page">
-          <FormattedMessage id="home"/>
+          <FormattedMessage id="home" />
         </button>
-
       </section>
 
-      {/* Stars */}
       <section>
         <ul>
           <li className="starfourth"></li>
         </ul>
       </section>
-
-      {/* Lamp */}
 
       <section className="lamp__wrap">
         <div className="lamp">

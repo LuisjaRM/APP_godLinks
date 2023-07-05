@@ -1,7 +1,8 @@
 import "./SettingsNav.css";
 
-//material
+// Material
 
+import { SvgIcon } from "@mui/material";
 import NightlightRoundIcon from "@mui/icons-material/NightlightRound";
 import Brightness5Icon from "@mui/icons-material/Brightness5";
 
@@ -49,11 +50,16 @@ export const SettingsNav = () => {
           setShowSettings(!showSettings);
         }}
       >
-        <ul className="settings-nav" onClick={(e) => e.stopPropagation()}>
-          <li className="settings-element">
-            <p id="title">
-              <FormattedMessage id="theme" />
-            </p>
+             <section className="settings-nav">
+          <h2>
+            <FormattedMessage id="settings" />
+          </h2>
+
+          <ul className="settings-ul" onClick={(e) => e.stopPropagation()}>
+            <li className="settings-element">
+              <p id="title">
+                <FormattedMessage id="theme" />
+              </p>
 
             <i
               onClick={() => {
@@ -86,16 +92,55 @@ export const SettingsNav = () => {
                 ES
               </i>
               <i
-                className={`button-en ${language === "en" && "en"}`}
                 onClick={() => {
-                  setLanguage("en");
+                  nightMode === "night"
+                    ? toggleNightMode("day")
+                    : toggleNightMode("night");
                 }}
+                className="toggle-button"
               >
-                EN
+                {nightMode === "day" ? (
+                  <SvgIcon
+                    className={`toggle-icon`}
+                    component={Brightness5Icon}
+                    inheritViewBox
+                  />
+                ) : (
+                  <SvgIcon
+                    className={`toggle-icon`}
+                    component={NightlightRoundIcon}
+                    inheritViewBox
+                  />
+                )}
               </i>
-            </section>
-          </li>
-        </ul>
+            </li>
+
+            <li className="settings-element language">
+              <p id="title">
+                <FormattedMessage id="language" />
+              </p>
+
+              <section>
+                <i
+                  className={`button-es ${language === "es" && "es"}`}
+                  onClick={() => {
+                    setLanguage("es");
+                  }}
+                >
+                  ES
+                </i>
+                <i
+                  className={`button-en ${language === "en" && "en"}`}
+                  onClick={() => {
+                    setLanguage("en");
+                  }}
+                >
+                  EN
+                </i>
+              </section>
+            </li>
+          </ul>
+        </section>
       </section>
     )
   );

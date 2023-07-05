@@ -4,6 +4,7 @@ import "./Footer.css";
 
 import { SvgIcon } from "@mui/material";
 import InfoIcon from "@mui/icons-material/Info";
+import CancelIcon from "@mui/icons-material/Cancel";
 
 // Intl
 
@@ -33,7 +34,7 @@ export const Footer = () => {
   };
 
   return (
-    <footer className={`${nightMode === "night" ? "dark" : "light"}`}>
+    <footer className={nightMode === "day" ? "light" : ""}>
       <section className="footer-header">
         <h2 className="title-footer">GodLinks S.A.</h2>
 
@@ -43,7 +44,11 @@ export const Footer = () => {
           title="Desplegar pié de página"
         >
           {show ? (
-            "X"
+            <SvgIcon
+              className="cancel-icon"
+              component={CancelIcon}
+              inheritViewBox
+            />
           ) : (
             <SvgIcon
               className="info-icon"
@@ -62,7 +67,10 @@ export const Footer = () => {
             <FormattedMessage id="about-us" />
           </h3>
 
-          <a href="mailto:godLinkssa@gmail.com" className="footer-info">
+          <a
+            href="mailto:godLinkssa@gmail.com"
+            className={nightMode === "day" ? "light" : ""}
+          >
             godLinkssa@gmail.com
           </a>
 
@@ -70,6 +78,7 @@ export const Footer = () => {
             onClick={() => {
               navigate("/aboutUs");
             }}
+            className={nightMode === "day" ? "light" : ""}
           >
             <FormattedMessage id="ourpage" />
           </p>
@@ -79,13 +88,22 @@ export const Footer = () => {
           <section className="menu">
             <h3 className="section-title">Menú</h3>
 
-            <Link className="menu-item" to="/">
+            <Link
+              className={`menu-item ${nightMode === "day" ? "light" : ""}`}
+              to="/"
+            >
               <FormattedMessage id="home" />
             </Link>
-            <Link className="menu-item" to="/favorites">
+            <Link
+              className={`menu-item ${nightMode === "day" ? "light" : ""}`}
+              to="/favorites"
+            >
               <FormattedMessage id="favorite-offers" />
             </Link>
-            <Link className="menu-item" to="/offersByVotes">
+            <Link
+              className={`menu-item ${nightMode === "day" ? "light" : ""}`}
+              to="/offersByVotes"
+            >
               <FormattedMessage id="most-rated-offers" />
             </Link>
           </section>
@@ -98,7 +116,7 @@ export const Footer = () => {
               href="https://www.aquasocialmedia.com/blog-dynamic/91-que-es-y-para-que-sirve-la-politica-de-privacidad"
               target="_blank"
               rel="noopener noreferrer"
-              className="menu-item"
+              className={`menu-item ${nightMode === "day" ? "light" : ""}`}
             >
               <FormattedMessage id="privacy" />
             </a>
@@ -106,7 +124,7 @@ export const Footer = () => {
               href="https://blog.hubspot.es/website/que-son-cookies"
               target="_blank"
               rel="noopener noreferrer"
-              className="menu-item"
+              className={`menu-item ${nightMode === "day" ? "light" : ""}`}
             >
               Cookies
             </a>
@@ -114,7 +132,7 @@ export const Footer = () => {
               href="https://web.icam.es/ciudadanos/servicio-de-orientacion-juridica/"
               target="_blank"
               rel="noopener noreferrer"
-              className="menu-item"
+              className={`menu-item ${nightMode === "day" ? "light" : ""}`}
             >
               <FormattedMessage id="legaladvice" />
             </a>
@@ -214,7 +232,7 @@ export const Footer = () => {
           </article>
 
           <article className="creator">
-            <p>Pablo Planes :</p>
+            <p>Pablo Planes:</p>
 
             <section className="social-creator">
               <a

@@ -12,6 +12,7 @@ import { useState } from "react";
 // Contexts
 
 import { useLanguage } from "./contexts/LanguageContext";
+import { useNightMode } from "./contexts/NightModeContext";
 
 // Components
 
@@ -23,6 +24,9 @@ import { Footer } from "./components/Footer/Footer";
 import { ScrollUp } from "./components/ScrollUp/ScrollUp";
 
 export const Root = () => {
+  // Theme Context
+  const [nightMode] = useNightMode();
+
   const [isLogin, setIsLogin] = useState(true);
 
   // Intl
@@ -36,7 +40,7 @@ export const Root = () => {
     >
       <Header />
 
-      <main>
+      <main className={nightMode === "day" ? "light" : ""}>
         <Outlet />
         <LoginOrSignup isLogin={isLogin} setIsLogin={setIsLogin} />
         <VerifyUser setIsLogin={setIsLogin} />

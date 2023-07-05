@@ -3,7 +3,7 @@
   position: fixed;
   bottom: calc(7.5vh + 0.5rem);
   left: 0.5rem;
-  background-color: rgba(240, 230, 140, 0.7);
+  background-color: var(--light-color);
   border: none;
   border-radius: 50%;
   display: flex;
@@ -12,7 +12,7 @@
 }
 
 #scrollUp:hover {
-  box-shadow: 1px 1px 10px khaki;
+  box-shadow: 1px 1px 10px var(--color);
 }
 
 .opacity-1 {

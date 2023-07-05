@@ -4,6 +4,7 @@ import "./Search.css";
 
 import { SvgIcon } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import CancelIcon from "@mui/icons-material/Cancel";
 
 // React
 
@@ -52,7 +53,11 @@ export const Search = () => {
         }}
         className={`cancel-button ${isSearch && "show"}`}
       >
-        X
+        <SvgIcon
+          className={`cancel-icon`}
+          component={CancelIcon}
+          inheritViewBox
+        />
       </button>
 
       <button

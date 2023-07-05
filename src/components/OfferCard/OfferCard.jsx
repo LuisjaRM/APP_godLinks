@@ -27,12 +27,16 @@ import { useAuth } from "../../contexts/AuthContext";
 import { useShowLogin } from "../../contexts/ShowLoginContext";
 import { useNavigateTo } from "../../contexts/NavigateToContext";
 import { useLanguage } from "../../contexts/LanguageContext";
+import { useNightMode } from "../../contexts/NightModeContext";
 
 // Fetchs
 
 import { addFavoriteService, useGetOfferById } from "../../services/api";
 
 export const OfferCard = ({ offer, refresh }) => {
+  // Theme Context
+  const [nightMode] = useNightMode();
+
   const { user, token } = useAuth();
   const [showLogin, setShowLogin] = useShowLogin();
   const [, setNavigateTo] = useNavigateTo();
@@ -159,7 +163,9 @@ export const OfferCard = ({ offer, refresh }) => {
   return (
     <>
       <section
-        className={`offer-card ${expired ? "expired" : ""}`}
+        className={`offer-card ${expired ? "expired" : ""} ${
+          nightMode === "day" ? "light" : ""
+        }`}
         onClick={handleClickOfferCard}
       >
         {expired && (
@@ -287,7 +293,7 @@ export const OfferCard = ({ offer, refresh }) => {
         </section>
 
         <section className="footer">
-          <PostVote 
+          <PostVote
             refresh={refresh}
             votes={offer.avgVotes}
             offerId={offer.id}
@@ -334,11 +340,10 @@ export const OfferCard = ({ offer, refresh }) => {
           </section>
         </section>
       )}
-       {showChangeMadeModal && (
+      {showChangeMadeModal && (
         <section className="modal-back dark">
           <section className="modal-body little">
             <h3>Oferta eliminada de favoritas</h3>
-
 
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -350,7 +355,7 @@ export const OfferCard = ({ offer, refresh }) => {
                 className="check"
                 strokeLinejoin="round"
                 d="M34.682 60.352l15.61 15.61 33.464-33.464"
-                stroke="#08b237"
+                stroke="black"
                 strokeLinecap="round"
                 strokeWidth="4.3"
                 fill="none"
@@ -360,7 +365,7 @@ export const OfferCard = ({ offer, refresh }) => {
                 strokeLinejoin="round"
                 cx="59.219"
                 strokeLinecap="round"
-                stroke="#08b237"
+                stroke="black"
                 cy="59.219"
                 r="57.069"
                 strokeWidth="4.3"

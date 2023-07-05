@@ -12,14 +12,14 @@
   height: 28px;
   object-fit: cover;
   border-radius: 50%;
-  box-shadow: 1px 1px 10px black;
+  box-shadow: 1px 1px 5px var(--color);
 }
 
 .comment-form input {
   min-height: 5vh;
   width: 100%;
   padding-left: 0.25rem;
-  border: 2px solid khaki;
+  border: 2px solid var(--light-color);
   border-radius: 5px;
 }
 
@@ -28,8 +28,8 @@
   right: 0;
   height: 85%;
   padding: 0 0.5rem;
-  background-color: khaki;
+  background-color: var(--color);
   border: none;
   border-radius: 5px;
-  box-shadow: 1px 1px 10px black;
+  box-shadow: 1px 1px 10px var(--bg-color);
 }

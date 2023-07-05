@@ -3,15 +3,19 @@ import "./Filter.css";
 // React
 
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import {FormattedMessage} from 'react-intl';
+import { FormattedMessage } from "react-intl";
 
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
 import { useShowLogin } from "../../contexts/ShowLoginContext";
 import { useNavigateTo } from "../../contexts/NavigateToContext";
+import { useNightMode } from "../../contexts/NightModeContext";
 
 export const Filter = () => {
+  // Theme Context
+  const [nightMode] = useNightMode();
+
   const location = useLocation();
   const navigate = useNavigate();
   const currentPath = location.pathname;
@@ -26,25 +30,25 @@ export const Filter = () => {
   };
 
   return (
-    <nav className="filter">
+    <nav className={`filter ${nightMode === "day" ? "light" : ""}`}>
       {currentPath !== "/allOffers" ? (
         <Link className="link" to="/allOffers">
-          <FormattedMessage id="all-offers"/>
+          <FormattedMessage id="all-offers" />
         </Link>
       ) : null}
       {currentPath !== "/" ? (
         <Link className="link" to="/">
-          <FormattedMessage id="todays-offers"/>
+          <FormattedMessage id="todays-offers" />
         </Link>
       ) : null}
       {currentPath !== "/offersByVotes" ? (
         <Link className="link" to="/offersByVotes">
-          <FormattedMessage id="most-rated-offers"/>
+          <FormattedMessage id="most-rated-offers" />
         </Link>
       ) : null}
       {currentPath !== "/favorites" ? (
         <p onClick={handleClickFavorites} className="link">
-          <FormattedMessage id="favorite-offers"/>
+          <FormattedMessage id="favorite-offers" />
         </p>
       ) : null}
     </nav>

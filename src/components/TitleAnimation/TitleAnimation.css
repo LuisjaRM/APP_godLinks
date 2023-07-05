@@ -1,5 +1,5 @@
 header .title:hover {
-  border-bottom: 1px solid khaki;
+  border-bottom: 1px solid var(--color);
 }
 
 .title .text-stroke {
@@ -21,16 +21,16 @@ header .title:hover {
   0% {
     stroke-dasharray: 100%;
     stroke-dashoffset: 100%;
-    fill: #dd16d300;
+    fill: var(--bg-color);
   }
   95% {
     stroke-dasharray: 0%;
     stroke-dashoffset: 90%;
-    fill: #a5a205;
+    fill: var(--light-color);
   }
   100% {
     stroke-dasharray: 0%;
     stroke-dashoffset: 0%;
-    fill: #f7f307;
+    fill: var(--color);
   }
 }

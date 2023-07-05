@@ -1,5 +1,10 @@
 import "./PostOffer.css";
 
+// Material
+
+import { SvgIcon } from "@mui/material";
+import PostAddIcon from "@mui/icons-material/PostAdd";
+
 // Intl
 
 import { FormattedMessage } from "react-intl";
@@ -12,6 +17,7 @@ import { useState } from "react";
 
 import { useAuth } from "../../contexts/AuthContext";
 import { useShowLogin } from "../../contexts/ShowLoginContext";
+import { useNightMode } from "../../contexts/NightModeContext";
 
 // Fetchs
 
@@ -19,6 +25,9 @@ import { postOfferService } from "../../services/api";
 import { PostOfferImage } from "../PostOfferImage/PostOfferImage";
 
 export const PostOffer = () => {
+  // Theme Context
+  const [nightMode] = useNightMode();
+
   const [openPostOffer, setOpenPostOffer] = useState();
   const [openPostImage, setOpenPostImage] = useState();
   const [offerId, setOfferId] = useState();
@@ -80,7 +89,9 @@ export const PostOffer = () => {
     <section className={`post-offer-body ${openPostOffer ? "show" : ""}`}>
       <section
         onClick={(e) => e.stopPropagation()}
-        className={`post-offer ${openPostOffer ? "show" : ""}`}
+        className={`post-offer ${openPostOffer ? "show" : ""} ${
+          nightMode === "day" ? "light" : ""
+        }`}
       >
         <button
           onClick={() => setOpenPostOffer(false)}
@@ -197,7 +208,7 @@ export const PostOffer = () => {
 
           {error ? <p className="error">⚠️ {error}</p> : null}
 
-          <button className="button">
+          <button className="button-main">
             <FormattedMessage id="continue" />
           </button>
         </form>
@@ -208,10 +219,16 @@ export const PostOffer = () => {
           e.stopPropagation();
           user ? setOpenPostOffer(!openPostOffer) : setShowLogin(!showLogin);
         }}
-        className={`post-button ${openPostOffer ? "show" : ""}`}
+        className={`post-button ${openPostOffer ? "show" : ""} ${
+          nightMode === "day" ? "light" : ""
+        }`}
         title="Subir una oferta"
       >
-        ➕
+        <SvgIcon
+          className="post-offer-icon"
+          component={PostAddIcon}
+          inheritViewBox
+        />
       </button>
 
       <PostOfferImage

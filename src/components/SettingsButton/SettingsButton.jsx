@@ -20,7 +20,7 @@ export const SettingsButton = () => {
 
   return (
     <button
-      className={"button settings-button"}
+      className={"settings-button"}
       onClick={() => {
         setShowSettings(!showSettings);
         setShowLogin(false);
