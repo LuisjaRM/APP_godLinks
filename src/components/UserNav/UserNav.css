@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Kavoon&family=Righteous&display=swap");
+
 .user-nav {
   cursor: default;
   position: absolute;
@@ -24,6 +26,8 @@
   top: 0.5rem;
   right: 0.5rem;
   font-weight: bold;
+  font-family: "Kavoon, Arial", cursive;
+  font-family: "Righteous", cursive;
 }
 
 .user-nav .link {
@@ -33,6 +37,8 @@
   color: black;
   text-align: center;
   border-bottom: 1px solid black;
+  font-family: "Kavoon, Arial", cursive;
+  font-family: "Righteous", cursive;
 }
 
 .user-nav .link:hover {
@@ -48,6 +54,8 @@
   gap: 0.25rem;
   border: none;
   font-weight: bold;
+  font-family: "Kavoon, Arial", cursive;
+  font-family: "Righteous", cursive;
 }
 
 .user-nav .logout-icon {
