@@ -2,8 +2,8 @@ import "./SettingsNav.css";
 
 //material
 
-import NightlightRoundIcon from '@mui/icons-material/NightlightRound';
-import Brightness5Icon from '@mui/icons-material/Brightness5';
+import NightlightRoundIcon from "@mui/icons-material/NightlightRound";
+import Brightness5Icon from "@mui/icons-material/Brightness5";
 
 // Intl
 
@@ -14,6 +14,7 @@ import { FormattedMessage } from "react-intl";
 import { useNightMode } from "../../contexts/NightModeContext";
 import { useShowSettings } from "../../contexts/ShowSettingsContext";
 import { useLanguage } from "../../contexts/LanguageContext";
+import { useEffect } from "react";
 
 // Settings Dropdown
 
@@ -21,6 +22,20 @@ export const SettingsNav = () => {
   const [nightMode, toggleNightMode] = useNightMode();
 
   const [showSettings, setShowSettings] = useShowSettings();
+
+  const toggleShow = () => {
+    if (window.scrollY > 1) {
+      setShowSettings(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", toggleShow);
+
+    return () => {
+      window.removeEventListener("scroll", toggleShow);
+    };
+  }, []);
 
   // Intl
 
@@ -49,9 +64,9 @@ export const SettingsNav = () => {
               className="toggle-button"
             >
               {nightMode === "night" ? (
-                <NightlightRoundIcon style={{ fontSize: '13px' }} />
+                <NightlightRoundIcon style={{ fontSize: "13px" }} />
               ) : (
-                 <Brightness5Icon  style={{ fontSize: '13px' }} />
+                <Brightness5Icon style={{ fontSize: "13px" }} />
               )}
             </i>
           </li>
