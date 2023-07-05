@@ -30,14 +30,6 @@
   gap: 0.5rem;
 }
 
-.login .eye-button {
-  right: 0.5rem;
-  cursor: pointer;
-  border: none;
-  background-color: rgba(0, 0, 0, 0);
-  color: khaki;
-}
-
 .login .password-input {
   width: 180px;
   text-align: start;

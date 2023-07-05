@@ -6,7 +6,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: khaki;
+  background-color: var(--light-color);
   border: none;
   border-radius: 50%;
+}
+#scrollDown:hover {
+  box-shadow: 2px 2px 10px var(--light-color);
 }

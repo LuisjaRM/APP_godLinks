@@ -5,46 +5,56 @@
   left: 0;
   right: 0;
   z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: rgba(0, 0, 0, 0);
-  height: 100vh;
-  width: 100vw;
 }
 
 .post-offer-image-body .post-offer-image {
   display: none;
 }
+
 .post-offer-image-body .post-offer-image.show {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3rem;
+  gap: 2rem;
   width: 90vw;
-  height: 71vh;
+  height: 60vh;
   padding: 1rem;
   position: fixed;
-  top: 14.5vh;
+  top: 16.5vh;
   left: 5vw;
   border-radius: 10px;
-  box-shadow: 2px 2px 10px black;
+  box-shadow: 1px 1px 10px var(--color);
   border: 1px solid black;
-  background-color: khaki;
+  background-color: var(--light-color);
+}
+
+.post-offer-image-body .post-offer-image.light {
+  box-shadow: 2px 2px 10px var(--bg-color);
+  border: none;
 }
 
 .post-offer-image-body .post-offer-image-main {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  align-items: center;
+  gap: 2rem;
 }
 
 .post-offer-image .title {
-  color: black;
+  text-align: center;
+  color: var(--bg-color);
 }
 
 .post-offer-image form {
   display: flex;
-  align-items: center;
-  gap: 1rem;
+  align-items: end;
+  justify-content: space-around;
+  gap: 0.5rem;
 }
 
 .post-offer-image fieldset {
@@ -64,6 +74,15 @@
   border-radius: 10px;
 }
 
+.post-offer-image .post-offer-button {
+  cursor: pointer;
+  padding: 0.25rem;
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0);
+  color: var(--bg-color);
+}
+
 .post-offer-image .image-preview {
   width: 144px;
   height: 144px;
@@ -75,17 +94,9 @@
   display: none;
 }
 
-.post-offer-image .post-offer-button {
-  cursor: pointer;
-  padding: 0.25rem;
-  border: none;
-  border-radius: 10px;
-  background-color: blue;
-  color: yellow;
-}
-
 .post-offer-image .post-offer-button:hover {
   box-shadow: 2px 2px 10px black;
+  border: none;
 }
 
 .post-offer-image .post-offer-noImage {
@@ -100,4 +111,8 @@
 
 .post-offer-icon {
   font-size: 75%;
+}
+
+.button-main.without-image {
+  color: white;
 }

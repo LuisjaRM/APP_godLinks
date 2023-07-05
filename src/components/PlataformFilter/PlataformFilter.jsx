@@ -11,7 +11,14 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { useNavigate } from "react-router";
 import { useRef } from "react";
 
+// Contexts
+
+import { useNightMode } from "../../contexts/NightModeContext";
+
 export const PlataformFilter = () => {
+  // Theme Context
+  const [nightMode] = useNightMode();
+
   const navigate = useNavigate();
 
   // Scroll
@@ -28,7 +35,11 @@ export const PlataformFilter = () => {
 
   return (
     <>
-      <section className="plataform-filter">
+      <section
+        className={`plataform-filter filter ${
+          nightMode === "day" ? "light" : ""
+        }`}
+      >
         <button className="move-button" onClick={handleMoveLeft}>
           <SvgIcon
             className="move-icon"
@@ -39,40 +50,40 @@ export const PlataformFilter = () => {
 
         <ul ref={filterRef} className="plataform-list">
           <li
-            className="plataform"
+            className="plataform ps5"
             onClick={() => navigate("/plataform/Playstation-5")}
           >
             Playstation 5
           </li>
           <li
-            className="plataform"
+            className="plataform ps4"
             onClick={() => navigate("/plataform/Playstation-4")}
           >
             Playstation 4
           </li>
           <li
-            className="plataform"
+            className="plataform xbo"
             onClick={() => navigate("/plataform/Xbox-One")}
           >
             Xbox One
           </li>
           <li
-            className="plataform"
+            className="plataform xbs"
             onClick={() => navigate("/plataform/Xbox-Series")}
           >
             Xbox Series
           </li>
           <li
-            className="plataform"
+            className="plataform nin"
             onClick={() => navigate("/plataform/Nintendo-Switch")}
           >
             Nintendo Switch
           </li>
           <li
-            className="plataform"
+            className="plataform pc"
             onClick={() => navigate("/plataform/PC-Gaming")}
           >
-            PC Gaming
+            PC
           </li>
         </ul>
 

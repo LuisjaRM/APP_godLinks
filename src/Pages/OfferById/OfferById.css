@@ -3,6 +3,6 @@
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  border: 1px solid khaki;
+  border: 1px solid var(--light-color);
   border-radius: 10px;
 }
