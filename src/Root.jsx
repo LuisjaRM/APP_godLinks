@@ -43,7 +43,7 @@ export const Root = () => {
       <main className={nightMode === "day" ? "light" : ""}>
         <Outlet />
         <LoginOrSignup isLogin={isLogin} setIsLogin={setIsLogin} />
-        <VerifyUser setIsLogin={setIsLogin} />
+        <VerifyUser isLogin={isLogin} setIsLogin={setIsLogin} />
         <RecoverPassword />
       </main>
 
