@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100&family=Yatra+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kavoon&family=Righteous&display=swap");
 
 * {
   margin: 0;
@@ -9,5 +9,6 @@
 #root {
   max-height: 100vh;
   max-width: 100vw;
-  font-family: "Libre Franklin, Arial, Helvetica, sans-serif";
+  font-family: "Kavoon, Arial", cursive;
+  font-family: "Righteous", cursive;
 }
