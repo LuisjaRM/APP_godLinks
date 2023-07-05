@@ -17,12 +17,27 @@ import { useNavigate } from "react-router";
 
 import { useAuth } from "../../contexts/AuthContext";
 import { useShowLogin } from "../../contexts/ShowLoginContext";
+import { useEffect } from "react";
 
 export const UserNav = () => {
   const navigate = useNavigate();
 
   const { user, logout } = useAuth();
   const [showLogin, setShowLogin] = useShowLogin();
+
+  const toggleShow = () => {
+    if (window.scrollY > 1) {
+      setShowLogin(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", toggleShow);
+
+    return () => {
+      window.removeEventListener("scroll", toggleShow);
+    };
+  }, []);
 
   return (
     showLogin &&
