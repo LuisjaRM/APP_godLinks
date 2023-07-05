@@ -39,7 +39,7 @@ export const Root = () => {
       <main>
         <Outlet />
         <LoginOrSignup isLogin={isLogin} setIsLogin={setIsLogin} />
-        <VerifyUser setIsLogin={setIsLogin} />
+        <VerifyUser isLogin={isLogin} setIsLogin={setIsLogin} />
         <RecoverPassword />
       </main>
 

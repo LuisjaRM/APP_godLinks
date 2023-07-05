@@ -40,10 +40,9 @@ export const AboutUs = () => {
       </p>
 
       <p>
-        Mladen Aleksandrov: Inquieto por naturaleza, me encanta el bricolaje, la
-        electrónica y reparar cosas imposibles. Me gusta desconectar paseando
-        por la montaña con mi familia. Creo que cada momento es importante y hay
-        que aprovecharlo.
+        Mladen Aleksandrov: Inquieto por naturaleza, me encanta la programación
+        (odio css) y reparar cosas imposibles. Me gusta desconectar paseando por
+        la montaña solo.
       </p>
 
       <p>
