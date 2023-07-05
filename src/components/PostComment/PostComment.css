@@ -24,6 +24,7 @@
 }
 
 .send-button {
+  cursor: pointer;
   position: absolute;
   right: 0;
   height: 85%;

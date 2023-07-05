@@ -1,6 +1,6 @@
 import "./Signup.css";
 
-// Intl
+// Intl Context
 
 import { FormattedMessage } from "react-intl";
 
@@ -17,6 +17,7 @@ import { useState } from "react";
 
 import { useShowLogin } from "../../contexts/ShowLoginContext";
 import { useShowVerify } from "../../contexts/ShowVerifyContext";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 // Fetchs
 
@@ -31,6 +32,10 @@ export const Signup = () => {
 
   const [showLogin, setShowLogin] = useShowLogin();
   const [showVerify, setShowVerify] = useShowVerify();
+
+  // Intl
+
+  const [language] = useLanguage();
 
   // Handle Form
 
@@ -67,27 +72,29 @@ export const Signup = () => {
   // Error messages
 
   error === `"password" length must be at least 8 characters long` &&
-    setError(<FormattedMessage id="error-password-8cha" />);
+    setError(<FormattedMessage id="password-8char-error" />);
 
   error ===
     `"password" length must be less than or equal to 20 characters long` &&
-    setError();
+    setError(<FormattedMessage id="password-20char-error" />);
 
-  error === `"password" should not contain white spaces` && setError();
+  error === `"password" should not contain white spaces` &&
+    setError(<FormattedMessage id="password-white-spaces-error" />);
 
   error === `"password" should contain at least 1 special character` &&
-    setError();
+    setError(<FormattedMessage id="password-specialChar-error" />);
 
   error === `"password" should contain at least 1 uppercase character` &&
-    setError();
+    setError(<FormattedMessage id="password-uppercaseChar-error" />);
 
   error === `"password" should contain at least 1 numeric character` &&
-    setError();
+    setError(<FormattedMessage id="password-numChar-error" />);
 
-  error === `"user" length must be at least 4 characters long` && setError();
+  error === `"user" length must be at least 4 characters long` &&
+    setError(<FormattedMessage id="username-4char-error" />);
 
   error === `"user" length must be less than or equal to 15 characters long` &&
-    setError();
+    setError(<FormattedMessage id="username-15char-error" />);
 
   return (
     <section className="signup">
@@ -101,7 +108,11 @@ export const Signup = () => {
             <FormattedMessage id="username" />
           </label>
           <input
-            placeholder="Introduce nombre de usuario"
+            placeholder={
+              language === "es"
+                ? "Escribe tu nombre de usuario"
+                : "Enter your username"
+            }
             type="text"
             id="signup-user"
             name="signup-user"
@@ -116,7 +127,9 @@ export const Signup = () => {
             <FormattedMessage id="email" />
           </label>
           <input
-            placeholder="example@mail.com"
+            placeholder={
+              language === "es" ? "Escribe tu email" : "Enter your email"
+            }
             type="email"
             id="signup-email"
             name="signup-email"
@@ -132,7 +145,12 @@ export const Signup = () => {
           </label>
           <section className="input-wrap">
             <input
-              placeholder="Introduce tu contraseña"
+              placeholder={
+                language === "es"
+                  ? "Escribe tu contraseña"
+                  : "Enter your password"
+              }
+              autoComplete="off"
               type={seePassword ? "text" : "password"}
               id="signup-password"
               name="signup-password"
@@ -164,7 +182,12 @@ export const Signup = () => {
           </label>
           <section className="input-wrap">
             <input
-              placeholder="Repite tu contraseña"
+              placeholder={
+                language === "es"
+                  ? "Repite tu contraseña"
+                  : "Repeat your password"
+              }
+              autoComplete="off"
               type={seeRepeatPassword ? "text" : "password"}
               id="signup-confirm-password"
               name="signup-confirm-password"

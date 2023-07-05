@@ -17,6 +17,7 @@ import { useState } from "react";
 
 import { useShowLogin } from "../../contexts/ShowLoginContext";
 import { useShowRecover } from "../../contexts/ShowRecoverContext";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 // Fetchs
 
@@ -31,6 +32,10 @@ export const RecoverPassword = () => {
 
   const [showLogin, setShowLogin] = useShowLogin();
   const [showRecover, setShowRecover] = useShowRecover();
+
+  // Intl Context
+
+  const [language] = useLanguage();
 
   // Show Recover Code Modal
 
@@ -122,27 +127,29 @@ export const RecoverPassword = () => {
   // Error messages
 
   error === `"password" length must be at least 8 characters long` &&
-    setError(<FormattedMessage id="error-password-8cha" />);
+    setError(<FormattedMessage id="password-8char-error" />);
 
   error ===
     `"password" length must be less than or equal to 20 characters long` &&
-    setError();
+    setError(<FormattedMessage id="password-20char-error" />);
 
-  error === `"password" should not contain white spaces` && setError();
+  error === `"password" should not contain white spaces` &&
+    setError(<FormattedMessage id="password-white-spaces-error" />);
 
   error === `"password" should contain at least 1 special character` &&
-    setError();
+    setError(<FormattedMessage id="password-specialChar-error" />);
 
   error === `"password" should contain at least 1 uppercase character` &&
-    setError();
+    setError(<FormattedMessage id="password-uppercaseChar-error" />);
 
   error === `"password" should contain at least 1 numeric character` &&
-    setError();
+    setError(<FormattedMessage id="password-numChar-error" />);
 
-  error === `"user" length must be at least 4 characters long` && setError();
+  // Este error no apaece
+  // error === `"user" length must be at least 4 characters long` && setError(<FormattedMessage id="username-4char-error" />);
 
   error === "La contraseña no puede coincidir con el nombre de usuario" &&
-    setError();
+    setError(<FormattedMessage id="password-user-match" />);
 
   return (
     <>
@@ -171,7 +178,9 @@ export const RecoverPassword = () => {
                 <FormattedMessage id="email" />
               </label>
               <input
-                placeholder="example@mail.com"
+                placeholder={
+                  language === "es" ? "Escribe tu email" : "Enter your email"
+                }
                 type="email"
                 name="recover-email"
                 id="recover-email"
@@ -200,7 +209,12 @@ export const RecoverPassword = () => {
             <fieldset>
               <label htmlFor="recoverCode">Código:</label>
               <input
-                placeholder="Código de recuperación"
+                placeholder={
+                  language === "es"
+                    ? "Escribe el código de recuperación"
+                    : "Enter your recover code"
+                }
+                autoComplete="off"
                 type="text"
                 name="recoverCode"
                 id="recoverCode"
@@ -216,7 +230,12 @@ export const RecoverPassword = () => {
               </label>
               <section className="input-wrap">
                 <input
-                  placeholder="Introduce tu contraseña"
+                  placeholder={
+                    language === "es"
+                      ? "Escribe tu nueva contraseña"
+                      : "Enter your new password"
+                  }
+                  autoComplete="off"
                   type={seePassword ? "text" : "password"}
                   name="reset-password"
                   id="reset-password"
@@ -248,7 +267,12 @@ export const RecoverPassword = () => {
               </label>
               <section className="input-wrap">
                 <input
-                  placeholder="Introduce tu contraseña"
+                  placeholder={
+                    language === "es"
+                      ? "Repite tu nueva contraseña"
+                      : "Repeat your new password"
+                  }
+                  autoComplete="off"
                   type={seeRepeatPassword ? "text" : "password"}
                   name="reset-confirm-password"
                   id="reset-confirm-password"

@@ -85,5 +85,26 @@
 
   "password-match": "Las contraseñas no conciden",
   "password-user-match": "La contraseña no puede ser igual al nombre de usuario",
-  "error-password-8cha": "La contraseña no debe contener más de 8 carácteres"
+  "password-8char-error": "La longitud de la contraseña debe ser de al menos 8 caracteres",
+  "password-20char-error": "La longitud de la contraseña debe ser menor o igual a 20 caracteres",
+  "password-white-spaces-error": "La contraseña no debe contener espacios en blanco",
+  "password-specialChar-error": "La contraseña debe contener al menos 1 caracter especial",
+  "password-uppercaseChar-error": "La contraseña debe contener al menos 1 caracter en mayúscula",
+  "password-numChar-error": "La contraseña debe contener al menos 1 carácter numérico",
+  "username-4char-error": "La longitud del usuario debe tener al menos 4 caracteres",
+  "username-15char-error": "La longitud del usuario debe ser inferior o igual a 15 caracteres",
+  "post-comment-error": "El comentario no puede superar los 170 caracteres",
+  "email-password-error": "Email o contraseña incorrectos",
+  "verify-error": "Usuario no verificado",
+  "url-280char-error": "La longitud de la URL debe ser inferior o igual a 280 caracteres",
+  "title-30char-error": "La longitud del título debe ser inferior o igual a 30 caracteres",
+  "descrip-280char-error": "La longitud de la descripción debe ser inferior o igual a 280 caracteres",
+  "offer_price-positive-error": "El precio de oferta debe ser un número positivo",
+  "price-positive-error": "El precio original debe ser un número positivo",
+  "expire-error": "La fecha de caducidad no puede ser anterior a hoy",
+  "no-permissions-error": "No tienes permisos para modificar este usuario",
+  "same-password-error": "La nueva contraseña es igual a la anterior",
+  "no-image-error": "No has seleccionado ninguna imagen",
+  "vote-own-offer-error": "No puedes votar tu propia oferta",
+  "vote-already-offer-error": "No puedes votar dos veces la misma oferta"
 }

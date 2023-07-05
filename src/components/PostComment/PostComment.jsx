@@ -3,6 +3,7 @@ import "./PostComment.css";
 // Intl
 
 import { FormattedMessage } from "react-intl";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 // React
 
@@ -22,6 +23,10 @@ export const PostComment = ({ id, refresh, offer }) => {
 
   const { token } = useAuth();
 
+  // Intl Context
+
+  const [language] = useLanguage();
+
   // Handle Post Comment
 
   const handlePostComment = async (e) => {
@@ -39,7 +44,7 @@ export const PostComment = ({ id, refresh, offer }) => {
 
   error ===
     `"comment" length must be less than or equal to 170 characters long` &&
-    setError();
+    setError(<FormattedMessage id="post-comment-error" />);
 
   return (
     <section className="post-comment">
@@ -58,7 +63,11 @@ export const PostComment = ({ id, refresh, offer }) => {
           </label>
 
           <input
-            placeholder="¿Qué opinas de esta oferta?"
+            placeholder={
+              language === "es"
+                ? "Escribe tu reseña..."
+                : "Write your review..."
+            }
             type="text"
             id="post-comment"
             name="post-comment"
@@ -67,7 +76,9 @@ export const PostComment = ({ id, refresh, offer }) => {
             required
             onChange={(e) => setComment(e.target.value)}
           />
-          <button className="send-button">Enviar</button>
+          <button className="send-button">
+            <FormattedMessage id="send" />
+          </button>
         </fieldset>
       </form>
 

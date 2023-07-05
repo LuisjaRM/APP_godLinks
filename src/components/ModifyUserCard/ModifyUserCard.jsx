@@ -23,6 +23,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { useShowLogin } from "../../contexts/ShowLoginContext";
 import { useShowVerify } from "../../contexts/ShowVerifyContext";
 import { useError } from "../../contexts/ErrorContext";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 // Navigate
 
@@ -46,6 +47,10 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
   // State of navigate
 
   const navigate = useNavigate();
+
+  // Intel context
+
+  const [language] = useLanguage();
 
   // States of Forms
   const [avatar, setAvatar] = useState("");
@@ -275,31 +280,35 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
   // Error messages
 
   error === `"password" length must be at least 8 characters long` &&
-    setError(<FormattedMessage id="error-password-8cha" />);
+    setError(<FormattedMessage id="password-8char-error" />);
 
   error ===
     `"password" length must be less than or equal to 20 characters long` &&
-    setError();
+    setError(<FormattedMessage id="password-20char-error" />);
 
-  error === `"password" should not contain white spaces` && setError();
+  error === `"password" should not contain white spaces` &&
+    setError(<FormattedMessage id="password-white-spaces-error" />);
 
   error === `"password" should contain at least 1 special character` &&
-    setError();
+    setError(<FormattedMessage id="password-specialChar-error" />);
 
   error === `"password" should contain at least 1 uppercase character` &&
-    setError();
+    setError(<FormattedMessage id="password-uppercaseChar-error" />);
 
   error === `"password" should contain at least 1 numeric character` &&
-    setError();
+    setError(<FormattedMessage id="password-numChar-error" />);
 
-  error === `"user" length must be at least 4 characters long` && setError();
+  error === `"user" length must be at least 4 characters long` &&
+    setError(<FormattedMessage id="username-4char-error" />);
 
   error === `"user" length must be less than or equal to 15 characters long` &&
-    setError();
+    setError(<FormattedMessage id="username-15char-error" />);
 
-  error === "No tienes permisos para modificar este usuario" && setError();
+  error === "No tienes permisos para modificar este usuario" &&
+    setError(<FormattedMessage id="no-permissions-error" />);
 
-  error === "La nueva contraseña es igual a la anterior" && setError();
+  error === "La nueva contraseña es igual a la anterior" &&
+    setError(<FormattedMessage id="same-password-error" />);
 
   return (
     <>
@@ -532,7 +541,12 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
                 </label>
 
                 <input
-                  placeholder="Contraseña actual"
+                  placeholder={
+                    language === "es"
+                      ? "Escribe tu contraseña actual"
+                      : "Write your current password"
+                  }
+                  autoComplete="off"
                   className="modify-password-input"
                   type="password"
                   name="oldPassword"
@@ -547,7 +561,12 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
                 </label>
 
                 <input
-                  placeholder="Nueva contraseña"
+                  placeholder={
+                    language === "es"
+                      ? "Escribe tu nueva contraseña"
+                      : "Write your new password"
+                  }
+                  autoComplete="off"
                   className="modify-password-input"
                   type="password"
                   name="newPassword"
