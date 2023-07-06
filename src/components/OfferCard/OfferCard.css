@@ -193,13 +193,17 @@
 .offer-card .main .expand-button {
   cursor: pointer;
   position: absolute;
-  height: 20px;
-  bottom: 0rem;
+  height: 18px;
+  bottom: 0;
   right: 0rem;
-  padding: 0 0.2rem;
-  background-color: rgba(0, 0, 0, 0);
+  padding: 0 0.1rem;
+  background-color: var(--bg2-color);
   color: var(--color);
   border: none;
+}
+
+.offer-card .main .expand-button.light {
+  background-color: var(--bg2-light-color);
 }
 
 /* Favorite button */

@@ -81,8 +81,8 @@ export const PostOffer = () => {
     setError(<FormattedMessage id="title-30char-error" />);
 
   error ===
-    `"descrip" length must be less than or equal to 280 characters long` &&
-    setError(<FormattedMessage id="descrip-280char-error" />);
+    `"descrip" length must be less than or equal to 140 characters long` &&
+    setError(<FormattedMessage id="descrip-140char-error" />);
 
   error === `"offer_price" must be a positive number` &&
     setError(<FormattedMessage id="offer_price-positive-error" />);

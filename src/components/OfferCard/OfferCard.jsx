@@ -264,30 +264,33 @@ export const OfferCard = ({ offer, refresh }) => {
             <li className={`offer-descrip ${expand ? "expand" : ""}`}>
               {offer.descrip}
 
-              {offer.descrip.length > 58 && (
-                <button
-                  className={`expand-button ${expand ? "expand" : ""}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    setExpand(!expand);
-                  }}
-                >
-                  {expand ? (
-                    <SvgIcon
-                      className="expand-icon"
-                      component={ExpandLessIcon}
-                      inheritViewBox
-                    />
-                  ) : (
-                    <SvgIcon
-                      className="expand-icon"
-                      component={ExpandMoreIcon}
-                      inheritViewBox
-                    />
-                  )}
-                </button>
-              )}
+              {offer.descrip.length > 58 &&
+                windowOfferLocation === `/offerById/${offer.id}` && (
+                  <button
+                    className={`expand-button ${expand ? "expand" : ""} ${
+                      nightMode === "day" ? "light" : ""
+                    }`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setExpand(!expand);
+                    }}
+                  >
+                    {expand ? (
+                      <SvgIcon
+                        className="expand-icon"
+                        component={ExpandLessIcon}
+                        inheritViewBox
+                      />
+                    ) : (
+                      <SvgIcon
+                        className="expand-icon"
+                        component={ExpandMoreIcon}
+                        inheritViewBox
+                      />
+                    )}
+                  </button>
+                )}
             </li>
           </ul>
         </section>
