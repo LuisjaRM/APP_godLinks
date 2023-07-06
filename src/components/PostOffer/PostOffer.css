@@ -43,9 +43,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  /* transform: translateY(7%) translateX(-117%) rotateX(0deg);
-  transition: transform 0.8s cubic-bezier(0.78, 0.95, 0.4, 1.6); */
+  transform: translateY(7%) translateX(-117%) rotateX(0deg);
+  transition: transform 0.8s cubic-bezier(0.78, 0.95, 0.4, 1.6);
 }
 
 .post-offer-body .post-offer.show {
@@ -61,7 +60,7 @@
   background-color: var(--light-color);
   color: var(--bg-color);
   position: relative;
-  /* transform: translateY(-7%) translateX(130%) rotateX(0deg);*/
+  transform: translateY(-7%) translateX(270%) rotateX(0deg);
 }
 
 .post-offer-body .post-offer.light {
