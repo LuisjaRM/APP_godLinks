@@ -1,6 +1,6 @@
 .plataform-filter {
   height: 5vh;
-  width: 100vw;
+  max-width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,4 +61,10 @@
 
 .plataform-filter .plataform:hover {
   text-decoration: underline;
+}
+
+@media (min-width: 625px) {
+  .plataform-filter .move-button {
+    display: none;
+  }
 }

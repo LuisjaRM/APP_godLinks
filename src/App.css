@@ -1,10 +1,13 @@
 main {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  /* 100vh - vh de header y footer */
+  min-height: calc(100vh - 7.5vh - 7.5vh);
+  max-width: 100vw;
+  padding: 1rem;
   background-color: var(--bg3-color);
   color: var(--color);
-  /* 100vh - vh de header, filters y footer */
-  min-height: calc(100vh - 7.5vh - 7.5vh - 5vh - 7.5vh);
-  padding: 1rem;
-  position: relative;
 }
 
 main.light {
@@ -14,15 +17,15 @@ main.light {
 .filters {
   position: absolute;
   top: 0;
-  left: 0;
-  max-width: 100vw;
+  left: 1vw;
+  width: 98vw;
 }
 
 /* Buttons */
 
 .button-main {
   cursor: pointer;
-  margin-top: 1rem;
+  margin-top: 5rem;
   width: fit-content;
   padding: 0.25rem 1rem;
   border: none;
@@ -38,12 +41,30 @@ main.light {
 /* Offers list */
 
 .offers {
+  width: 100vw;
   list-style: none;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
   margin-top: calc(7.5vh + 5vh + 1rem);
   min-height: calc(100vh - 7.5vh - 7.5vh - 5vh - 7.5vh - 7.25vh);
+}
+
+@media (min-width: 770px) {
+  .offers {
+    width: calc(350px + 350px + 2rem + 1rem);
+    flex-direction: row;
+    align-items: start;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 1150px) {
+  .offers {
+    width: calc(350px + 350px + 350px + 2rem + 3rem);
+  }
 }
 
 /* Move-up button */
