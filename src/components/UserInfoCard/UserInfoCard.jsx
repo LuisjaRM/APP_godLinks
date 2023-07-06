@@ -1,6 +1,11 @@
 import "./UserInfoCard.css";
 
-import {FormattedMessage} from 'react-intl';
+// React
+
+import { useNavigate } from "react-router";
+
+// Intl
+import { FormattedMessage } from "react-intl";
 
 export const UserInfoCard = ({ userInfo }) => {
   // Date Logic
@@ -11,9 +16,11 @@ export const UserInfoCard = ({ userInfo }) => {
     day: "numeric",
   });
 
+  const navigate = useNavigate();
+
   return (
     <section className="user">
-      <section className="header">
+      <section className="header" onClick={() => navigate("/profile")}>
         <img
           className="user-image"
           src={
@@ -27,7 +34,9 @@ export const UserInfoCard = ({ userInfo }) => {
         <p className="user-name">{userInfo.user}</p>
       </section>
 
-      <p><FormattedMessage id="member-since"/> {dateCreated}</p>
+      <p>
+        <FormattedMessage id="member-since" /> {dateCreated}
+      </p>
     </section>
   );
 };
