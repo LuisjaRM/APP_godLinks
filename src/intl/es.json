@@ -51,6 +51,8 @@
   "platform-change-success": "La plataforma se ha modificado correctamente",
   "expiration-change-success": "La fecha de vencimiento se ha modificado correctamente",
   "offer-deleted-success": "Tu oferta se ha eliminado correctamente",
+  "confirm-no-favorite": "¿Estás seguro de que quieres eliminar la oferta de favoritas?",
+  "no-favorite": "Oferta eliminada de favoritas",
 
   "expired-offer": "Oferta caducada",
   "link-to-offer": "Ir a la oferta",

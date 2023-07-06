@@ -111,7 +111,7 @@ export const OfferCard = ({ offer, refresh }) => {
 
   const handleClickAway = () => {
     setShowConfirmModal(!showConfirmModal);
-    refresh();
+    setIsLiked(!isLiked);
   };
 
   const handleClickConfirm = async (e) => {
@@ -129,7 +129,7 @@ export const OfferCard = ({ offer, refresh }) => {
   const handleClickCancel = (e) => {
     e.stopPropagation();
     setShowConfirmModal(!showConfirmModal);
-    refresh();
+    setIsLiked(!isLiked);
   };
 
   // HandleClicks
@@ -330,7 +330,7 @@ export const OfferCard = ({ offer, refresh }) => {
         <section className="modal-back dark" onClick={handleClickAway}>
           <section className="modal-body little">
             <h2>
-              ¿Estás seguro de que quieres eliminar la oferta de favoritas?
+              <FormattedMessage id="confirm-no-favorite" />
             </h2>
             <section className="buttons">
               <button className="button" onClick={handleClickConfirm}>
@@ -346,7 +346,9 @@ export const OfferCard = ({ offer, refresh }) => {
       {showChangeMadeModal && (
         <section className="modal-back dark">
           <section className="modal-body little">
-            <h3>Oferta eliminada de favoritas</h3>
+            <h3>
+              <FormattedMessage id="no-favorite" />
+            </h3>
 
             <svg
               xmlns="http://www.w3.org/2000/svg"
