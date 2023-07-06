@@ -37,6 +37,21 @@ export const Search = () => {
           onChange={(e) => setSearched(e.target.value)}
         />
 
+        <button
+          onClick={() => {
+            setSearched("");
+            setIsSearch(!isSearch);
+          }}
+          className="cancel-button"
+          type="button"
+        >
+          <SvgIcon
+            className={`cancel-icon`}
+            component={CancelIcon}
+            inheritViewBox
+          />
+        </button>
+
         <button className="search-button">
           <SvgIcon
             className={`search-icon`}
@@ -45,20 +60,6 @@ export const Search = () => {
           />
         </button>
       </form>
-
-      <button
-        onClick={() => {
-          setSearched("");
-          setIsSearch(!isSearch);
-        }}
-        className={`cancel-button ${isSearch && "show"}`}
-      >
-        <SvgIcon
-          className={`cancel-icon`}
-          component={CancelIcon}
-          inheritViewBox
-        />
-      </button>
 
       <button
         onClick={() => setIsSearch(!isSearch)}

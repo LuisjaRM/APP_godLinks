@@ -48,7 +48,8 @@
 }
 
 .post-offer-body .post-offer.show {
-  display: block;
+  display: flex;
+  flex-direction: column;
   width: 90vw;
   height: 71vh;
   padding: 1rem;
@@ -84,8 +85,10 @@
 
 .post-offer .form {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  align-items: start;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 0.5rem;
   height: 100%;
   position: relative;
@@ -130,4 +133,13 @@
 
 .post-offer .error {
   margin-top: 0.5rem;
+}
+
+@media (min-width: 800px) {
+  .post-offer .form {
+    flex-direction: row;
+    align-items: start;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 }
