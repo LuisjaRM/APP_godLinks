@@ -17,6 +17,7 @@ import { PlataformFilter } from "../../components/PlataformFilter/PlataformFilte
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 // Fetchs
 
@@ -24,9 +25,11 @@ import { useGetOfferById } from "../../services/api";
 
 export const OfferById = () => {
   // Document Title
+  const [language] = useLanguage();
 
-  document.title = "GodLinks: Oferta ";
-  //document.title = "GodLinks: Offer ";
+  language === "es"
+    ? (document.title = "GodLinks: Oferta")
+    : (document.title = "GodLinks: Offer");
 
   const { id } = useParams();
   const { token } = useAuth();
@@ -42,22 +45,24 @@ export const OfferById = () => {
         <PlataformFilter />
       </aside>
 
-      <section className="offers">
+      <section className="offer-byId">
         {offers.offerInfo?.map((offerInfo, index) => (
           <OfferCard key={index} offer={offerInfo} />
         ))}
 
-        {offers.offerInfo?.map((offerInfo, i) => (
-          <PostComment key={i} id={id} refresh={refresh} offer={offerInfo} />
-        ))}
-
-        <ul className="comments-body">
-          {offers.comments?.map((comment) => (
-            <li key={comment.id}>
-              <CommentsCard comment={comment} refresh={refresh} />
-            </li>
+        <section className="comment-byId">
+          {offers.offerInfo?.map((offerInfo, i) => (
+            <PostComment key={i} id={id} refresh={refresh} offer={offerInfo} />
           ))}
-        </ul>
+
+          <ul className="comments-body">
+            {offers.comments?.map((comment) => (
+              <li key={comment.id}>
+                <CommentsCard comment={comment} refresh={refresh} />
+              </li>
+            ))}
+          </ul>
+        </section>
       </section>
     </>
   );

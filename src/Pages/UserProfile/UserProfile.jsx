@@ -1,10 +1,9 @@
 import "./UserProfile.css";
 
-
 // Contexts
 
 import { useShowFilter } from "../../contexts/ShowFilter";
-
+import { useLanguage } from "../../contexts/LanguageContext";
 
 // Components
 
@@ -21,8 +20,11 @@ import { useAuth } from "../../contexts/AuthContext";
 
 export const UserProfile = () => {
   // Document Title
-  document.title = "Mi perfil";
-  //document.title = "My profile";
+  const [language] = useLanguage();
+
+  language === "es"
+    ? (document.title = "Mi perfil")
+    : (document.title = "My profile");
 
   // ShowFilter
 

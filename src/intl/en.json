@@ -12,6 +12,7 @@
   "change-password": "Change your password",
   "email-recover": "",
   "password-reset": " Reset your password",
+  "welcome": "Welcome.",
 
   "myprofile": "My profile",
   "myoffers": "My offers",
@@ -51,6 +52,7 @@
   "expiration-change-success": "The offer expiration date has been successfully modified",
   "offer-deleted-success": "Your offer has been successfully deleted",
 
+  "expired-offer": "Expired offer",
   "link-to-offer": "Go to Offer",
   "send": "Send",
 
@@ -98,7 +100,7 @@
   "verify-error": "Unverified user",
   "url-280char-error": "URL length must be less than or equal to 280 characters long",
   "title-30char-error": "Title length must be less than or equal to 30 characters long",
-  "descrip-280char-error": "Description length must be less than or equal to 280 characters long",
+  "descrip-140char-error": "Description length must be less than or equal to 140 characters long",
   "offer_price-positive-error": "Offer price must be a positive number",
   "price-positive-error": "Original price must be a positive number",
   "expire-error": "The expiration date cannot be earlier than today",

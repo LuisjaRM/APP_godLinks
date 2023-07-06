@@ -9,12 +9,14 @@
   display: none;
 }
 
+
 .search .cancel-button {
   display: none;
 }
 .search .cancel-icon {
   font-size: 123%;
 }
+
 
 .search .search-icon {
   color: var(--color);
@@ -35,29 +37,34 @@ form.form.show {
   display: flex;
 }
 
-.input {
+.search .input {
   height: 3.5vh;
   width: 129px;
+  width: 90px;
+  padding-left: 0.25rem;
   border: none;
-  border-right: 1px solid black;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   background-color: var(--color);
-  padding-left: 0.5rem;
 }
 
 .search .open-search.hide {
   display: none;
 }
 
-.search .cancel-button.show {
+.search .cancel-button {
   cursor: pointer;
-  display: block;
-  position: absolute;
-  top: 0.45rem;
-  right: 2rem;
-  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0.5rem;
+  background-color: var(--color);
   border: none;
+  border-right: 1px solid black;
+}
+
+.search .cancel-icon {
+  font-size: 125%;
 }
 
 .search .search-button {

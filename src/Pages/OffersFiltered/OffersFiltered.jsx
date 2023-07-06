@@ -7,6 +7,7 @@ import { useParams } from "react-router";
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 // Components
 
@@ -25,8 +26,11 @@ export const OffersFiltered = () => {
   const { plataform } = useParams();
 
   // Document Title
-  document.title = `${plataform}: las mejores ofertas `;
-  // document.title = `${plataform}: las mejores ofertas `;
+  const [language] = useLanguage();
+
+  language === "es"
+    ? (document.title = `${plataform}: las mejores ofertas`)
+    : (document.title = `${plataform}: best offers`);
 
   const { token } = useAuth();
   const { offers, loading, error, refresh } = useGetOffersFiltered(

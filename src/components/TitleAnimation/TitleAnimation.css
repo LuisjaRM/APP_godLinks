@@ -1,3 +1,9 @@
+header .title {
+  width: 12rem;
+  display: flex;
+  justify-content: center;
+}
+
 header .title:hover {
   border-bottom: 1px solid var(--color);
 }

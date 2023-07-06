@@ -12,6 +12,7 @@ import { PlataformFilter } from "../../components/PlataformFilter/PlataformFilte
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 // Fetchs
 
@@ -19,8 +20,11 @@ import { useGetOffersByVotes } from "../../services/api";
 
 export const OffersByVotes = () => {
   // Document Title
-  document.title = "Las ofertas más populares";
-  //document.title = "The most rated offers";
+  const [language] = useLanguage();
+
+  language === "es"
+    ? (document.title = "Las ofertas más populares")
+    : (document.title = "Top offers");
 
   const { token } = useAuth();
   const { offers, loading, error, refresh } = useGetOffersByVotes(token);

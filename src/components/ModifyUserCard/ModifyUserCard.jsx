@@ -12,6 +12,7 @@ import ImageSearchIcon from "@mui/icons-material/ImageSearch";
 import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
 import SendIcon from "@mui/icons-material/Send";
 import LockIcon from "@mui/icons-material/Lock";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 
 // React
 
@@ -73,6 +74,10 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
     month: "short",
     day: "numeric",
   });
+
+  // See Password
+
+  const [seePassword, setSeePassword] = useState(false);
 
   // State Confirm Modal
 
@@ -539,42 +544,74 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
                 <label htmlFor="oldPassword">
                   <FormattedMessage id="currentpassword" />
                 </label>
+                <section className="input-wrap">
+                  <input
+                    placeholder={
+                      language === "es"
+                        ? "Escribe tu contraseña actual"
+                        : "Write your current password"
+                    }
+                    autoComplete="off"
+                    className="modify-password-input"
+                    type={seePassword ? "text" : "password"}
+                    name="oldPassword"
+                    id="oldPassword"
+                    value={oldPassword}
+                    required
+                    onChange={(e) => setOldPassword(e.target.value)}
+                  />
 
-                <input
-                  placeholder={
-                    language === "es"
-                      ? "Escribe tu contraseña actual"
-                      : "Write your current password"
-                  }
-                  autoComplete="off"
-                  className="modify-password-input"
-                  type="password"
-                  name="oldPassword"
-                  id="oldPassword"
-                  value={oldPassword}
-                  required
-                  onChange={(e) => setOldPassword(e.target.value)}
-                />
+                  <button
+                    className="eye-button"
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setSeePassword(!seePassword);
+                    }}
+                  >
+                    <SvgIcon
+                      className="eye-icon"
+                      component={VisibilityIcon}
+                      inheritViewBox
+                    />
+                  </button>
+                </section>
 
                 <label htmlFor="newPassword">
                   <FormattedMessage id="newpassword" />
                 </label>
+                <section className="input-wrap">
+                  <input
+                    placeholder={
+                      language === "es"
+                        ? "Escribe tu nueva contraseña"
+                        : "Write your new password"
+                    }
+                    autoComplete="off"
+                    className="modify-password-input"
+                    type={seePassword ? "text" : "password"}
+                    name="newPassword"
+                    id="newPassword"
+                    value={newPassword}
+                    required
+                    onChange={(e) => setNewPassword(e.target.value)}
+                  />
 
-                <input
-                  placeholder={
-                    language === "es"
-                      ? "Escribe tu nueva contraseña"
-                      : "Write your new password"
-                  }
-                  autoComplete="off"
-                  className="modify-password-input"
-                  type="password"
-                  name="newPassword"
-                  id="newPassword"
-                  value={newPassword}
-                  required
-                  onChange={(e) => setNewPassword(e.target.value)}
-                />
+                  <button
+                    className="eye-button"
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setSeePassword(!seePassword);
+                    }}
+                  >
+                    <SvgIcon
+                      className="eye-icon"
+                      component={VisibilityIcon}
+                      inheritViewBox
+                    />
+                  </button>
+                </section>
               </fieldset>
 
               <button className="button">

@@ -12,6 +12,7 @@ import { PlataformFilter } from "../../components/PlataformFilter/PlataformFilte
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 // Fetchs
 
@@ -19,8 +20,11 @@ import { useGetAllOffers } from "../../services/api";
 
 export const AllOffers = () => {
   // Document Title
-  document.title = "Las mejores ofertas del mercado";
-  //document.title = "The best offers in the market";
+  const [language] = useLanguage();
+
+  language === "es"
+    ? (document.title = "Las mejores ofertas del mercado")
+    : (document.title = "Best offers of the market");
 
   const { token } = useAuth();
   const { offers, loading, error, refresh } = useGetAllOffers(token);

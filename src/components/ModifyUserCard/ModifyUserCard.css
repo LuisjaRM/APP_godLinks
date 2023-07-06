@@ -95,9 +95,14 @@
 .modify-password-fieldset {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 0.5rem;
   border: none;
+}
+
+.modify-password-form .input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .modify-password-input {

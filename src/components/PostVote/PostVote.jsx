@@ -1,5 +1,10 @@
 import "./PostVote.css";
 
+// Material
+
+import { Rating } from "@mui/material";
+import { FormattedMessage } from "react-intl";
+
 // React
 
 import { useState } from "react";
@@ -12,11 +17,6 @@ import { useShowLogin } from "../../contexts/ShowLoginContext";
 // Fetchs
 
 import { postVoteService } from "../../services/api";
-
-// Material
-
-import { Rating } from "@mui/material";
-import { FormattedMessage } from "react-intl";
 
 export const PostVote = ({ votes, offerId, refresh }) => {
   const { user, token } = useAuth();
@@ -51,13 +51,13 @@ export const PostVote = ({ votes, offerId, refresh }) => {
       setError(error.message);
       setTimeout(() => {
         setError(null);
-      }, 1500);
+      }, 2000);
     }
   };
 
   // Error messages
 
-  error === `"vote" must be a number` && setError(); // No traducir
+  error === `"vote" must be a number` && setError("");
   error === "No puedes votar tu propia oferta" &&
     setError(<FormattedMessage id="vote-own-offer-error" />);
   error === "Ya has votado esta oferta" &&
