@@ -60,7 +60,7 @@
   background-color: var(--light-color);
   color: var(--bg-color);
   position: relative;
-  transform: translateY(-7%) translateX(270%) rotateX(0deg);
+  transform: translateY(-7%) translateX(146%) rotateX(0deg);
 }
 
 .post-offer-body .post-offer.light {
@@ -134,18 +134,19 @@
   margin-top: 0.5rem;
 }
 
-@media (min-width: 775px) {
+@media (min-width: 700px) {
   .post-offer-body .post-offer.show {
     width: 400px;
     height: 550px;
+    transform: translateY(-7%) translateX(210%) rotateX(0deg);
   }
 }
 
 @media (min-width: 1150px) {
   .post-offer-body .post-offer.show {
     width: 500px;
+    transform: translateY(-10%) translateX(450%) rotateX(0deg);
   }
-
   #price,
   #offer_price {
     width: 4.5rem;
