@@ -1,5 +1,4 @@
 .offer-byId {
-  max-height: 350px;
   margin-top: calc(7.5vh + 5vh + 1rem);
   list-style: none;
   display: flex;
@@ -24,6 +23,7 @@
 
 @media (min-width: 900px) {
   .offer-byId {
+    max-height: 510px;
     flex-direction: row;
   }
 

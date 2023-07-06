@@ -406,8 +406,8 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
     setError(<FormattedMessage id="title-30char-error" />);
 
   error ===
-    `"descrip" length must be less than or equal to 280 characters long` &&
-    setError(<FormattedMessage id="descrip-280char-error" />);
+    `"descrip" length must be less than or equal to 140 characters long` &&
+    setError(<FormattedMessage id="descrip-140char-error" />);
 
   error === `"offer_price" must be a positive number` &&
     setError(<FormattedMessage id="offer_price-positive-error" />);
@@ -526,7 +526,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
                 onChange={(e) => setUrl(e.target.value)}
               />
 
-              <button className="send-modify-button">
+              <button className="send-modify-button light">
                 <SvgIcon
                   className="send-modify-icon"
                   component={SendIcon}
@@ -579,7 +579,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
                 onChange={(e) => setTitle(e.target.value)}
               />
 
-              <button className="send-modify-button">
+              <button className="send-modify-button light">
                 <SvgIcon
                   className="send-modify-icon"
                   component={SendIcon}
@@ -631,7 +631,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
                 onChange={(e) => setDescrip(e.target.value)}
               />
 
-              <button className="send-modify-button">
+              <button className="send-modify-button light">
                 <SvgIcon
                   className="send-modify-icon"
                   component={SendIcon}

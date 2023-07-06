@@ -8,7 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .post-offer-image-body .post-offer-image {
@@ -21,12 +21,9 @@
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  width: 90vw;
-  height: 60vh;
+  width: 300px;
+  height: 450px;
   padding: 1rem;
-  position: fixed;
-  top: 16.5vh;
-  left: 5vw;
   border-radius: 10px;
   box-shadow: 1px 1px 10px var(--color);
   border: 1px solid black;
@@ -115,4 +112,17 @@
 
 .button-main.without-image {
   color: white;
+}
+
+@media (min-width: 775px) {
+  .post-offer-body .post-offer-image.show {
+    width: 400px;
+    height: 550px;
+  }
+}
+
+@media (min-width: 1150px) {
+  .post-offer-body .post-offer-image.show {
+    width: 500px;
+  }
 }

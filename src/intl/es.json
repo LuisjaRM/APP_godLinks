@@ -100,7 +100,7 @@
   "verify-error": "Usuario no verificado",
   "url-280char-error": "La longitud de la URL debe ser inferior o igual a 280 caracteres",
   "title-30char-error": "La longitud del título debe ser inferior o igual a 30 caracteres",
-  "descrip-280char-error": "La longitud de la descripción debe ser inferior o igual a 280 caracteres",
+  "descrip-140char-error": "La longitud de la descripción debe ser inferior o igual a 140 caracteres",
   "offer_price-positive-error": "El precio de oferta debe ser un número positivo",
   "price-positive-error": "El precio original debe ser un número positivo",
   "expire-error": "La fecha de caducidad no puede ser anterior a hoy",
