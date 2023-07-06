@@ -3,14 +3,18 @@ import "./AboutUs.css";
 // Context
 
 import { useNightMode } from "../../contexts/NightModeContext";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 export const AboutUs = () => {
   // Theme Context
   const [nightMode] = useNightMode();
 
   // Document Title
-  document.title = "Sobre Nosotros";
-  // document.title = "About us";
+  const [language] = useLanguage();
+
+  language === "es"
+    ? (document.title = "Sobre Nosotros")
+    : (document.title = "About us");
 
   return (
     <section className={`about-us ${nightMode === "day" ? "light" : ""}`}>

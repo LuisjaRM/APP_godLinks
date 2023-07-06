@@ -16,6 +16,7 @@ import { PlataformFilter } from "../../components/PlataformFilter/PlataformFilte
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 // Fetch
 
@@ -25,7 +26,11 @@ export const OffersSearched = () => {
   const { search } = useParams();
 
   // Document Title
-  document.title = `Tu búsqueda: ${search}`;
+  const [language] = useLanguage();
+
+  language === "es"
+    ? (document.title = `Tu búsqueda: ${search}`)
+    : (document.title = `Your search: ${search}`);
 
   const { token } = useAuth();
   const { offers, loading, error, refresh } = useGetOffersSearched(

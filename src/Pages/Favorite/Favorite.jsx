@@ -12,6 +12,7 @@ import { PlataformFilter } from "../../components/PlataformFilter/PlataformFilte
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 // Fetchs
 
@@ -19,8 +20,11 @@ import { useGetMyFavoriteOffers } from "../../services/api";
 
 export const Favorite = () => {
   // Document Title
-  document.title = "Tus ofertas favoritas";
-  //document.title = "Your favorite offers";
+  const [language] = useLanguage();
+
+  language === "es"
+    ? (document.title = "Tus ofertas favoritas")
+    : (document.title = "Your favorites offers");
 
   const { token } = useAuth();
   const { offers, loading, error, refresh } = useGetMyFavoriteOffers(token);
