@@ -43,7 +43,6 @@
 
 .user-nav .link:hover {
   background-color: var(--light-color);
-  text-decoration: underline;
 }
 
 .user-nav .link.logout {
@@ -73,5 +72,27 @@
 
   100% {
     opacity: 1;
+  }
+}
+
+@media (min-width: 800px) {
+  .user-nav {
+    width: 12rem;
+    height: 12rem;
+    justify-content: space-around;
+    gap: 0;
+    padding: 1rem;
+    font-size: 115%;
+  }
+  .user-nav .username {
+    right: 1rem;
+  }
+  .user-nav .link {
+    margin-top: 2rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .user-nav .link.logout {
+    background: none;
   }
 }

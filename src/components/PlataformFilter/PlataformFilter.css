@@ -60,7 +60,7 @@
 }
 
 .plataform-filter .plataform:hover {
-  text-decoration: underline;
+  color: var(--light-color);
 }
 
 @media (min-width: 625px) {

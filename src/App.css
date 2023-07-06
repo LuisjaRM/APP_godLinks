@@ -76,6 +76,7 @@ main.light {
 /* Modal-backs */
 
 .modal-back {
+  cursor: default;
   position: fixed;
   display: flex;
   justify-content: center;
@@ -88,6 +89,7 @@ main.light {
 }
 
 .modal-back.dark {
+  cursor: default;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
