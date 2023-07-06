@@ -4,10 +4,6 @@ header .title {
   justify-content: center;
 }
 
-header .title:hover {
-  border-bottom: 1px solid var(--color);
-}
-
 .title .text-stroke {
   font-size: 95px;
   stroke: #000;
@@ -21,6 +17,10 @@ header .title:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.title .text-stroke:hover {
+  color: var(--light-color);
 }
 
 @keyframes textStrokeAnim {
@@ -38,5 +38,11 @@ header .title:hover {
     stroke-dasharray: 0%;
     stroke-dashoffset: 0%;
     fill: var(--color);
+  }
+}
+
+@media (min-width: 800px) {
+  .title .text-stroke {
+    font-size: 103px;
   }
 }

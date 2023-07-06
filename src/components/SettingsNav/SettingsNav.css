@@ -11,7 +11,7 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 0.25rem;
-  padding: 0.5rem;
+  padding: 0.4rem;
   font-size: 75%;
   border-radius: 10px;
   background-color: var(--color);
@@ -66,4 +66,21 @@
 .language .button-en.en {
   color: rgb(255, 255, 255);
   background-color: rgba(1, 1, 97, 0.4);
+}
+
+@media (min-width: 800px) {
+  .settings-nav {
+    width: 12rem;
+    height: 12rem;
+    justify-content: space-around;
+    /* padding: 1rem; */
+    font-size: 115%;
+  }
+  .settings-nav .settings-ul {
+    font-size: 115%;
+  }
+  .settings-nav .button-es,
+  .settings-nav .button-en {
+    padding: 0.25rem;
+  }
 }

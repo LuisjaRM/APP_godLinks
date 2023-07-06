@@ -79,9 +79,7 @@ export const UserNav = () => {
               navigate("/");
             }}
           >
-            <p>
-              <FormattedMessage id="signout" />
-            </p>
+            <FormattedMessage id="signout" />
             <SvgIcon
               className="logout-icon"
               component={LogoutIcon}
