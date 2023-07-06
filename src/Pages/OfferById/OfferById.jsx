@@ -17,6 +17,7 @@ import { PlataformFilter } from "../../components/PlataformFilter/PlataformFilte
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 // Fetchs
 
@@ -24,9 +25,11 @@ import { useGetOfferById } from "../../services/api";
 
 export const OfferById = () => {
   // Document Title
+  const [language] = useLanguage();
 
-  document.title = "GodLinks: Oferta ";
-  //document.title = "GodLinks: Offer ";
+  language === "es"
+    ? (document.title = "GodLinks: Oferta")
+    : (document.title = "GodLinks: Offer");
 
   const { id } = useParams();
   const { token } = useAuth();

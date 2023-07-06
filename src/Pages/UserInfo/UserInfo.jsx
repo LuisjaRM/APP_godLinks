@@ -14,6 +14,7 @@ import { Loading } from "../../components/Loading/Loading";
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 // Fetchs
 
@@ -21,8 +22,11 @@ import { useGetUserInfo } from "../../services/api";
 
 export const UserInfo = () => {
   // Document Title
-  document.title = "Mis ofertas";
-  //document.title = "My offers";
+  const [language] = useLanguage();
+
+  language === "es"
+    ? (document.title = "Mis ofertas")
+    : (document.title = "My offers");
 
   const { token } = useAuth();
   const { id } = useParams();

@@ -12,6 +12,7 @@
   "change-password": "Cambiar contraseña",
   "email-recover": "Te hemos enviado un código de recuperación a tu correo",
   "password-reset": "Recupera tu contraseña",
+  "welcome": "Bienvenido.",
 
   "myprofile": "Mi perfil",
   "myoffers": "Mis ofertas",
@@ -51,6 +52,7 @@
   "expiration-change-success": "La fecha de vencimiento se ha modificado correctamente",
   "offer-deleted-success": "Tu oferta se ha eliminado correctamente",
 
+  "expired-offer": "Oferta caducada",
   "link-to-offer": "Ir a la oferta",
   "send": "Enviar",
 

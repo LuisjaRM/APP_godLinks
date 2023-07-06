@@ -12,6 +12,7 @@
   "change-password": "Change your password",
   "email-recover": "",
   "password-reset": " Reset your password",
+  "welcome": "Welcome.",
 
   "myprofile": "My profile",
   "myoffers": "My offers",
@@ -51,6 +52,7 @@
   "expiration-change-success": "The offer expiration date has been successfully modified",
   "offer-deleted-success": "Your offer has been successfully deleted",
 
+  "expired-offer": "Expired offer",
   "link-to-offer": "Go to Offer",
   "send": "Send",
 
