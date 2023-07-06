@@ -136,10 +136,24 @@
 }
 
 @media (min-width: 800px) {
-  .post-offer .form {
-    flex-direction: row;
-    align-items: start;
+  .post-offer {
     justify-content: center;
-    flex-wrap: wrap;
+  }
+
+  .post-offer .form {
+    height: fit-content;
+    align-items: center;
+    justify-content: start;
+    gap: 2rem;
+  }
+
+  .post-offer fieldset {
+    width: 45%;
+  }
+
+  #price,
+  #offer_price {
+    height: fit-content;
+    width: 4.5rem;
   }
 }
