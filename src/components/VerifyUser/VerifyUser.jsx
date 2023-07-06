@@ -13,11 +13,11 @@ import { useState } from "react";
 export const VerifyUser = ({ isLogin, setIsLogin }) => {
   const [showLogin, setShowLogin] = useShowLogin();
   const [showVerify, setShowVerify] = useShowVerify();
-  const [isAnimated, setIsAnimated] = useState();
+  const [email, setEmail] = useState();
 
   showVerify &&
     setTimeout(() => {
-      setIsAnimated(true);
+      setEmail(true);
     }, 1500);
 
   showVerify &&
@@ -29,7 +29,7 @@ export const VerifyUser = ({ isLogin, setIsLogin }) => {
 
   !showVerify &&
     setTimeout(() => {
-      setIsAnimated(false);
+      setEmail(false);
     }, 1500);
 
   return (
@@ -37,7 +37,7 @@ export const VerifyUser = ({ isLogin, setIsLogin }) => {
       <section className="modal-back dark">
         <section className="modal-body little verify">
           <section className="container-email">
-            <section className={`email-box ${isAnimated ? "animated" : ""}`}>
+            <section className={`email-box ${email ? "animated" : ""}`}>
               <section className="triangle"></section>
               <section className="triangle"></section>
               <section className="triangle">GodLinks.S.A</section>
