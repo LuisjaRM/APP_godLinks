@@ -51,6 +51,8 @@
   "platform-change-success": "The platform has been successfully modified",
   "expiration-change-success": "The offer expiration date has been successfully modified",
   "offer-deleted-success": "Your offer has been successfully deleted",
+  "confirm-no-favorite": "Are you sure you want to remove the offer from favorites?",
+  "no-favorite": "Offer removed from favorites",
 
   "expired-offer": "Expired offer",
   "link-to-offer": "Go to Offer",
