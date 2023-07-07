@@ -50,36 +50,42 @@ export const PlataformFilter = () => {
 
         <ul ref={filterRef} className="plataform-list">
           <li
+            role="button"
             className="plataform ps5"
             onClick={() => navigate("/plataform/Playstation-5")}
           >
             Playstation 5
           </li>
           <li
+            role="button"
             className="plataform ps4"
             onClick={() => navigate("/plataform/Playstation-4")}
           >
             Playstation 4
           </li>
           <li
+            role="button"
             className="plataform xbo"
             onClick={() => navigate("/plataform/Xbox-One")}
           >
             Xbox One
           </li>
           <li
+            role="button"
             className="plataform xbs"
             onClick={() => navigate("/plataform/Xbox-Series")}
           >
             Xbox Series
           </li>
           <li
+            role="button"
             className="plataform nin"
             onClick={() => navigate("/plataform/Nintendo-Switch")}
           >
             Nintendo Switch
           </li>
           <li
+            role="button"
             className="plataform pc"
             onClick={() => navigate("/plataform/PC-Gaming")}
           >

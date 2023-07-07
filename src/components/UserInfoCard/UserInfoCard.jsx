@@ -20,7 +20,7 @@ export const UserInfoCard = ({ userInfo }) => {
 
   return (
     <section className="user">
-      <section className="header" onClick={() => navigate("/profile")}>
+      <section className="header" role="button" onClick={() => navigate("/profile")}>
         <img
           className="user-image"
           src={

@@ -531,8 +531,9 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
       </ul>
 
       {showChangePasswordModal && (
-        <section className="modal-back dark" onClick={handleClickAway}>
+        <section className="modal-back dark" role="button" onClick={handleClickAway}>
           <section
+            role="button"
             className="modal-body little"
             onClick={(e) => e.stopPropagation()}
           >
@@ -623,7 +624,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
       )}
 
       {showConfirmModal && (
-        <section className="modal-back dark" onClick={handleClickAway}>
+        <section className="modal-back dark" role="button" onClick={handleClickAway}>
           <section className="modal-body little">
             <h2>
               {clickDelete ? (

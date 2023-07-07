@@ -66,6 +66,7 @@ export const PostVote = ({ votes, offerId, refresh }) => {
   return (
     <>
       <section
+        role="button"
         onClick={(e) => {
           e.stopPropagation();
         }}

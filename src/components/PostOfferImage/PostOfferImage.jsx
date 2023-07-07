@@ -84,6 +84,7 @@ export const PostOfferImage = ({
   return (
     <section className={`post-offer-image-body ${openPostImage ? "show" : ""}`}>
       <section
+        role="button"
         onClick={(e) => e.stopPropagation()}
         className={`post-offer-image ${openPostImage ? "show" : ""} ${
           nightMode === "day" ? "light" : ""
@@ -136,6 +137,7 @@ export const PostOfferImage = ({
 
           <section className="post-offer-noImage">
             <p
+              role="button"
               className="button-main without-image"
               onClick={() => {
                 setOpenPostImage(!openPostImage);

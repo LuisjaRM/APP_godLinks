@@ -33,6 +33,7 @@ export const ErrorMessage = () => {
       <section>
         <ul>
           <li className="starfourth"></li>
+          <li className="starfourth"></li>
         </ul>
       </section>
 

@@ -45,6 +45,7 @@ export const SettingsNav = () => {
   return (
     showSettings && (
       <section
+        role="button"
         className="modal-back"
         onClick={() => {
           setShowSettings(!showSettings);
@@ -55,13 +56,14 @@ export const SettingsNav = () => {
             <FormattedMessage id="settings" />
           </h2>
 
-          <ul className="settings-ul" onClick={(e) => e.stopPropagation()}>
+          <ul className="settings-ul" role="button" onClick={(e) => e.stopPropagation()}>
             <li className="settings-element">
               <p id="title">
                 <FormattedMessage id="theme" />
               </p>
 
               <i
+                role="button"
                 onClick={() => {
                   nightMode === "night"
                     ? toggleNightMode("day")
@@ -92,6 +94,7 @@ export const SettingsNav = () => {
 
               <section>
                 <i
+                  role="button"
                   className={`button-es ${language === "es" && "es"}`}
                   onClick={() => {
                     setLanguage("es");
@@ -100,6 +103,7 @@ export const SettingsNav = () => {
                   ES
                 </i>
                 <i
+                  role="button"
                   className={`button-en ${language === "en" && "en"}`}
                   onClick={() => {
                     setLanguage("en");

@@ -94,8 +94,9 @@ export const PostOffer = () => {
     setError(<FormattedMessage id="expire-error" />);
 
   return (
-    <section className={`post-offer-body ${openPostOffer ? "show" : ""}`}>
+    <section  className={`post-offer-body ${openPostOffer ? "show" : ""}`}>
       <section
+        role="button"
         onClick={(e) => e.stopPropagation()}
         className={`post-offer ${openPostOffer ? "show" : ""} ${
           nightMode === "day" ? "light" : ""

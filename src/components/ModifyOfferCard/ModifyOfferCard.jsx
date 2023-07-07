@@ -871,7 +871,7 @@ export const ModifyOfferCard = ({ refresh, offer }) => {
       </ul>
 
       {showConfirmModal && (
-        <section className="modal-back dark" onClick={handleClickAway}>
+        <section className="modal-back dark" role="button" onClick={handleClickAway}>
           <section className="modal-body little">
             <h2>
               {clickDelete ? (

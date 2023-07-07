@@ -163,6 +163,7 @@ export const OfferCard = ({ offer, refresh }) => {
   return (
     <>
       <section
+        role="button"
         className={`offer-card ${expired ? "expired" : ""} ${
           nightMode === "day" ? "light" : ""
         }`}
@@ -195,7 +196,7 @@ export const OfferCard = ({ offer, refresh }) => {
             </section>
           )}
         <section className="header">
-          <section className="user-info" onClick={handleClickUserInfo}>
+          <section role="button" className="user-info" onClick={handleClickUserInfo}>
             <img
               className="user-image"
               src={
@@ -209,7 +210,7 @@ export const OfferCard = ({ offer, refresh }) => {
             <p className="user-name">{offer.user}</p>
           </section>
 
-          <p className="created" onClick={(e) => e.stopPropagation()}>
+          <p className="created" role="button" onClick={(e) => e.stopPropagation()}>
             {language === "es"
               ? `hace ${timeSinceCreated_at} ${text}`
               : `${timeSinceCreated_at} ${text} ago`}
@@ -217,7 +218,7 @@ export const OfferCard = ({ offer, refresh }) => {
         </section>
 
         <section className="main">
-          <section className="image-box">
+          <section role="button" className="image-box">
             <img
               className={`image ${expired ? "expired" : ""}`}
               src={
@@ -327,7 +328,7 @@ export const OfferCard = ({ offer, refresh }) => {
       </section>
 
       {showConfirmModal && (
-        <section className="modal-back dark" onClick={handleClickAway}>
+        <section role="button" className="modal-back dark" onClick={handleClickAway}>
           <section className="modal-body little">
             <h2>
               <FormattedMessage id="confirm-no-favorite" />

@@ -47,9 +47,9 @@ export const Filter = () => {
         </Link>
       ) : null}
       {currentPath !== "/favorites" ? (
-        <p onClick={handleClickFavorites} className="link">
+        <Link onClick={handleClickFavorites} role="button" className="link">
           <FormattedMessage id="favorite-offers" />
-        </p>
+        </Link>
       ) : null}
     </nav>
   );
