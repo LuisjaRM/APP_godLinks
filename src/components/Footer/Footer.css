@@ -112,10 +112,11 @@ footer .about-us a.light {
 }
 
 footer .about-us p {
+  cursor: pointer;
   color: var(--light-color);
 }
 
-footer .about-us a:hover {
+footer .about-us p:hover {
   text-decoration: underline;
 }
 
