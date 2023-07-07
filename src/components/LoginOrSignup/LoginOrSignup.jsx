@@ -1,6 +1,6 @@
 import "./LoginOrSignup.css";
 
-import {FormattedMessage} from 'react-intl';
+import { FormattedMessage } from "react-intl";
 
 // Components
 
@@ -21,6 +21,7 @@ export const LoginOrSignup = ({ isLogin, setIsLogin }) => {
     showLogin && (
       <>
         <section
+          role="button"
           className="modal-back dark"
           onClick={() => {
             setIsLogin(true);
@@ -31,15 +32,18 @@ export const LoginOrSignup = ({ isLogin, setIsLogin }) => {
             {isLogin ? <Login /> : <Signup />}
 
             <p
+              role="button"
               className="change-button"
               onClick={(e) => {
                 setIsLogin(!isLogin);
                 e.stopPropagation();
               }}
             >
-              {isLogin
-                ? <FormattedMessage id="newuser?"/>
-                : <FormattedMessage id="login"/>}
+              {isLogin ? (
+                <FormattedMessage id="newuser?" />
+              ) : (
+                <FormattedMessage id="login" />
+              )}
             </p>
           </section>
         </section>

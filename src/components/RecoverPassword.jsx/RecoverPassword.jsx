@@ -172,6 +172,7 @@ export const RecoverPassword = ({ isLogin, setIsLogin }) => {
   return (
     <>
       <section
+        role="button"
         onClick={() => {
           setEmail("");
           setShowRecover(false);
@@ -183,6 +184,7 @@ export const RecoverPassword = ({ isLogin, setIsLogin }) => {
        `}
       >
         <section
+          role="button"
           onClick={(e) => e.stopPropagation()}
           className={`modal-body little recover ${!showRecover && "hide"}`}
         >
@@ -217,6 +219,7 @@ export const RecoverPassword = ({ isLogin, setIsLogin }) => {
         </section>
 
         <section
+          role="button"
           onClick={(e) => e.stopPropagation()}
           className={`modal-body recover ${!showReset && "hide"}`}
         >

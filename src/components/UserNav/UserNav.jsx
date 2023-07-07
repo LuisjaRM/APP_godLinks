@@ -43,15 +43,17 @@ export const UserNav = () => {
     showLogin &&
     user && (
       <section
+        role="button"
         className="modal-back"
         onClick={() => {
           setShowLogin(!showLogin);
         }}
       >
-        <nav className="user-nav" onClick={(e) => e.stopPropagation()}>
+        <nav className="user-nav" role="button" onClick={(e) => e.stopPropagation()}>
           <li className="username">{user.user}</li>
 
           <li
+            role="button"
             className="link"
             onClick={() => {
               navigate("/profile");
@@ -62,6 +64,7 @@ export const UserNav = () => {
           </li>
 
           <li
+            role="button"
             className="link"
             onClick={() => {
               setShowLogin(!showLogin);
@@ -72,6 +75,7 @@ export const UserNav = () => {
           </li>
 
           <li
+            role="button"
             className="link logout"
             onClick={() => {
               logout();
