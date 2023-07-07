@@ -89,7 +89,7 @@
 
   "password-match": "Passwords don't match",
   "password-user-match-error": "Password cannot be equal to the username",
-  "password-8cha-error": "Password length must be at least 8 characters long",
+  "password-8char-error": "Password length must be at least 8 characters long",
   "password-20char-error": "Password length must be less than or equal to 20 characters long",
   "password-white-spaces-error": "Password should not contain white spaces",
   "password-specialChar-error": "Password should contain at least 1 special character",
@@ -110,5 +110,7 @@
   "same-password-error": "The new password is the same as the old one",
   "no-image-error": "You have not selected any images",
   "vote-own-offer-error": "You can't vote for your own offer",
-  "vote-already-offer-error": "You cannot vote twice for the same offer"
+  "vote-already-offer-error": "You cannot vote twice for the same offer",
+  "same-mail": "There is already a registered user with the same mail",
+  "same-user": "There is already a registered user with the same username"
 }

@@ -110,5 +110,7 @@
   "same-password-error": "La nueva contraseña es igual a la anterior",
   "no-image-error": "No has seleccionado ninguna imagen",
   "vote-own-offer-error": "No puedes votar tu propia oferta",
-  "vote-already-offer-error": "No puedes votar dos veces la misma oferta"
+  "vote-already-offer-error": "No puedes votar dos veces la misma oferta",
+  "same-mail": "Ya existe un usuario registrado con el mismo email",
+  "same-user": "Ya existe un usuario registrado con el mismo nombre"
 }

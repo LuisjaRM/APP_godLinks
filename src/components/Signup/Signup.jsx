@@ -71,6 +71,12 @@ export const Signup = () => {
 
   // Error messages
 
+  error === "Ya existe un usuario registrado con el mismo email" &&
+    setError(<FormattedMessage id="same-mail" />);
+
+  error === "Ya existe un usuario registrado con el mismo user name" &&
+    setError(<FormattedMessage id="same-user" />);
+
   error === `"password" length must be at least 8 characters long` &&
     setError(<FormattedMessage id="password-8char-error" />);
 
