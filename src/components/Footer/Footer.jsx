@@ -86,7 +86,9 @@ export const Footer = () => {
 
         <section className="footer-container-section">
           <section className="menu">
-            <h3 className="section-title">Menú</h3>
+            <h3>
+              <FormattedMessage id="menu" />
+            </h3>
 
             <Link
               className={`menu-item ${nightMode === "day" ? "light" : ""}`}

@@ -112,10 +112,11 @@ footer .about-us a.light {
 }
 
 footer .about-us p {
+  cursor: pointer;
   color: var(--light-color);
 }
 
-footer .about-us a:hover {
+footer .about-us p:hover {
   text-decoration: underline;
 }
 
@@ -178,10 +179,6 @@ footer .social-creator {
   gap: 0.5rem;
 }
 
-footer .social-link:hover {
-  box-shadow: 2px 2px 10px khaki;
-}
-
 footer .github-image {
   width: 24px;
   height: 24px;
@@ -194,6 +191,11 @@ footer .linkedin-image {
   height: 24px;
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+footer .github-image:hover,
+.linkedin-image:hover {
+  box-shadow: 2px 2px 10px var(--light-color);
 }
 
 @media (min-width: 900px) {
