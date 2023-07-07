@@ -121,7 +121,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
     e.preventDefault();
     e.stopPropagation();
     setShowConfirmModal(false);
-    setShowChangePasswordModal(false);
+    // setShowChangePasswordModal(false);
 
     fieldChanged === "avatar" && changeAvatar();
     fieldChanged === "user" && changeUser();
@@ -142,7 +142,9 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
     setEmail(userInfo.email);
     setOldPassword("");
     setNewPassword("");
+    setError("");
     setClickDelete(false);
+    setSeePassword(false);
   };
 
   const handleClickAway = (e) => {
@@ -157,7 +159,9 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
     setEmail(userInfo.email);
     setOldPassword("");
     setNewPassword("");
+    setError("");
     setClickDelete(false);
+    setSeePassword(false);
   };
 
   // Edit avatar
@@ -228,10 +232,16 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
 
   const changePassword = async () => {
     try {
+      if (newPassword === user) {
+        setError(<FormattedMessage id="password-user-match" />);
+        return;
+      }
+
       // Fetch
       await ModifyPasswordService({ oldPassword, newPassword }, token);
       setShowChangeMadeModal(!showChangeMadeModal);
       setTimeout(() => {
+        setError("");
         setShowChangeMadeModal(!showChangeMadeModal);
         setShowLogin(!showLogin);
         navigate("/");
@@ -240,9 +250,6 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
       }, 1500);
     } catch (error) {
       setError(error.message);
-      setTimeout(() => {
-        setError("");
-      }, 5000);
     }
   };
 
@@ -284,23 +291,44 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
 
   // Error messages
 
-  error === `"password" length must be at least 8 characters long` &&
+  error === `Column 'user' cannot be null` &&
+    setError(<FormattedMessage id="no-image-error" />);
+
+  error === "Ya estás registrado con este email" &&
+    setError(<FormattedMessage id="same-user-mail" />);
+
+  error === "Ya existe un usuario registrado con el mismo email" &&
+    setError(<FormattedMessage id="same-mail" />);
+
+  error === "Ya estás registrado con este username" &&
+    setError(<FormattedMessage id="same-user-user" />);
+
+  error === "Ya existe un usuario registrado con el mismo user name" &&
+    setError(<FormattedMessage id="same-user" />);
+
+  error === "Contraseña incorrecta" &&
+    setError(<FormattedMessage id="old-password-error" />);
+
+  error === "La nueva contraseña es igual a la anterior" &&
+    setError(<FormattedMessage id="same-password-error" />);
+
+  error === `"newPassword" length must be at least 8 characters long` &&
     setError(<FormattedMessage id="password-8char-error" />);
 
   error ===
-    `"password" length must be less than or equal to 20 characters long` &&
+    `"newPassword" length must be less than or equal to 20 characters long` &&
     setError(<FormattedMessage id="password-20char-error" />);
 
-  error === `"password" should not contain white spaces` &&
+  error === `"newPassword" should not contain white spaces` &&
     setError(<FormattedMessage id="password-white-spaces-error" />);
 
-  error === `"password" should contain at least 1 special character` &&
+  error === `"newPassword" should contain at least 1 special character` &&
     setError(<FormattedMessage id="password-specialChar-error" />);
 
-  error === `"password" should contain at least 1 uppercase character` &&
+  error === `"newPassword" should contain at least 1 uppercase character` &&
     setError(<FormattedMessage id="password-uppercaseChar-error" />);
 
-  error === `"password" should contain at least 1 numeric character` &&
+  error === `"newPassword" should contain at least 1 numeric character` &&
     setError(<FormattedMessage id="password-numChar-error" />);
 
   error === `"user" length must be at least 4 characters long` &&
@@ -308,12 +336,6 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
 
   error === `"user" length must be less than or equal to 15 characters long` &&
     setError(<FormattedMessage id="username-15char-error" />);
-
-  error === "No tienes permisos para modificar este usuario" &&
-    setError(<FormattedMessage id="no-permissions-error" />);
-
-  error === "La nueva contraseña es igual a la anterior" &&
-    setError(<FormattedMessage id="same-password-error" />);
 
   return (
     <>
@@ -339,7 +361,6 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
                   type="file"
                   name="modify-image"
                   id="modify-image"
-                  required
                   onChange={(e) => {
                     setAvatar(e.target.files[0]);
                     setFilepreview(URL.createObjectURL(e.target.files[0]));
@@ -614,6 +635,8 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
                   </button>
                 </section>
               </fieldset>
+
+              {error ? <p className="error">⚠️ {error}</p> : null}
 
               <button className="button">
                 <FormattedMessage id="continue" />

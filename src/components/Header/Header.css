@@ -36,3 +36,9 @@ header .accesible-buttons {
   justify-content: center;
   gap: 0.5rem;
 }
+
+@media (max-height: 500px) {
+  header {
+    height: 11.5vh;
+  }
+}

@@ -5,6 +5,7 @@
   background-color: white;
   color: black;
 }
+
 .stars {
   height: calc(100vh - 7.5vh - 7.5vh - 2rem);
   display: flex;
@@ -141,7 +142,7 @@ article .link_404 {
 .box_astronaut {
   z-index: 110 !important;
   position: absolute;
-  top: 60%;
+  top: 10%;
   right: 20%;
   will-change: transform;
   animation: move-astronaut 50s infinite linear both alternate;
@@ -339,5 +340,19 @@ article .link_404 {
 
   .contant_box_404 {
     margin-top: -45px;
+  }
+}
+
+@media (max-height: 550px) {
+  .stars {
+    height: 100%;
+    align-items: end;
+  }
+}
+
+@media (max-height: 500px) {
+  .page_404 {
+    height: 100%;
+    padding-bottom: 2rem;
   }
 }

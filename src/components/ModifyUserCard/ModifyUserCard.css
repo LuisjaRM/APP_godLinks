@@ -90,6 +90,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1rem;
 }
 
 .modify-password-fieldset {
@@ -140,5 +141,12 @@
 
   .created-at {
     font-size: 22px;
+  }
+}
+
+@media (max-height: 700px) {
+  .header-profile {
+    height: 100%;
+    padding: 1rem;
   }
 }

@@ -121,7 +121,7 @@ export const OfferCard = ({ offer, refresh }) => {
     await addFavoriteService(token, offer.id);
     setShowChangeMadeModal(!showChangeMadeModal);
     setTimeout(() => {
-      setShowChangeMadeModal(!showChangeMadeModal);
+      setShowChangeMadeModal(false);
       refresh();
     }, 1500);
   };

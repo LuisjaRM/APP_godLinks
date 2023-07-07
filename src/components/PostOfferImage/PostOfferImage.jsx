@@ -8,7 +8,7 @@ import { FormattedMessage } from "react-intl";
 
 import { SvgIcon } from "@mui/material";
 import ImageSearchIcon from "@mui/icons-material/ImageSearch";
-import AddToPhotosIcon from "@mui/icons-material/AddToPhotos";
+import SendIcon from "@mui/icons-material/Send";
 
 // React
 
@@ -124,16 +124,16 @@ export const PostOfferImage = ({
               </label>
             </fieldset>
 
-            {error ? <p className="error">{error}</p> : null}
-
             <button className="post-offer-button">
               <SvgIcon
                 className="post-offer-icon"
-                component={AddToPhotosIcon}
+                component={SendIcon}
                 inheritViewBox
               />
             </button>
           </form>
+
+          {error ? <p className="error">⚠️ {error}</p> : null}
 
           <section className="post-offer-noImage">
             <p

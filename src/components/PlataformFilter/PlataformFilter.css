@@ -40,6 +40,10 @@
   font-weight: bold;
 }
 
+.plataform-filter .plataform {
+  height: 1rem;
+}
+
 .plataform-filter .plataform.ps5 {
   min-width: 85px;
 }
@@ -67,5 +71,15 @@
 @media (min-width: 625px) {
   .plataform-filter .move-button {
     display: none;
+  }
+}
+
+@media (max-height: 500px) {
+  .plataform-filter {
+    height: 10vh;
+  }
+
+  .plataform-filter .plataform {
+    font-size: 75%;
   }
 }

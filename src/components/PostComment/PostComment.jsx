@@ -43,7 +43,7 @@ export const PostComment = ({ id, refresh, offer }) => {
   // Error messages
 
   error ===
-    `"comment" length must be less than or equal to 170 characters long` &&
+    `"comment" length must be less than or equal to 145 characters long` &&
     setError(<FormattedMessage id="post-comment-error" />);
 
   return (

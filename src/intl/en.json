@@ -10,7 +10,7 @@
   "newuser?": " New user? Start here.",
   "email-vertification": "We have sent an email to your account",
   "change-password": "Change your password",
-  "email-recover": "",
+  "email-recover": "We have sent a recovery code to your email",
   "password-reset": " Reset your password",
   "welcome": "Welcome.",
 
@@ -32,8 +32,8 @@
   "offerprice": "Offer price:",
   "originalprice": "Original price:",
   "platform": "Platform:",
-  "expiration-date": "Expiration date:",
-  "deleteoffer": "Delete offer:",
+  "expiration-date": "Expiration:",
+  "deleteoffer": "Delete offer",
   "send-vote-success": "",
 
   "upload-image": "Upload an image",
@@ -98,7 +98,7 @@
   "password-numChar-error": "password should contain at least 1 numeric character",
   "username-4char-error": "User length must be at least 4 characters long",
   "username-15char-error": "User length must be less than or equal to 15 characters long",
-  "post-comment-error": "The comment length must be less than or equal to 170 characters long",
+  "post-comment-error": "The comment length must be less than or equal to 145 characters long",
   "email-password-error": "Wrong email or password",
   "verify-error": "Unverified user",
   "url-280char-error": "URL length must be less than or equal to 280 characters long",
@@ -113,5 +113,10 @@
   "vote-own-offer-error": "You can't vote for your own offer",
   "vote-already-offer-error": "You cannot vote twice for the same offer",
   "same-mail": "There is already a registered user with the same mail",
-  "same-user": "There is already a registered user with the same username"
+  "same-user-mail": "You haven't changed your email",
+  "same-user": "There is already a registered user with the same username",
+  "same-user-user": "You haven't changed your username",
+  "old-password-error": "Incorrect password",
+  "no-user": "No user registered with that mail",
+  "recovery-code": "Incorrect recovery code"
 }
