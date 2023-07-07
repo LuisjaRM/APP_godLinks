@@ -1,4 +1,4 @@
-.about-us {
+.about-us-page {
   margin: 2rem 0;
   display: flex;
   flex-direction: column;
@@ -9,41 +9,41 @@
   color: white;
 }
 
-.about-us .paragraph {
+.about-us-page .paragraph {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
 }
 
-.about-us.light {
+.about-us-page.light {
   color: var(--bg-color);
 }
 
-.about-us h1,
-.about-us h2 {
+.about-us-page h1,
+.about-us-page h2 {
   color: var(--light-color);
 }
 
-.about-us.light h1,
-.about-us.light h2 {
+.about-us-page.light h1,
+.about-us-page.light h2 {
   color: var(--color);
 }
 
 @media (min-width: 650px) {
-  .about-us {
+  .about-us-page {
     padding: 0 5rem;
   }
 }
 
 @media (min-width: 850px) {
-  .about-us {
+  .about-us-page {
     padding: 0 10rem;
   }
 }
 
 @media (min-width: 1000px) {
-  .about-us {
+  .about-us-page {
     padding: 0 15rem;
   }
 }

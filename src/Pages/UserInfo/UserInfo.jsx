@@ -42,13 +42,19 @@ export const UserInfo = () => {
         <UserInfoCard key={index} userInfo={userInfo} />
       ))}
 
-      <ul className="offers-list">
-        {dataUser.offers?.map((offer) => (
-          <li key={offer.id}>
-            <OfferCard refresh={refresh} offer={offer} />
-          </li>
-        ))}
-      </ul>
+      {dataUser.offers?.length === 0 ? (
+        <section className="no-offers">
+          <p className="no-offers-message">No has subido ninguna oferta</p>
+        </section>
+      ) : (
+        <ul className="offers-list">
+          {dataUser.offers?.map((offer) => (
+            <li key={offer.id}>
+              <OfferCard offer={offer} refresh={refresh} />
+            </li>
+          ))}
+        </ul>
+      )}
     </section>
   );
 };

@@ -39,13 +39,19 @@ export const OffersByVotes = () => {
         <PlataformFilter />
       </aside>
 
-      <ul className="offers">
-        {offers.offers?.map((offer) => (
-          <li key={offer.id}>
-            <OfferCard offer={offer} refresh={refresh} />
-          </li>
-        ))}
-      </ul>
+      {offers.offers?.length === 0 ? (
+        <section className="no-offers">
+          <p className="no-offers-message">No hay subida ninguna oferta</p>
+        </section>
+      ) : (
+        <ul className="offers">
+          {offers.offers?.map((offer) => (
+            <li key={offer.id}>
+              <OfferCard offer={offer} refresh={refresh} />
+            </li>
+          ))}
+        </ul>
+      )}
 
       <PostOffer />
     </>

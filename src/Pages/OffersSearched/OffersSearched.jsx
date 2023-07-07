@@ -48,13 +48,21 @@ export const OffersSearched = () => {
         <PlataformFilter />
       </aside>
 
-      <ul className="offers">
-        {offers.offers?.map((offer) => (
-          <li key={offer.id}>
-            <OfferCard offer={offer} refresh={refresh} />
-          </li>
-        ))}
-      </ul>
+      {offers.offers?.length === 0 ? (
+        <section className="no-offers">
+          <p className="no-offers-message">
+            No hay ninguna oferta <br /> que coincida con tu búsqueda
+          </p>
+        </section>
+      ) : (
+        <ul className="offers">
+          {offers.offers?.map((offer) => (
+            <li key={offer.id}>
+              <OfferCard offer={offer} refresh={refresh} />
+            </li>
+          ))}
+        </ul>
+      )}
 
       <PostOffer />
     </>
