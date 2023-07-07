@@ -1,6 +1,7 @@
 .page_404 {
   /* 100vh - vh de header, footer y el padding de main */
   height: calc(100vh - 7.5vh - 7.5vh - 2rem);
+  width: 100%;
   background-color: white;
   color: black;
 }
@@ -148,6 +149,7 @@ article .link_404 {
 
 .stars {
   background: url(http://salehriaz.com/404Page/img/overlay_stars.svg);
+  width: 100%;
   background-repeat: repeat;
   background-size: contain;
   background-position: left top;

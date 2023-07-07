@@ -1,5 +1,5 @@
 .offer-byId {
-  margin-top: calc(7.5vh + 5vh + 1rem);
+  margin-top: 1rem;
   list-style: none;
   display: flex;
   flex-direction: column;

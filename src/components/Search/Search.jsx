@@ -12,7 +12,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 
 export const Search = () => {
-  const [searched, setSearched] = useState();
+  const [searched, setSearched] = useState("");
   const navigate = useNavigate();
 
   // Handle submit
