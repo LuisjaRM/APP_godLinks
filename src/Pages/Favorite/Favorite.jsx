@@ -39,13 +39,21 @@ export const Favorite = () => {
         <PlataformFilter />
       </aside>
 
-      <ul className="offers">
-        {offers.offers?.map((offer) => (
-          <li key={offer.id}>
-            <OfferCard offer={offer} refresh={refresh} />
-          </li>
-        ))}
-      </ul>
+      {offers.offers?.length === 0 ? (
+        <section className="no-offers">
+          <p className="no-offers-message">
+            No hay ofertas añadidas a tus favoritas
+          </p>
+        </section>
+      ) : (
+        <ul className="offers">
+          {offers.offers?.map((offer) => (
+            <li key={offer.id}>
+              <OfferCard offer={offer} refresh={refresh} />
+            </li>
+          ))}
+        </ul>
+      )}
 
       <PostOffer />
     </>

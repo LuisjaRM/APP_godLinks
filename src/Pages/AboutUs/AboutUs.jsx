@@ -17,7 +17,7 @@ export const AboutUs = () => {
     : (document.title = "About us");
 
   return (
-    <section className={`about-us ${nightMode === "day" ? "light" : ""}`}>
+    <section className={`about-us-page ${nightMode === "day" ? "light" : ""}`}>
       <h1>¿Que es Godlinks?</h1>
       <section className="paragraph">
         <p>
