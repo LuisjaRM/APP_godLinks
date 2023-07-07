@@ -59,6 +59,7 @@ export const Signup = () => {
       await registerUserService({ email, password: pass1, user });
       setShowVerify(!showVerify);
       setShowLogin(!showLogin);
+      setError("");
     } catch (error) {
       setError(error.message);
     }

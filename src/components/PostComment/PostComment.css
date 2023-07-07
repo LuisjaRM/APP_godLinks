@@ -34,3 +34,9 @@
   border-radius: 5px;
   box-shadow: 1px 1px 10px var(--bg-color);
 }
+
+@media (max-height: 500px) {
+  .send-button {
+    height: 50%;
+  }
+}

@@ -92,3 +92,16 @@
     font-size: 140%;
   }
 }
+
+@media (max-height: 500px) {
+  .filter {
+    height: 10vh;
+  }
+}
+
+@media (max-height: 800px) {
+  .filter {
+    gap: 1rem;
+    font-size: 100%;
+  }
+}

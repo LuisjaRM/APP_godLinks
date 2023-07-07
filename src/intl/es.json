@@ -32,7 +32,7 @@
   "offerprice": "Precio de oferta:",
   "originalprice": "Precio original:",
   "platform": "Plataforma:",
-  "expiration-date": "Fecha de caducidad:",
+  "expiration-date": "Caducidad:",
   "deleteoffer": "Borrar oferta",
   "send-vote-success": "Tu voto se ha registrado correctamente",
 
@@ -97,7 +97,7 @@
   "password-numChar-error": "La contraseña debe contener al menos 1 carácter numérico",
   "username-4char-error": "La longitud del usuario debe tener al menos 4 caracteres",
   "username-15char-error": "La longitud del usuario debe ser inferior o igual a 15 caracteres",
-  "post-comment-error": "El comentario no puede superar los 170 caracteres",
+  "post-comment-error": "El comentario no puede superar los 145 caracteres",
   "email-password-error": "Email o contraseña incorrectos",
   "verify-error": "Usuario no verificado",
   "url-280char-error": "La longitud de la URL debe ser inferior o igual a 280 caracteres",
@@ -112,5 +112,11 @@
   "vote-own-offer-error": "No puedes votar tu propia oferta",
   "vote-already-offer-error": "No puedes votar dos veces la misma oferta",
   "same-mail": "Ya existe un usuario registrado con el mismo email",
-  "same-user": "Ya existe un usuario registrado con el mismo nombre"
+  "same-user-mail": "No has modificado tu email",
+  "same-user": "Ya existe un usuario registrado con el mismo nombre",
+  "same-user-user": "No has modificado tu nombre de usuario",
+  "same-password": "La nueva contraseña es igual a la anterior",
+  "old-password-error": "Contraseña incorrecta",
+  "no-user": "No hay ningún usuario registrado con ese email",
+  "recovery-code": "Código de recuperación incorrecto"
 }

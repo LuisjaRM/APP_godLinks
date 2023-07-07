@@ -82,14 +82,17 @@
     justify-content: space-around;
     gap: 0;
     padding: 1rem;
+    padding-top: 3rem;
     font-size: 115%;
   }
   .user-nav .username {
     right: 1rem;
   }
   .user-nav .link {
-    margin-top: 2rem;
-    padding-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 0;
   }
 
   .user-nav .link.logout {

@@ -18,6 +18,7 @@ import { useState } from "react";
 import { useShowLogin } from "../../contexts/ShowLoginContext";
 import { useShowRecover } from "../../contexts/ShowRecoverContext";
 import { useLanguage } from "../../contexts/LanguageContext";
+import { useAuth } from "../../contexts/AuthContext";
 
 // Fetchs
 
@@ -33,6 +34,7 @@ export const RecoverPassword = ({ isLogin, setIsLogin }) => {
 
   const [showLogin, setShowLogin] = useShowLogin();
   const [showRecover, setShowRecover] = useShowRecover();
+  const { user } = useAuth();
 
   // Intl Context
 
@@ -43,6 +45,7 @@ export const RecoverPassword = ({ isLogin, setIsLogin }) => {
   const [showRecoverCodeModal, setShowRecoverCodeModal] = useState(false);
 
   // Animation email
+
   showRecoverCodeModal &&
     setTimeout(() => {
       setIsAnimated(true);
@@ -75,6 +78,7 @@ export const RecoverPassword = ({ isLogin, setIsLogin }) => {
         setShowRecoverCodeModal(false);
         setShowReset(!showReset);
         setShowRecover(!showRecover);
+        setError("");
         setEmail("");
       }, 3000);
     } catch (error) {
@@ -98,18 +102,13 @@ export const RecoverPassword = ({ isLogin, setIsLogin }) => {
   const handleFormReset = async (e) => {
     e.preventDefault();
 
-    if (!recoverCode) {
-      setError(<FormattedMessage id="verification-code" />);
-      return;
-    }
-
-    if (!newPass1 || !newPass2) {
-      setError(<FormattedMessage id="enter-password" />);
-      return;
-    }
-
     if (newPass1 !== newPass2) {
       setError(<FormattedMessage id="password-match" />);
+      return;
+    }
+
+    if (newPass1 === user) {
+      setError(<FormattedMessage id="password-user-match" />);
       return;
     }
 
@@ -122,12 +121,13 @@ export const RecoverPassword = ({ isLogin, setIsLogin }) => {
       });
 
       setShowConfirmModal(!showConfirmModal);
+      setError("");
 
       setTimeout(() => {
         setShowConfirmModal(false);
+        setSeePassword(false);
         setShowLogin(!showLogin);
         setShowReset(!showReset);
-        setError("");
         setRecoverCode("");
         setNewPass1("");
         setNewPass2("");
@@ -143,6 +143,12 @@ export const RecoverPassword = ({ isLogin, setIsLogin }) => {
   const [seeRepeatPassword, setSeeRepeatPassword] = useState(false);
 
   // Error messages
+
+  error === "Código de recuperación incorrecto" &&
+    setError(<FormattedMessage id="recovery-code" />);
+
+  error === "No hay ningún usuario registrado con ese email" &&
+    setError(<FormattedMessage id="no-user" />);
 
   error === `"password" length must be at least 8 characters long` &&
     setError(<FormattedMessage id="password-8char-error" />);
@@ -163,9 +169,6 @@ export const RecoverPassword = ({ isLogin, setIsLogin }) => {
   error === `"password" should contain at least 1 numeric character` &&
     setError(<FormattedMessage id="password-numChar-error" />);
 
-  // Este error no apaece
-  // error === `"user" length must be at least 4 characters long` && setError(<FormattedMessage id="username-4char-error" />);
-
   error === "La contraseña no puede coincidir con el nombre de usuario" &&
     setError(<FormattedMessage id="password-user-match" />);
 
@@ -173,7 +176,12 @@ export const RecoverPassword = ({ isLogin, setIsLogin }) => {
     <>
       <section
         onClick={() => {
+          setError("");
           setEmail("");
+          setRecoverCode("");
+          setNewPass1("");
+          setNewPass2("");
+          setSeePassword(false);
           setShowRecover(false);
           setShowReset(false);
         }}
@@ -213,7 +221,7 @@ export const RecoverPassword = ({ isLogin, setIsLogin }) => {
             </button>
           </form>
 
-          {error ? <p className="error">{error}</p> : null}
+          {error ? <p className="error">⚠️ {error}</p> : null}
         </section>
 
         <section

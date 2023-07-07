@@ -102,7 +102,16 @@ export const PostOffer = () => {
         }`}
       >
         <button
-          onClick={() => setOpenPostOffer(false)}
+          onClick={() => {
+            setOpenPostOffer(false);
+            setUrl("");
+            setTitle("");
+            setDescrip("");
+            setOffer_price("");
+            setPrice("");
+            setOffer_expiry("");
+            setError("");
+          }}
           className="closed-button"
         >
           X
@@ -159,6 +168,7 @@ export const PostOffer = () => {
               id="descrip"
               autoComplete="off"
               value={descrip}
+              required
               onChange={(e) => setDescrip(e.target.value)}
             />
           </fieldset>
@@ -174,6 +184,7 @@ export const PostOffer = () => {
               id="offer_price"
               autoComplete="off"
               value={offer_price}
+              required
               onChange={(e) => setOffer_price(e.target.value)}
             />
 
