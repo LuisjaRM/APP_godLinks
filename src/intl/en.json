@@ -61,7 +61,7 @@
   "comment-delete?": "Are you sure you wan to delete this comment?",
   "yes": "Yes",
   "no": "No",
-  "comment-delete-succcess": "Your comment has been successfully deleted",
+  "comment-delete-success": "Your comment has been successfully deleted",
 
   "member-since": "Member since",
   "privacy": "Privacy",
