@@ -63,7 +63,7 @@
   "no": "No",
   "comment-delete-success": "Tu comentario se ha eliminado correctamente",
 
-  "member-since": "Miembre desde",
+  "member-since": "Miembro desde",
   "privacy": "Privacidad",
   "delete-account": "Borrar cuenta",
 
@@ -119,5 +119,12 @@
   "same-password": "La nueva contraseña es igual a la anterior",
   "old-password-error": "Contraseña incorrecta",
   "no-user": "No hay ningún usuario registrado con ese email",
-  "recovery-code": "Código de recuperación incorrecto"
+  "recovery-code": "Código de recuperación incorrecto",
+
+  "no-offers": "No hay subida ninguna oferta",
+  "no-offers-daily": "No hay subida ninguna oferta con la fecha de hoy",
+  "no-my-offers": "No has subido ninguna oferta",
+  "no-favorite-offers": "No hay ofertas añadidas a tus favoritas",
+  "no-plataform-offers": "No hay ninguna oferta de esta plataforma",
+  "no-offers-searched": "No hay subida ninguna oferta que coincida con tu búsqueda"
 }

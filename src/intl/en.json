@@ -118,5 +118,12 @@
   "same-user-user": "You haven't changed your username",
   "old-password-error": "Incorrect password",
   "no-user": "No user registered with that mail",
-  "recovery-code": "Incorrect recovery code"
+  "recovery-code": "Incorrect recovery code",
+
+  "no-offers": "There are no offers uploaded",
+  "no-offers-daily": "There are no offers uploaded today",
+  "no-my-offers": "You are no offers uploaded",
+  "no-favorite-offers": "You are no offers added to favorites",
+  "no-plataform-offers": "There are no offers uploaded of this platform",
+  "no-offers-searched": "No offers upload matches your search"
 }

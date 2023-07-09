@@ -1,5 +1,9 @@
 import "./Home.css";
 
+// Intl
+
+import { FormattedMessage } from "react-intl";
+
 // Components
 
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
@@ -37,8 +41,7 @@ export const Home = () => {
       {offers.offers?.length === 0 ? (
         <section className="no-offers">
           <p className="no-offers-message">
-            No hay subida ninguna oferta <br />
-            con la fecha de hoy
+            <FormattedMessage id="no-offer-daily" />
           </p>
         </section>
       ) : (

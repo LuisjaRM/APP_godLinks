@@ -1,5 +1,9 @@
 import "./OffersSearched.css";
 
+// Intl
+
+import { FormattedMessage } from "react-intl";
+
 // React
 
 import { useParams } from "react-router";
@@ -51,7 +55,7 @@ export const OffersSearched = () => {
       {offers.offers?.length === 0 ? (
         <section className="no-offers">
           <p className="no-offers-message">
-            No hay ninguna oferta <br /> que coincida con tu búsqueda
+            <FormattedMessage id="no-offers-searched" />
           </p>
         </section>
       ) : (

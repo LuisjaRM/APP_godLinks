@@ -552,7 +552,11 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
       </ul>
 
       {showChangePasswordModal && (
-        <section className="modal-back dark" role="button" onClick={handleClickAway}>
+        <section
+          className="modal-back dark"
+          role="button"
+          onClick={handleClickAway}
+        >
           <section
             role="button"
             className="modal-body little"
@@ -647,7 +651,11 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
       )}
 
       {showConfirmModal && (
-        <section className="modal-back dark" role="button" onClick={handleClickAway}>
+        <section
+          className="modal-back dark"
+          role="button"
+          onClick={handleClickAway}
+        >
           <section className="modal-body little">
             <h2>
               {clickDelete ? (
@@ -678,7 +686,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
             )}
             {fieldChanged === "user" && (
               <h3>
-                <FormattedMessage id="username-modify-success" />
+                <FormattedMessage id="user-modify-success" />
               </h3>
             )}
             {fieldChanged === "newPassword" && (
@@ -688,7 +696,7 @@ export const ModifyUserCard = ({ userInfo, refresh }) => {
             )}
             {clickDelete && (
               <h3>
-                <FormattedMessage id="username-delete-success" />
+                <FormattedMessage id="user-delete-success" />
               </h3>
             )}
 
