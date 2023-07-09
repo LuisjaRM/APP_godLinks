@@ -41,7 +41,7 @@ export const Home = () => {
       {offers.offers?.length === 0 ? (
         <section className="no-offers">
           <p className="no-offers-message">
-            <FormattedMessage id="no-offer-daily" />
+            <FormattedMessage id="no-offers-daily" />
           </p>
         </section>
       ) : (

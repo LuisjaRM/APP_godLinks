@@ -45,7 +45,7 @@ export const OffersByVotes = () => {
 
       {offers.offers?.length === 0 ? (
         <section className="no-offers">
-          <FormattedMessage id="no-offer" />
+          <FormattedMessage id="no-offers" />
         </section>
       ) : (
         <ul className="offers">

@@ -1,5 +1,9 @@
 import "./UserInfo.css";
 
+// Intl
+
+import { FormattedMessage } from "react-intl";
+
 // react-router-dom
 
 import { useParams } from "react-router";
@@ -44,7 +48,7 @@ export const UserInfo = () => {
 
       {dataUser.offers?.length === 0 ? (
         <section className="no-offers">
-          <p className="no-offers-message">No has subido ninguna oferta</p>
+          <FormattedMessage id="no-my-offers" />
         </section>
       ) : (
         <ul className="offers-list">

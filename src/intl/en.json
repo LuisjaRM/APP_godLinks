@@ -125,5 +125,24 @@
   "no-my-offers": "You are no offers uploaded",
   "no-favorite-offers": "You are no offers added to favorites",
   "no-plataform-offers": "There are no offers uploaded of this platform",
-  "no-offers-searched": "No offers upload matches your search"
+  "no-offers-searched": "No offers upload matches your search",
+
+  "title-about-us": "¿What is Godlinks?",
+  "paragraph0-about-us": "This project was born as an idea inspired by how much we like videogames and the good times they have given us throughout our lives.",
+  "paragraph1-about-us": "It is a website that functions as a virtual medium for sharing offers related to the gaming world.",
+  "section-about-us": "How does it work?",
+  "paragraph2-about-us": "The offers that appear on the page are published by users. The community is what makes an offer more or less popular through your votes.",
+  "paragraph3-about-us": "Save the offers that you like the most so you don't lose sight of them and visit the pages where the products of the publications are offered directly from our website.",
+  "section-know-us": "Know us",
+  "paragraph0-know-us": "These are the four developers behind Godlinks.",
+  "paragraph1-know-us": "Luisja Rodríguez: Passionate about new technologies and about doing it everything perfectly. He has found in programming his passion and his work vocation. He loves video games, music and sports.",
+  "paragraph2-know-us": "Mladen Aleksandrov: Restless by nature, I love the programming (I hate css) and repairing impossible things. I like disconnect walking through the mountain alone.",
+  "paragraph3-know-us": "Pablo Planes: Fascinated by computers since I was little, I ended up making it my profession. I love gastronomy, music and travel, in any of its combinations.",
+  "paragraph4-know-us": "Victor Otero: I am someone extremely curious. I like learning every day and always be up to date with the latest news in technology. I love sports, good food and video games. I am to laugh a lot and make people laugh.",
+  "section-thanks": "Thanks",
+  "paragraph0-thanks": "We want to thank the great HACKABOSS team that has been following our personal and professional growth throughout the bootcamp.",
+  "paragraph1-thanks": "Especially Stefano, teacher as well as technical tutor and Bárbara professional development specialist, who have helped us in every step we took",
+  "paragraph2-thanks": "We would also like to thank the teachers who have taught us for everything we have learned. have accompanied throughout the course, Nelson specialist in backend, Anxo frontend specialist, Berto and Samuel, with reinforcement videos weekly.",
+  "paragraph3-thanks": "We greatly appreciate the effort you have made in each class, tutorial or video.",
+  "paragraph4-thanks": "For any questions you may have regarding the web, do not hesitate to contact us through our social networks that you will find in the footer. 👇"
 }
