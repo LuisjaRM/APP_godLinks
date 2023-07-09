@@ -68,10 +68,11 @@ export const AboutUs = () => {
         </p>
 
         <p>
-          Victor Otero: Soy alguien extremadamente curioso. Cuando no estoy
-          mirando algo de código, suelo estar viendo alguna conferencia
-          interesante en YouTube. Habitualmente practico calistenia. Soy de
-          reírse mucho y hacer reír, y siempre trato de ver el vaso medio lleno.
+          Victor Otero: Soy alguien extremadamente curioso. Me gusta aprender
+          cada día y estar siempre al día de las últimas novedades en
+          tecnología. Me encanta el deporte, la buena comida y los videojuegos.
+          Soy de reírse mucho y hacer reír, y siempre trato de ver el vaso medio
+          lleno.
         </p>
       </section>
 
