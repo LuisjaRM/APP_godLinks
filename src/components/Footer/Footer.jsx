@@ -71,7 +71,7 @@ export const Footer = () => {
             href="mailto:godLinkssa@gmail.com"
             className={nightMode === "day" ? "light" : ""}
           >
-            godLinkssa@gmail.com
+            godlinkssa@gmail.com
           </a>
 
           <p
