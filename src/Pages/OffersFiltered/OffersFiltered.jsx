@@ -12,6 +12,7 @@ import { useParams } from "react-router";
 
 import { useAuth } from "../../contexts/AuthContext";
 import { useLanguage } from "../../contexts/LanguageContext";
+import { useNightMode } from "../../contexts/NightModeContext";
 
 // Components
 
@@ -42,6 +43,9 @@ export const OffersFiltered = () => {
     plataform
   );
 
+  // Theme Context
+  const [nightMode] = useNightMode();
+
   if (loading) return <Loading />;
   if (error) return <ErrorMessage />;
 
@@ -53,7 +57,7 @@ export const OffersFiltered = () => {
       </aside>
 
       {offers.offers?.length === 0 ? (
-        <section className="no-offers">
+        <section className={`no-offers ${nightMode === "day" ? "light" : ""}`}>
           <p className="no-offers-message">
             <FormattedMessage id="no-plataform-offers" />
           </p>

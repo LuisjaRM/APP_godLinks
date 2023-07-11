@@ -196,7 +196,11 @@ export const OfferCard = ({ offer, refresh }) => {
             </section>
           )}
         <section className="header">
-          <section role="button" className="user-info" onClick={handleClickUserInfo}>
+          <section
+            role="button"
+            className="user-info"
+            onClick={handleClickUserInfo}
+          >
             <img
               className="user-image"
               src={
@@ -210,7 +214,11 @@ export const OfferCard = ({ offer, refresh }) => {
             <p className="user-name">{offer.user}</p>
           </section>
 
-          <p className="created" role="button" onClick={(e) => e.stopPropagation()}>
+          <p
+            className="created"
+            role="button"
+            onClick={(e) => e.stopPropagation()}
+          >
             {language === "es"
               ? `hace ${timeSinceCreated_at} ${text}`
               : `${timeSinceCreated_at} ${text} ago`}
@@ -328,7 +336,11 @@ export const OfferCard = ({ offer, refresh }) => {
       </section>
 
       {showConfirmModal && (
-        <section role="button" className="modal-back dark" onClick={handleClickAway}>
+        <section
+          role="button"
+          className="modal-back dark"
+          onClick={handleClickAway}
+        >
           <section className="modal-body little">
             <h2>
               <FormattedMessage id="confirm-no-favorite" />

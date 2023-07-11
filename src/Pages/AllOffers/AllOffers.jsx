@@ -17,6 +17,7 @@ import { PlataformFilter } from "../../components/PlataformFilter/PlataformFilte
 
 import { useAuth } from "../../contexts/AuthContext";
 import { useLanguage } from "../../contexts/LanguageContext";
+import { useNightMode } from "../../contexts/NightModeContext";
 
 // Fetchs
 
@@ -29,6 +30,9 @@ export const AllOffers = () => {
   language === "es"
     ? (document.title = "Las mejores ofertas del mercado")
     : (document.title = "Best offers of the market");
+
+  // Theme Context
+  const [nightMode] = useNightMode();
 
   const { token } = useAuth();
   const { offers, loading, error, refresh } = useGetAllOffers(token);
@@ -44,7 +48,7 @@ export const AllOffers = () => {
       </aside>
 
       {offers.offers?.length === 0 ? (
-        <section className="no-offers">
+        <section className={`no-offers ${nightMode === "day" ? "light" : ""}`}>
           <FormattedMessage id="no-offers" />
         </section>
       ) : (

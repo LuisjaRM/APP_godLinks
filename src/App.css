@@ -308,6 +308,10 @@ main.light {
   color: var(--color);
 }
 
+.no-offers.light {
+  background-color: var(--bg3-light-color);
+}
+
 @media (min-width: 800px) {
   .no-offers {
     font-size: 130%;

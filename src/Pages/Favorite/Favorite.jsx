@@ -17,6 +17,7 @@ import { PlataformFilter } from "../../components/PlataformFilter/PlataformFilte
 
 import { useAuth } from "../../contexts/AuthContext";
 import { useLanguage } from "../../contexts/LanguageContext";
+import { useNightMode } from "../../contexts/NightModeContext";
 
 // Fetchs
 
@@ -29,6 +30,9 @@ export const Favorite = () => {
   language === "es"
     ? (document.title = "Tus ofertas favoritas")
     : (document.title = "Your favorites offers");
+
+  // Theme Context
+  const [nightMode] = useNightMode();
 
   const { token } = useAuth();
   const { offers, loading, error, refresh } = useGetMyFavoriteOffers(token);
@@ -44,7 +48,7 @@ export const Favorite = () => {
       </aside>
 
       {offers.offers?.length === 0 ? (
-        <section className="no-offers">
+        <section className={`no-offers ${nightMode === "day" ? "light" : ""}`}>
           <p className="no-offers-message">
             <FormattedMessage id="no-favorite-offers" />
           </p>

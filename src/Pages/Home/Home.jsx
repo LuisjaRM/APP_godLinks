@@ -16,6 +16,7 @@ import { PlataformFilter } from "../../components/PlataformFilter/PlataformFilte
 // Contexts
 
 import { useAuth } from "../../contexts/AuthContext";
+import { useNightMode } from "../../contexts/NightModeContext";
 
 // Fetchs
 
@@ -28,10 +29,12 @@ export const Home = () => {
   const { token } = useAuth();
   const { offers, loading, error, refresh } = useGetDailyOffers(token);
 
+  // Theme Context
+  const [nightMode] = useNightMode();
+
   if (loading) return <Loading />;
   if (error) return <ErrorMessage />;
 
-  console.log(offers.offers?.length);
   return (
     <>
       <aside className="filters">
@@ -39,7 +42,7 @@ export const Home = () => {
         <PlataformFilter />
       </aside>
       {offers.offers?.length === 0 ? (
-        <section className="no-offers">
+        <section className={`no-offers ${nightMode === "day" ? "light" : ""}`}>
           <p className="no-offers-message">
             <FormattedMessage id="no-offers-daily" />
           </p>
